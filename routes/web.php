@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/{path?}', 'layouts/app');
 
 Auth::routes();
 

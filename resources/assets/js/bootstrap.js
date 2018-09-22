@@ -1,5 +1,6 @@
 
-window._ = require('lodash');
+window._ = require('lodash'); // Lodash.js
+window.L = require('leaflet'); // Leaflet.js
 window.Popper = require('popper.js').default;
 
 /**

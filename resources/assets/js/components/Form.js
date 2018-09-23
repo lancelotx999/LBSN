@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Form extends Component {
+export default class FormTest extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -65,6 +65,6 @@ export default class Form extends Component {
                 	</div>
                 </div>
             </div>
-        );
+        )
     }
 }

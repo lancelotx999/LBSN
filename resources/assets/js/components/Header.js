@@ -23,6 +23,9 @@ const Header = () => {
 		            	<li className="nav-item">
 		                	<Link className="nav-link" to="/form">Form</Link>
 		            	</li>
+		            	<li className="nav-item">
+		                	<Link className="nav-link" to="/map">Map</Link>
+		            	</li>
                 	</ul>
                     
                 </div>

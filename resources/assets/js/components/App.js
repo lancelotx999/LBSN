@@ -10,7 +10,8 @@ import {
 // React Components
 import Header from './Header'
 import Main from './Main'
-import Form from './Form'
+import FormTest from './Form'
+import MapTest from './Map'
 
 export default class App extends Component {
 	render() {
@@ -21,7 +22,8 @@ export default class App extends Component {
 					<main className="py-4">
 			            <Switch>
 		            		<Route exact path="/" component={ Main } />
-		            		<Route path="/form" component={ Form } />
+		            		<Route path="/form" component={ FormTest } />
+		            		<Route path="/map" component={ MapTest } />
 		            	</Switch>
 		            </main>
                 </div>

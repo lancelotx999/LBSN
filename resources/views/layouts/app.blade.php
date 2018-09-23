@@ -19,6 +19,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/leaflet/leaflet.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+
+        .leaflet-container {
+            height: 400px;
+            width: 100%;
+        }
+
+    </style>
+
 </head>
 <body>
     <div id="app"></div>

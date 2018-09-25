@@ -11,4 +11,25 @@
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  max-height: 50px;
 }
+
+#map {
+  height: calc(100vh - 50px);
+  position: relative;
+}
+
+#sidebar, .filter {
+  position: absolute;
+  z-index: 2000;
+}
+
+#sidebar {
+  width: 35vh;
+  min-width: 350px;
+  height: calc(100vh - 50px);
+  background: #ffffff;
+  overflow: auto;
+}
+
+

@@ -5,8 +5,7 @@ import L from 'leaflet'
 import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet'
 
 const style = {
-    width: "100%",
-    height: "400px"
+    width: "100%"
 }
 
 export default class MapTest extends Component {
@@ -46,12 +45,124 @@ export default class MapTest extends Component {
         // Do something...
     }
 
+
+    
     render() {
         return (
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
+            
+            <div className="container-fluid wrapper">
+                <div className="row">
+                    <div className="col-xs-12 col-sm-12">
                         
+                            <div className="row">
+                                <div id="sidebar" className="col-sm-12">
+                                    
+                                    <div className="card">
+                                    <article class="card-group-item">
+                                            <header class="card-header">
+                                                <h6 class="title">Estate Condition: </h6>
+                                            </header>
+                                            <div class="filter-content">
+                                                <div class="card-body">
+                                                <label class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadio" value=""/>
+                                                <span class="form-check-label">
+                                                    New
+                                                </span>
+                                                </label>
+                                                <label class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadio" value=""/>
+                                                <span class="form-check-label">
+                                                    Refurbished
+                                                </span>
+                                                </label>
+                                                <label class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadio" value=""/>
+                                                <span class="form-check-label">
+                                                    Used
+                                                </span>
+                                                </label>
+                                                </div> 
+                                            </div>
+                                        </article> 
+                                        <article class="card-group-item">
+                                            <header className="card-header">
+                                                <h6 className="title">Tags</h6>
+                                            </header>
+                                            <div class="filter-content">
+			                                    <div class="card-body">
+			                                        <form>
+				                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                scenery
+                                                            </span>
+				                                        </label> 
+				                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                road
+                                                            </span>
+				                                        </label>  
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                mountain
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                river
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                original
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                forest
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                landscape
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                city
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                suburban
+                                                            </span>
+				                                        </label> 
+                                                        <label class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""/>
+                                                            <span class="form-check-label">
+                                                                no humans
+                                                            </span>
+				                                        </label> 
+			                                        </form>
+			                                    </div> 
+		                                    </div>
+                                        </article>
+
+
+
+                                    </div>
+                                </div>
+                            </div> 
+                            
                         <div id="map" style={ style } />
 
                         <hr />
@@ -64,3 +175,4 @@ export default class MapTest extends Component {
         )
     }
 }
+

@@ -78315,8 +78315,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var style = {
-    width: "100%",
-    height: "400px"
+    width: "100%"
 };
 
 var MapTest = function (_Component) {
@@ -78374,13 +78373,374 @@ var MapTest = function (_Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'container' },
+                { className: 'container-fluid wrapper' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'row justify-content-center' },
+                    { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-md-8' },
+                        { className: 'col-xs-12 col-sm-12' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'row' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { id: 'sidebar', className: 'col-sm-12' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'article',
+                                        { 'class': 'card-group-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'header',
+                                            { 'class': 'card-header' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h6',
+                                                { 'class': 'title' },
+                                                'Estate Condition: '
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'filter-content' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'card-body' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'label',
+                                                    { 'class': 'form-check' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'radio', name: 'exampleRadio', value: '' }),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'span',
+                                                        { 'class': 'form-check-label' },
+                                                        'New'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'label',
+                                                    { 'class': 'form-check' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'radio', name: 'exampleRadio', value: '' }),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'span',
+                                                        { 'class': 'form-check-label' },
+                                                        'Refurbished'
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'label',
+                                                    { 'class': 'form-check' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'radio', name: 'exampleRadio', value: '' }),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'span',
+                                                        { 'class': 'form-check-label' },
+                                                        'Used'
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'article',
+                                        { 'class': 'card-group-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'header',
+                                            { 'class': 'card-header' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h6',
+                                                { 'class': 'title' },
+                                                'Price Range '
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'filter-content' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'card-body' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { 'class': 'form-row' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Min (MYR)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', id: 'inputEmail4', placeholder: '380,000' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6 text-right' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Max (MYR)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', placeholder: '450,000' })
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'article',
+                                        { 'class': 'card-group-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'header',
+                                            { 'class': 'card-header' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h6',
+                                                { 'class': 'title' },
+                                                'Floor/Height '
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'filter-content' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'card-body' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { 'class': 'form-row' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Min height (feet)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', id: 'inputEmail4', placeholder: '18 ft' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6 text-right' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Max height (feet)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', placeholder: '33 ft' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Floor'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'select',
+                                                            { 'class': 'form-control', id: 'exampleSelect1' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '1 floor'
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '2 floors'
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '2.5 floors'
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '3 floors'
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'article',
+                                        { 'class': 'card-group-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'header',
+                                            { className: 'card-header' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h6',
+                                                { className: 'title' },
+                                                'Tags'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'filter-content' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'card-body' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'form',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'scenery',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '142'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'road',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '3'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'mountain',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '16'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'river',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '57'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'original',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '119'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'forest',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '90'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'landscape',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '112'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'city',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '32'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'suburban',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '14'
+                                                            )
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'label',
+                                                        { 'class': 'form-check' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { 'class': 'form-check-input', type: 'checkbox', value: '' }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { 'class': 'form-check-label' },
+                                                            'no humans',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '66'
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'map', style: style }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)

@@ -54,7 +54,7 @@ return array(
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Common/Inflector'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
-    'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
     'App\\' => array($baseDir . '/app'),
+    '' => array($vendorDir . '/nesbot/carbon/src'),
 );

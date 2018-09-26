@@ -123,7 +123,6 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'C' => 
         array (
             'Cron\\' => 5,
-            'Carbon\\' => 7,
         ),
         'A' => 
         array (
@@ -327,10 +326,6 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
-        'Carbon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
         'Aws\\' => 
         array (
             0 => __DIR__ . '/..' . '/aws/aws-sdk-php/src',
@@ -339,6 +334,10 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -392,6 +391,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -427,6 +427,8 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Aws\\Api\\Parser\\AbstractParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/AbstractParser.php',
         'Aws\\Api\\Parser\\AbstractRestParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/AbstractRestParser.php',
         'Aws\\Api\\Parser\\Crc32ValidatingParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/Crc32ValidatingParser.php',
+        'Aws\\Api\\Parser\\DecodingEventStreamIterator' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/DecodingEventStreamIterator.php',
+        'Aws\\Api\\Parser\\EventParsingIterator' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/EventParsingIterator.php',
         'Aws\\Api\\Parser\\Exception\\ParserException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/Exception/ParserException.php',
         'Aws\\Api\\Parser\\JsonParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/JsonParser.php',
         'Aws\\Api\\Parser\\JsonRpcParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/JsonRpcParser.php',
@@ -614,6 +616,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Aws\\Exception\\AwsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/AwsException.php',
         'Aws\\Exception\\CouldNotCreateChecksumException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/CouldNotCreateChecksumException.php',
         'Aws\\Exception\\CredentialsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/CredentialsException.php',
+        'Aws\\Exception\\EventStreamDataException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/EventStreamDataException.php',
         'Aws\\Exception\\MultipartUploadException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/MultipartUploadException.php',
         'Aws\\Exception\\UnresolvedApiException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/UnresolvedApiException.php',
         'Aws\\Exception\\UnresolvedEndpointException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Exception/UnresolvedEndpointException.php',
@@ -859,7 +862,9 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Aws\\signer\\signerClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/signer/signerClient.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
+        'Carbon\\CarbonPeriod' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonPeriod.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+        'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -1575,12 +1580,17 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Auth\\Events\\Logout' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Events/Logout.php',
         'Illuminate\\Auth\\Events\\PasswordReset' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Events/PasswordReset.php',
         'Illuminate\\Auth\\Events\\Registered' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Events/Registered.php',
+        'Illuminate\\Auth\\Events\\Verified' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Events/Verified.php',
         'Illuminate\\Auth\\GenericUser' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/GenericUser.php',
         'Illuminate\\Auth\\GuardHelpers' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/GuardHelpers.php',
+        'Illuminate\\Auth\\Listeners\\SendEmailVerificationNotification' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Listeners/SendEmailVerificationNotification.php',
         'Illuminate\\Auth\\Middleware\\Authenticate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php',
         'Illuminate\\Auth\\Middleware\\AuthenticateWithBasicAuth' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Middleware/AuthenticateWithBasicAuth.php',
         'Illuminate\\Auth\\Middleware\\Authorize' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Middleware/Authorize.php',
+        'Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Middleware/EnsureEmailIsVerified.php',
+        'Illuminate\\Auth\\MustVerifyEmail' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/MustVerifyEmail.php',
         'Illuminate\\Auth\\Notifications\\ResetPassword' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php',
+        'Illuminate\\Auth\\Notifications\\VerifyEmail' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Notifications/VerifyEmail.php',
         'Illuminate\\Auth\\Passwords\\CanResetPassword' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Passwords/CanResetPassword.php',
         'Illuminate\\Auth\\Passwords\\DatabaseTokenRepository' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Passwords/DatabaseTokenRepository.php',
         'Illuminate\\Auth\\Passwords\\PasswordBroker' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Passwords/PasswordBroker.php',
@@ -1670,6 +1680,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Contracts\\Auth\\CanResetPassword' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/CanResetPassword.php',
         'Illuminate\\Contracts\\Auth\\Factory' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/Factory.php',
         'Illuminate\\Contracts\\Auth\\Guard' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/Guard.php',
+        'Illuminate\\Contracts\\Auth\\MustVerifyEmail' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/MustVerifyEmail.php',
         'Illuminate\\Contracts\\Auth\\PasswordBroker' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/PasswordBroker.php',
         'Illuminate\\Contracts\\Auth\\PasswordBrokerFactory' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/PasswordBrokerFactory.php',
         'Illuminate\\Contracts\\Auth\\StatefulGuard' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Auth/StatefulGuard.php',
@@ -1703,6 +1714,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Contracts\\Events\\Dispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Events/Dispatcher.php',
         'Illuminate\\Contracts\\Filesystem\\Cloud' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Filesystem/Cloud.php',
         'Illuminate\\Contracts\\Filesystem\\Factory' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Filesystem/Factory.php',
+        'Illuminate\\Contracts\\Filesystem\\FileExistsException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Filesystem/FileExistsException.php',
         'Illuminate\\Contracts\\Filesystem\\FileNotFoundException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Filesystem/FileNotFoundException.php',
         'Illuminate\\Contracts\\Filesystem\\Filesystem' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Filesystem/Filesystem.php',
         'Illuminate\\Contracts\\Foundation\\Application' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Contracts/Foundation/Application.php',
@@ -1857,6 +1869,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Database\\SQLiteConnection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/SQLiteConnection.php',
         'Illuminate\\Database\\Schema\\Blueprint' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php',
         'Illuminate\\Database\\Schema\\Builder' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Schema/Builder.php',
+        'Illuminate\\Database\\Schema\\ColumnDefinition' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Schema/ColumnDefinition.php',
         'Illuminate\\Database\\Schema\\Grammars\\ChangeColumn' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Schema/Grammars/ChangeColumn.php',
         'Illuminate\\Database\\Schema\\Grammars\\Grammar' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Schema/Grammars/Grammar.php',
         'Illuminate\\Database\\Schema\\Grammars\\MySqlGrammar' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Schema/Grammars/MySqlGrammar.php',
@@ -1891,6 +1904,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Foundation\\Auth\\SendsPasswordResetEmails' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/SendsPasswordResetEmails.php',
         'Illuminate\\Foundation\\Auth\\ThrottlesLogins' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/ThrottlesLogins.php',
         'Illuminate\\Foundation\\Auth\\User' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
+        'Illuminate\\Foundation\\Auth\\VerifiesEmails' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/VerifiesEmails.php',
         'Illuminate\\Foundation\\Bootstrap\\BootProviders' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php',
         'Illuminate\\Foundation\\Bootstrap\\HandleExceptions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php',
         'Illuminate\\Foundation\\Bootstrap\\LoadConfiguration' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php',
@@ -1923,6 +1937,8 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Foundation\\Console\\ModelMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/ModelMakeCommand.php',
         'Illuminate\\Foundation\\Console\\NotificationMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/NotificationMakeCommand.php',
         'Illuminate\\Foundation\\Console\\ObserverMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/ObserverMakeCommand.php',
+        'Illuminate\\Foundation\\Console\\OptimizeClearCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/OptimizeClearCommand.php',
+        'Illuminate\\Foundation\\Console\\OptimizeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/OptimizeCommand.php',
         'Illuminate\\Foundation\\Console\\PackageDiscoverCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/PackageDiscoverCommand.php',
         'Illuminate\\Foundation\\Console\\PolicyMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/PolicyMakeCommand.php',
         'Illuminate\\Foundation\\Console\\PresetCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Console/PresetCommand.php',
@@ -1987,6 +2003,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Foundation\\Testing\\DatabaseMigrations' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/DatabaseMigrations.php',
         'Illuminate\\Foundation\\Testing\\DatabaseTransactions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/DatabaseTransactions.php',
         'Illuminate\\Foundation\\Testing\\HttpException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/HttpException.php',
+        'Illuminate\\Foundation\\Testing\\PendingCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php',
         'Illuminate\\Foundation\\Testing\\RefreshDatabase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabase.php',
         'Illuminate\\Foundation\\Testing\\RefreshDatabaseState' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabaseState.php',
         'Illuminate\\Foundation\\Testing\\TestCase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php',
@@ -1996,6 +2013,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Foundation\\Testing\\WithoutMiddleware' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/WithoutMiddleware.php',
         'Illuminate\\Foundation\\Validation\\ValidatesRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php',
         'Illuminate\\Hashing\\AbstractHasher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/AbstractHasher.php',
+        'Illuminate\\Hashing\\Argon2IdHasher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/Argon2IdHasher.php',
         'Illuminate\\Hashing\\ArgonHasher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/ArgonHasher.php',
         'Illuminate\\Hashing\\BcryptHasher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/BcryptHasher.php',
         'Illuminate\\Hashing\\HashManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/HashManager.php',
@@ -2036,6 +2054,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Log\\LogManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Log/LogManager.php',
         'Illuminate\\Log\\LogServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Log/LogServiceProvider.php',
         'Illuminate\\Log\\Logger' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Log/Logger.php',
+        'Illuminate\\Log\\ParsesLogConfiguration' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Log/ParsesLogConfiguration.php',
         'Illuminate\\Mail\\Events\\MessageSending' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Mail/Events/MessageSending.php',
         'Illuminate\\Mail\\Events\\MessageSent' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Mail/Events/MessageSent.php',
         'Illuminate\\Mail\\MailServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Mail/MailServiceProvider.php',
@@ -2154,6 +2173,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Redis\\Connections\\PredisConnection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Connections/PredisConnection.php',
         'Illuminate\\Redis\\Connectors\\PhpRedisConnector' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php',
         'Illuminate\\Redis\\Connectors\\PredisConnector' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Connectors/PredisConnector.php',
+        'Illuminate\\Redis\\Events\\CommandExecuted' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Events/CommandExecuted.php',
         'Illuminate\\Redis\\Limiters\\ConcurrencyLimiter' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Limiters/ConcurrencyLimiter.php',
         'Illuminate\\Redis\\Limiters\\ConcurrencyLimiterBuilder' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Limiters/ConcurrencyLimiterBuilder.php',
         'Illuminate\\Redis\\Limiters\\DurationLimiter' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/Limiters/DurationLimiter.php',
@@ -2221,8 +2241,6 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Support\\Carbon' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Carbon.php',
         'Illuminate\\Support\\Collection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Collection.php',
         'Illuminate\\Support\\Composer' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Composer.php',
-        'Illuminate\\Support\\Debug\\Dumper' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Debug/Dumper.php',
-        'Illuminate\\Support\\Debug\\HtmlDumper' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Debug/HtmlDumper.php',
         'Illuminate\\Support\\Facades\\App' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Facades/App.php',
         'Illuminate\\Support\\Facades\\Artisan' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Facades/Artisan.php',
         'Illuminate\\Support\\Facades\\Auth' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Facades/Auth.php',
@@ -2277,6 +2295,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'Illuminate\\Support\\Testing\\Fakes\\PendingMailFake' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/PendingMailFake.php',
         'Illuminate\\Support\\Testing\\Fakes\\QueueFake' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/QueueFake.php',
         'Illuminate\\Support\\Traits\\CapsuleManagerTrait' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/CapsuleManagerTrait.php',
+        'Illuminate\\Support\\Traits\\ForwardsCalls' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/ForwardsCalls.php',
         'Illuminate\\Support\\Traits\\Localizable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/Localizable.php',
         'Illuminate\\Support\\Traits\\Macroable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/Macroable.php',
         'Illuminate\\Support\\ViewErrorBag' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/ViewErrorBag.php',
@@ -2391,6 +2410,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'JmesPath\\TreeCompiler' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/TreeCompiler.php',
         'JmesPath\\TreeInterpreter' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/TreeInterpreter.php',
         'JmesPath\\Utils' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/Utils.php',
+        'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -3154,6 +3174,8 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         'PhpParser\\Builder\\Namespace_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Namespace_.php',
         'PhpParser\\Builder\\Param' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Param.php',
         'PhpParser\\Builder\\Property' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Property.php',
+        'PhpParser\\Builder\\TraitUse' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/TraitUse.php',
+        'PhpParser\\Builder\\TraitUseAdaptation' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/TraitUseAdaptation.php',
         'PhpParser\\Builder\\Trait_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Trait_.php',
         'PhpParser\\Builder\\Use_' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder/Use_.php',
         'PhpParser\\Comment' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Comment.php',
@@ -4439,6 +4461,7 @@ class ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd9a2bf7cc29f829c68cf903e1475f26f::$classMap;
 

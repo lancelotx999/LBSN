@@ -10497,3 +10497,7 @@ a.text-dark:focus {
   overflow: auto;
 }
 
+.badge {
+  margin-left: 10px;
+}
+

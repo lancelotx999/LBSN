@@ -78864,6 +78864,129 @@ var MapTest = function (_Component) {
                                         { 'class': 'card-group-item' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'header',
+                                            { 'class': 'card-header' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h6',
+                                                { 'class': 'title' },
+                                                'Price Range '
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'filter-content' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'card-body' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { 'class': 'form-row' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Min (MYR)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', id: 'inputEmail4', placeholder: '380,000' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6 text-right' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Max (MYR)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', placeholder: '450,000' })
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'article',
+                                        { 'class': 'card-group-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'header',
+                                            { 'class': 'card-header' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'h6',
+                                                { 'class': 'title' },
+                                                'Floor/Height '
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { 'class': 'filter-content' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { 'class': 'card-body' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { 'class': 'form-row' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Min height (feet)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', id: 'inputEmail4', placeholder: '18 ft' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6 text-right' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Max height (feet)'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', 'class': 'form-control', placeholder: '33 ft' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { 'class': 'form-group col-md-6' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'label',
+                                                            null,
+                                                            'Floor'
+                                                        ),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'select',
+                                                            { 'class': 'form-control', id: 'exampleSelect1' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '1 floor'
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '2 floors'
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '2.5 floors'
+                                                            ),
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'option',
+                                                                null,
+                                                                '3 floors'
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'article',
+                                        { 'class': 'card-group-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'header',
                                             { className: 'card-header' },
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'h6',
@@ -78887,7 +79010,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'scenery'
+                                                            'scenery',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '142'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78897,7 +79025,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'road'
+                                                            'road',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '3'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78907,7 +79040,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'mountain'
+                                                            'mountain',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '16'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78917,7 +79055,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'river'
+                                                            'river',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '57'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78927,7 +79070,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'original'
+                                                            'original',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '119'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78937,7 +79085,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'forest'
+                                                            'forest',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '90'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78947,7 +79100,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'landscape'
+                                                            'landscape',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '112'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78957,7 +79115,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'city'
+                                                            'city',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '32'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78967,7 +79130,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'suburban'
+                                                            'suburban',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '14'
+                                                            )
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -78977,7 +79145,12 @@ var MapTest = function (_Component) {
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'span',
                                                             { 'class': 'form-check-label' },
-                                                            'no humans'
+                                                            'no humans',
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                                'span',
+                                                                { 'class': 'badge badge-light round' },
+                                                                '66'
+                                                            )
                                                         )
                                                     )
                                                 )

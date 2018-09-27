@@ -16,3 +16,5 @@ Route::view('/{path?}', 'layouts/app');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('locations', 'LocationController');

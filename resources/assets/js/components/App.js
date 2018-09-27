@@ -14,6 +14,7 @@ import Register from './auth/Register'
 import Main from './Main'
 import FormTest from './Form'
 import MapTest from './Map'
+import RegisterLocation from './registerLocation'
 
 export default class App extends Component {
 	render() {
@@ -29,7 +30,8 @@ export default class App extends Component {
 		            		<Route path="/register" component={ Register } />
 
 		            		<Route path="/form" component={ FormTest } />
-		            		<Route path="/map" component={ MapTest } />
+                            <Route path="/map" component={ MapTest } />
+		            		<Route path="/registerLocationTest" component={ RegisterLocation } />
 
 		            	</Switch>
 		            </main>

@@ -15,7 +15,7 @@ const Header = () => {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    
+
                     <ul className="navbar-nav mr-auto">
 		            	<li className="nav-item">
 		                	<Link className="nav-link" to="/">Home</Link>
@@ -23,8 +23,11 @@ const Header = () => {
 		            	<li className="nav-item">
 		                	<Link className="nav-link" to="/form">Form</Link>
 		            	</li>
-		            	<li className="nav-item">
+						<li className="nav-item">
 		                	<Link className="nav-link" to="/map">Map</Link>
+		            	</li>
+						<li className="nav-item">
+		                	<Link className="nav-link" to="/registerLocationTest">Register Location</Link>
 		            	</li>
                 	</ul>
 
@@ -36,11 +39,11 @@ const Header = () => {
                             <Link class="nav-link" to="/register">Register</Link>
                         </li>
                 	</ul>
-                    
+
                 </div>
             </div>
         </nav>
 	)
-} 
+}
 
 export default Header

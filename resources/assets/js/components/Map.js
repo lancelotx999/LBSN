@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import L from 'leaflet'
 import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet'
 
-const style = {
+const mapStyle = {
     width: "100%",
     height: "400px"
 }
@@ -30,7 +30,7 @@ export default class MapTest extends Component {
     }
 
     componentDidUpdate({ markerPosition }) {
-        // check if position has changed 
+        // check if position has changed
         if (this.props.markerPosition !== markerPosition) {
             this.marker.setLatLng(this.props.markerPosition);
         }
@@ -51,8 +51,8 @@ export default class MapTest extends Component {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        
-                        <div id="map" style={ style } />
+
+                        <div id="map" style={ mapStyle } />
 
                         <hr />
 

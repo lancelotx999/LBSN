@@ -14,7 +14,7 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, Notifiable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +23,7 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     protected $fillable = [
         'name', 'email', 'password',
     ];
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -32,4 +32,8 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function locations() {
+        return $this->hasMany(Location::class);
+    }
 }

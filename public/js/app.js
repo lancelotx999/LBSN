@@ -85074,14 +85074,13 @@ var registerLocation = function (_Component) {
 
         _this.state = {
             locationOwnerIDInput: '',
-            locations: []
-            // locationNameInput: '',
-            // locationAddressInput: '',
-            // locationDescriptionInput: '',
-            // locationStatusInput: '',
-            // locationRatingInput: '',
-            // locationLatitudeInput: '',
-            // locationLongitudeInput: ''
+            locationNameInput: '',
+            locationAddressInput: '',
+            locationDescriptionInput: '',
+            locationStatusInput: '',
+            locationRatingInput: '',
+            locationLatitudeInput: '',
+            locationLongitudeInput: ''
         };
         // bind
         _this.handleChange = _this.handleChange.bind(_this);
@@ -85089,6 +85088,7 @@ var registerLocation = function (_Component) {
         _this.handleSubmit = _this.handleSubmit.bind(_this);
         return _this;
     }
+
     // handle change
 
 
@@ -85119,41 +85119,17 @@ var registerLocation = function (_Component) {
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
             axios.post('/locations', {
-                locationOwnerIDInput: this.state.locationOwnerIDInput
-                // locationNameInput: this.state.locationNameInput,
-                // locationAddressInput: this.state.locationAddressInput,
-                // locationDescriptionInput: this.state.locationDescriptionInput,
-                // locationStatusInput: this.state.locationStatusInput,
-                // locationRatingInput: this.state.locationRatingInput,
-                // locationLatitudeInput: this.state.locationLatitudeInput,
-                // locationLongitudeInput: this.state.locationLongitudeInput
+                locationOwnerID: this.state.locationOwnerIDInput,
+                locationName: this.state.locationNameInput,
+                locationAddress: this.state.locationAddressInput,
+                locationDescription: this.state.locationDescriptionInput,
+                locationStatus: this.state.locationStatusInput,
+                locationRating: this.state.locationRatingInput,
+                locationLatitude: this.state.locationLatitudeInput,
+                locationLongitude: this.state.locationLongitudeInput
             }).then(function (response) {
                 console.log('response', response);
                 console.log('this.state', _this2.state);
-
-                // set state
-                _this2.setState({
-                    locationOwnerIDInput: _this2.state.locationOwnerIDInput
-                    // locationNameInput: this.state.locationNameInput,
-                    // locationAddressInput: this.state.locationAddressInput,
-                    // locationDescriptionInput: this.state.locationDescriptionInput,
-                    // locationStatusInput: this.state.locationStatusInput,
-                    // locationRatingInput: this.state.locationRatingInput,
-                    // locationLatitudeInput: this.state.locationLatitudeInput,
-                    // locationLongitudeInput: this.state.locationLongitudeInput
-                });
-
-                // then clear the value of textarea
-                _this2.setState({
-                    locationOwnerIDInput: ''
-                    // locationNameInput: '',
-                    // locationAddressInput: '',
-                    // locationDescriptionInput: '',
-                    // locationStatusInput: '',
-                    // locationRatingInput: '',
-                    // locationLatitudeInput: '',
-                    // locationLongitudeInput: ''
-                });
             });
         }
     }, {
@@ -85198,6 +85174,132 @@ var registerLocation = function (_Component) {
                                                     name: 'locationOwnerIDInput',
                                                     type: 'text',
                                                     value: this.state.locationOwnerID,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Name:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationNameInput',
+                                                    type: 'text',
+                                                    value: this.state.locationName,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Address:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationAddressInput',
+                                                    type: 'text',
+                                                    value: this.state.locationAddress,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Description:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationDescriptionInput',
+                                                    type: 'text',
+                                                    value: this.state.locationDescription,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Status:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationStatusInput',
+                                                    type: 'text',
+                                                    value: this.state.locationStatus,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Rating:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationRatingInput',
+                                                    type: 'text',
+                                                    value: this.state.locationRating,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Latitude:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationLatitudeInput',
+                                                    type: 'text',
+                                                    value: this.state.locationLatitude,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Create a new location',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Longitude:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    name: 'locationLongitudeInput',
+                                                    type: 'text',
+                                                    value: this.state.locationLongitude,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
                                                     placeholder: 'Create a new location',

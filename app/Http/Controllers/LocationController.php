@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 class LocationController extends Controller
 {
     // apply auth middleware so only authenticated users have access
-	// public function __construct() {
-	// 	$this->middleware('auth');
-	// }
+	public function __construct() {
+		$this->middleware('auth');
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -48,25 +49,25 @@ class LocationController extends Controller
      public function store(Request $request) {
  		// validate
  		$this->validate($request, [
-            'locationOwnerIDInput' => 'required|max:100',
-            // 'locationNameInput' => 'required|max:100',
-            // 'locationAddressInput' => 'max:255',
-            // 'locationDescriptionInput' => 'max:255',
-            // 'locationStatusInput' => 'required|max:255',
-            // 'locationRatingInput' => 'required',
-            // 'locationLatitudeInput' => 'required',
-            // 'locationLongitudeInput' => 'required',
+            'locationOwnerID' => 'required|max:100',
+            'locationName' => 'required|max:100',
+            'locationAddress' => 'max:255',
+            'locationDescription' => 'max:255',
+            'locationStatus' => 'required|max:255',
+            'locationRating' => 'required',
+            'locationLatitude' => 'required',
+            'locationLongitude' => 'required',
  		]);
  		// create a new location based on user locations relationship
  		$location = $request->user()->locations()->create([
-            'locationOwnerID' => $request->locationOwnerIDInput,
-            // 'locationName' => $request->locationNameInput,
-            // 'locationAddress' => $request->locationAddressInput,
-            // 'locationDescription' => $request->locationDescriptionInput,
-            // 'locationStatus' => $request->locationStatusInput,
-            // 'locationRating' => $request->locationRatingInput,
-            // 'locationLatitude' => $request->locationLatitudeInput,
-            // 'locationLongitude' => $request->locationLongitudeInput,
+            'locationOwnerID' => $request->locationOwnerID,
+            'locationName' => $request->locationName,
+            'locationAddress' => $request->locationAddress,
+            'locationDescription' => $request->locationDescription,
+            'locationStatus' => $request->locationStatus,
+            'locationRating' => $request->locationRating,
+            'locationLatitude' => $request->locationLatitude,
+            'locationLongitude' => $request->locationLongitude,
  		]);
  		// return location with user object
  		return response()->json($location->with('user')->find($location->locationID));

@@ -16,3 +16,5 @@ Route::view('/', 'layouts/app');
 Route::view('/welcome', 'welcome');
 
 Auth::routes();
+
+Route::resource('locations', 'LocationController');

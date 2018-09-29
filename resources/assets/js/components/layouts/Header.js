@@ -18,6 +18,6 @@ const Header = () => {
             </li>
         </ul>
 	)
-} 
+}
 
 export default Header

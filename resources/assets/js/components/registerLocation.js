@@ -13,7 +13,7 @@ export default class registerLocation extends Component {
     componentDidMount() {
         // create map
         this.map = L.map('map', {
-            center: [49.8419, 24.0315],
+            center: [1.5510714615890955, 110.34356832504274],
             zoom: 16,
             layers: [
                 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -21,6 +21,23 @@ export default class registerLocation extends Component {
                 }),
             ]
         })
+
+
+
+        this.map.on('click', function(e){
+            // var coord = e.latlng;
+            // var lat = coord.lat;
+            // var lng = coord.lng;
+            // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+
+            //need to set state
+            //this.state()
+
+            document.getElementById('locationLatitudeInput').value = e.latlng.lat;
+            document.getElementById('locationLongitudeInput').value = e.latlng.lng;
+
+
+        });
 
         // add layer
         this.layer = L.layerGroup().addTo(this.map);
@@ -49,14 +66,15 @@ export default class registerLocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            locationOwnerIDInput: '',
+            // locationOwnerIDInput: '',
             locationNameInput: '',
             locationAddressInput: '',
             locationDescriptionInput: '',
             locationStatusInput: '',
             locationRatingInput: '',
             locationLatitudeInput: '',
-            locationLongitudeInput: ''
+            locationLongitudeInput: '',
+            locations: []
         };
         // bind
         this.handleChange = this.handleChange.bind(this);
@@ -88,7 +106,7 @@ export default class registerLocation extends Component {
         e.preventDefault();
         axios
             .post('/locations', {
-                locationOwnerID: this.state.locationOwnerIDInput,
+                // locationOwnerID: this.state.locationOwnerIDInput,
                 locationName: this.state.locationNameInput,
                 locationAddress: this.state.locationAddressInput,
                 locationDescription: this.state.locationDescriptionInput,
@@ -100,6 +118,10 @@ export default class registerLocation extends Component {
             .then(response => {
                 console.log('response', response);
                 console.log('this.state', this.state);
+
+                this.setState({
+                    locations: [response.data, ...this.state.locations]
+                });
 
 
 
@@ -120,28 +142,15 @@ export default class registerLocation extends Component {
                                     <div className="form-group">
                                         <p>
                                             <label>
-                                                Owner ID:
-                                                <input
-                                                    name="locationOwnerIDInput"
-                                                    type="text"
-                                                    value={this.state.locationOwnerID}
-                                                    onChange={this.handleChange}
-                                                    className="form-control"
-                                                    placeholder="Create a new location"
-                                                    required
-                                                />
-                                            </label>
-                                        </p>
-                                        <p>
-                                            <label>
                                                 Name:
                                                 <input
+                                                    id="locationNameInput"
                                                     name="locationNameInput"
                                                     type="text"
                                                     value={this.state.locationName}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
+                                                    placeholder="Enter location name."
                                                     required
                                                 />
                                             </label>
@@ -150,12 +159,13 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Address:
                                                 <input
+                                                    id="locationAddressInput"
                                                     name="locationAddressInput"
                                                     type="text"
                                                     value={this.state.locationAddress}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
+                                                    placeholder="Enter location address."
                                                     required
                                                 />
                                             </label>
@@ -164,13 +174,13 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Description:
                                                 <input
+                                                    id="locationDescriptionInput"
                                                     name="locationDescriptionInput"
                                                     type="text"
                                                     value={this.state.locationDescription}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
-                                                    required
+                                                    placeholder="Enter location description."
                                                 />
                                             </label>
                                         </p>
@@ -178,12 +188,13 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Status:
                                                 <input
+                                                    id="locationStatusInput"
                                                     name="locationStatusInput"
                                                     type="text"
                                                     value={this.state.locationStatus}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
+                                                    placeholder="Enter location status."
                                                     required
                                                 />
                                             </label>
@@ -192,13 +203,15 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Rating:
                                                 <input
+                                                    id="locationRatingInput"
                                                     name="locationRatingInput"
-                                                    type="text"
+                                                    type="number"
                                                     value={this.state.locationRating}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
+                                                    placeholder="Enter location rating."
                                                     required
+                                                    step="0.01"
                                                 />
                                             </label>
                                         </p>
@@ -206,12 +219,14 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Latitude:
                                                 <input
+                                                    id="locationLatitudeInput"
                                                     name="locationLatitudeInput"
                                                     type="text"
                                                     value={this.state.locationLatitude}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
+                                                    placeholder="Click on map to set latitude."
+                                                    step="0.0"
                                                     required
                                                 />
                                             </label>
@@ -220,12 +235,14 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Longitude:
                                                 <input
+                                                    id="locationLongitudeInput"
                                                     name="locationLongitudeInput"
                                                     type="text"
                                                     value={this.state.locationLongitude}
                                                     onChange={this.handleChange}
                                                     className="form-control"
-                                                    placeholder="Create a new location"
+                                                    placeholder="Click on map to set longitude."
+                                                    step="0.0"
                                                     required
                                                 />
                                             </label>

@@ -20,7 +20,7 @@ class LocationController extends Controller
     public function index(Request $request, Location $locations)
     {
         // get all the tasks based on current user id
-		$allLocations = $location->whereIn('locationOwnerID', $request->user())->with('user');
+		$allLocations = $location->whereIn('user_id', $request->user())->with('user');
         // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
 		$locations = $allLocations->take(10)->get();
 
@@ -49,7 +49,7 @@ class LocationController extends Controller
      public function store(Request $request) {
  		// validate
  		$this->validate($request, [
-            'locationOwnerID' => 'required|max:100',
+            // 'locationOwnerID' => 'required|max:100',
             'locationName' => 'required|max:100',
             'locationAddress' => 'max:255',
             'locationDescription' => 'max:255',
@@ -60,7 +60,7 @@ class LocationController extends Controller
  		]);
  		// create a new location based on user locations relationship
  		$location = $request->user()->locations()->create([
-            'locationOwnerID' => $request->locationOwnerID,
+            // 'locationOwnerID' => $request->locationOwnerID,
             'locationName' => $request->locationName,
             'locationAddress' => $request->locationAddress,
             'locationDescription' => $request->locationDescription,
@@ -70,7 +70,7 @@ class LocationController extends Controller
             'locationLongitude' => $request->locationLongitude,
  		]);
  		// return location with user object
- 		return response()->json($location->with('user')->find($location->locationID));
+ 		return response()->json($location->with('user')->find($location->_id));
  	}
 
     /**

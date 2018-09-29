@@ -85002,6 +85002,8 @@ var ZoomControl = function (_MapControl) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(81);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85029,11 +85031,24 @@ var registerLocation = function (_Component) {
         value: function componentDidMount() {
             // create map
             this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
-                center: [49.8419, 24.0315],
+                center: [1.5510714615890955, 110.34356832504274],
                 zoom: 16,
                 layers: [__WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 })]
+            });
+
+            this.map.on('click', function (e) {
+                // var coord = e.latlng;
+                // var lat = coord.lat;
+                // var lng = coord.lng;
+                // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+
+                //need to set state
+                //this.state()
+
+                document.getElementById('locationLatitudeInput').value = e.latlng.lat;
+                document.getElementById('locationLongitudeInput').value = e.latlng.lng;
             });
 
             // add layer
@@ -85073,14 +85088,15 @@ var registerLocation = function (_Component) {
         var _this = _possibleConstructorReturn(this, (registerLocation.__proto__ || Object.getPrototypeOf(registerLocation)).call(this, props));
 
         _this.state = {
-            locationOwnerIDInput: '',
+            // locationOwnerIDInput: '',
             locationNameInput: '',
             locationAddressInput: '',
             locationDescriptionInput: '',
             locationStatusInput: '',
             locationRatingInput: '',
             locationLatitudeInput: '',
-            locationLongitudeInput: ''
+            locationLongitudeInput: '',
+            locations: []
         };
         // bind
         _this.handleChange = _this.handleChange.bind(_this);
@@ -85119,7 +85135,7 @@ var registerLocation = function (_Component) {
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
             axios.post('/locations', {
-                locationOwnerID: this.state.locationOwnerIDInput,
+                // locationOwnerID: this.state.locationOwnerIDInput,
                 locationName: this.state.locationNameInput,
                 locationAddress: this.state.locationAddressInput,
                 locationDescription: this.state.locationDescriptionInput,
@@ -85130,6 +85146,10 @@ var registerLocation = function (_Component) {
             }).then(function (response) {
                 console.log('response', response);
                 console.log('this.state', _this2.state);
+
+                _this2.setState({
+                    locations: [response.data].concat(_toConsumableArray(_this2.state.locations))
+                });
             });
         }
     }, {
@@ -85169,32 +85189,15 @@ var registerLocation = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'label',
                                                 null,
-                                                'Owner ID:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    name: 'locationOwnerIDInput',
-                                                    type: 'text',
-                                                    value: this.state.locationOwnerID,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Create a new location',
-                                                    required: true
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
                                                 'Name:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationNameInput',
                                                     name: 'locationNameInput',
                                                     type: 'text',
                                                     value: this.state.locationName,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
+                                                    placeholder: 'Enter location name.',
                                                     required: true
                                                 })
                                             )
@@ -85207,12 +85210,13 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Address:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationAddressInput',
                                                     name: 'locationAddressInput',
                                                     type: 'text',
                                                     value: this.state.locationAddress,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
+                                                    placeholder: 'Enter location address.',
                                                     required: true
                                                 })
                                             )
@@ -85225,13 +85229,13 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Description:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationDescriptionInput',
                                                     name: 'locationDescriptionInput',
                                                     type: 'text',
                                                     value: this.state.locationDescription,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
-                                                    required: true
+                                                    placeholder: 'Enter location description.'
                                                 })
                                             )
                                         ),
@@ -85243,12 +85247,13 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Status:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationStatusInput',
                                                     name: 'locationStatusInput',
                                                     type: 'text',
                                                     value: this.state.locationStatus,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
+                                                    placeholder: 'Enter location status.',
                                                     required: true
                                                 })
                                             )
@@ -85261,13 +85266,15 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Rating:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationRatingInput',
                                                     name: 'locationRatingInput',
-                                                    type: 'text',
+                                                    type: 'number',
                                                     value: this.state.locationRating,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
-                                                    required: true
+                                                    placeholder: 'Enter location rating.',
+                                                    required: true,
+                                                    step: '0.01'
                                                 })
                                             )
                                         ),
@@ -85279,12 +85286,14 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Latitude:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationLatitudeInput',
                                                     name: 'locationLatitudeInput',
                                                     type: 'text',
                                                     value: this.state.locationLatitude,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
+                                                    placeholder: 'Click on map to set latitude.',
+                                                    step: '0.0',
                                                     required: true
                                                 })
                                             )
@@ -85297,12 +85306,14 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Longitude:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationLongitudeInput',
                                                     name: 'locationLongitudeInput',
                                                     type: 'text',
                                                     value: this.state.locationLongitude,
                                                     onChange: this.handleChange,
                                                     className: 'form-control',
-                                                    placeholder: 'Create a new location',
+                                                    placeholder: 'Click on map to set longitude.',
+                                                    step: '0.0',
                                                     required: true
                                                 })
                                             )

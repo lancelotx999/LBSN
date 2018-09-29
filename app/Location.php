@@ -7,7 +7,8 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class Location extends Eloquent {
     // protected $connection = 'mongodb';
 
-    protected $fillable = ['locationOwnerID', 'locationName', 'locationAddress', 'locationDescription', 'locationStatus', 'locationRating', 'locationLatitude', 'locationLongitude'];
+    protected $fillable = ['locationName', 'locationAddress', 'locationDescription', 'locationStatus', 'locationRating', 'locationLatitude', 'locationLongitude'];
+    // protected $fillable = ['locationOwnerID'];
 
     public function user() {
         return $this->belongsTo(User::class);

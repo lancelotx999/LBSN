@@ -7,6 +7,7 @@ import Main from '../Main'
 import FormTest from '../Form'
 import MapTest from '../Map'
 import RegisterLocation from '../registerLocation'
+import EditLocation from '../editLocation'
 
 const Content = () => {
 	return ReactDOM.createPortal(
@@ -25,6 +26,7 @@ const Children = () => {
     		<Route path="/form" component={ FormTest } />
     		<Route path="/map" component={ MapTest } />
     		<Route path="/registerLocationTest" component={ RegisterLocation } />
+			<Route path="/:id/edit" component={EditLocation} exact={true} />
 
     	</Switch>
 	)

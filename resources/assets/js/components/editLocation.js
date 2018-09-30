@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import L from 'leaflet'
 import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet'
-import { Link } from 'react-router-dom';
 
 const mapStyle = {
     width: "100%",
     height: "400px"
 }
 
-export default class registerLocation extends Component {
+class editLocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,15 +24,9 @@ export default class registerLocation extends Component {
             locations: []
         };
 
+        // bind
         this.handleChange = this.handleChange.bind(this);
-
         this.submitLocation = this.submitLocation.bind(this);
-
-        this.renderLocations = this.renderLocations.bind(this);
-
-        this.deleteLocation = this.deleteLocation.bind(this);
-
-        this.updateLocation = this.updateLocation.bind(this);
     }
 
     componentWillMount() {
@@ -87,6 +80,17 @@ export default class registerLocation extends Component {
         console.log("---------- this.state componentDidUpdate() ----------");
         console.log(this.state);
         console.log("---------- this.state componentDidUpdate() ----------");
+
+
+        document.getElementById('locationNameInput').value = this.state.locations[0].locationName;
+        document.getElementById('locationAddressInput').value = this.state.locations[0].locationAddress;
+        document.getElementById('locationDescriptionInput').value = this.state.locations[0].locationDescription;
+        document.getElementById('locationStatusInput').value = this.state.locations[0].locationStatus;
+        document.getElementById('locationRatingInput').value = this.state.locations[0].locationRating;
+        document.getElementById('locationLatitudeInput').value = this.state.locations[0].locationLatitude;
+        document.getElementById('locationLongitudeInput').value = this.state.locations[0].locationLongitude;
+
+
         // // check if position has changed
         // if (this.props.markerPosition !== markerPosition) {
         //     this.marker.setLatLng(this.props.markerPosition);
@@ -98,84 +102,6 @@ export default class registerLocation extends Component {
         // }
     }
 
-
-    // // get all locations from backend
-    // getLocations() {
-    //     axios.get('/locations')
-    //         .then(response => {
-    //             this.setState({
-    //                 locations: [...response.data.locations]
-    //             })
-    //
-    //             console.log("---------- this.state getLocations() PRE ----------");
-    //             console.log(this.state);
-    //             console.log("---------- this.state getLocations() PRE ----------");
-    //         })
-    //     console.log("---------- this.state getLocations() POST ----------");
-    //     console.log(this.state);
-    //     console.log("---------- this.state getLocations() POST ----------");
-    // }
-
-    submitLocation(e) {
-        // stop browser's default behaviour of reloading on form submit
-        e.preventDefault();
-        axios.post('/locations', {
-                // locationOwnerID: this.state.locationOwnerIDInput,
-                locationName: document.getElementById('locationNameInput').value,
-                locationAddress: document.getElementById('locationAddressInput').value,
-                locationDescription: document.getElementById('locationDescriptionInput').value,
-                locationStatus: document.getElementById('locationStatusInput').value,
-                locationRating: document.getElementById('locationRatingInput').value,
-                locationLatitude: document.getElementById('locationLatitudeInput').value,
-                locationLongitude: document.getElementById('locationLongitudeInput').value
-            })
-            .then(response => {
-
-                this.setState({
-                    locations: [response.data, ...this.state.locations]
-                });
-
-                console.log('response', response);
-                console.log('this.state', this.state);
-            });
-
-
-    }
-
-    // get all locations from backend
-    getLocations() {
-        axios.get('/locations').then((
-            response // console.log(response.data.locations)
-        ) =>
-            this.setState({
-                locations: [...response.data.locations]
-            })
-        );
-    }
-
-    deleteLocation(id) {
-        // remove from local state
-        const isNotId = location => location._id !== id;
-        const updatedLocations = this.state.locations.filter(isNotId);
-
-        this.setState({ locations: updatedLocations });
-
-
-        // make delete request to the backend
-        axios.delete(`/locations/${id}`);
-
-    }
-
-    updateLocation(){
-        axios.put(`/locations/${id}`).then(response => {
-            this.getLocations();
-        });
-    }
-
-    // example leaflet function
-    updateMarkers(markersData) {
-        // Do something...
-    }
 
     // handle change
     handleChange(e) {
@@ -198,39 +124,44 @@ export default class registerLocation extends Component {
         // console.log('onChange', this.state);
     }
 
+    submitLocation(e) {
+        // stop browser's default behaviour of reloading on form submit
+        e.preventDefault();
+        axios
+            .put(`/locations/${this.props.match.params.id}`, {
+                locationName: document.getElementById('locationNameInput').value,
+                locationAddress: document.getElementById('locationAddressInput').value,
+                locationDescription: document.getElementById('locationDescriptionInput').value,
+                locationStatus: document.getElementById('locationStatusInput').value,
+                locationRating: document.getElementById('locationRatingInput').value,
+                locationLatitude: document.getElementById('locationLatitudeInput').value,
+                locationLongitude: document.getElementById('locationLongitudeInput').value
+            })
+            .then(response => {
+                console.log('successfully edited the location');
+                this.props.history.push('/');
+            });
 
-    // render locations
-    renderLocations() {
-        // console.log("---------- this.state.locations ----------");
-        // console.log(this.state.locations);
-        // console.log("---------- this.state.locations ----------");
-
-        // this.state.locations.forEach(function (d){
-        //     console.log(d);
-        //
-        //     html += "<div key="+ d._id + " className='media'><div className='media-body'><p>" + d.locationName + "</p></div></div> </br>";
-        //     console.log(html);
-        // })
-        //
-        // return html;
-
-        return this.state.locations.map(location => (
-            <div key={location._id} className="media">
-                <div className="media-body">
-                    <p>{location.locationName}</p>
-                    <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
-                        Delete
-                    </button>
-                    <Link className="btn btn-sm btn-success" to={`/${location._id}/edit`}>
-                        Edit
-                    </Link>
-
-                </div>
-            </div>
-        ));
     }
 
-    render() {
+    // get all locations from backend
+    getLocations() {
+        axios.get('/locations').then((
+            response // console.log(response.data.locations)
+        ) =>
+            this.setState({
+                locations: [...response.data.locations]
+            })
+        );
+    }
+
+    // example leaflet function
+    updateMarkers(markersData) {
+        // Do something...
+    }
+
+
+    render(){
         return (
             <div className="container">
                 <div className="row justify-content-center">
@@ -353,11 +284,10 @@ export default class registerLocation extends Component {
                                         </p>
                                     </div>
                                     <button type="submit" className="btn btn-primary">
-                                        Create Location
+                                        Edit Location
                                     </button>
                                 </form>
                                 <hr />
-                                {this.renderLocations()}
                             </div>
                         </div>
                         <div></div>
@@ -367,4 +297,7 @@ export default class registerLocation extends Component {
             </div>
         )
     }
+
 }
+
+export default editLocation;

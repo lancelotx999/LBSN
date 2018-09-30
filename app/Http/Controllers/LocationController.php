@@ -17,7 +17,7 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Location $locations)
+    public function index(Request $request, Location $location)
     {
         // get all the tasks based on current user id
 		$allLocations = $location->whereIn('user_id', $request->user())->with('user');
@@ -69,6 +69,7 @@ class LocationController extends Controller
             'locationLatitude' => $request->locationLatitude,
             'locationLongitude' => $request->locationLongitude,
  		]);
+
  		// return location with user object
  		return response()->json($location->with('user')->find($location->_id));
  	}
@@ -92,7 +93,10 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+		$location = Location::findOrFail($id);
+		return response()->json([
+			'location' => $location,
+		]);
     }
 
     /**
@@ -104,7 +108,10 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$input = $request->all();
+		$location = Location::findOrFail($id);
+		$location->update($input);
+		return response()->json($location->with('user')->find($location->_id));
     }
 
     /**
@@ -115,6 +122,6 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Location::findOrFail($id)->delete();
     }
 }

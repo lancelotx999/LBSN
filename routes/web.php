@@ -16,3 +16,6 @@ Route::view('/', 'layouts/app');
 Route::view('/welcome', 'welcome');
 
 Auth::routes();
+
+// Edit profile
+Route::resource('users', 'UserController');

@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/fontawesome/all.min.js') }}" defer></script>
     <script type="text/javascript">
         // rename myToken as you like
         window.myToken =  <?php echo json_encode([
@@ -26,6 +27,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet/leaflet.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -59,6 +61,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a  class="dropdown-item" 
+                                        href="{{ route('users.edit', ['user' => Auth::user() ]) }}">Edit Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

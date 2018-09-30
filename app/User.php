@@ -21,7 +21,7 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
     
     /**
@@ -32,4 +32,14 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name'; //this will return user name as route 
+    }
 }

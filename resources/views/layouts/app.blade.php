@@ -26,6 +26,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet/leaflet.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

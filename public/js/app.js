@@ -85074,9 +85074,9 @@ var registerLocation = function (_Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log("---------- this.state componentDidMount() ----------");
-            console.log(this.state);
-            console.log("---------- this.state componentDidMount() ----------");
+            // console.log("---------- this.state componentDidMount() ----------");
+            // console.log(this.state);
+            // console.log("---------- this.state componentDidMount() ----------");
 
             // create map
             this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
@@ -85109,38 +85109,54 @@ var registerLocation = function (_Component) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-            console.log("---------- this.state componentDidUpdate() ----------");
-            console.log(this.state);
-            console.log("---------- this.state componentDidUpdate() ----------");
+            // console.log("---------- this.state componentDidUpdate() ----------");
+            // console.log(this.state);
+            // console.log("---------- this.state componentDidUpdate() ----------");
 
             var data = this.state.locations;
+
+            var testMap = this.map;
 
             console.log("---------- data ----------");
             console.log(data);
             console.log("---------- data ----------");
 
             var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
-            // PruneCluster
-            // PruneClusterForLeaflet
 
             __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Cluster.ENABLE_MARKERS_LIST = true;
 
             pruneCluster.PrepareLeafletMarker = function (leafletMarker, data) {
                 // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
 
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log(data);
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log("---------- this PrepareLeafletMarker ----------");
+                // console.log(this);
+                // console.log("---------- this PrepareLeafletMarker ----------");
+
                 //listeners can be applied to markers in this function
                 leafletMarker.on('click', function () {
+                    console.log("---------- data PrepareLeafletMarker ----------");
                     console.log(data);
-                    //do click event logic here
+                    console.log("---------- data PrepareLeafletMarker ----------");
                 });
 
                 // A popup can already be attached to the marker
                 // bindPopup can override it, but it's faster to update the content instead
                 if (leafletMarker.getPopup()) {
-                    leafletMarker.setPopupContent(data);
+                    leafletMarker.setPopupContent(data.popup);
                 } else {
-                    leafletMarker.bindPopup(data);
+                    leafletMarker.bindPopup(data.popup);
                 }
+
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+
             };
 
             pruneCluster.BuildLeafletCluster = function (cluster, position) {
@@ -85267,9 +85283,23 @@ var registerLocation = function (_Component) {
             });
 
             data.forEach(function (d) {
-                var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude);
+                console.log("---------- d ----------");
+                console.log(d);
+                console.log("---------- d ----------");
 
-                marker.data = d;
+                var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
+
+                var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude, {
+                    popup: popupContent
+                });
+
+                // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+
+                // var z = document.createElement('p'); // is a node
+                // z.innerHTML = 'test satu dua tiga';
+                //
+                //
+                // marker.data.data = d;
 
                 //TODO: this should correlate to location status or location type
                 marker.category = 1;
@@ -85282,6 +85312,14 @@ var registerLocation = function (_Component) {
             });
 
             this.map.addLayer(pruneCluster);
+
+            // var testBed = L.marker([1.5510714615890955, 110.34356832504274]).addTo(this.map)
+            //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            //     .openPopup();
+            //
+            // console.log("---------- testBed ----------");
+            // console.log(testBed);
+            // console.log("---------- testBed ----------");
 
             console.log("---------- this.map ----------");
             console.log(this.map);

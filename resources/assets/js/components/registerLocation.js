@@ -47,9 +47,9 @@ export default class registerLocation extends Component {
     }
 
     componentDidMount() {
-        console.log("---------- this.state componentDidMount() ----------");
-        console.log(this.state);
-        console.log("---------- this.state componentDidMount() ----------");
+        // console.log("---------- this.state componentDidMount() ----------");
+        // console.log(this.state);
+        // console.log("---------- this.state componentDidMount() ----------");
 
         // create map
         this.map = L.map('map', {
@@ -85,11 +85,13 @@ export default class registerLocation extends Component {
     }
 
     componentDidUpdate() {
-        console.log("---------- this.state componentDidUpdate() ----------");
-        console.log(this.state);
-        console.log("---------- this.state componentDidUpdate() ----------");
+        // console.log("---------- this.state componentDidUpdate() ----------");
+        // console.log(this.state);
+        // console.log("---------- this.state componentDidUpdate() ----------");
 
         var data = this.state.locations;
+
+        var testMap = this.map;
 
         console.log("---------- data ----------");
         console.log(data);
@@ -97,28 +99,44 @@ export default class registerLocation extends Component {
 
 
         var pruneCluster = new PruneClusterForLeaflet();
-        // PruneCluster
-        // PruneClusterForLeaflet
 
         PruneCluster.Cluster.ENABLE_MARKERS_LIST = true;
 
         pruneCluster.PrepareLeafletMarker = function(leafletMarker, data) {
             // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
 
+            // console.log("---------- data PrepareLeafletMarker ----------");
+            // console.log(data);
+            // console.log("---------- data PrepareLeafletMarker ----------");
+            // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+            // console.log(leafletMarker);
+            // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+            // console.log("---------- this PrepareLeafletMarker ----------");
+            // console.log(this);
+            // console.log("---------- this PrepareLeafletMarker ----------");
+
             //listeners can be applied to markers in this function
             leafletMarker.on('click', function(){
+                console.log("---------- data PrepareLeafletMarker ----------");
                 console.log(data);
-                //do click event logic here
+                console.log("---------- data PrepareLeafletMarker ----------");
             });
 
             // A popup can already be attached to the marker
             // bindPopup can override it, but it's faster to update the content instead
             if (leafletMarker.getPopup()) {
-                leafletMarker.setPopupContent(data);
+                leafletMarker.setPopupContent(data.popup);
             }
             else {
-                leafletMarker.bindPopup(data);
+                leafletMarker.bindPopup(data.popup);
             }
+
+            // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+            // console.log(leafletMarker);
+            // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+
+
+
         };
 
         pruneCluster.BuildLeafletCluster = function(cluster, position) {
@@ -248,10 +266,29 @@ export default class registerLocation extends Component {
         });
 
         data.forEach(function (d){
-            var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+            console.log("---------- d ----------");
+            console.log(d);
+            console.log("---------- d ----------");
 
-            marker.data = d;
+            var popupContent = "Property Name: " + d.locationName + "</br>" +
+                                "Property Address: " + d.locationAddress + "</br>" +
+                                "Property Description: " + d.locationDescription + "</br>" +
+                                "Property Rating: " + d.locationRating + "</br>" +
+                                "Property Status: " + d.locationStatus + "</br>" +
+                                "Property Owner Name: " + d.user.name + "</br>" +
+                                "Property Owner Email: " + d.user.email + "</br>";
 
+            var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude,{
+                popup: popupContent
+            });
+
+            // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+
+            // var z = document.createElement('p'); // is a node
+            // z.innerHTML = 'test satu dua tiga';
+            //
+            //
+            // marker.data.data = d;
 
             //TODO: this should correlate to location status or location type
             marker.category = 1;
@@ -264,6 +301,14 @@ export default class registerLocation extends Component {
         })
 
         this.map.addLayer(pruneCluster);
+
+        // var testBed = L.marker([1.5510714615890955, 110.34356832504274]).addTo(this.map)
+        //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        //     .openPopup();
+        //
+        // console.log("---------- testBed ----------");
+        // console.log(testBed);
+        // console.log("---------- testBed ----------");
 
         console.log("---------- this.map ----------");
         console.log(this.map);

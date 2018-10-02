@@ -20,6 +20,7 @@ export default class createContract extends Component {
             receiverIDInput: '',
             contractContentInput: '',
             contractValueInput: '',
+            contractStatusInput: '',
             providerSignatureInput: '',
             receiverSignatureInput: '',
             contracts: []

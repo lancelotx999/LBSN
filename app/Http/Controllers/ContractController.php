@@ -51,6 +51,7 @@ class ContractController extends Controller
             'contractValue' => 'required|max:255',
             'contractStatus' => 'required',
  		]);
+        
  		// create a new contract based on user contracts relationship
  		$contract = $request->user()->contracts()->create([
             // 'contractOwnerID' => $request->contractOwnerID,

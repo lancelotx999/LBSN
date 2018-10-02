@@ -87111,6 +87111,7 @@ var createContract = function (_Component) {
             receiverIDInput: '',
             contractContentInput: '',
             contractValueInput: '',
+            contractStatusInput: '',
             providerSignatureInput: '',
             receiverSignatureInput: '',
             contracts: []

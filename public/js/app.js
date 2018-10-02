@@ -78088,8 +78088,17 @@ var Header = function Header() {
             { className: 'nav-item' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'nav-link', to: '/registerLocationTest' },
+                { className: 'nav-link', to: '/registerLocation' },
                 'Register Location'
+            )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'nav-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                { className: 'nav-link', to: '/createContract' },
+                'Register Contract'
             )
         )
     );
@@ -78112,11 +78121,14 @@ var Header = function Header() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Map__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__registerLocation__ = __webpack_require__(309);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__editLocation__ = __webpack_require__(311);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__createContract__ = __webpack_require__(317);
 
 
 
 
 // React Components
+
+
 
 
 
@@ -78136,8 +78148,10 @@ var Children = function Children() {
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_3__Main__["a" /* default */] }),
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/form', component: __WEBPACK_IMPORTED_MODULE_4__Form__["a" /* default */] }),
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/map', component: __WEBPACK_IMPORTED_MODULE_5__Map__["a" /* default */] }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/registerLocationTest', component: __WEBPACK_IMPORTED_MODULE_6__registerLocation__["a" /* default */] }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/edit', component: __WEBPACK_IMPORTED_MODULE_7__editLocation__["a" /* default */], exact: true })
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/registerLocation', component: __WEBPACK_IMPORTED_MODULE_6__registerLocation__["a" /* default */] }),
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editLocation', component: __WEBPACK_IMPORTED_MODULE_7__editLocation__["a" /* default */], exact: true }),
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createContract', component: __WEBPACK_IMPORTED_MODULE_8__createContract__["a" /* default */] }),
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editContract', component: __WEBPACK_IMPORTED_MODULE_7__editLocation__["a" /* default */], exact: true })
 	);
 };
 
@@ -87045,6 +87059,407 @@ var editLocation = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(20);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+// import L from 'leaflet'
+// import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet'
+// import { PruneCluster, PruneClusterForLeaflet } from 'exports-loader?PruneCluster,PruneClusterForLeaflet!prunecluster/dist/PruneCluster.js'
+
+
+// const mapStyle = {
+//     width: "100%",
+//     height: "400px"
+// }
+
+var createContract = function (_Component) {
+    _inherits(createContract, _Component);
+
+    function createContract(props) {
+        _classCallCheck(this, createContract);
+
+        var _this = _possibleConstructorReturn(this, (createContract.__proto__ || Object.getPrototypeOf(createContract)).call(this, props));
+
+        _this.state = {
+            // contractOwnerIDInput: '',
+            providerIDInput: '',
+            receiverIDInput: '',
+            contractContentInput: '',
+            contractValueInput: '',
+            providerSignatureInput: '',
+            receiverSignatureInput: '',
+            contracts: []
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+
+        _this.submitContract = _this.submitContract.bind(_this);
+
+        _this.renderContracts = _this.renderContracts.bind(_this);
+
+        _this.deleteContract = _this.deleteContract.bind(_this);
+
+        _this.updateContract = _this.updateContract.bind(_this);
+        return _this;
+    }
+
+    _createClass(createContract, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.getContracts();
+
+            // console.log("---------- this.state componentWillMount ----------");
+            // console.log(this.state);
+            // console.log("---------- this.state componentWillMount ----------");
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log("---------- this.state componentDidMount() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidMount() ----------");
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            // console.log("---------- this.state componentDidUpdate() ----------");
+            // console.log(this.state);
+            // console.log("---------- this.state componentDidUpdate() ----------");
+
+        }
+    }, {
+        key: 'submitContract',
+        value: function submitContract(e) {
+            var _this2 = this;
+
+            // stop browser's default behaviour of reloading on form submit
+            e.preventDefault();
+            axios.post('/contracts', {
+                // contractOwnerID: this.state.contractOwnerIDInput,
+                providerIDInput: document.getElementById('providerIDInput').value,
+                receiverIDInput: document.getElementById('receiverIDInput').value,
+                contractContentInput: document.getElementById('contractContentInput').value,
+                contractValueInput: document.getElementById('contractValueInput').value,
+                providerSignatureInput: document.getElementById('providerSignatureInput').value,
+                receiverSignatureInput: document.getElementById('receiverSignatureInput').value
+            }).then(function (response) {
+
+                _this2.setState({
+                    contracts: [response.data].concat(_toConsumableArray(_this2.state.contracts))
+                });
+
+                console.log('response', response);
+                console.log('this.state', _this2.state);
+            });
+        }
+
+        // get all contracts from backend
+
+    }, {
+        key: 'getContracts',
+        value: function getContracts() {
+            var _this3 = this;
+
+            axios.get('/contracts').then(function (response // console.log(response.data.contracts)
+            ) {
+                return _this3.setState({
+                    contracts: [].concat(_toConsumableArray(response.data.contracts))
+                });
+            });
+        }
+    }, {
+        key: 'deleteContract',
+        value: function deleteContract(id) {
+            // remove from local state
+            var isNotId = function isNotId(contract) {
+                return contract._id !== id;
+            };
+            var updatedContracts = this.state.contracts.filter(isNotId);
+
+            this.setState({ contracts: updatedContracts });
+
+            // make delete request to the backend
+            axios.delete('/contracts/' + id);
+        }
+    }, {
+        key: 'updateContract',
+        value: function updateContract() {
+            var _this4 = this;
+
+            axios.put('/contracts/' + id).then(function (response) {
+                _this4.getContracts();
+            });
+        }
+
+        // example leaflet function
+
+    }, {
+        key: 'updateMarkers',
+        value: function updateMarkers(markersData) {}
+        // Do something...
+
+
+        // handle change
+
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {}
+        // this.setState({
+        //     contractOwnerIDInput: e.target.value,
+        //     contractNameInput: e.target.value,
+        //     contractAddressInput: e.target.value,
+        //     contractDescriptionInput: e.target.value,
+        //     contractStatusInput: e.target.value,
+        //     contractRatingInput: e.target.value,
+        //     contractLatitudeInput: e.target.value,
+        //     contractLongitudeInput: e.target.value
+        // });
+        // console.log('Name: ', e.target.name);
+        // console.log('Value: ', e.target.value);
+        //
+        //
+        //
+        // this.setState({[e.target.name]: e.target.value});
+        // console.log('onChange', this.state);
+
+
+        // render contracts
+
+    }, {
+        key: 'renderContracts',
+        value: function renderContracts() {
+            var _this5 = this;
+
+            // console.log("---------- this.state.contracts ----------");
+            // console.log(this.state.contracts);
+            // console.log("---------- this.state.contracts ----------");
+
+            // this.state.contracts.forEach(function (d){
+            //     console.log(d);
+            //
+            //     html += "<div key="+ d._id + " className='media'><div className='media-body'><p>" + d.contractName + "</p></div></div> </br>";
+            //     console.log(html);
+            // })
+            //
+            // return html;
+
+            return this.state.contracts.map(function (contract) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { key: contract._id, className: 'media' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            contract.contractName
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    return _this5.deleteContract(contract._id);
+                                }, className: 'btn btn-sm btn-warning float-right' },
+                            'Delete'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
+                            { className: 'btn btn-sm btn-success', to: '/' + contract._id + '/edit' },
+                            'Edit'
+                        )
+                    )
+                );
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row justify-content-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-8' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'card' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-header' },
+                                'Register Contract'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-body' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'form',
+                                    { onSubmit: this.submitContract },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-group' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Provider:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'providerIDInput',
+                                                    name: 'providerIDInput',
+                                                    type: 'text',
+                                                    value: this.state.providerIDInput,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter provider ID.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Receiver:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'receiverIDInput',
+                                                    name: 'receiverIDInput',
+                                                    type: 'text',
+                                                    value: this.state.receiverIDInput,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter receiver ID.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Content:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'contractContentInput',
+                                                    name: 'contractContentInput',
+                                                    type: 'text',
+                                                    value: this.state.contractContentInput,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter contract content.'
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Contract Value:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'contractValueInput',
+                                                    name: 'contractValueInput',
+                                                    type: 'number',
+                                                    value: this.state.contractValueInput,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter contract value.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Provider Signature:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'providerSignatureInput',
+                                                    name: 'providerSignatureInput',
+                                                    type: 'password',
+                                                    value: this.state.providerSignatureInput,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter provider password.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Receiver Signature:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'receiverSignatureInput',
+                                                    name: 'receiverSignatureInput',
+                                                    type: 'password',
+                                                    value: this.state.receiverSignatureInput,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter receiver password.',
+                                                    required: true
+                                                })
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'button',
+                                        { type: 'submit', className: 'btn btn-primary' },
+                                        'Create Contract'
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                                this.renderContracts()
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
+                    )
+                )
+            );
+        }
+    }]);
+
+    return createContract;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (createContract);
 
 /***/ })
 /******/ ]);

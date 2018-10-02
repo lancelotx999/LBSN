@@ -36,4 +36,8 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     public function locations() {
         return $this->hasMany(Location::class);
     }
+
+    public function contracts() {
+        return $this->hasMany(Contract::class);
+    }
 }

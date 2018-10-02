@@ -13,8 +13,11 @@ const Header = () => {
         	<li className="nav-item">
             	<Link className="nav-link" to="/map">Map</Link>
         	</li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/registerLocationTest">Register Location</Link>
+			<li className="nav-item">
+                <Link className="nav-link" to="/registerLocation">Register Location</Link>
+            </li>
+			<li className="nav-item">
+                <Link className="nav-link" to="/createContract">Register Contract</Link>
             </li>
         </ul>
 	)

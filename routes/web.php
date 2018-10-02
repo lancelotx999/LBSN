@@ -18,3 +18,4 @@ Route::view('/welcome', 'welcome');
 Auth::routes();
 
 Route::resource('locations', 'LocationController');
+Route::resource('contracts', 'ContractController');

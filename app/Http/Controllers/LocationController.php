@@ -19,7 +19,7 @@ class LocationController extends Controller
      */
     public function index(Request $request, Location $location)
     {
-        // get all the tasks based on current user id
+        // get all the locations based on current user id
 		$allLocations = $location->whereIn('user_id', $request->user())->with('user');
         // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
 		$locations = $allLocations->take(10)->get();

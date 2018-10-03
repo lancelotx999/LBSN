@@ -13,14 +13,14 @@ class editLocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // locationOwnerIDInput: '',
-            locationNameInput: '',
-            locationAddressInput: '',
-            locationDescriptionInput: '',
-            locationStatusInput: '',
-            locationRatingInput: '',
-            locationLatitudeInput: '',
-            locationLongitudeInput: '',
+            // locationOwnerID: '',
+            locationName: '',
+            locationAddress: '',
+            locationDescription: '',
+            locationStatus: '',
+            locationRating: '',
+            locationLatitude: '',
+            locationLongitude: '',
             locations: []
         };
 
@@ -54,20 +54,41 @@ class editLocation extends Component {
             ]
         })
 
-        this.map.on('click', function(e){
-            // var coord = e.latlng;
-            // var lat = coord.lat;
-            // var lng = coord.lng;
-            // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        function updateLatLng(state, e){
+            // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            // console.log(e);
+            // console.log(state);
+            // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            document.getElementById('locationLatitude').value = e.latlng.lat;
+            document.getElementById('locationLongitude').value = e.latlng.lng;
 
-            //need to set state
-            //this.state()
+            state.setState({
+                locationLatitude: e.latlng.lat,
+                locationLongitude: e.latlng.lng
+            })
+        }
 
-            document.getElementById('locationLatitudeInput').value = e.latlng.lat;
-            document.getElementById('locationLongitudeInput').value = e.latlng.lng;
+        // this.map.on('click', function(e){
+        //     // var coord = e.latlng;
+        //     // var lat = coord.lat;
+        //     // var lng = coord.lng;
+        //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        //
+        //     //need to set state
+        //     //this.state()
+        //
+        //     document.getElementById('locationLatitude').value = e.latlng.lat;
+        //     document.getElementById('locationLongitude').value = e.latlng.lng;
+        //
+        //     this.setState({
+        //         locationLatitude: e.latlng.lat,
+        //         locationLongitude: e.latlng.lng
+        //     })
+        //
+        //
+        // });
 
-
-        });
+        this.map.on("click", updateLatLng.bind(null, this));
 
         // add layer
         this.layer = L.layerGroup().addTo(this.map);
@@ -82,13 +103,13 @@ class editLocation extends Component {
         console.log("---------- this.state componentDidUpdate() ----------");
 
 
-        // document.getElementById('locationNameInput').value = this.state.locations[0].locationName;
-        // document.getElementById('locationAddressInput').value = this.state.locations[0].locationAddress;
-        // document.getElementById('locationDescriptionInput').value = this.state.locations[0].locationDescription;
-        // document.getElementById('locationStatusInput').value = this.state.locations[0].locationStatus;
-        // document.getElementById('locationRatingInput').value = this.state.locations[0].locationRating;
-        // document.getElementById('locationLatitudeInput').value = this.state.locations[0].locationLatitude;
-        // document.getElementById('locationLongitudeInput').value = this.state.locations[0].locationLongitude;
+        // document.getElementById('locationName').value = this.state.locations[0].locationName;
+        // document.getElementById('locationAddress').value = this.state.locations[0].locationAddress;
+        // document.getElementById('locationDescription').value = this.state.locations[0].locationDescription;
+        // document.getElementById('locationStatus').value = this.state.locations[0].locationStatus;
+        // document.getElementById('locationRating').value = this.state.locations[0].locationRating;
+        // document.getElementById('locationLatitude').value = this.state.locations[0].locationLatitude;
+        // document.getElementById('locationLongitude').value = this.state.locations[0].locationLongitude;
 
 
         // // check if position has changed
@@ -106,21 +127,21 @@ class editLocation extends Component {
     // handle change
     handleChange(e) {
         // this.setState({
-        //     locationOwnerIDInput: e.target.value,
-        //     locationNameInput: e.target.value,
-        //     locationAddressInput: e.target.value,
-        //     locationDescriptionInput: e.target.value,
-        //     locationStatusInput: e.target.value,
-        //     locationRatingInput: e.target.value,
-        //     locationLatitudeInput: e.target.value,
-        //     locationLongitudeInput: e.target.value
+        //     locationOwnerID: e.target.value,
+        //     locationName: e.target.value,
+        //     locationAddress: e.target.value,
+        //     locationDescription: e.target.value,
+        //     locationStatus: e.target.value,
+        //     locationRating: e.target.value,
+        //     locationLatitude: e.target.value,
+        //     locationLongitude: e.target.value
         // });
         // console.log('Name: ', e.target.name);
         // console.log('Value: ', e.target.value);
         //
         //
         //
-        // this.setState({[e.target.name]: e.target.value});
+        this.setState({[e.target.name]: e.target.value});
         // console.log('onChange', this.state);
     }
 
@@ -129,13 +150,13 @@ class editLocation extends Component {
         e.preventDefault();
         axios
             .put(`/locations/${this.props.match.params.id}`, {
-                locationName: document.getElementById('locationNameInput').value,
-                locationAddress: document.getElementById('locationAddressInput').value,
-                locationDescription: document.getElementById('locationDescriptionInput').value,
-                locationStatus: document.getElementById('locationStatusInput').value,
-                locationRating: document.getElementById('locationRatingInput').value,
-                locationLatitude: document.getElementById('locationLatitudeInput').value,
-                locationLongitude: document.getElementById('locationLongitudeInput').value
+                locationName: this.state.locationName,
+                locationAddress: this.state.locationAddress,
+                locationDescription: this.state.locationDescription,
+                locationStatus: this.state.locationStatus,
+                locationRating: this.state.locationRating,
+                locationLatitude: this.state.locationLatitude,
+                locationLongitude: this.state.locationLongitude
             })
             .then(response => {
                 console.log('successfully edited the location');
@@ -182,8 +203,8 @@ class editLocation extends Component {
                                             <label>
                                                 Name:
                                                 <input
-                                                    id="locationNameInput"
-                                                    name="locationNameInput"
+                                                    id="locationName"
+                                                    name="locationName"
                                                     type="text"
                                                     value={this.state.locationName}
                                                     onChange={this.handleChange}
@@ -197,8 +218,8 @@ class editLocation extends Component {
                                             <label>
                                                 Address:
                                                 <input
-                                                    id="locationAddressInput"
-                                                    name="locationAddressInput"
+                                                    id="locationAddress"
+                                                    name="locationAddress"
                                                     type="text"
                                                     value={this.state.locationAddress}
                                                     onChange={this.handleChange}
@@ -212,8 +233,8 @@ class editLocation extends Component {
                                             <label>
                                                 Description:
                                                 <input
-                                                    id="locationDescriptionInput"
-                                                    name="locationDescriptionInput"
+                                                    id="locationDescription"
+                                                    name="locationDescription"
                                                     type="text"
                                                     value={this.state.locationDescription}
                                                     onChange={this.handleChange}
@@ -226,8 +247,8 @@ class editLocation extends Component {
                                             <label>
                                                 Status:
                                                 <input
-                                                    id="locationStatusInput"
-                                                    name="locationStatusInput"
+                                                    id="locationStatus"
+                                                    name="locationStatus"
                                                     type="text"
                                                     value={this.state.locationStatus}
                                                     onChange={this.handleChange}
@@ -241,8 +262,8 @@ class editLocation extends Component {
                                             <label>
                                                 Rating:
                                                 <input
-                                                    id="locationRatingInput"
-                                                    name="locationRatingInput"
+                                                    id="locationRating"
+                                                    name="locationRating"
                                                     type="number"
                                                     value={this.state.locationRating}
                                                     onChange={this.handleChange}
@@ -257,8 +278,8 @@ class editLocation extends Component {
                                             <label>
                                                 Latitude:
                                                 <input
-                                                    id="locationLatitudeInput"
-                                                    name="locationLatitudeInput"
+                                                    id="locationLatitude"
+                                                    name="locationLatitude"
                                                     type="text"
                                                     value={this.state.locationLatitude}
                                                     onChange={this.handleChange}
@@ -274,8 +295,8 @@ class editLocation extends Component {
                                             <label>
                                                 Longitude:
                                                 <input
-                                                    id="locationLongitudeInput"
-                                                    name="locationLongitudeInput"
+                                                    id="locationLongitude"
+                                                    name="locationLongitude"
                                                     type="text"
                                                     value={this.state.locationLongitude}
                                                     onChange={this.handleChange}

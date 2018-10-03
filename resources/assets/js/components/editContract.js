@@ -13,13 +13,14 @@ class editContract extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            providerIDInput: '',
-            receiverIDInput: '',
-            contractContentInput: '',
-            contractValueInput: '',
-            contractStatusInput: '',
-            providerSignatureInput: '',
-            receiverSignatureInput: '',
+            providerID: '',
+            receiverID: '',
+            locationID: '',
+            contractContent: '',
+            contractValue: '',
+            contractStatus: '',
+            providerSignature: '',
+            receiverSignature: '',
             contracts: []
         };
 
@@ -50,13 +51,13 @@ class editContract extends Component {
         console.log(this.state);
         console.log("---------- this.state componentDidUpdate() ----------");
 
-        // document.getElementById('providerIDInput').value = this.state.contracts[0].providerID;
-        // document.getElementById('receiverIDInput').value = this.state.contracts[0].receiverID;
-        // document.getElementById('contractContentInput').value = this.state.contracts[0].contractContent;
-        // document.getElementById('contractValueInput').value = this.state.contracts[0].contractValue;
-        // document.getElementById('contractStatusInput').value = this.state.contracts[0].contractStatus;
-        // document.getElementById('providerSignatureInput').value = this.state.contracts[0].providerSignature;
-        // document.getElementById('receiverSignatureInput').value = this.state.contracts[0].receiverSignature;
+        // document.getElementById('providerID').value = this.state.contracts[0].providerID;
+        // document.getElementById('receiverID').value = this.state.contracts[0].receiverID;
+        // document.getElementById('contractContent').value = this.state.contracts[0].contractContent;
+        // document.getElementById('contractValue').value = this.state.contracts[0].contractValue;
+        // document.getElementById('contractStatus').value = this.state.contracts[0].contractStatus;
+        // document.getElementById('providerSignature').value = this.state.contracts[0].providerSignature;
+        // document.getElementById('receiverSignature').value = this.state.contracts[0].receiverSignature;
 
         // // check if position has changed
         // if (this.props.markerPosition !== markerPosition) {
@@ -73,21 +74,21 @@ class editContract extends Component {
     // handle change
     handleChange(e) {
         // this.setState({
-        //     locationOwnerIDInput: e.target.value,
-        //     locationNameInput: e.target.value,
-        //     locationAddressInput: e.target.value,
-        //     locationDescriptionInput: e.target.value,
-        //     locationStatusInput: e.target.value,
-        //     locationRatingInput: e.target.value,
-        //     locationLatitudeInput: e.target.value,
-        //     locationLongitudeInput: e.target.value
+        //     locationOwnerID: e.target.value,
+        //     locationName: e.target.value,
+        //     locationAddress: e.target.value,
+        //     locationDescription: e.target.value,
+        //     locationStatus: e.target.value,
+        //     locationRating: e.target.value,
+        //     locationLatitude: e.target.value,
+        //     locationLongitude: e.target.value
         // });
         // console.log('Name: ', e.target.name);
         // console.log('Value: ', e.target.value);
         //
         //
         //
-        // this.setState({[e.target.name]: e.target.value});
+        this.setState({[e.target.name]: e.target.value});
         // console.log('onChange', this.state);
     }
 
@@ -96,13 +97,14 @@ class editContract extends Component {
         e.preventDefault();
         axios
             .put(`/contracts/${this.props.match.params.id}`, {
-                providerID: document.getElementById('providerIDInput').value,
-                receiverID: document.getElementById('receiverIDInput').value,
-                contractContent: document.getElementById('contractContentInput').value,
-                contractValue: document.getElementById('contractValueInput').value,
-                contractStatus: document.getElementById('contractStatusInput').value,
-                providerSignature: document.getElementById('providerSignatureInput').value,
-                receiverSignature: document.getElementById('receiverSignatureInput').value
+                providerID: this.state.providerID,
+                receiverID: this.state.receiverID,
+                locationID: this.state.locationID,
+                contractContent: this.state.contractContent,
+                contractValue: this.state.contractValue,
+                contractStatus: this.state.contractStatus,
+                providerSignature: this.state.providerSignature,
+                receiverSignature: this.state.receiverSignature
             })
             .then(response => {
                 console.log('successfully edited the contract');
@@ -131,6 +133,7 @@ class editContract extends Component {
             this.setState({
                 providerID: response.data.contract.providerID,
                 receiverID: response.data.contract.receiverID,
+                locationID: response.data.contract.locationID,
                 contractContent: response.data.contract.contractContent,
                 contractValue: response.data.contract.contractValue,
                 contractStatus: response.data.contract.contractStatus,
@@ -156,8 +159,8 @@ class editContract extends Component {
                                             <label>
                                                 Provider:
                                                 <input
-                                                    id="providerIDInput"
-                                                    name="providerIDInput"
+                                                    id="providerID"
+                                                    name="providerID"
                                                     type="text"
                                                     value={this.state.providerID}
                                                     onChange={this.handleChange}
@@ -171,8 +174,8 @@ class editContract extends Component {
                                             <label>
                                                 Receiver:
                                                 <input
-                                                    id="receiverIDInput"
-                                                    name="receiverIDInput"
+                                                    id="receiverID"
+                                                    name="receiverID"
                                                     type="text"
                                                     value={this.state.receiverID}
                                                     onChange={this.handleChange}
@@ -184,10 +187,25 @@ class editContract extends Component {
                                         </p>
                                         <p>
                                             <label>
+                                                Property:
+                                                <input
+                                                    id="locationID"
+                                                    name="locationID"
+                                                    type="text"
+                                                    value={this.state.locationID}
+                                                    onChange={this.handleChange}
+                                                    className="form-control"
+                                                    placeholder="Enter receiver ID."
+                                                    required
+                                                />
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
                                                 Contract Content:
                                                 <input
-                                                    id="contractContentInput"
-                                                    name="contractContentInput"
+                                                    id="contractContent"
+                                                    name="contractContent"
                                                     type="text"
                                                     value={this.state.contractContent}
                                                     onChange={this.handleChange}
@@ -200,8 +218,8 @@ class editContract extends Component {
                                             <label>
                                                 Contract Value:
                                                 <input
-                                                    id="contractValueInput"
-                                                    name="contractValueInput"
+                                                    id="contractValue"
+                                                    name="contractValue"
                                                     type="text"
                                                     value={this.state.contractValue}
                                                     onChange={this.handleChange}
@@ -215,8 +233,8 @@ class editContract extends Component {
                                             <label>
                                                 Contract Status:
                                                 <input
-                                                    id="contractStatusInput"
-                                                    name="contractStatusInput"
+                                                    id="contractStatus"
+                                                    name="contractStatus"
                                                     type="text"
                                                     value={this.state.contractStatus}
                                                     onChange={this.handleChange}
@@ -231,8 +249,8 @@ class editContract extends Component {
                                             <label>
                                                 Provider Signature:
                                                 <input
-                                                    id="providerSignatureInput"
-                                                    name="providerSignatureInput"
+                                                    id="providerSignature"
+                                                    name="providerSignature"
                                                     type="password"
                                                     value={this.state.providerSignature}
                                                     onChange={this.handleChange}
@@ -245,8 +263,8 @@ class editContract extends Component {
                                             <label>
                                                 Receiver Signature:
                                                 <input
-                                                    id="receiverSignatureInput"
-                                                    name="receiverSignatureInput"
+                                                    id="receiverSignature"
+                                                    name="receiverSignature"
                                                     type="password"
                                                     value={this.state.receiverSignature}
                                                     onChange={this.handleChange}

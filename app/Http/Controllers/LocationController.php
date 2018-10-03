@@ -50,10 +50,8 @@ class LocationController extends Controller
  		// validate
  		$this->validate($request, [
             // 'locationOwnerID' => 'required|max:100',
-            'locationName' => 'required|max:100',
-            'locationAddress' => 'max:255',
-            'locationDescription' => 'max:255',
-            'locationStatus' => 'required|max:255',
+            'locationName' => 'required',
+            'locationStatus' => 'required',
             'locationRating' => 'required',
             'locationLatitude' => 'required',
             'locationLongitude' => 'required',

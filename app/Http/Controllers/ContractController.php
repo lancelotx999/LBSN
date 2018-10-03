@@ -27,13 +27,19 @@ class ContractController extends Controller
 
 		// $allUsers = User::get();
 		// $allUsers = Auth::user()->get()
+		$allUsers = User::all();
 
 
 		// return json response
 		return response()->json([
-			'contracts' => $contracts
+			'contracts' => $contracts,
+			'users' => $allUsers
 		]);
     }
+
+	public function listAll(Request $request, Contract $contract, User $user){
+
+	}
 
     /**
      * Show the form for creating a new resource.
@@ -56,9 +62,10 @@ class ContractController extends Controller
         // validate
  		$this->validate($request, [
             // 'contractOwnerID' => 'required|max:100',
-            'providerID' => 'required|max:255',
-            'receiverID' => 'required|max:255',
-            'contractValue' => 'required|max:255',
+            'providerID' => 'required',
+			'receiverID' => 'required',
+            'locationID' => 'required',
+            'contractValue' => 'required',
             'contractStatus' => 'required',
  		]);
 
@@ -67,6 +74,7 @@ class ContractController extends Controller
             // 'contractOwnerID' => $request->contractOwnerID,
             'providerID' => $request->providerID,
             'receiverID' => $request->receiverID,
+			'locationID' => $request->locationID,
             'contractContent' => $request->contractContent,
             'contractValue' => $request->contractValue,
             'contractStatus' => $request->contractStatus,

@@ -15,14 +15,14 @@ export default class registerLocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // locationOwnerIDInput: '',
-            locationNameInput: '',
-            locationAddressInput: '',
-            locationDescriptionInput: '',
-            locationStatusInput: '',
-            locationRatingInput: '',
-            locationLatitudeInput: '',
-            locationLongitudeInput: '',
+            // locationOwnerID: '',
+            locationName: '',
+            locationAddress: '',
+            locationDescription: '',
+            locationStatus: '',
+            locationRating: '',
+            locationLatitude: '',
+            locationLongitude: '',
             locations: []
         };
 
@@ -47,9 +47,9 @@ export default class registerLocation extends Component {
     }
 
     componentDidMount() {
-        // console.log("---------- this.state componentDidMount() ----------");
-        // console.log(this.state);
-        // console.log("---------- this.state componentDidMount() ----------");
+        console.log("---------- this.state componentDidMount() ----------");
+        console.log(this.state);
+        console.log("---------- this.state componentDidMount() ----------");
 
         // create map
         this.map = L.map('map', {
@@ -62,20 +62,56 @@ export default class registerLocation extends Component {
             ]
         })
 
-        this.map.on('click', function(e){
-            // var coord = e.latlng;
-            // var lat = coord.lat;
-            // var lng = coord.lng;
-            // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        // MapClick.on('click', L.bind(onMapClick, null, ID))
+        // var testBed = this
 
-            //need to set state
-            //this.state()
+        function updateLatLng(state, e){
+            // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            // console.log(e);
+            // console.log(state);
+            // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            document.getElementById('locationLatitude').value = e.latlng.lat;
+            document.getElementById('locationLongitude').value = e.latlng.lng;
 
-            document.getElementById('locationLatitudeInput').value = e.latlng.lat;
-            document.getElementById('locationLongitudeInput').value = e.latlng.lng;
+            state.setState({
+                locationLatitude: e.latlng.lat,
+                locationLongitude: e.latlng.lng
+            })
+        }
 
 
-        });
+        // this.map.on('click', function(e){
+        //
+        //     console.log("---------- e componentDidMount() ----------");
+        //     console.log(e);
+        //     console.log("---------- e componentDidMount() ----------");
+        //     // var coord = e.latlng;
+        //     // var lat = coord.lat;
+        //     // var lng = coord.lng;
+        //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        //
+        //     //need to set state
+        //     //this.state()
+        //
+        //     // document.getElementById('locationLatitude').value = e.latlng.lat;
+        //     // document.getElementById('locationLongitude').value = e.latlng.lng;
+        //     //
+        //     //
+        //     // this.setState({
+        //     //     locationLatitude: e.latlng.lat,
+        //     //     locationLongitude: e.latlng.lng
+        //     // })
+        //
+        //
+        // });
+
+        // this.map.on('click', L.bind(updateLatLng, null, this));
+
+        // .on("click", function(e){
+        //     updateLatLng(e, );
+        // });
+
+        this.map.on("click", updateLatLng.bind(null, this));
 
         // add layer
         this.layer = L.layerGroup().addTo(this.map);
@@ -91,11 +127,9 @@ export default class registerLocation extends Component {
 
         var data = this.state.locations;
 
-        var testMap = this.map;
-
-        console.log("---------- data ----------");
-        console.log(data);
-        console.log("---------- data ----------");
+        // console.log("---------- data ----------");
+        // console.log(data);
+        // console.log("---------- data ----------");
 
 
         var pruneCluster = new PruneClusterForLeaflet();
@@ -191,9 +225,9 @@ export default class registerLocation extends Component {
 
             var markers = cluster.GetClusterMarkers()
 
-            console.log("---------- markers ----------");
-            console.log(markers);
-            console.log("---------- markers ----------");
+            // console.log("---------- markers ----------");
+            // console.log(markers);
+            // console.log("---------- markers ----------");
 
             return e;
 
@@ -266,9 +300,9 @@ export default class registerLocation extends Component {
         });
 
         data.forEach(function (d){
-            console.log("---------- d ----------");
-            console.log(d);
-            console.log("---------- d ----------");
+            // console.log("---------- d ----------");
+            // console.log(d);
+            // console.log("---------- d ----------");
 
             var popupContent = "Property Name: " + d.locationName + "</br>" +
                                 "Property Address: " + d.locationAddress + "</br>" +
@@ -293,9 +327,9 @@ export default class registerLocation extends Component {
             //TODO: this should correlate to location status or location type
             marker.category = 1;
 
-            console.log("---------- marker ----------");
-            console.log(marker);
-            console.log("---------- marker ----------");
+            // console.log("---------- marker ----------");
+            // console.log(marker);
+            // console.log("---------- marker ----------");
 
             pruneCluster.RegisterMarker(marker);
         })
@@ -310,12 +344,12 @@ export default class registerLocation extends Component {
         // console.log(testBed);
         // console.log("---------- testBed ----------");
 
-        console.log("---------- this.map ----------");
-        console.log(this.map);
-        console.log("---------- this.map ----------");
-        console.log("---------- pruneCluster ----------");
-        console.log(pruneCluster);
-        console.log("---------- pruneCluster ----------");
+        // console.log("---------- this.map ----------");
+        // console.log(this.map);
+        // console.log("---------- this.map ----------");
+        // console.log("---------- pruneCluster ----------");
+        // console.log(pruneCluster);
+        // console.log("---------- pruneCluster ----------");
 
         // // check if position has changed
         // if (this.props.markerPosition !== markerPosition) {
@@ -328,7 +362,24 @@ export default class registerLocation extends Component {
         // }
     }
 
-
+    // handle change
+    handleChange(e) {
+        // this.setState({
+        //     locationOwnerID: e.target.value,
+        //     locationName: e.target.value,
+        //     locationAddress: e.target.value,
+        //     locationDescription: e.target.value,
+        //     locationStatus: e.target.value,
+        //     locationRating: e.target.value,
+        //     locationLatitude: e.target.value,
+        //     locationLongitude: e.target.value
+        // });
+        // console.log('Name: ', e.target.name);
+        // console.log('Value: ', e.target.value);
+        //
+        this.setState({[e.target.name]: e.target.value});
+        // console.log('onChange', this.state);
+    }
     // // get all locations from backend
     // getLocations() {
     //     axios.get('/locations')
@@ -347,17 +398,20 @@ export default class registerLocation extends Component {
     // }
 
     submitLocation(e) {
+        console.log("---------- this.state submitContract----------");
+        console.log(this.state);
+        console.log("---------- this.state submitContract----------");
         // stop browser's default behaviour of reloading on form submit
         e.preventDefault();
         axios.post('/locations', {
-                // locationOwnerID: this.state.locationOwnerIDInput,
-                locationName: document.getElementById('locationNameInput').value,
-                locationAddress: document.getElementById('locationAddressInput').value,
-                locationDescription: document.getElementById('locationDescriptionInput').value,
-                locationStatus: document.getElementById('locationStatusInput').value,
-                locationRating: document.getElementById('locationRatingInput').value,
-                locationLatitude: document.getElementById('locationLatitudeInput').value,
-                locationLongitude: document.getElementById('locationLongitudeInput').value
+                // locationOwnerID: this.state.locationOwnerID,
+                locationName: this.state.locationName,
+                locationAddress: this.state.locationAddress,
+                locationDescription: this.state.locationDescription,
+                locationStatus: this.state.locationStatus,
+                locationRating: this.state.locationRating,
+                locationLatitude: this.state.locationLatitude,
+                locationLongitude: this.state.locationLongitude
             })
             .then(response => {
 
@@ -407,24 +461,7 @@ export default class registerLocation extends Component {
         // Do something...
     }
 
-    // handle change
-    handleChange(e) {
-        // this.setState({
-        //     locationOwnerIDInput: e.target.value,
-        //     locationNameInput: e.target.value,
-        //     locationAddressInput: e.target.value,
-        //     locationDescriptionInput: e.target.value,
-        //     locationStatusInput: e.target.value,
-        //     locationRatingInput: e.target.value,
-        //     locationLatitudeInput: e.target.value,
-        //     locationLongitudeInput: e.target.value
-        // });
-        // console.log('Name: ', e.target.name);
-        // console.log('Value: ', e.target.value);
-        //
-        // this.setState({[e.target.name]: e.target.value});
-        // console.log('onChange', this.state);
-    }
+
 
 
     // render locations
@@ -474,8 +511,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Name:
                                                 <input
-                                                    id="locationNameInput"
-                                                    name="locationNameInput"
+                                                    id="locationName"
+                                                    name="locationName"
                                                     type="text"
                                                     value={this.state.locationName}
                                                     onChange={this.handleChange}
@@ -489,8 +526,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Address:
                                                 <input
-                                                    id="locationAddressInput"
-                                                    name="locationAddressInput"
+                                                    id="locationAddress"
+                                                    name="locationAddress"
                                                     type="text"
                                                     value={this.state.locationAddress}
                                                     onChange={this.handleChange}
@@ -504,8 +541,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Description:
                                                 <input
-                                                    id="locationDescriptionInput"
-                                                    name="locationDescriptionInput"
+                                                    id="locationDescription"
+                                                    name="locationDescription"
                                                     type="text"
                                                     value={this.state.locationDescription}
                                                     onChange={this.handleChange}
@@ -518,8 +555,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Status:
                                                 <input
-                                                    id="locationStatusInput"
-                                                    name="locationStatusInput"
+                                                    id="locationStatus"
+                                                    name="locationStatus"
                                                     type="text"
                                                     value={this.state.locationStatus}
                                                     onChange={this.handleChange}
@@ -533,8 +570,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Rating:
                                                 <input
-                                                    id="locationRatingInput"
-                                                    name="locationRatingInput"
+                                                    id="locationRating"
+                                                    name="locationRating"
                                                     type="number"
                                                     value={this.state.locationRating}
                                                     onChange={this.handleChange}
@@ -549,8 +586,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Latitude:
                                                 <input
-                                                    id="locationLatitudeInput"
-                                                    name="locationLatitudeInput"
+                                                    id="locationLatitude"
+                                                    name="locationLatitude"
                                                     type="text"
                                                     value={this.state.locationLatitude}
                                                     onChange={this.handleChange}
@@ -566,8 +603,8 @@ export default class registerLocation extends Component {
                                             <label>
                                                 Longitude:
                                                 <input
-                                                    id="locationLongitudeInput"
-                                                    name="locationLongitudeInput"
+                                                    id="locationLongitude"
+                                                    name="locationLongitude"
                                                     type="text"
                                                     value={this.state.locationLongitude}
                                                     onChange={this.handleChange}

@@ -15,13 +15,14 @@ export default class createContract extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            providerIDInput: '',
-            receiverIDInput: '',
-            contractContentInput: '',
-            contractValueInput: '',
-            contractStatusInput: '',
-            providerSignatureInput: '',
-            receiverSignatureInput: '',
+            providerID: '',
+            receiverID: '',
+            locationID: '',
+            contractContent: '',
+            contractValue: '',
+            contractStatus: '',
+            providerSignature: '',
+            receiverSignature: '',
             contracts: [],
             users: []
         };
@@ -57,31 +58,76 @@ export default class createContract extends Component {
         console.log(this.state);
         console.log("---------- this.state componentDidUpdate() ----------");
 
+
+
     }
 
-    // get all users from backend
-    getUsers() {
-        axios.get('/users').then((
-            response // console.log(response.data.contracts)
-        ) =>
-            this.setState({
-                contracts: [...response.data.contracts]
-            })
-        );
+    // handle change
+    handleChange(e) {
+        // this.setState({
+        //     providerID: e.target.value,
+        //     receiverID: e.target.value,
+        //     contractContent: e.target.value,
+        //     contractValue: e.target.value,
+        //     contractStatus: e.target.value,
+        //     providerSignature: e.target.value,
+        //     receiverSignature: e.target.value
+        // });
+        // console.log('Name: ', e.target.name);
+        // console.log('Value: ', e.target.value);
+        //
+        this.setState({[e.target.name]: e.target.value});
+        // console.log('onChange', this.state);
     }
+
+    // // get all users from backend
+    // getUsers() {
+    //     axios.get('/contracts').then((
+    //         response // console.log(response.data.contracts)
+    //     ) =>
+    //         this.setState({
+    //             users: [...response.data.users]
+    //         })
+    //     );
+    // }
 
     submitContract(e) {
+        console.log("---------- this.state submitContract----------");
+        console.log(this.state);
+        console.log("---------- this.state submitContract----------");
         // stop browser's default behaviour of reloading on form submit
         e.preventDefault();
+        // axios.post('/contracts', {
+        //         // contractOwnerID: this.state.contractOwnerID,
+        //         providerID: document.getElementById('providerID').value,
+        //         receiverID: document.getElementById('receiverID').value,
+        //         locationID: document.getElementById('locationID').value,
+        //         contractContent: document.getElementById('contractContent').value,
+        //         contractValue: document.getElementById('contractValue').value,
+        //         contractStatus: document.getElementById('contractStatus').value,
+        //         providerSignature: document.getElementById('providerSignature').value,
+        //         receiverSignature: document.getElementById('receiverSignature').value
+        //     })
+        //     .then(response => {
+        //
+        //         this.setState({
+        //             contracts: [response.data, ...this.state.contracts]
+        //         });
+        //
+        //         console.log('response', response);
+        //         console.log('this.state', this.state);
+        //     });
+
         axios.post('/contracts', {
-                // contractOwnerID: this.state.contractOwnerIDInput,
-                providerID: document.getElementById('providerIDInput').value,
-                receiverID: document.getElementById('receiverIDInput').value,
-                contractContent: document.getElementById('contractContentInput').value,
-                contractValue: document.getElementById('contractValueInput').value,
-                contractStatus: document.getElementById('contractStatusInput').value,
-                providerSignature: document.getElementById('providerSignatureInput').value,
-                receiverSignature: document.getElementById('receiverSignatureInput').value
+                // contractOwnerID: this.state.contractOwnerID,
+                providerID: this.state.providerID,
+                receiverID: this.state.receiverID,
+                locationID: this.state.locationID,
+                contractContent: this.state.contractContent,
+                contractValue: this.state.contractValue,
+                contractStatus: this.state.contractStatus,
+                providerSignature: this.state.providerSignature,
+                receiverSignature: this.state.receiverSignature
             })
             .then(response => {
 
@@ -102,7 +148,8 @@ export default class createContract extends Component {
             response // console.log(response.data.contracts)
         ) =>
             this.setState({
-                contracts: [...response.data.contracts]
+                contracts: [...response.data.contracts],
+                users: [...response.data.users]
             })
         );
     }
@@ -131,23 +178,7 @@ export default class createContract extends Component {
         // Do something...
     }
 
-    // handle change
-    handleChange(e) {
-        // this.setState({
-        //     providerIDInput: e.target.value,
-        //     receiverIDInput: e.target.value,
-        //     contractContentInput: e.target.value,
-        //     contractValueInput: e.target.value,
-        //     contractStatusInput: e.target.value,
-        //     providerSignatureInput: e.target.value,
-        //     receiverSignatureInput: e.target.value
-        // });
-        // console.log('Name: ', e.target.name);
-        // console.log('Value: ', e.target.value);
-        //
-        // this.setState({[e.target.name]: e.target.value});
-        // console.log('onChange', this.state);
-    }
+
 
 
 
@@ -166,9 +197,9 @@ export default class createContract extends Component {
         //
         // return html;
 
-        console.log("---------- this.state.contracts ----------");
-        console.log(this.state.contracts);
-        console.log("---------- this.state.contracts ----------");
+        // console.log("---------- this.state.contracts ----------");
+        // console.log(this.state.contracts);
+        // console.log("---------- this.state.contracts ----------");
 
         return this.state.contracts.map(contract => (
             <div key={contract._id} className="media">
@@ -199,8 +230,8 @@ export default class createContract extends Component {
                                             <label>
                                                 Provider:
                                                 <input
-                                                    id="providerIDInput"
-                                                    name="providerIDInput"
+                                                    id="providerID"
+                                                    name="providerID"
                                                     type="text"
                                                     value={this.state.providerID}
                                                     onChange={this.handleChange}
@@ -214,8 +245,8 @@ export default class createContract extends Component {
                                             <label>
                                                 Receiver:
                                                 <input
-                                                    id="receiverIDInput"
-                                                    name="receiverIDInput"
+                                                    id="receiverID"
+                                                    name="receiverID"
                                                     type="text"
                                                     value={this.state.receiverID}
                                                     onChange={this.handleChange}
@@ -227,10 +258,24 @@ export default class createContract extends Component {
                                         </p>
                                         <p>
                                             <label>
+                                                Property:
+                                                <input
+                                                    id="locationID"
+                                                    name="locationID"
+                                                    type="text"
+                                                    value={this.state.locationID}
+                                                    onChange={this.handleChange}
+                                                    className="form-control"
+                                                    placeholder="Enter contract content."
+                                                />
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
                                                 Content:
                                                 <input
-                                                    id="contractContentInput"
-                                                    name="contractContentInput"
+                                                    id="contractContent"
+                                                    name="contractContent"
                                                     type="text"
                                                     value={this.state.contractContent}
                                                     onChange={this.handleChange}
@@ -243,8 +288,8 @@ export default class createContract extends Component {
                                             <label>
                                                 Contract Value:
                                                 <input
-                                                    id="contractValueInput"
-                                                    name="contractValueInput"
+                                                    id="contractValue"
+                                                    name="contractValue"
                                                     type="number"
                                                     value={this.state.contractValue}
                                                     onChange={this.handleChange}
@@ -258,8 +303,8 @@ export default class createContract extends Component {
                                             <label>
                                                 Contract Status:
                                                 <input
-                                                    id="contractStatusInput"
-                                                    name="contractStatusInput"
+                                                    id="contractStatus"
+                                                    name="contractStatus"
                                                     type="text"
                                                     value={this.state.contractStatus}
                                                     onChange={this.handleChange}
@@ -273,8 +318,8 @@ export default class createContract extends Component {
                                             <label>
                                                 Provider Signature:
                                                 <input
-                                                    id="providerSignatureInput"
-                                                    name="providerSignatureInput"
+                                                    id="providerSignature"
+                                                    name="providerSignature"
                                                     type="password"
                                                     value={this.state.providerSignature}
                                                     onChange={this.handleChange}
@@ -288,8 +333,8 @@ export default class createContract extends Component {
                                             <label>
                                                 Receiver Signature:
                                                 <input
-                                                    id="receiverSignatureInput"
-                                                    name="receiverSignatureInput"
+                                                    id="receiverSignature"
+                                                    name="receiverSignature"
                                                     type="password"
                                                     value={this.state.receiverSignature}
                                                     onChange={this.handleChange}

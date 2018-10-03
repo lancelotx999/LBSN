@@ -85025,6 +85025,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -85053,14 +85055,14 @@ var registerLocation = function (_Component) {
         var _this = _possibleConstructorReturn(this, (registerLocation.__proto__ || Object.getPrototypeOf(registerLocation)).call(this, props));
 
         _this.state = {
-            // locationOwnerIDInput: '',
-            locationNameInput: '',
-            locationAddressInput: '',
-            locationDescriptionInput: '',
-            locationStatusInput: '',
-            locationRatingInput: '',
-            locationLatitudeInput: '',
-            locationLongitudeInput: '',
+            // locationOwnerID: '',
+            locationName: '',
+            locationAddress: '',
+            locationDescription: '',
+            locationStatus: '',
+            locationRating: '',
+            locationLatitude: '',
+            locationLongitude: '',
             locations: []
         };
 
@@ -85089,9 +85091,9 @@ var registerLocation = function (_Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            // console.log("---------- this.state componentDidMount() ----------");
-            // console.log(this.state);
-            // console.log("---------- this.state componentDidMount() ----------");
+            console.log("---------- this.state componentDidMount() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidMount() ----------");
 
             // create map
             this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
@@ -85102,18 +85104,55 @@ var registerLocation = function (_Component) {
                 })]
             });
 
-            this.map.on('click', function (e) {
-                // var coord = e.latlng;
-                // var lat = coord.lat;
-                // var lng = coord.lng;
-                // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            // MapClick.on('click', L.bind(onMapClick, null, ID))
+            // var testBed = this
 
-                //need to set state
-                //this.state()
+            function updateLatLng(state, e) {
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                // console.log(e);
+                // console.log(state);
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                document.getElementById('locationLatitude').value = e.latlng.lat;
+                document.getElementById('locationLongitude').value = e.latlng.lng;
 
-                document.getElementById('locationLatitudeInput').value = e.latlng.lat;
-                document.getElementById('locationLongitudeInput').value = e.latlng.lng;
-            });
+                state.setState({
+                    locationLatitude: e.latlng.lat,
+                    locationLongitude: e.latlng.lng
+                });
+            }
+
+            // this.map.on('click', function(e){
+            //
+            //     console.log("---------- e componentDidMount() ----------");
+            //     console.log(e);
+            //     console.log("---------- e componentDidMount() ----------");
+            //     // var coord = e.latlng;
+            //     // var lat = coord.lat;
+            //     // var lng = coord.lng;
+            //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            //
+            //     //need to set state
+            //     //this.state()
+            //
+            //     // document.getElementById('locationLatitude').value = e.latlng.lat;
+            //     // document.getElementById('locationLongitude').value = e.latlng.lng;
+            //     //
+            //     //
+            //     // this.setState({
+            //     //     locationLatitude: e.latlng.lat,
+            //     //     locationLongitude: e.latlng.lng
+            //     // })
+            //
+            //
+            // });
+
+            // this.map.on('click', L.bind(updateLatLng, null, this));
+
+            // .on("click", function(e){
+            //     updateLatLng(e, );
+            // });
+
+            this.map.on("click", updateLatLng.bind(null, this));
 
             // add layer
             this.layer = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.layerGroup().addTo(this.map);
@@ -85130,11 +85169,10 @@ var registerLocation = function (_Component) {
 
             var data = this.state.locations;
 
-            var testMap = this.map;
+            // console.log("---------- data ----------");
+            // console.log(data);
+            // console.log("---------- data ----------");
 
-            console.log("---------- data ----------");
-            console.log(data);
-            console.log("---------- data ----------");
 
             var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
 
@@ -85225,9 +85263,9 @@ var registerLocation = function (_Component) {
 
                 var markers = cluster.GetClusterMarkers();
 
-                console.log("---------- markers ----------");
-                console.log(markers);
-                console.log("---------- markers ----------");
+                // console.log("---------- markers ----------");
+                // console.log(markers);
+                // console.log("---------- markers ----------");
 
                 return e;
             };
@@ -85298,9 +85336,9 @@ var registerLocation = function (_Component) {
             });
 
             data.forEach(function (d) {
-                console.log("---------- d ----------");
-                console.log(d);
-                console.log("---------- d ----------");
+                // console.log("---------- d ----------");
+                // console.log(d);
+                // console.log("---------- d ----------");
 
                 var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
 
@@ -85319,9 +85357,9 @@ var registerLocation = function (_Component) {
                 //TODO: this should correlate to location status or location type
                 marker.category = 1;
 
-                console.log("---------- marker ----------");
-                console.log(marker);
-                console.log("---------- marker ----------");
+                // console.log("---------- marker ----------");
+                // console.log(marker);
+                // console.log("---------- marker ----------");
 
                 pruneCluster.RegisterMarker(marker);
             });
@@ -85336,12 +85374,12 @@ var registerLocation = function (_Component) {
             // console.log(testBed);
             // console.log("---------- testBed ----------");
 
-            console.log("---------- this.map ----------");
-            console.log(this.map);
-            console.log("---------- this.map ----------");
-            console.log("---------- pruneCluster ----------");
-            console.log(pruneCluster);
-            console.log("---------- pruneCluster ----------");
+            // console.log("---------- this.map ----------");
+            // console.log(this.map);
+            // console.log("---------- this.map ----------");
+            // console.log("---------- pruneCluster ----------");
+            // console.log(pruneCluster);
+            // console.log("---------- pruneCluster ----------");
 
             // // check if position has changed
             // if (this.props.markerPosition !== markerPosition) {
@@ -85354,6 +85392,27 @@ var registerLocation = function (_Component) {
             // }
         }
 
+        // handle change
+
+    }, {
+        key: 'handleChange',
+        value: function handleChange(e) {
+            // this.setState({
+            //     locationOwnerID: e.target.value,
+            //     locationName: e.target.value,
+            //     locationAddress: e.target.value,
+            //     locationDescription: e.target.value,
+            //     locationStatus: e.target.value,
+            //     locationRating: e.target.value,
+            //     locationLatitude: e.target.value,
+            //     locationLongitude: e.target.value
+            // });
+            // console.log('Name: ', e.target.name);
+            // console.log('Value: ', e.target.value);
+            //
+            this.setState(_defineProperty({}, e.target.name, e.target.value));
+            // console.log('onChange', this.state);
+        }
         // // get all locations from backend
         // getLocations() {
         //     axios.get('/locations')
@@ -85376,17 +85435,20 @@ var registerLocation = function (_Component) {
         value: function submitLocation(e) {
             var _this2 = this;
 
+            console.log("---------- this.state submitContract----------");
+            console.log(this.state);
+            console.log("---------- this.state submitContract----------");
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
             axios.post('/locations', {
-                // locationOwnerID: this.state.locationOwnerIDInput,
-                locationName: document.getElementById('locationNameInput').value,
-                locationAddress: document.getElementById('locationAddressInput').value,
-                locationDescription: document.getElementById('locationDescriptionInput').value,
-                locationStatus: document.getElementById('locationStatusInput').value,
-                locationRating: document.getElementById('locationRatingInput').value,
-                locationLatitude: document.getElementById('locationLatitudeInput').value,
-                locationLongitude: document.getElementById('locationLongitudeInput').value
+                // locationOwnerID: this.state.locationOwnerID,
+                locationName: this.state.locationName,
+                locationAddress: this.state.locationAddress,
+                locationDescription: this.state.locationDescription,
+                locationStatus: this.state.locationStatus,
+                locationRating: this.state.locationRating,
+                locationLatitude: this.state.locationLatitude,
+                locationLongitude: this.state.locationLongitude
             }).then(function (response) {
 
                 _this2.setState({
@@ -85442,28 +85504,6 @@ var registerLocation = function (_Component) {
         key: 'updateMarkers',
         value: function updateMarkers(markersData) {}
         // Do something...
-
-
-        // handle change
-
-    }, {
-        key: 'handleChange',
-        value: function handleChange(e) {}
-        // this.setState({
-        //     locationOwnerIDInput: e.target.value,
-        //     locationNameInput: e.target.value,
-        //     locationAddressInput: e.target.value,
-        //     locationDescriptionInput: e.target.value,
-        //     locationStatusInput: e.target.value,
-        //     locationRatingInput: e.target.value,
-        //     locationLatitudeInput: e.target.value,
-        //     locationLongitudeInput: e.target.value
-        // });
-        // console.log('Name: ', e.target.name);
-        // console.log('Value: ', e.target.value);
-        //
-        // this.setState({[e.target.name]: e.target.value});
-        // console.log('onChange', this.state);
 
 
         // render locations
@@ -85553,8 +85593,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Name:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationNameInput',
-                                                    name: 'locationNameInput',
+                                                    id: 'locationName',
+                                                    name: 'locationName',
                                                     type: 'text',
                                                     value: this.state.locationName,
                                                     onChange: this.handleChange,
@@ -85572,8 +85612,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Address:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationAddressInput',
-                                                    name: 'locationAddressInput',
+                                                    id: 'locationAddress',
+                                                    name: 'locationAddress',
                                                     type: 'text',
                                                     value: this.state.locationAddress,
                                                     onChange: this.handleChange,
@@ -85591,8 +85631,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Description:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationDescriptionInput',
-                                                    name: 'locationDescriptionInput',
+                                                    id: 'locationDescription',
+                                                    name: 'locationDescription',
                                                     type: 'text',
                                                     value: this.state.locationDescription,
                                                     onChange: this.handleChange,
@@ -85609,8 +85649,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Status:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationStatusInput',
-                                                    name: 'locationStatusInput',
+                                                    id: 'locationStatus',
+                                                    name: 'locationStatus',
                                                     type: 'text',
                                                     value: this.state.locationStatus,
                                                     onChange: this.handleChange,
@@ -85628,8 +85668,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Rating:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationRatingInput',
-                                                    name: 'locationRatingInput',
+                                                    id: 'locationRating',
+                                                    name: 'locationRating',
                                                     type: 'number',
                                                     value: this.state.locationRating,
                                                     onChange: this.handleChange,
@@ -85648,8 +85688,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Latitude:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationLatitudeInput',
-                                                    name: 'locationLatitudeInput',
+                                                    id: 'locationLatitude',
+                                                    name: 'locationLatitude',
                                                     type: 'text',
                                                     value: this.state.locationLatitude,
                                                     onChange: this.handleChange,
@@ -85669,8 +85709,8 @@ var registerLocation = function (_Component) {
                                                 null,
                                                 'Longitude:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationLongitudeInput',
-                                                    name: 'locationLongitudeInput',
+                                                    id: 'locationLongitude',
+                                                    name: 'locationLongitude',
                                                     type: 'text',
                                                     value: this.state.locationLongitude,
                                                     onChange: this.handleChange,
@@ -86681,6 +86721,8 @@ exports["PruneClusterForLeaflet"] = (PruneClusterForLeaflet);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(42);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -86707,14 +86749,14 @@ var editLocation = function (_Component) {
         var _this = _possibleConstructorReturn(this, (editLocation.__proto__ || Object.getPrototypeOf(editLocation)).call(this, props));
 
         _this.state = {
-            // locationOwnerIDInput: '',
-            locationNameInput: '',
-            locationAddressInput: '',
-            locationDescriptionInput: '',
-            locationStatusInput: '',
-            locationRatingInput: '',
-            locationLatitudeInput: '',
-            locationLongitudeInput: '',
+            // locationOwnerID: '',
+            locationName: '',
+            locationAddress: '',
+            locationDescription: '',
+            locationStatus: '',
+            locationRating: '',
+            locationLatitude: '',
+            locationLongitude: '',
             locations: []
         };
 
@@ -86750,18 +86792,41 @@ var editLocation = function (_Component) {
                 })]
             });
 
-            this.map.on('click', function (e) {
-                // var coord = e.latlng;
-                // var lat = coord.lat;
-                // var lng = coord.lng;
-                // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            function updateLatLng(state, e) {
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                // console.log(e);
+                // console.log(state);
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                document.getElementById('locationLatitude').value = e.latlng.lat;
+                document.getElementById('locationLongitude').value = e.latlng.lng;
 
-                //need to set state
-                //this.state()
+                state.setState({
+                    locationLatitude: e.latlng.lat,
+                    locationLongitude: e.latlng.lng
+                });
+            }
 
-                document.getElementById('locationLatitudeInput').value = e.latlng.lat;
-                document.getElementById('locationLongitudeInput').value = e.latlng.lng;
-            });
+            // this.map.on('click', function(e){
+            //     // var coord = e.latlng;
+            //     // var lat = coord.lat;
+            //     // var lng = coord.lng;
+            //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            //
+            //     //need to set state
+            //     //this.state()
+            //
+            //     document.getElementById('locationLatitude').value = e.latlng.lat;
+            //     document.getElementById('locationLongitude').value = e.latlng.lng;
+            //
+            //     this.setState({
+            //         locationLatitude: e.latlng.lat,
+            //         locationLongitude: e.latlng.lng
+            //     })
+            //
+            //
+            // });
+
+            this.map.on("click", updateLatLng.bind(null, this));
 
             // add layer
             this.layer = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.layerGroup().addTo(this.map);
@@ -86776,13 +86841,13 @@ var editLocation = function (_Component) {
             console.log(this.state);
             console.log("---------- this.state componentDidUpdate() ----------");
 
-            // document.getElementById('locationNameInput').value = this.state.locations[0].locationName;
-            // document.getElementById('locationAddressInput').value = this.state.locations[0].locationAddress;
-            // document.getElementById('locationDescriptionInput').value = this.state.locations[0].locationDescription;
-            // document.getElementById('locationStatusInput').value = this.state.locations[0].locationStatus;
-            // document.getElementById('locationRatingInput').value = this.state.locations[0].locationRating;
-            // document.getElementById('locationLatitudeInput').value = this.state.locations[0].locationLatitude;
-            // document.getElementById('locationLongitudeInput').value = this.state.locations[0].locationLongitude;
+            // document.getElementById('locationName').value = this.state.locations[0].locationName;
+            // document.getElementById('locationAddress').value = this.state.locations[0].locationAddress;
+            // document.getElementById('locationDescription').value = this.state.locations[0].locationDescription;
+            // document.getElementById('locationStatus').value = this.state.locations[0].locationStatus;
+            // document.getElementById('locationRating').value = this.state.locations[0].locationRating;
+            // document.getElementById('locationLatitude').value = this.state.locations[0].locationLatitude;
+            // document.getElementById('locationLongitude').value = this.state.locations[0].locationLongitude;
 
 
             // // check if position has changed
@@ -86802,21 +86867,21 @@ var editLocation = function (_Component) {
         key: 'handleChange',
         value: function handleChange(e) {
             // this.setState({
-            //     locationOwnerIDInput: e.target.value,
-            //     locationNameInput: e.target.value,
-            //     locationAddressInput: e.target.value,
-            //     locationDescriptionInput: e.target.value,
-            //     locationStatusInput: e.target.value,
-            //     locationRatingInput: e.target.value,
-            //     locationLatitudeInput: e.target.value,
-            //     locationLongitudeInput: e.target.value
+            //     locationOwnerID: e.target.value,
+            //     locationName: e.target.value,
+            //     locationAddress: e.target.value,
+            //     locationDescription: e.target.value,
+            //     locationStatus: e.target.value,
+            //     locationRating: e.target.value,
+            //     locationLatitude: e.target.value,
+            //     locationLongitude: e.target.value
             // });
             // console.log('Name: ', e.target.name);
             // console.log('Value: ', e.target.value);
             //
             //
             //
-            // this.setState({[e.target.name]: e.target.value});
+            this.setState(_defineProperty({}, e.target.name, e.target.value));
             // console.log('onChange', this.state);
         }
     }, {
@@ -86827,13 +86892,13 @@ var editLocation = function (_Component) {
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
             axios.put('/locations/' + this.props.match.params.id, {
-                locationName: document.getElementById('locationNameInput').value,
-                locationAddress: document.getElementById('locationAddressInput').value,
-                locationDescription: document.getElementById('locationDescriptionInput').value,
-                locationStatus: document.getElementById('locationStatusInput').value,
-                locationRating: document.getElementById('locationRatingInput').value,
-                locationLatitude: document.getElementById('locationLatitudeInput').value,
-                locationLongitude: document.getElementById('locationLongitudeInput').value
+                locationName: this.state.locationName,
+                locationAddress: this.state.locationAddress,
+                locationDescription: this.state.locationDescription,
+                locationStatus: this.state.locationStatus,
+                locationRating: this.state.locationRating,
+                locationLatitude: this.state.locationLatitude,
+                locationLongitude: this.state.locationLongitude
             }).then(function (response) {
                 console.log('successfully edited the location');
                 _this2.props.history.push('/');
@@ -86904,8 +86969,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Name:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationNameInput',
-                                                    name: 'locationNameInput',
+                                                    id: 'locationName',
+                                                    name: 'locationName',
                                                     type: 'text',
                                                     value: this.state.locationName,
                                                     onChange: this.handleChange,
@@ -86923,8 +86988,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Address:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationAddressInput',
-                                                    name: 'locationAddressInput',
+                                                    id: 'locationAddress',
+                                                    name: 'locationAddress',
                                                     type: 'text',
                                                     value: this.state.locationAddress,
                                                     onChange: this.handleChange,
@@ -86942,8 +87007,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Description:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationDescriptionInput',
-                                                    name: 'locationDescriptionInput',
+                                                    id: 'locationDescription',
+                                                    name: 'locationDescription',
                                                     type: 'text',
                                                     value: this.state.locationDescription,
                                                     onChange: this.handleChange,
@@ -86960,8 +87025,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Status:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationStatusInput',
-                                                    name: 'locationStatusInput',
+                                                    id: 'locationStatus',
+                                                    name: 'locationStatus',
                                                     type: 'text',
                                                     value: this.state.locationStatus,
                                                     onChange: this.handleChange,
@@ -86979,8 +87044,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Rating:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationRatingInput',
-                                                    name: 'locationRatingInput',
+                                                    id: 'locationRating',
+                                                    name: 'locationRating',
                                                     type: 'number',
                                                     value: this.state.locationRating,
                                                     onChange: this.handleChange,
@@ -86999,8 +87064,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Latitude:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationLatitudeInput',
-                                                    name: 'locationLatitudeInput',
+                                                    id: 'locationLatitude',
+                                                    name: 'locationLatitude',
                                                     type: 'text',
                                                     value: this.state.locationLatitude,
                                                     onChange: this.handleChange,
@@ -87020,8 +87085,8 @@ var editLocation = function (_Component) {
                                                 null,
                                                 'Longitude:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationLongitudeInput',
-                                                    name: 'locationLongitudeInput',
+                                                    id: 'locationLongitude',
+                                                    name: 'locationLongitude',
                                                     type: 'text',
                                                     value: this.state.locationLongitude,
                                                     onChange: this.handleChange,
@@ -87069,6 +87134,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -87097,13 +87164,14 @@ var createContract = function (_Component) {
         var _this = _possibleConstructorReturn(this, (createContract.__proto__ || Object.getPrototypeOf(createContract)).call(this, props));
 
         _this.state = {
-            providerIDInput: '',
-            receiverIDInput: '',
-            contractContentInput: '',
-            contractValueInput: '',
-            contractStatusInput: '',
-            providerSignatureInput: '',
-            receiverSignatureInput: '',
+            providerID: '',
+            receiverID: '',
+            locationID: '',
+            contractContent: '',
+            contractValue: '',
+            contractStatus: '',
+            providerSignature: '',
+            receiverSignature: '',
             contracts: [],
             users: []
         };
@@ -87144,44 +87212,87 @@ var createContract = function (_Component) {
             console.log("---------- this.state componentDidUpdate() ----------");
         }
 
-        // get all users from backend
+        // handle change
 
     }, {
-        key: 'getUsers',
-        value: function getUsers() {
-            var _this2 = this;
-
-            axios.get('/users').then(function (response // console.log(response.data.contracts)
-            ) {
-                return _this2.setState({
-                    contracts: [].concat(_toConsumableArray(response.data.contracts))
-                });
-            });
+        key: 'handleChange',
+        value: function handleChange(e) {
+            // this.setState({
+            //     providerID: e.target.value,
+            //     receiverID: e.target.value,
+            //     contractContent: e.target.value,
+            //     contractValue: e.target.value,
+            //     contractStatus: e.target.value,
+            //     providerSignature: e.target.value,
+            //     receiverSignature: e.target.value
+            // });
+            // console.log('Name: ', e.target.name);
+            // console.log('Value: ', e.target.value);
+            //
+            this.setState(_defineProperty({}, e.target.name, e.target.value));
+            // console.log('onChange', this.state);
         }
+
+        // // get all users from backend
+        // getUsers() {
+        //     axios.get('/contracts').then((
+        //         response // console.log(response.data.contracts)
+        //     ) =>
+        //         this.setState({
+        //             users: [...response.data.users]
+        //         })
+        //     );
+        // }
+
     }, {
         key: 'submitContract',
         value: function submitContract(e) {
-            var _this3 = this;
+            var _this2 = this;
 
+            console.log("---------- this.state submitContract----------");
+            console.log(this.state);
+            console.log("---------- this.state submitContract----------");
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
+            // axios.post('/contracts', {
+            //         // contractOwnerID: this.state.contractOwnerID,
+            //         providerID: document.getElementById('providerID').value,
+            //         receiverID: document.getElementById('receiverID').value,
+            //         locationID: document.getElementById('locationID').value,
+            //         contractContent: document.getElementById('contractContent').value,
+            //         contractValue: document.getElementById('contractValue').value,
+            //         contractStatus: document.getElementById('contractStatus').value,
+            //         providerSignature: document.getElementById('providerSignature').value,
+            //         receiverSignature: document.getElementById('receiverSignature').value
+            //     })
+            //     .then(response => {
+            //
+            //         this.setState({
+            //             contracts: [response.data, ...this.state.contracts]
+            //         });
+            //
+            //         console.log('response', response);
+            //         console.log('this.state', this.state);
+            //     });
+
             axios.post('/contracts', {
-                // contractOwnerID: this.state.contractOwnerIDInput,
-                providerID: document.getElementById('providerIDInput').value,
-                receiverID: document.getElementById('receiverIDInput').value,
-                contractContent: document.getElementById('contractContentInput').value,
-                contractValue: document.getElementById('contractValueInput').value,
-                contractStatus: document.getElementById('contractStatusInput').value,
-                providerSignature: document.getElementById('providerSignatureInput').value,
-                receiverSignature: document.getElementById('receiverSignatureInput').value
+                // contractOwnerID: this.state.contractOwnerID,
+                providerID: this.state.providerID,
+                receiverID: this.state.receiverID,
+                locationID: this.state.locationID,
+                contractContent: this.state.contractContent,
+                contractValue: this.state.contractValue,
+                contractStatus: this.state.contractStatus,
+                providerSignature: this.state.providerSignature,
+                receiverSignature: this.state.receiverSignature
             }).then(function (response) {
 
-                _this3.setState({
-                    contracts: [response.data].concat(_toConsumableArray(_this3.state.contracts))
+                _this2.setState({
+                    contracts: [response.data].concat(_toConsumableArray(_this2.state.contracts))
                 });
 
                 console.log('response', response);
-                console.log('this.state', _this3.state);
+                console.log('this.state', _this2.state);
             });
         }
 
@@ -87190,12 +87301,13 @@ var createContract = function (_Component) {
     }, {
         key: 'getContracts',
         value: function getContracts() {
-            var _this4 = this;
+            var _this3 = this;
 
             axios.get('/contracts').then(function (response // console.log(response.data.contracts)
             ) {
-                return _this4.setState({
-                    contracts: [].concat(_toConsumableArray(response.data.contracts))
+                return _this3.setState({
+                    contracts: [].concat(_toConsumableArray(response.data.contracts)),
+                    users: [].concat(_toConsumableArray(response.data.users))
                 });
             });
         }
@@ -87216,10 +87328,10 @@ var createContract = function (_Component) {
     }, {
         key: 'updateContract',
         value: function updateContract() {
-            var _this5 = this;
+            var _this4 = this;
 
             axios.put('/' + id + '/editContract').then(function (response) {
-                _this5.getContracts();
+                _this4.getContracts();
             });
         }
 
@@ -87231,33 +87343,12 @@ var createContract = function (_Component) {
         // Do something...
 
 
-        // handle change
-
-    }, {
-        key: 'handleChange',
-        value: function handleChange(e) {}
-        // this.setState({
-        //     providerIDInput: e.target.value,
-        //     receiverIDInput: e.target.value,
-        //     contractContentInput: e.target.value,
-        //     contractValueInput: e.target.value,
-        //     contractStatusInput: e.target.value,
-        //     providerSignatureInput: e.target.value,
-        //     receiverSignatureInput: e.target.value
-        // });
-        // console.log('Name: ', e.target.name);
-        // console.log('Value: ', e.target.value);
-        //
-        // this.setState({[e.target.name]: e.target.value});
-        // console.log('onChange', this.state);
-
-
         // render contracts
 
     }, {
         key: 'renderContracts',
         value: function renderContracts() {
-            var _this6 = this;
+            var _this5 = this;
 
             // console.log("---------- this.state.contracts ----------");
             // console.log(this.state.contracts);
@@ -87272,9 +87363,9 @@ var createContract = function (_Component) {
             //
             // return html;
 
-            console.log("---------- this.state.contracts ----------");
-            console.log(this.state.contracts);
-            console.log("---------- this.state.contracts ----------");
+            // console.log("---------- this.state.contracts ----------");
+            // console.log(this.state.contracts);
+            // console.log("---------- this.state.contracts ----------");
 
             return this.state.contracts.map(function (contract) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -87291,7 +87382,7 @@ var createContract = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'button',
                             { onClick: function onClick() {
-                                    return _this6.deleteContract(contract._id);
+                                    return _this5.deleteContract(contract._id);
                                 }, className: 'btn btn-sm btn-warning float-right' },
                             'Delete'
                         ),
@@ -87341,8 +87432,8 @@ var createContract = function (_Component) {
                                                 null,
                                                 'Provider:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'providerIDInput',
-                                                    name: 'providerIDInput',
+                                                    id: 'providerID',
+                                                    name: 'providerID',
                                                     type: 'text',
                                                     value: this.state.providerID,
                                                     onChange: this.handleChange,
@@ -87360,8 +87451,8 @@ var createContract = function (_Component) {
                                                 null,
                                                 'Receiver:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'receiverIDInput',
-                                                    name: 'receiverIDInput',
+                                                    id: 'receiverID',
+                                                    name: 'receiverID',
                                                     type: 'text',
                                                     value: this.state.receiverID,
                                                     onChange: this.handleChange,
@@ -87377,10 +87468,28 @@ var createContract = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'label',
                                                 null,
+                                                'Property:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationID',
+                                                    name: 'locationID',
+                                                    type: 'text',
+                                                    value: this.state.locationID,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter contract content.'
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
                                                 'Content:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'contractContentInput',
-                                                    name: 'contractContentInput',
+                                                    id: 'contractContent',
+                                                    name: 'contractContent',
                                                     type: 'text',
                                                     value: this.state.contractContent,
                                                     onChange: this.handleChange,
@@ -87397,8 +87506,8 @@ var createContract = function (_Component) {
                                                 null,
                                                 'Contract Value:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'contractValueInput',
-                                                    name: 'contractValueInput',
+                                                    id: 'contractValue',
+                                                    name: 'contractValue',
                                                     type: 'number',
                                                     value: this.state.contractValue,
                                                     onChange: this.handleChange,
@@ -87416,8 +87525,8 @@ var createContract = function (_Component) {
                                                 null,
                                                 'Contract Status:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'contractStatusInput',
-                                                    name: 'contractStatusInput',
+                                                    id: 'contractStatus',
+                                                    name: 'contractStatus',
                                                     type: 'text',
                                                     value: this.state.contractStatus,
                                                     onChange: this.handleChange,
@@ -87435,8 +87544,8 @@ var createContract = function (_Component) {
                                                 null,
                                                 'Provider Signature:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'providerSignatureInput',
-                                                    name: 'providerSignatureInput',
+                                                    id: 'providerSignature',
+                                                    name: 'providerSignature',
                                                     type: 'password',
                                                     value: this.state.providerSignature,
                                                     onChange: this.handleChange,
@@ -87454,8 +87563,8 @@ var createContract = function (_Component) {
                                                 null,
                                                 'Receiver Signature:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'receiverSignatureInput',
-                                                    name: 'receiverSignatureInput',
+                                                    id: 'receiverSignature',
+                                                    name: 'receiverSignature',
                                                     type: 'password',
                                                     value: this.state.receiverSignature,
                                                     onChange: this.handleChange,
@@ -87498,6 +87607,8 @@ var createContract = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(12);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -87524,13 +87635,14 @@ var editContract = function (_Component) {
         var _this = _possibleConstructorReturn(this, (editContract.__proto__ || Object.getPrototypeOf(editContract)).call(this, props));
 
         _this.state = {
-            providerIDInput: '',
-            receiverIDInput: '',
-            contractContentInput: '',
-            contractValueInput: '',
-            contractStatusInput: '',
-            providerSignatureInput: '',
-            receiverSignatureInput: '',
+            providerID: '',
+            receiverID: '',
+            locationID: '',
+            contractContent: '',
+            contractValue: '',
+            contractStatus: '',
+            providerSignature: '',
+            receiverSignature: '',
             contracts: []
         };
 
@@ -87564,13 +87676,13 @@ var editContract = function (_Component) {
             console.log(this.state);
             console.log("---------- this.state componentDidUpdate() ----------");
 
-            // document.getElementById('providerIDInput').value = this.state.contracts[0].providerID;
-            // document.getElementById('receiverIDInput').value = this.state.contracts[0].receiverID;
-            // document.getElementById('contractContentInput').value = this.state.contracts[0].contractContent;
-            // document.getElementById('contractValueInput').value = this.state.contracts[0].contractValue;
-            // document.getElementById('contractStatusInput').value = this.state.contracts[0].contractStatus;
-            // document.getElementById('providerSignatureInput').value = this.state.contracts[0].providerSignature;
-            // document.getElementById('receiverSignatureInput').value = this.state.contracts[0].receiverSignature;
+            // document.getElementById('providerID').value = this.state.contracts[0].providerID;
+            // document.getElementById('receiverID').value = this.state.contracts[0].receiverID;
+            // document.getElementById('contractContent').value = this.state.contracts[0].contractContent;
+            // document.getElementById('contractValue').value = this.state.contracts[0].contractValue;
+            // document.getElementById('contractStatus').value = this.state.contracts[0].contractStatus;
+            // document.getElementById('providerSignature').value = this.state.contracts[0].providerSignature;
+            // document.getElementById('receiverSignature').value = this.state.contracts[0].receiverSignature;
 
             // // check if position has changed
             // if (this.props.markerPosition !== markerPosition) {
@@ -87589,21 +87701,21 @@ var editContract = function (_Component) {
         key: 'handleChange',
         value: function handleChange(e) {
             // this.setState({
-            //     locationOwnerIDInput: e.target.value,
-            //     locationNameInput: e.target.value,
-            //     locationAddressInput: e.target.value,
-            //     locationDescriptionInput: e.target.value,
-            //     locationStatusInput: e.target.value,
-            //     locationRatingInput: e.target.value,
-            //     locationLatitudeInput: e.target.value,
-            //     locationLongitudeInput: e.target.value
+            //     locationOwnerID: e.target.value,
+            //     locationName: e.target.value,
+            //     locationAddress: e.target.value,
+            //     locationDescription: e.target.value,
+            //     locationStatus: e.target.value,
+            //     locationRating: e.target.value,
+            //     locationLatitude: e.target.value,
+            //     locationLongitude: e.target.value
             // });
             // console.log('Name: ', e.target.name);
             // console.log('Value: ', e.target.value);
             //
             //
             //
-            // this.setState({[e.target.name]: e.target.value});
+            this.setState(_defineProperty({}, e.target.name, e.target.value));
             // console.log('onChange', this.state);
         }
     }, {
@@ -87614,13 +87726,14 @@ var editContract = function (_Component) {
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
             axios.put('/contracts/' + this.props.match.params.id, {
-                providerID: document.getElementById('providerIDInput').value,
-                receiverID: document.getElementById('receiverIDInput').value,
-                contractContent: document.getElementById('contractContentInput').value,
-                contractValue: document.getElementById('contractValueInput').value,
-                contractStatus: document.getElementById('contractStatusInput').value,
-                providerSignature: document.getElementById('providerSignatureInput').value,
-                receiverSignature: document.getElementById('receiverSignatureInput').value
+                providerID: this.state.providerID,
+                receiverID: this.state.receiverID,
+                locationID: this.state.locationID,
+                contractContent: this.state.contractContent,
+                contractValue: this.state.contractValue,
+                contractStatus: this.state.contractStatus,
+                providerSignature: this.state.providerSignature,
+                receiverSignature: this.state.receiverSignature
             }).then(function (response) {
                 console.log('successfully edited the contract');
                 _this2.props.history.push('/');
@@ -87649,6 +87762,7 @@ var editContract = function (_Component) {
                 return _this3.setState({
                     providerID: response.data.contract.providerID,
                     receiverID: response.data.contract.receiverID,
+                    locationID: response.data.contract.locationID,
                     contractContent: response.data.contract.contractContent,
                     contractValue: response.data.contract.contractValue,
                     contractStatus: response.data.contract.contractStatus,
@@ -87695,8 +87809,8 @@ var editContract = function (_Component) {
                                                 null,
                                                 'Provider:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'providerIDInput',
-                                                    name: 'providerIDInput',
+                                                    id: 'providerID',
+                                                    name: 'providerID',
                                                     type: 'text',
                                                     value: this.state.providerID,
                                                     onChange: this.handleChange,
@@ -87714,8 +87828,8 @@ var editContract = function (_Component) {
                                                 null,
                                                 'Receiver:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'receiverIDInput',
-                                                    name: 'receiverIDInput',
+                                                    id: 'receiverID',
+                                                    name: 'receiverID',
                                                     type: 'text',
                                                     value: this.state.receiverID,
                                                     onChange: this.handleChange,
@@ -87731,10 +87845,29 @@ var editContract = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'label',
                                                 null,
+                                                'Property:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationID',
+                                                    name: 'locationID',
+                                                    type: 'text',
+                                                    value: this.state.locationID,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter receiver ID.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
                                                 'Contract Content:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'contractContentInput',
-                                                    name: 'contractContentInput',
+                                                    id: 'contractContent',
+                                                    name: 'contractContent',
                                                     type: 'text',
                                                     value: this.state.contractContent,
                                                     onChange: this.handleChange,
@@ -87751,8 +87884,8 @@ var editContract = function (_Component) {
                                                 null,
                                                 'Contract Value:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'contractValueInput',
-                                                    name: 'contractValueInput',
+                                                    id: 'contractValue',
+                                                    name: 'contractValue',
                                                     type: 'text',
                                                     value: this.state.contractValue,
                                                     onChange: this.handleChange,
@@ -87770,8 +87903,8 @@ var editContract = function (_Component) {
                                                 null,
                                                 'Contract Status:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'contractStatusInput',
-                                                    name: 'contractStatusInput',
+                                                    id: 'contractStatus',
+                                                    name: 'contractStatus',
                                                     type: 'text',
                                                     value: this.state.contractStatus,
                                                     onChange: this.handleChange,
@@ -87790,8 +87923,8 @@ var editContract = function (_Component) {
                                                 null,
                                                 'Provider Signature:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'providerSignatureInput',
-                                                    name: 'providerSignatureInput',
+                                                    id: 'providerSignature',
+                                                    name: 'providerSignature',
                                                     type: 'password',
                                                     value: this.state.providerSignature,
                                                     onChange: this.handleChange,
@@ -87808,8 +87941,8 @@ var editContract = function (_Component) {
                                                 null,
                                                 'Receiver Signature:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'receiverSignatureInput',
-                                                    name: 'receiverSignatureInput',
+                                                    id: 'receiverSignature',
+                                                    name: 'receiverSignature',
                                                     type: 'password',
                                                     value: this.state.receiverSignature,
                                                     onChange: this.handleChange,

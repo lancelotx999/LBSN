@@ -124,9 +124,8 @@ class editContract extends Component {
     //
     // }
 
-    // get all contracts from backend
     getContracts() {
-        axios.get(`/contracts/${this.props.match.params.id}/editContract`).then((
+        axios.get(`/contracts/${this.props.match.params.id}/edit`).then((
             response
         ) =>
             this.setState({
@@ -137,6 +136,8 @@ class editContract extends Component {
                 contractStatus: response.data.contract.contractStatus,
                 providerSignature: response.data.contract.providerSignature,
                 receiverSignature: response.data.contract.receiverSignature
+
+
             })
         );
     }

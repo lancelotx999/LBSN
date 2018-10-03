@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\User;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
@@ -17,16 +18,20 @@ class ContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Contract $contract)
+    public function index(Request $request, Contract $contract, User $user)
     {
         // get all the contracts based on current user id
 		$allContracts = $contract->whereIn('user_id', $request->user())->with('user');
         // $contracts = $allContracts->orderBy('created_at', 'desc')->take(10)->get();
 		$contracts = $allContracts->take(10)->get();
 
+		// $allUsers = User::get();
+		// $allUsers = Auth::user()->get()
+
+
 		// return json response
 		return response()->json([
-			'contracts' => $contracts,
+			'contracts' => $contracts
 		]);
     }
 

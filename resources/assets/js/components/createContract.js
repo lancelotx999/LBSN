@@ -22,7 +22,8 @@ export default class createContract extends Component {
             contractStatusInput: '',
             providerSignatureInput: '',
             receiverSignatureInput: '',
-            contracts: []
+            contracts: [],
+            users: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -52,10 +53,21 @@ export default class createContract extends Component {
     }
 
     componentDidUpdate() {
-        // console.log("---------- this.state componentDidUpdate() ----------");
-        // console.log(this.state);
-        // console.log("---------- this.state componentDidUpdate() ----------");
+        console.log("---------- this.state componentDidUpdate() ----------");
+        console.log(this.state);
+        console.log("---------- this.state componentDidUpdate() ----------");
 
+    }
+
+    // get all users from backend
+    getUsers() {
+        axios.get('/users').then((
+            response // console.log(response.data.contracts)
+        ) =>
+            this.setState({
+                contracts: [...response.data.contracts]
+            })
+        );
     }
 
     submitContract(e) {
@@ -136,6 +148,7 @@ export default class createContract extends Component {
         // this.setState({[e.target.name]: e.target.value});
         // console.log('onChange', this.state);
     }
+
 
 
     // render contracts

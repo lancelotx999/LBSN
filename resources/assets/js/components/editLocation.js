@@ -82,13 +82,13 @@ class editLocation extends Component {
         console.log("---------- this.state componentDidUpdate() ----------");
 
 
-        document.getElementById('locationNameInput').value = this.state.locations[0].locationName;
-        document.getElementById('locationAddressInput').value = this.state.locations[0].locationAddress;
-        document.getElementById('locationDescriptionInput').value = this.state.locations[0].locationDescription;
-        document.getElementById('locationStatusInput').value = this.state.locations[0].locationStatus;
-        document.getElementById('locationRatingInput').value = this.state.locations[0].locationRating;
-        document.getElementById('locationLatitudeInput').value = this.state.locations[0].locationLatitude;
-        document.getElementById('locationLongitudeInput').value = this.state.locations[0].locationLongitude;
+        // document.getElementById('locationNameInput').value = this.state.locations[0].locationName;
+        // document.getElementById('locationAddressInput').value = this.state.locations[0].locationAddress;
+        // document.getElementById('locationDescriptionInput').value = this.state.locations[0].locationDescription;
+        // document.getElementById('locationStatusInput').value = this.state.locations[0].locationStatus;
+        // document.getElementById('locationRatingInput').value = this.state.locations[0].locationRating;
+        // document.getElementById('locationLatitudeInput').value = this.state.locations[0].locationLatitude;
+        // document.getElementById('locationLongitudeInput').value = this.state.locations[0].locationLongitude;
 
 
         // // check if position has changed
@@ -144,13 +144,18 @@ class editLocation extends Component {
 
     }
 
-    // get all locations from backend
     getLocations() {
-        axios.get('/locations').then((
+        axios.get(`/locations/${this.props.match.params.id}/edit`).then((
             response // console.log(response.data.locations)
         ) =>
             this.setState({
-                locations: [...response.data.locations]
+                locationName: response.data.location.locationName,
+                locationAddress: response.data.location.locationAddress,
+                locationDescription: response.data.location.locationDescription,
+                locationStatus: response.data.location.locationStatus,
+                locationRating: response.data.location.locationRating,
+                locationLatitude: response.data.location.locationLatitude,
+                locationLongitude: response.data.location.locationLongitude
             })
         );
     }

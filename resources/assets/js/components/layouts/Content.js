@@ -9,7 +9,7 @@ import MapTest from '../Map'
 import RegisterLocation from '../registerLocation'
 import EditLocation from '../editLocation'
 import CreateContract from '../createContract'
-import EditContract from '../editLocation'
+import EditContract from '../editContract'
 
 const Content = () => {
 	return ReactDOM.createPortal(

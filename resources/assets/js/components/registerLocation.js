@@ -422,8 +422,6 @@ export default class registerLocation extends Component {
         // console.log('Name: ', e.target.name);
         // console.log('Value: ', e.target.value);
         //
-        //
-        //
         // this.setState({[e.target.name]: e.target.value});
         // console.log('onChange', this.state);
     }
@@ -451,7 +449,7 @@ export default class registerLocation extends Component {
                     <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
                         Delete
                     </button>
-                    <Link className="btn btn-sm btn-success" to={`/${location._id}/edit`}>
+                    <Link className="btn btn-sm btn-success" to={`/${location._id}/editLocation`}>
                         Edit
                     </Link>
 

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
+    // apply auth middleware so only authenticated users have access
+	public function __construct() {
+		$this->middleware('auth');
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +56,7 @@ class ContractController extends Controller
             'contractValue' => 'required|max:255',
             'contractStatus' => 'required',
  		]);
-        
+
  		// create a new contract based on user contracts relationship
  		$contract = $request->user()->contracts()->create([
             // 'contractOwnerID' => $request->contractOwnerID,
@@ -87,7 +92,7 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        $contract = Location::findOrFail($id);
+        $contract = Contract::findOrFail($id);
 		return response()->json([
 			'contract' => $contract,
 		]);

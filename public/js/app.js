@@ -87555,7 +87555,6 @@ var editContract = function (_Component) {
             // document.getElementById('providerSignatureInput').value = this.state.contracts[0].providerSignature;
             // document.getElementById('receiverSignatureInput').value = this.state.contracts[0].receiverSignature;
 
-
             // // check if position has changed
             // if (this.props.markerPosition !== markerPosition) {
             //     this.marker.setLatLng(this.props.markerPosition);
@@ -87642,14 +87641,6 @@ var editContract = function (_Component) {
                     receiverSignature: response.data.contract.receiverSignature
                 });
             });
-        }
-
-        // example leaflet function
-
-    }, {
-        key: 'updateMarkers',
-        value: function updateMarkers(markersData) {
-            // Do something...
         }
     }, {
         key: 'render',

@@ -58,7 +58,6 @@ class editContract extends Component {
         // document.getElementById('providerSignatureInput').value = this.state.contracts[0].providerSignature;
         // document.getElementById('receiverSignatureInput').value = this.state.contracts[0].receiverSignature;
 
-
         // // check if position has changed
         // if (this.props.markerPosition !== markerPosition) {
         //     this.marker.setLatLng(this.props.markerPosition);
@@ -141,12 +140,6 @@ class editContract extends Component {
             })
         );
     }
-
-    // example leaflet function
-    updateMarkers(markersData) {
-        // Do something...
-    }
-
 
     render(){
         return (

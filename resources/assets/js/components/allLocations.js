@@ -30,8 +30,9 @@ export default class allLocations extends Component {
     }
 
     componentWillMount() {
-        this.getLocations();
-        // this.getAllLocations();
+        // this.getLocations();
+        // this.getLocation();
+        this.getAllLocations();
 
         console.log("---------- this.state componentWillMount ----------");
         console.log(this.state);
@@ -119,9 +120,9 @@ export default class allLocations extends Component {
 
         var data = this.state.locations;
 
-        // console.log("---------- data ----------");
-        // console.log(data);
-        // console.log("---------- data ----------");
+        console.log("---------- data ----------");
+        console.log(data);
+        console.log("---------- data ----------");
 
 
         var pruneCluster = new PruneClusterForLeaflet();
@@ -396,11 +397,11 @@ export default class allLocations extends Component {
 
     // get all locations from backend
     getAllLocations() {
-        axios.get('/location/allLocations').then((
+        axios.get('/allLocations').then((
             response // console.log(response.data.locations)
         ) =>
             this.setState({
-                locations: [...response.data.locations]
+                locations: response.data.locations
             })
         );
     }
@@ -493,20 +494,20 @@ export default class allLocations extends Component {
         //
         // return html;
 
-        return this.state.locations.map(location => (
-            <div key={location._id} className="media">
-                <div className="media-body">
-                    <p>{location.locationName}</p>
-                    <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
-                        View
-                    </Link>
-                    <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
-                        Delete
-                    </button>
-
-                </div>
-            </div>
-        ));
+        // return this.state.locations.map(location => (
+        //     <div key={location._id} className="media">
+        //         <div className="media-body">
+        //             <p>{location.locationName}</p>
+        //             <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
+        //                 View
+        //             </Link>
+        //             <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
+        //                 Delete
+        //             </button>
+        //
+        //         </div>
+        //     </div>
+        // ));
     }
 
     render() {

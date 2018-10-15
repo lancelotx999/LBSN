@@ -86810,8 +86810,9 @@ var allLocations = function (_Component) {
     _createClass(allLocations, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.getLocations();
-            // this.getAllLocations();
+            // this.getLocations();
+            // this.getLocation();
+            this.getAllLocations();
 
             console.log("---------- this.state componentWillMount ----------");
             console.log(this.state);
@@ -86898,10 +86899,9 @@ var allLocations = function (_Component) {
 
             var data = this.state.locations;
 
-            // console.log("---------- data ----------");
-            // console.log(data);
-            // console.log("---------- data ----------");
-
+            console.log("---------- data ----------");
+            console.log(data);
+            console.log("---------- data ----------");
 
             var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
 
@@ -87174,10 +87174,10 @@ var allLocations = function (_Component) {
         value: function getAllLocations() {
             var _this4 = this;
 
-            axios.get('/location/allLocations').then(function (response // console.log(response.data.locations)
+            axios.get('/allLocations').then(function (response // console.log(response.data.locations)
             ) {
                 return _this4.setState({
-                    locations: [].concat(_toConsumableArray(response.data.locations))
+                    locations: response.data.locations
                 });
             });
         }
@@ -87265,8 +87265,6 @@ var allLocations = function (_Component) {
     }, {
         key: 'renderLocations',
         value: function renderLocations() {
-            var _this6 = this;
-
             console.log("---------- this.state.locations renderLocations()----------");
             console.log(this.state.locations);
             console.log("---------- this.state.locations renderLocations()----------");
@@ -87280,33 +87278,20 @@ var allLocations = function (_Component) {
             //
             // return html;
 
-            return this.state.locations.map(function (location) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { key: location._id, className: 'media' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'media-body' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'p',
-                            null,
-                            location.locationName
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
-                            { className: 'btn btn-sm btn-success', to: '/' + location._id + '/viewLocation' },
-                            'View'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { onClick: function onClick() {
-                                    return _this6.deleteLocation(location._id);
-                                }, className: 'btn btn-sm btn-warning float-right' },
-                            'Delete'
-                        )
-                    )
-                );
-            });
+            // return this.state.locations.map(location => (
+            //     <div key={location._id} className="media">
+            //         <div className="media-body">
+            //             <p>{location.locationName}</p>
+            //             <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
+            //                 View
+            //             </Link>
+            //             <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
+            //                 Delete
+            //             </button>
+            //
+            //         </div>
+            //     </div>
+            // ));
         }
     }, {
         key: 'render',

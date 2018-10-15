@@ -7,7 +7,7 @@ use App\User;
 use App\Location;
 use Illuminate\Http\Request;
 
-class ContractController extends Controller
+class ServiceContractController extends Controller
 {
     // apply auth middleware so only authenticated users have access
 	public function __construct() {

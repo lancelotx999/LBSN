@@ -31,7 +31,6 @@ class LocationController extends Controller
     }
 
 	public function allLocations(){
-		Log::debug('Some message.');
 		$locations = Location::all();
 
 		return response()->json([
@@ -90,8 +89,21 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        //
+		$location = Location::findOrFail($id);
+		// echo $location;
+		// var_dump($location);
+		return response()->json($location->with('user')->find($location->_id));
     }
+
+	// // get all the locations based on current user id
+	// $allLocations = $location->whereIn('user_id', $request->user())->with('user');
+	// // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
+	// $locations = $allLocations->take(10)->get();
+    //
+	// // return json response
+	// return response()->json([
+	// 	'locations' => $locations,
+	// ]);
 
     /**
      * Show the form for editing the specified resource.
@@ -102,9 +114,10 @@ class LocationController extends Controller
     public function edit($id)
     {
 		$location = Location::findOrFail($id);
-		return response()->json([
-			'location' => $location,
-		]);
+		return response()->json($location->with('user')->find($location->_id));
+		// return response()->json([
+		// 	'location' => $location,
+		// ]);
     }
 
     /**

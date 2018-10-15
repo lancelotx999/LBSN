@@ -437,6 +437,17 @@ export default class registerLocation extends Component {
         );
     }
 
+    // get all locations from backend
+    getAllLocations() {
+        axios.get('/location/allLocations').then((
+            response // console.log(response.data.locations)
+        ) =>
+            this.setState({
+                locations: [...response.data.locations]
+            })
+        );
+    }
+
     deleteLocation(id) {
         // remove from local state
         const isNotId = location => location._id !== id;
@@ -483,6 +494,9 @@ export default class registerLocation extends Component {
             <div key={location._id} className="media">
                 <div className="media-body">
                     <p>{location.locationName}</p>
+                    <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
+                        View
+                    </Link>
                     <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
                         Delete
                     </button>

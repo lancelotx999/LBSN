@@ -14,7 +14,7 @@ const Header = () => {
             	<Link className="nav-link" to="/map">Map</Link>
         	</li>
 			<li className="nav-item">
-            	<Link className="nav-link" to="allLocations">Property Listing</Link>
+            	<Link className="nav-link" to="/allLocations">Property Listing</Link>
         	</li>
 			<li className="nav-item">
                 <Link className="nav-link" to="/registerLocation">Register Location</Link>

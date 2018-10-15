@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 109);
+/******/ 	return __webpack_require__(__webpack_require__.s = 110);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,7 +73,7 @@
 if (false) {
   module.exports = require('./cjs/react.production.min.js');
 } else {
-  module.exports = __webpack_require__(136);
+  module.exports = __webpack_require__(137);
 }
 
 
@@ -13961,7 +13961,7 @@ window.L = exports;
 /* unused harmony export LeafletConsumer */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeafletProvider; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return withLeaflet; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
@@ -14006,7 +14006,7 @@ var withLeaflet = function withLeaflet(WrappedComponent) {
 
 
 var bind = __webpack_require__(70);
-var isBuffer = __webpack_require__(117);
+var isBuffer = __webpack_require__(118);
 
 /*global toString:true*/
 
@@ -14334,7 +14334,7 @@ if (true) {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(143)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(144)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
@@ -14394,6 +14394,113 @@ var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || fr
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (true) {
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+  }
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (false) {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = require('./cjs/react-dom.production.min.js');
+} else {
+  module.exports = __webpack_require__(138);
+}
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(143);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(150);
+/* unused harmony reexport HashRouter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(77);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(151);
+/* unused harmony reexport MemoryRouter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(153);
+/* unused harmony reexport NavLink */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(155);
+/* unused harmony reexport Prompt */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(157);
+/* unused harmony reexport Redirect */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(78);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(40);
+/* unused harmony reexport Router */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(159);
+/* unused harmony reexport StaticRouter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(161);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__generatePath__ = __webpack_require__(163);
+/* unused harmony reexport generatePath */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__matchPath__ = __webpack_require__(164);
+/* unused harmony reexport matchPath */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__withRouter__ = __webpack_require__(165);
+/* unused harmony reexport withRouter */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14462,7 +14569,7 @@ module.exports = warning;
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14518,56 +14625,11 @@ module.exports = invariant;
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (true) {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-  }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (false) {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = require('./cjs/react-dom.production.min.js');
-} else {
-  module.exports = __webpack_require__(137);
-}
-
-
-/***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_pick__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_pick__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isEqual__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapLayer__ = __webpack_require__(15);
 
@@ -14636,7 +14698,7 @@ var Path = function (_MapLayer) {
 /* harmony default export */ __webpack_exports__["a"] = (Path);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14672,74 +14734,12 @@ function isObjectLike(value) {
 
 
 /***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(142);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(149);
-/* unused harmony reexport HashRouter */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(77);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(150);
-/* unused harmony reexport MemoryRouter */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(152);
-/* unused harmony reexport NavLink */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(154);
-/* unused harmony reexport Prompt */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(156);
-/* unused harmony reexport Redirect */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(78);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(39);
-/* unused harmony reexport Router */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(158);
-/* unused harmony reexport StaticRouter */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(160);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__generatePath__ = __webpack_require__(162);
-/* unused harmony reexport generatePath */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__matchPath__ = __webpack_require__(163);
-/* unused harmony reexport matchPath */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__withRouter__ = __webpack_require__(164);
-/* unused harmony reexport withRouter */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
 /* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsNative_js__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getValue_js__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsNative_js__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getValue_js__ = __webpack_require__(192);
 
 
 
@@ -14805,7 +14805,7 @@ function isObject(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapComponent__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapComponent__ = __webpack_require__(25);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -14892,13 +14892,13 @@ var MapLayer = function (_MapComponent) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(145);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(148);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__createHashHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(149);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(28);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(21);
@@ -14921,7 +14921,7 @@ var MapLayer = function (_MapComponent) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isArray_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isKey_js__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stringToPath_js__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stringToPath_js__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__toString_js__ = __webpack_require__(84);
 
 
@@ -14952,8 +14952,8 @@ function castPath(value, object) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(182);
 
 
 
@@ -15103,6 +15103,100 @@ var createPath = function createPath(location) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__context__ = __webpack_require__(2);
+/* unused harmony reexport LeafletConsumer */
+/* unused harmony reexport LeafletProvider */
+/* unused harmony reexport withLeaflet */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AttributionControl__ = __webpack_require__(176);
+/* unused harmony reexport AttributionControl */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Circle__ = __webpack_require__(177);
+/* unused harmony reexport Circle */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CircleMarker__ = __webpack_require__(251);
+/* unused harmony reexport CircleMarker */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__DivOverlay__ = __webpack_require__(64);
+/* unused harmony reexport DivOverlay */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FeatureGroup__ = __webpack_require__(252);
+/* unused harmony reexport FeatureGroup */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__GeoJSON__ = __webpack_require__(253);
+/* unused harmony reexport GeoJSON */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__GridLayer__ = __webpack_require__(65);
+/* unused harmony reexport GridLayer */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ImageOverlay__ = __webpack_require__(254);
+/* unused harmony reexport ImageOverlay */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__LayerGroup__ = __webpack_require__(255);
+/* unused harmony reexport LayerGroup */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__LayersControl__ = __webpack_require__(256);
+/* unused harmony reexport LayersControl */
+/* unused harmony reexport ControlledLayer */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Map__ = __webpack_require__(257);
+/* unused harmony reexport Map */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__MapComponent__ = __webpack_require__(25);
+/* unused harmony reexport MapComponent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__MapControl__ = __webpack_require__(23);
+/* unused harmony reexport MapControl */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__MapLayer__ = __webpack_require__(15);
+/* unused harmony reexport MapLayer */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Marker__ = __webpack_require__(285);
+/* unused harmony reexport Marker */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Pane__ = __webpack_require__(286);
+/* unused harmony reexport Pane */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__Path__ = __webpack_require__(11);
+/* unused harmony reexport Path */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Polygon__ = __webpack_require__(288);
+/* unused harmony reexport Polygon */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Polyline__ = __webpack_require__(289);
+/* unused harmony reexport Polyline */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__Popup__ = __webpack_require__(290);
+/* unused harmony reexport Popup */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__Rectangle__ = __webpack_require__(291);
+/* unused harmony reexport Rectangle */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ScaleControl__ = __webpack_require__(292);
+/* unused harmony reexport ScaleControl */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__TileLayer__ = __webpack_require__(293);
+/* unused harmony reexport TileLayer */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__Tooltip__ = __webpack_require__(294);
+/* unused harmony reexport Tooltip */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__VideoOverlay__ = __webpack_require__(295);
+/* unused harmony reexport VideoOverlay */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__WMSTileLayer__ = __webpack_require__(296);
+/* unused harmony reexport WMSTileLayer */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__ZoomControl__ = __webpack_require__(309);
+/* unused harmony reexport ZoomControl */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
@@ -15165,12 +15259,12 @@ var MapControl = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (MapControl);
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayLikeKeys_js__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseKeys_js__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseKeys_js__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isArrayLike_js__ = __webpack_require__(63);
 
 
@@ -15212,7 +15306,7 @@ function keys(object) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15328,7 +15422,7 @@ var MapComponent = function (_Component) {
 /* harmony default export */ __webpack_exports__["b"] = (MapComponent);
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15377,7 +15471,7 @@ function copyObject(source, props, object, customizer) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15444,14 +15538,14 @@ module.exports = warning;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createLocation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(21);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -15520,7 +15614,7 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15553,7 +15647,7 @@ function baseGet(object, path) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15567,15 +15661,15 @@ var nativeCreate = Object(__WEBPACK_IMPORTED_MODULE_0__getNative_js__["a" /* def
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listCacheClear_js__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__listCacheDelete_js__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listCacheGet_js__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listCacheHas_js__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__listCacheSet_js__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listCacheClear_js__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__listCacheDelete_js__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listCacheGet_js__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listCacheHas_js__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__listCacheSet_js__ = __webpack_require__(201);
 
 
 
@@ -15611,7 +15705,7 @@ ListCache.prototype.set = __WEBPACK_IMPORTED_MODULE_4__listCacheSet_js__["a" /* 
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15640,11 +15734,11 @@ function assocIndexOf(array, key) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isKeyable_js__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isKeyable_js__ = __webpack_require__(203);
 
 
 /**
@@ -15666,15 +15760,15 @@ function getMapData(map, key) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DataView_js__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DataView_js__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Map_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Promise_js__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Set_js__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__WeakMap_js__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Promise_js__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Set_js__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__WeakMap_js__ = __webpack_require__(245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__baseGetTag_js__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__toSource_js__ = __webpack_require__(83);
 
@@ -15738,7 +15832,7 @@ if ((__WEBPACK_IMPORTED_MODULE_0__DataView_js__["a" /* default */] && getTag(new
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 var g;
@@ -15765,14 +15859,14 @@ module.exports = g;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(3);
-var normalizeHeaderName = __webpack_require__(120);
+var normalizeHeaderName = __webpack_require__(121);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -15866,10 +15960,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15966,7 +16060,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16064,11 +16158,11 @@ module.exports = checkPropTypes;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 
 
@@ -16149,24 +16243,24 @@ var createTransitionManager = function createTransitionManager() {
 /* harmony default export */ __webpack_exports__["a"] = (createTransitionManager);
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(41);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__["a" /* default */]);
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
@@ -16279,7 +16373,7 @@ Router.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Router);
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16359,100 +16453,6 @@ var matchPath = function matchPath(pathname) {
 /* harmony default export */ __webpack_exports__["a"] = (matchPath);
 
 /***/ }),
-/* 42 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__context__ = __webpack_require__(2);
-/* unused harmony reexport LeafletConsumer */
-/* unused harmony reexport LeafletProvider */
-/* unused harmony reexport withLeaflet */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AttributionControl__ = __webpack_require__(175);
-/* unused harmony reexport AttributionControl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Circle__ = __webpack_require__(176);
-/* unused harmony reexport Circle */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CircleMarker__ = __webpack_require__(250);
-/* unused harmony reexport CircleMarker */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__DivOverlay__ = __webpack_require__(64);
-/* unused harmony reexport DivOverlay */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FeatureGroup__ = __webpack_require__(251);
-/* unused harmony reexport FeatureGroup */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__GeoJSON__ = __webpack_require__(252);
-/* unused harmony reexport GeoJSON */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__GridLayer__ = __webpack_require__(65);
-/* unused harmony reexport GridLayer */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ImageOverlay__ = __webpack_require__(253);
-/* unused harmony reexport ImageOverlay */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__LayerGroup__ = __webpack_require__(254);
-/* unused harmony reexport LayerGroup */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__LayersControl__ = __webpack_require__(255);
-/* unused harmony reexport LayersControl */
-/* unused harmony reexport ControlledLayer */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Map__ = __webpack_require__(256);
-/* unused harmony reexport Map */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__MapComponent__ = __webpack_require__(24);
-/* unused harmony reexport MapComponent */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__MapControl__ = __webpack_require__(22);
-/* unused harmony reexport MapControl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__MapLayer__ = __webpack_require__(15);
-/* unused harmony reexport MapLayer */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Marker__ = __webpack_require__(284);
-/* unused harmony reexport Marker */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Pane__ = __webpack_require__(285);
-/* unused harmony reexport Pane */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__Path__ = __webpack_require__(10);
-/* unused harmony reexport Path */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Polygon__ = __webpack_require__(287);
-/* unused harmony reexport Polygon */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Polyline__ = __webpack_require__(288);
-/* unused harmony reexport Polyline */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__Popup__ = __webpack_require__(289);
-/* unused harmony reexport Popup */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__Rectangle__ = __webpack_require__(290);
-/* unused harmony reexport Rectangle */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ScaleControl__ = __webpack_require__(291);
-/* unused harmony reexport ScaleControl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__TileLayer__ = __webpack_require__(292);
-/* unused harmony reexport TileLayer */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__Tooltip__ = __webpack_require__(293);
-/* unused harmony reexport Tooltip */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__VideoOverlay__ = __webpack_require__(294);
-/* unused harmony reexport VideoOverlay */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__WMSTileLayer__ = __webpack_require__(295);
-/* unused harmony reexport WMSTileLayer */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__ZoomControl__ = __webpack_require__(308);
-/* unused harmony reexport ZoomControl */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
 /* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -16496,7 +16496,7 @@ function isKey(value, object) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -16533,11 +16533,11 @@ function isSymbol(value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mapCacheClear_js__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mapCacheDelete_js__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapCacheGet_js__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapCacheHas_js__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mapCacheSet_js__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mapCacheClear_js__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mapCacheDelete_js__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapCacheGet_js__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapCacheHas_js__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mapCacheSet_js__ = __webpack_require__(206);
 
 
 
@@ -16752,8 +16752,8 @@ function isIndex(value, length) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsArguments_js__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsArguments_js__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -16894,8 +16894,8 @@ function identity(value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsEqualDeep_js__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsEqualDeep_js__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -16931,12 +16931,12 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListCache_js__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stackClear_js__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stackDelete_js__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stackGet_js__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stackHas_js__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stackSet_js__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListCache_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stackClear_js__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stackDelete_js__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stackGet_js__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stackHas_js__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stackSet_js__ = __webpack_require__(226);
 
 
 
@@ -16971,7 +16971,7 @@ Stack.prototype.set = __WEBPACK_IMPORTED_MODULE_5__stackSet_js__["a" /* default 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayFilter_js__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayFilter_js__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stubArray_js__ = __webpack_require__(95);
 
 
@@ -17011,7 +17011,7 @@ var getSymbols = !nativeGetSymbols ? __WEBPACK_IMPORTED_MODULE_1__stubArray_js__
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stubFalse_js__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stubFalse_js__ = __webpack_require__(238);
 
 
 
@@ -17215,9 +17215,9 @@ function isArrayLike(value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MapComponent__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MapComponent__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_updateClassName__ = __webpack_require__(102);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
@@ -19936,7 +19936,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(35)))
 
 /***/ }),
 /* 69 */
@@ -30335,12 +30335,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(3);
-var settle = __webpack_require__(121);
-var buildURL = __webpack_require__(123);
-var parseHeaders = __webpack_require__(124);
-var isURLSameOrigin = __webpack_require__(125);
+var settle = __webpack_require__(122);
+var buildURL = __webpack_require__(124);
+var parseHeaders = __webpack_require__(125);
+var isURLSameOrigin = __webpack_require__(126);
 var createError = __webpack_require__(72);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(126);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(127);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -30437,7 +30437,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(127);
+      var cookies = __webpack_require__(128);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -30521,7 +30521,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(122);
+var enhanceError = __webpack_require__(123);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -30671,7 +30671,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(16);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -30795,15 +30795,15 @@ Link.contextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(42);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30948,7 +30948,7 @@ Route.childContextTypes = {
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(153)
+var isarray = __webpack_require__(154)
 
 /**
  * Expose `pathToRegexp`.
@@ -31431,7 +31431,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(35)))
 
 /***/ }),
 /* 83 */
@@ -31471,7 +31471,7 @@ function toSource(func) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseToString_js__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseToString_js__ = __webpack_require__(207);
 
 
 /**
@@ -31587,8 +31587,8 @@ var defineProperty = (function() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseHasIn_js__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hasPath_js__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseHasIn_js__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hasPath_js__ = __webpack_require__(210);
 
 
 
@@ -31630,9 +31630,9 @@ function hasIn(object, path) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flatten_js__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overRest_js__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setToString_js__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flatten_js__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overRest_js__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setToString_js__ = __webpack_require__(217);
 
 
 
@@ -31699,9 +31699,9 @@ function isEqual(value, other) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SetCache_js__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__arraySome_js__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cacheHas_js__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SetCache_js__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__arraySome_js__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cacheHas_js__ = __webpack_require__(231);
 
 
 
@@ -31808,7 +31808,7 @@ var Uint8Array = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Uint8
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetAllKeys_js__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getSymbols_js__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__keys_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__keys_js__ = __webpack_require__(24);
 
 
 
@@ -31891,7 +31891,7 @@ function stubArray() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseTimes_js__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseTimes_js__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isArguments_js__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isArray_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__isBuffer_js__ = __webpack_require__(58);
@@ -31953,7 +31953,7 @@ function arrayLikeKeys(value, inherited) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsTypedArray_js__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsTypedArray_js__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseUnary_js__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nodeUtil_js__ = __webpack_require__(61);
 
@@ -32014,7 +32014,7 @@ function overArg(func, transform) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayEach_js__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseEach_js__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__castFunction_js__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__castFunction_js__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__isArray_js__ = __webpack_require__(5);
 
 
@@ -32093,8 +32093,8 @@ function arrayEach(array, iteratee) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseForOwn_js__ = __webpack_require__(245);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createBaseEach_js__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseForOwn_js__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createBaseEach_js__ = __webpack_require__(249);
 
 
 
@@ -32147,11 +32147,11 @@ var splitClassName = function splitClassName() {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayMap_js__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseClone_js__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__baseUnset_js__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseClone_js__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__baseUnset_js__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__castPath_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__copyObject_js__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__customOmitClone_js__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__copyObject_js__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__customOmitClone_js__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__flatRest_js__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__getAllKeysIn_js__ = __webpack_require__(106);
 
@@ -32219,7 +32219,7 @@ var omit = Object(__WEBPACK_IMPORTED_MODULE_6__flatRest_js__["a" /* default */])
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayLikeKeys_js__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseKeysIn_js__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseKeysIn_js__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isArrayLike_js__ = __webpack_require__(63);
 
 
@@ -32370,14 +32370,977 @@ function matchesStrictComparable(key, srcValue) {
 
 /***/ }),
 /* 109 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(110);
-module.exports = __webpack_require__(314);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var PruneCluster;
+(function (PruneCluster_1) {
+    var Point = (function () {
+        function Point() {
+        }
+        return Point;
+    }());
+    PruneCluster_1.Point = Point;
+    var ClusterObject = (function () {
+        function ClusterObject() {
+        }
+        return ClusterObject;
+    }());
+    PruneCluster_1.ClusterObject = ClusterObject;
+    var hashCodeCounter = 1;
+    var maxHashCodeValue = Math.pow(2, 53) - 1;
+    var Marker = (function (_super) {
+        __extends(Marker, _super);
+        function Marker(lat, lng, data, category, weight, filtered) {
+            if (data === void 0) { data = {}; }
+            if (weight === void 0) { weight = 1; }
+            if (filtered === void 0) { filtered = false; }
+            var _this = _super.call(this) || this;
+            _this.data = data;
+            _this.position = { lat: +lat, lng: +lng };
+            _this.weight = weight;
+            _this.category = category;
+            _this.filtered = filtered;
+            _this.hashCode = hashCodeCounter++;
+            return _this;
+        }
+        Marker.prototype.Move = function (lat, lng) {
+            this.position.lat = +lat;
+            this.position.lng = +lng;
+        };
+        Marker.prototype.SetData = function (data) {
+            for (var key in data) {
+                this.data[key] = data[key];
+            }
+        };
+        return Marker;
+    }(ClusterObject));
+    PruneCluster_1.Marker = Marker;
+    var Cluster = (function (_super) {
+        __extends(Cluster, _super);
+        function Cluster(marker) {
+            var _this = _super.call(this) || this;
+            _this.stats = [0, 0, 0, 0, 0, 0, 0, 0];
+            _this.data = {};
+            if (!marker) {
+                _this.hashCode = 1;
+                if (Cluster.ENABLE_MARKERS_LIST) {
+                    _this._clusterMarkers = [];
+                }
+                return _this;
+            }
+            if (Cluster.ENABLE_MARKERS_LIST) {
+                _this._clusterMarkers = [marker];
+            }
+            _this.lastMarker = marker;
+            _this.hashCode = 31 + marker.hashCode;
+            _this.population = 1;
+            if (marker.category !== undefined) {
+                _this.stats[marker.category] = 1;
+            }
+            _this.totalWeight = marker.weight;
+            _this.position = {
+                lat: marker.position.lat,
+                lng: marker.position.lng
+            };
+            _this.averagePosition = {
+                lat: marker.position.lat,
+                lng: marker.position.lng
+            };
+            return _this;
+        }
+        Cluster.prototype.AddMarker = function (marker) {
+            if (Cluster.ENABLE_MARKERS_LIST) {
+                this._clusterMarkers.push(marker);
+            }
+            var h = this.hashCode;
+            h = ((h << 5) - h) + marker.hashCode;
+            if (h >= maxHashCodeValue) {
+                this.hashCode = h % maxHashCodeValue;
+            }
+            else {
+                this.hashCode = h;
+            }
+            this.lastMarker = marker;
+            var weight = marker.weight, currentTotalWeight = this.totalWeight, newWeight = weight + currentTotalWeight;
+            this.averagePosition.lat =
+                (this.averagePosition.lat * currentTotalWeight +
+                    marker.position.lat * weight) / newWeight;
+            this.averagePosition.lng =
+                (this.averagePosition.lng * currentTotalWeight +
+                    marker.position.lng * weight) / newWeight;
+            ++this.population;
+            this.totalWeight = newWeight;
+            if (marker.category !== undefined) {
+                this.stats[marker.category] = (this.stats[marker.category] + 1) || 1;
+            }
+        };
+        Cluster.prototype.Reset = function () {
+            this.hashCode = 1;
+            this.lastMarker = undefined;
+            this.population = 0;
+            this.totalWeight = 0;
+            this.stats = [0, 0, 0, 0, 0, 0, 0, 0];
+            if (Cluster.ENABLE_MARKERS_LIST) {
+                this._clusterMarkers = [];
+            }
+        };
+        Cluster.prototype.ComputeBounds = function (cluster) {
+            var proj = cluster.Project(this.position.lat, this.position.lng);
+            var size = cluster.Size;
+            var nbX = Math.floor(proj.x / size), nbY = Math.floor(proj.y / size), startX = nbX * size, startY = nbY * size;
+            var a = cluster.UnProject(startX, startY), b = cluster.UnProject(startX + size, startY + size);
+            this.bounds = {
+                minLat: b.lat,
+                maxLat: a.lat,
+                minLng: a.lng,
+                maxLng: b.lng
+            };
+        };
+        Cluster.prototype.GetClusterMarkers = function () {
+            return this._clusterMarkers;
+        };
+        Cluster.prototype.ApplyCluster = function (newCluster) {
+            this.hashCode = this.hashCode * 41 + newCluster.hashCode * 43;
+            if (this.hashCode > maxHashCodeValue) {
+                this.hashCode = this.hashCode = maxHashCodeValue;
+            }
+            var weight = newCluster.totalWeight, currentTotalWeight = this.totalWeight, newWeight = weight + currentTotalWeight;
+            this.averagePosition.lat =
+                (this.averagePosition.lat * currentTotalWeight +
+                    newCluster.averagePosition.lat * weight) / newWeight;
+            this.averagePosition.lng =
+                (this.averagePosition.lng * currentTotalWeight +
+                    newCluster.averagePosition.lng * weight) / newWeight;
+            this.population += newCluster.population;
+            this.totalWeight = newWeight;
+            this.bounds.minLat = Math.min(this.bounds.minLat, newCluster.bounds.minLat);
+            this.bounds.minLng = Math.min(this.bounds.minLng, newCluster.bounds.minLng);
+            this.bounds.maxLat = Math.max(this.bounds.maxLat, newCluster.bounds.maxLat);
+            this.bounds.maxLng = Math.max(this.bounds.maxLng, newCluster.bounds.maxLng);
+            for (var category in newCluster.stats) {
+                if (newCluster.stats.hasOwnProperty(category)) {
+                    if (this.stats.hasOwnProperty(category)) {
+                        this.stats[category] += newCluster.stats[category];
+                    }
+                    else {
+                        this.stats[category] = newCluster.stats[category];
+                    }
+                }
+            }
+            if (Cluster.ENABLE_MARKERS_LIST) {
+                this._clusterMarkers = this._clusterMarkers.concat(newCluster.GetClusterMarkers());
+            }
+        };
+        Cluster.ENABLE_MARKERS_LIST = false;
+        return Cluster;
+    }(ClusterObject));
+    PruneCluster_1.Cluster = Cluster;
+    function checkPositionInsideBounds(a, b) {
+        return (a.lat >= b.minLat && a.lat <= b.maxLat) &&
+            a.lng >= b.minLng && a.lng <= b.maxLng;
+    }
+    function insertionSort(list) {
+        for (var i = 1, j, tmp, tmpLng, length = list.length; i < length; ++i) {
+            tmp = list[i];
+            tmpLng = tmp.position.lng;
+            for (j = i - 1; j >= 0 && list[j].position.lng > tmpLng; --j) {
+                list[j + 1] = list[j];
+            }
+            list[j + 1] = tmp;
+        }
+    }
+    function shouldUseInsertionSort(total, nbChanges) {
+        if (nbChanges > 300) {
+            return false;
+        }
+        else {
+            return (nbChanges / total) < 0.2;
+        }
+    }
+    var PruneCluster = (function () {
+        function PruneCluster() {
+            this._markers = [];
+            this._nbChanges = 0;
+            this._clusters = [];
+            this.Size = 166;
+            this.ViewPadding = 0.2;
+        }
+        PruneCluster.prototype.RegisterMarker = function (marker) {
+            if (marker._removeFlag) {
+                delete marker._removeFlag;
+            }
+            this._markers.push(marker);
+            this._nbChanges += 1;
+        };
+        PruneCluster.prototype.RegisterMarkers = function (markers) {
+            var _this = this;
+            markers.forEach(function (marker) {
+                _this.RegisterMarker(marker);
+            });
+        };
+        PruneCluster.prototype._sortMarkers = function () {
+            var markers = this._markers, length = markers.length;
+            if (this._nbChanges && !shouldUseInsertionSort(length, this._nbChanges)) {
+                this._markers.sort(function (a, b) { return a.position.lng - b.position.lng; });
+            }
+            else {
+                insertionSort(markers);
+            }
+            this._nbChanges = 0;
+        };
+        PruneCluster.prototype._sortClusters = function () {
+            insertionSort(this._clusters);
+        };
+        PruneCluster.prototype._indexLowerBoundLng = function (lng) {
+            var markers = this._markers, it, step, first = 0, count = markers.length;
+            while (count > 0) {
+                step = Math.floor(count / 2);
+                it = first + step;
+                if (markers[it].position.lng < lng) {
+                    first = ++it;
+                    count -= step + 1;
+                }
+                else {
+                    count = step;
+                }
+            }
+            return first;
+        };
+        PruneCluster.prototype._resetClusterViews = function () {
+            for (var i = 0, l = this._clusters.length; i < l; ++i) {
+                var cluster = this._clusters[i];
+                cluster.Reset();
+                cluster.ComputeBounds(this);
+            }
+        };
+        PruneCluster.prototype.ProcessView = function (bounds) {
+            var heightBuffer = Math.abs(bounds.maxLat - bounds.minLat) * this.ViewPadding, widthBuffer = Math.abs(bounds.maxLng - bounds.minLng) * this.ViewPadding;
+            var extendedBounds = {
+                minLat: bounds.minLat - heightBuffer - heightBuffer,
+                maxLat: bounds.maxLat + heightBuffer + heightBuffer,
+                minLng: bounds.minLng - widthBuffer - widthBuffer,
+                maxLng: bounds.maxLng + widthBuffer + widthBuffer
+            };
+            this._sortMarkers();
+            this._resetClusterViews();
+            var firstIndex = this._indexLowerBoundLng(extendedBounds.minLng);
+            var markers = this._markers, clusters = this._clusters;
+            var workingClusterList = clusters.slice(0);
+            for (var i = firstIndex, l = markers.length; i < l; ++i) {
+                var marker = markers[i], markerPosition = marker.position;
+                if (markerPosition.lng > extendedBounds.maxLng) {
+                    break;
+                }
+                if (markerPosition.lat > extendedBounds.minLat &&
+                    markerPosition.lat < extendedBounds.maxLat &&
+                    !marker.filtered) {
+                    var clusterFound = false, cluster;
+                    for (var j = 0, ll = workingClusterList.length; j < ll; ++j) {
+                        cluster = workingClusterList[j];
+                        if (cluster.bounds.maxLng < marker.position.lng) {
+                            workingClusterList.splice(j, 1);
+                            --j;
+                            --ll;
+                            continue;
+                        }
+                        if (checkPositionInsideBounds(markerPosition, cluster.bounds)) {
+                            cluster.AddMarker(marker);
+                            clusterFound = true;
+                            break;
+                        }
+                    }
+                    if (!clusterFound) {
+                        cluster = new Cluster(marker);
+                        cluster.ComputeBounds(this);
+                        clusters.push(cluster);
+                        workingClusterList.push(cluster);
+                    }
+                }
+            }
+            var newClustersList = [];
+            for (i = 0, l = clusters.length; i < l; ++i) {
+                cluster = clusters[i];
+                if (cluster.population > 0) {
+                    newClustersList.push(cluster);
+                }
+            }
+            this._clusters = newClustersList;
+            this._sortClusters();
+            return this._clusters;
+        };
+        PruneCluster.prototype.RemoveMarkers = function (markers) {
+            if (!markers) {
+                this._markers = [];
+                return;
+            }
+            for (var i = 0, l = markers.length; i < l; ++i) {
+                markers[i]._removeFlag = true;
+            }
+            var newMarkersList = [];
+            for (i = 0, l = this._markers.length; i < l; ++i) {
+                if (!this._markers[i]._removeFlag) {
+                    newMarkersList.push(this._markers[i]);
+                }
+                else {
+                    delete this._markers[i]._removeFlag;
+                }
+            }
+            this._markers = newMarkersList;
+        };
+        PruneCluster.prototype.FindMarkersInArea = function (area) {
+            var aMinLat = area.minLat, aMaxLat = area.maxLat, aMinLng = area.minLng, aMaxLng = area.maxLng, markers = this._markers, result = [];
+            var firstIndex = this._indexLowerBoundLng(aMinLng);
+            for (var i = firstIndex, l = markers.length; i < l; ++i) {
+                var pos = markers[i].position;
+                if (pos.lng > aMaxLng) {
+                    break;
+                }
+                if (pos.lat >= aMinLat && pos.lat <= aMaxLat &&
+                    pos.lng >= aMinLng) {
+                    result.push(markers[i]);
+                }
+            }
+            return result;
+        };
+        PruneCluster.prototype.ComputeBounds = function (markers, withFiltered) {
+            if (withFiltered === void 0) { withFiltered = true; }
+            if (!markers || !markers.length) {
+                return null;
+            }
+            var rMinLat = Number.MAX_VALUE, rMaxLat = -Number.MAX_VALUE, rMinLng = Number.MAX_VALUE, rMaxLng = -Number.MAX_VALUE;
+            for (var i = 0, l = markers.length; i < l; ++i) {
+                if (!withFiltered && markers[i].filtered) {
+                    continue;
+                }
+                var pos = markers[i].position;
+                if (pos.lat < rMinLat)
+                    rMinLat = pos.lat;
+                if (pos.lat > rMaxLat)
+                    rMaxLat = pos.lat;
+                if (pos.lng < rMinLng)
+                    rMinLng = pos.lng;
+                if (pos.lng > rMaxLng)
+                    rMaxLng = pos.lng;
+            }
+            return {
+                minLat: rMinLat,
+                maxLat: rMaxLat,
+                minLng: rMinLng,
+                maxLng: rMaxLng
+            };
+        };
+        PruneCluster.prototype.FindMarkersBoundsInArea = function (area) {
+            return this.ComputeBounds(this.FindMarkersInArea(area));
+        };
+        PruneCluster.prototype.ComputeGlobalBounds = function (withFiltered) {
+            if (withFiltered === void 0) { withFiltered = true; }
+            return this.ComputeBounds(this._markers, withFiltered);
+        };
+        PruneCluster.prototype.GetMarkers = function () {
+            return this._markers;
+        };
+        PruneCluster.prototype.GetPopulation = function () {
+            return this._markers.length;
+        };
+        PruneCluster.prototype.ResetClusters = function () {
+            this._clusters = [];
+        };
+        return PruneCluster;
+    }());
+    PruneCluster_1.PruneCluster = PruneCluster;
+})(PruneCluster || (PruneCluster = {}));
+var PruneCluster;
+(function (PruneCluster) {
+})(PruneCluster || (PruneCluster = {}));
+var PruneClusterForLeaflet = (L.Layer ? L.Layer : L.Class).extend({
+    initialize: function (size, clusterMargin) {
+        var _this = this;
+        if (size === void 0) { size = 120; }
+        if (clusterMargin === void 0) { clusterMargin = 20; }
+        this.Cluster = new PruneCluster.PruneCluster();
+        this.Cluster.Size = size;
+        this.clusterMargin = Math.min(clusterMargin, size / 4);
+        this.Cluster.Project = function (lat, lng) {
+            return _this._map.project(new L.LatLng(lat, lng), Math.floor(_this._map.getZoom()));
+        };
+        this.Cluster.UnProject = function (x, y) {
+            return _this._map.unproject(new L.Point(x, y), Math.floor(_this._map.getZoom()));
+        };
+        this._objectsOnMap = [];
+        this.spiderfier = new PruneClusterLeafletSpiderfier(this);
+        this._hardMove = false;
+        this._resetIcons = false;
+        this._removeTimeoutId = 0;
+        this._markersRemoveListTimeout = [];
+    },
+    RegisterMarker: function (marker) {
+        this.Cluster.RegisterMarker(marker);
+    },
+    RegisterMarkers: function (markers) {
+        this.Cluster.RegisterMarkers(markers);
+    },
+    RemoveMarkers: function (markers) {
+        this.Cluster.RemoveMarkers(markers);
+    },
+    BuildLeafletCluster: function (cluster, position) {
+        var _this = this;
+        var m = new L.Marker(position, {
+            icon: this.BuildLeafletClusterIcon(cluster)
+        });
+        m._leafletClusterBounds = cluster.bounds;
+        m.on('click', function () {
+            var cbounds = m._leafletClusterBounds;
+            var markersArea = _this.Cluster.FindMarkersInArea(cbounds);
+            var b = _this.Cluster.ComputeBounds(markersArea);
+            if (b) {
+                var bounds = new L.LatLngBounds(new L.LatLng(b.minLat, b.maxLng), new L.LatLng(b.maxLat, b.minLng));
+                var zoomLevelBefore = _this._map.getZoom(), zoomLevelAfter = _this._map.getBoundsZoom(bounds, false, new L.Point(20, 20));
+                if (zoomLevelAfter === zoomLevelBefore) {
+                    var filteredBounds = [];
+                    for (var i = 0, l = _this._objectsOnMap.length; i < l; ++i) {
+                        var o = _this._objectsOnMap[i];
+                        if (o.data._leafletMarker !== m) {
+                            if (o.bounds.minLat >= cbounds.minLat &&
+                                o.bounds.maxLat <= cbounds.maxLat &&
+                                o.bounds.minLng >= cbounds.minLng &&
+                                o.bounds.maxLng <= cbounds.maxLng) {
+                                filteredBounds.push(o.bounds);
+                            }
+                        }
+                    }
+                    if (filteredBounds.length > 0) {
+                        var newMarkersArea = [];
+                        var ll = filteredBounds.length;
+                        for (i = 0, l = markersArea.length; i < l; ++i) {
+                            var markerPos = markersArea[i].position;
+                            var isFiltered = false;
+                            for (var j = 0; j < ll; ++j) {
+                                var currentFilteredBounds = filteredBounds[j];
+                                if (markerPos.lat >= currentFilteredBounds.minLat &&
+                                    markerPos.lat <= currentFilteredBounds.maxLat &&
+                                    markerPos.lng >= currentFilteredBounds.minLng &&
+                                    markerPos.lng <= currentFilteredBounds.maxLng) {
+                                    isFiltered = true;
+                                    break;
+                                }
+                            }
+                            if (!isFiltered) {
+                                newMarkersArea.push(markersArea[i]);
+                            }
+                        }
+                        markersArea = newMarkersArea;
+                    }
+                    if (markersArea.length < 200 || zoomLevelAfter >= _this._map.getMaxZoom()) {
+                        _this._map.fire('overlappingmarkers', {
+                            cluster: _this,
+                            markers: markersArea,
+                            center: m.getLatLng(),
+                            marker: m
+                        });
+                    }
+                    else {
+                        zoomLevelAfter++;
+                    }
+                    _this._map.setView(m.getLatLng(), zoomLevelAfter);
+                }
+                else {
+                    _this._map.fitBounds(bounds);
+                }
+            }
+        });
+        return m;
+    },
+    BuildLeafletClusterIcon: function (cluster) {
+        var c = 'prunecluster prunecluster-';
+        var iconSize = 38;
+        var maxPopulation = this.Cluster.GetPopulation();
+        if (cluster.population < Math.max(10, maxPopulation * 0.01)) {
+            c += 'small';
+        }
+        else if (cluster.population < Math.max(100, maxPopulation * 0.05)) {
+            c += 'medium';
+            iconSize = 40;
+        }
+        else {
+            c += 'large';
+            iconSize = 44;
+        }
+        return new L.DivIcon({
+            html: "<div><span>" + cluster.population + "</span></div>",
+            className: c,
+            iconSize: L.point(iconSize, iconSize)
+        });
+    },
+    BuildLeafletMarker: function (marker, position) {
+        var m = new L.Marker(position);
+        this.PrepareLeafletMarker(m, marker.data, marker.category);
+        return m;
+    },
+    PrepareLeafletMarker: function (marker, data, category) {
+        if (data.icon) {
+            if (typeof data.icon === 'function') {
+                marker.setIcon(data.icon(data, category));
+            }
+            else {
+                marker.setIcon(data.icon);
+            }
+        }
+        if (data.popup) {
+            var content = typeof data.popup === 'function' ? data.popup(data, category) : data.popup;
+            if (marker.getPopup()) {
+                marker.setPopupContent(content, data.popupOptions);
+            }
+            else {
+                marker.bindPopup(content, data.popupOptions);
+            }
+        }
+    },
+    onAdd: function (map) {
+        this._map = map;
+        map.on('movestart', this._moveStart, this);
+        map.on('moveend', this._moveEnd, this);
+        map.on('zoomend', this._zoomStart, this);
+        map.on('zoomend', this._zoomEnd, this);
+        this.ProcessView();
+        map.addLayer(this.spiderfier);
+    },
+    onRemove: function (map) {
+        map.off('movestart', this._moveStart, this);
+        map.off('moveend', this._moveEnd, this);
+        map.off('zoomend', this._zoomStart, this);
+        map.off('zoomend', this._zoomEnd, this);
+        for (var i = 0, l = this._objectsOnMap.length; i < l; ++i) {
+            map.removeLayer(this._objectsOnMap[i].data._leafletMarker);
+        }
+        this._objectsOnMap = [];
+        this.Cluster.ResetClusters();
+        map.removeLayer(this.spiderfier);
+        this._map = null;
+    },
+    _moveStart: function () {
+        this._moveInProgress = true;
+    },
+    _moveEnd: function (e) {
+        this._moveInProgress = false;
+        this._hardMove = e.hard;
+        this.ProcessView();
+    },
+    _zoomStart: function () {
+        this._zoomInProgress = true;
+    },
+    _zoomEnd: function () {
+        this._zoomInProgress = false;
+        this.ProcessView();
+    },
+    ProcessView: function () {
+        var _this = this;
+        if (!this._map || this._zoomInProgress || this._moveInProgress) {
+            return;
+        }
+        var map = this._map, bounds = map.getBounds(), zoom = Math.floor(map.getZoom()), marginRatio = this.clusterMargin / this.Cluster.Size, resetIcons = this._resetIcons;
+        var southWest = bounds.getSouthWest(), northEast = bounds.getNorthEast();
+        var clusters = this.Cluster.ProcessView({
+            minLat: southWest.lat,
+            minLng: southWest.lng,
+            maxLat: northEast.lat,
+            maxLng: northEast.lng
+        });
+        var objectsOnMap = this._objectsOnMap, newObjectsOnMap = [], markersOnMap = new Array(objectsOnMap.length);
+        for (var i = 0, l = objectsOnMap.length; i < l; ++i) {
+            var marker = objectsOnMap[i].data._leafletMarker;
+            markersOnMap[i] = marker;
+            marker._removeFromMap = true;
+        }
+        var clusterCreationList = [];
+        var clusterCreationListPopOne = [];
+        var opacityUpdateList = [];
+        var workingList = [];
+        for (i = 0, l = clusters.length; i < l; ++i) {
+            var icluster = clusters[i], iclusterData = icluster.data;
+            var latMargin = (icluster.bounds.maxLat - icluster.bounds.minLat) * marginRatio, lngMargin = (icluster.bounds.maxLng - icluster.bounds.minLng) * marginRatio;
+            for (var j = 0, ll = workingList.length; j < ll; ++j) {
+                var c = workingList[j];
+                if (c.bounds.maxLng < icluster.bounds.minLng) {
+                    workingList.splice(j, 1);
+                    --j;
+                    --ll;
+                    continue;
+                }
+                var oldMaxLng = c.averagePosition.lng + lngMargin, oldMinLat = c.averagePosition.lat - latMargin, oldMaxLat = c.averagePosition.lat + latMargin, newMinLng = icluster.averagePosition.lng - lngMargin, newMinLat = icluster.averagePosition.lat - latMargin, newMaxLat = icluster.averagePosition.lat + latMargin;
+                if (oldMaxLng > newMinLng && oldMaxLat > newMinLat && oldMinLat < newMaxLat) {
+                    iclusterData._leafletCollision = true;
+                    c.ApplyCluster(icluster);
+                    break;
+                }
+            }
+            if (!iclusterData._leafletCollision) {
+                workingList.push(icluster);
+            }
+        }
+        clusters.forEach(function (cluster) {
+            var m = undefined;
+            var data = cluster.data;
+            if (data._leafletCollision) {
+                data._leafletCollision = false;
+                data._leafletOldPopulation = 0;
+                data._leafletOldHashCode = 0;
+                return;
+            }
+            var position = new L.LatLng(cluster.averagePosition.lat, cluster.averagePosition.lng);
+            var oldMarker = data._leafletMarker;
+            if (oldMarker) {
+                if (cluster.population === 1 && data._leafletOldPopulation === 1 && cluster.hashCode === oldMarker._hashCode) {
+                    if (resetIcons || oldMarker._zoomLevel !== zoom || cluster.lastMarker.data.forceIconRedraw) {
+                        _this.PrepareLeafletMarker(oldMarker, cluster.lastMarker.data, cluster.lastMarker.category);
+                        if (cluster.lastMarker.data.forceIconRedraw) {
+                            cluster.lastMarker.data.forceIconRedraw = false;
+                        }
+                    }
+                    oldMarker.setLatLng(position);
+                    m = oldMarker;
+                }
+                else if (cluster.population > 1 && data._leafletOldPopulation > 1 && (oldMarker._zoomLevel === zoom ||
+                    data._leafletPosition.equals(position))) {
+                    oldMarker.setLatLng(position);
+                    if (resetIcons || cluster.population != data._leafletOldPopulation ||
+                        cluster.hashCode !== data._leafletOldHashCode) {
+                        var boundsCopy = {};
+                        L.Util.extend(boundsCopy, cluster.bounds);
+                        oldMarker._leafletClusterBounds = boundsCopy;
+                        oldMarker.setIcon(_this.BuildLeafletClusterIcon(cluster));
+                    }
+                    data._leafletOldPopulation = cluster.population;
+                    data._leafletOldHashCode = cluster.hashCode;
+                    m = oldMarker;
+                }
+            }
+            if (!m) {
+                if (cluster.population === 1) {
+                    clusterCreationListPopOne.push(cluster);
+                }
+                else {
+                    clusterCreationList.push(cluster);
+                }
+                data._leafletPosition = position;
+                data._leafletOldPopulation = cluster.population;
+                data._leafletOldHashCode = cluster.hashCode;
+            }
+            else {
+                m._removeFromMap = false;
+                newObjectsOnMap.push(cluster);
+                m._zoomLevel = zoom;
+                m._hashCode = cluster.hashCode;
+                m._population = cluster.population;
+                data._leafletMarker = m;
+                data._leafletPosition = position;
+            }
+        });
+        clusterCreationList = clusterCreationListPopOne.concat(clusterCreationList);
+        for (i = 0, l = objectsOnMap.length; i < l; ++i) {
+            icluster = objectsOnMap[i];
+            var idata = icluster.data;
+            marker = idata._leafletMarker;
+            if (idata._leafletMarker._removeFromMap) {
+                var remove = true;
+                if (marker._zoomLevel === zoom) {
+                    var pa = icluster.averagePosition;
+                    latMargin = (icluster.bounds.maxLat - icluster.bounds.minLat) * marginRatio,
+                        lngMargin = (icluster.bounds.maxLng - icluster.bounds.minLng) * marginRatio;
+                    for (j = 0, ll = clusterCreationList.length; j < ll; ++j) {
+                        var jcluster = clusterCreationList[j], jdata = jcluster.data;
+                        if (marker._population === 1 && jcluster.population === 1 &&
+                            marker._hashCode === jcluster.hashCode) {
+                            if (resetIcons || jcluster.lastMarker.data.forceIconRedraw) {
+                                this.PrepareLeafletMarker(marker, jcluster.lastMarker.data, jcluster.lastMarker.category);
+                                if (jcluster.lastMarker.data.forceIconRedraw) {
+                                    jcluster.lastMarker.data.forceIconRedraw = false;
+                                }
+                            }
+                            marker.setLatLng(jdata._leafletPosition);
+                            remove = false;
+                        }
+                        else {
+                            var pb = jcluster.averagePosition;
+                            var oldMinLng = pa.lng - lngMargin, newMaxLng = pb.lng + lngMargin;
+                            oldMaxLng = pa.lng + lngMargin;
+                            oldMinLat = pa.lat - latMargin;
+                            oldMaxLat = pa.lat + latMargin;
+                            newMinLng = pb.lng - lngMargin;
+                            newMinLat = pb.lat - latMargin;
+                            newMaxLat = pb.lat + latMargin;
+                            if ((marker._population > 1 && jcluster.population > 1) &&
+                                (oldMaxLng > newMinLng && oldMinLng < newMaxLng && oldMaxLat > newMinLat && oldMinLat < newMaxLat)) {
+                                marker.setLatLng(jdata._leafletPosition);
+                                marker.setIcon(this.BuildLeafletClusterIcon(jcluster));
+                                var poisson = {};
+                                L.Util.extend(poisson, jcluster.bounds);
+                                marker._leafletClusterBounds = poisson;
+                                jdata._leafletOldPopulation = jcluster.population;
+                                jdata._leafletOldHashCode = jcluster.hashCode;
+                                marker._population = jcluster.population;
+                                remove = false;
+                            }
+                        }
+                        if (!remove) {
+                            jdata._leafletMarker = marker;
+                            marker._removeFromMap = false;
+                            newObjectsOnMap.push(jcluster);
+                            clusterCreationList.splice(j, 1);
+                            --j;
+                            --ll;
+                            break;
+                        }
+                    }
+                }
+                if (remove) {
+                    if (!marker._removeFromMap)
+                        console.error("wtf");
+                }
+            }
+        }
+        for (i = 0, l = clusterCreationList.length; i < l; ++i) {
+            icluster = clusterCreationList[i],
+                idata = icluster.data;
+            var iposition = idata._leafletPosition;
+            var creationMarker;
+            if (icluster.population === 1) {
+                creationMarker = this.BuildLeafletMarker(icluster.lastMarker, iposition);
+            }
+            else {
+                creationMarker = this.BuildLeafletCluster(icluster, iposition);
+            }
+            creationMarker.addTo(map);
+            creationMarker.setOpacity(0);
+            opacityUpdateList.push(creationMarker);
+            idata._leafletMarker = creationMarker;
+            creationMarker._zoomLevel = zoom;
+            creationMarker._hashCode = icluster.hashCode;
+            creationMarker._population = icluster.population;
+            newObjectsOnMap.push(icluster);
+        }
+        window.setTimeout(function () {
+            for (i = 0, l = opacityUpdateList.length; i < l; ++i) {
+                var m = opacityUpdateList[i];
+                if (m._icon)
+                    L.DomUtil.addClass(m._icon, "prunecluster-anim");
+                if (m._shadow)
+                    L.DomUtil.addClass(m._shadow, "prunecluster-anim");
+                m.setOpacity(1);
+            }
+        }, 1);
+        if (this._hardMove) {
+            for (i = 0, l = markersOnMap.length; i < l; ++i) {
+                marker = markersOnMap[i];
+                if (marker._removeFromMap) {
+                    map.removeLayer(marker);
+                }
+            }
+        }
+        else {
+            if (this._removeTimeoutId !== 0) {
+                window.clearTimeout(this._removeTimeoutId);
+                for (i = 0, l = this._markersRemoveListTimeout.length; i < l; ++i) {
+                    map.removeLayer(this._markersRemoveListTimeout[i]);
+                }
+            }
+            var toRemove = [];
+            for (i = 0, l = markersOnMap.length; i < l; ++i) {
+                marker = markersOnMap[i];
+                if (marker._removeFromMap) {
+                    marker.setOpacity(0);
+                    toRemove.push(marker);
+                }
+            }
+            if (toRemove.length > 0) {
+                this._removeTimeoutId = window.setTimeout(function () {
+                    for (i = 0, l = toRemove.length; i < l; ++i) {
+                        map.removeLayer(toRemove[i]);
+                    }
+                    _this._removeTimeoutId = 0;
+                }, 300);
+            }
+            this._markersRemoveListTimeout = toRemove;
+        }
+        this._objectsOnMap = newObjectsOnMap;
+        this._hardMove = false;
+        this._resetIcons = false;
+    },
+    FitBounds: function (withFiltered) {
+        if (withFiltered === void 0) { withFiltered = true; }
+        var bounds = this.Cluster.ComputeGlobalBounds(withFiltered);
+        if (bounds) {
+            this._map.fitBounds(new L.LatLngBounds(new L.LatLng(bounds.minLat, bounds.maxLng), new L.LatLng(bounds.maxLat, bounds.minLng)));
+        }
+    },
+    GetMarkers: function () {
+        return this.Cluster.GetMarkers();
+    },
+    RedrawIcons: function (processView) {
+        if (processView === void 0) { processView = true; }
+        this._resetIcons = true;
+        if (processView) {
+            this.ProcessView();
+        }
+    }
+});
+var PruneClusterLeafletSpiderfier = (L.Layer ? L.Layer : L.Class).extend({
+    _2PI: Math.PI * 2,
+    _circleFootSeparation: 25,
+    _circleStartAngle: Math.PI / 6,
+    _spiralFootSeparation: 28,
+    _spiralLengthStart: 11,
+    _spiralLengthFactor: 5,
+    _spiralCountTrigger: 8,
+    spiderfyDistanceMultiplier: 1,
+    initialize: function (cluster) {
+        this._cluster = cluster;
+        this._currentMarkers = [];
+        this._multiLines = !!L.multiPolyline;
+        this._lines = this._multiLines ?
+            L.multiPolyline([], { weight: 1.5, color: '#222' }) :
+            L.polyline([], { weight: 1.5, color: '#222' });
+    },
+    onAdd: function (map) {
+        this._map = map;
+        this._map.on('overlappingmarkers', this.Spiderfy, this);
+        this._map.on('click', this.Unspiderfy, this);
+        this._map.on('zoomend', this.Unspiderfy, this);
+    },
+    Spiderfy: function (data) {
+        var _this = this;
+        if (data.cluster !== this._cluster) {
+            return;
+        }
+        this.Unspiderfy();
+        var markers = data.markers.filter(function (marker) {
+            return !marker.filtered;
+        });
+        this._currentCenter = data.center;
+        var centerPoint = this._map.latLngToLayerPoint(data.center);
+        var points;
+        if (markers.length >= this._spiralCountTrigger) {
+            points = this._generatePointsSpiral(markers.length, centerPoint);
+        }
+        else {
+            if (this._multiLines) {
+                centerPoint.y += 10;
+            }
+            points = this._generatePointsCircle(markers.length, centerPoint);
+        }
+        var polylines = [];
+        var leafletMarkers = [];
+        var projectedPoints = [];
+        for (var i = 0, l = points.length; i < l; ++i) {
+            var pos = this._map.layerPointToLatLng(points[i]);
+            var m = this._cluster.BuildLeafletMarker(markers[i], data.center);
+            m.setZIndexOffset(5000);
+            m.setOpacity(0);
+            this._currentMarkers.push(m);
+            this._map.addLayer(m);
+            leafletMarkers.push(m);
+            projectedPoints.push(pos);
+        }
+        window.setTimeout(function () {
+            for (i = 0, l = points.length; i < l; ++i) {
+                leafletMarkers[i].setLatLng(projectedPoints[i])
+                    .setOpacity(1);
+            }
+            var startTime = +new Date();
+            var interval = 42, duration = 290;
+            var anim = window.setInterval(function () {
+                polylines = [];
+                var now = +new Date();
+                var d = now - startTime;
+                if (d >= duration) {
+                    window.clearInterval(anim);
+                    stepRatio = 1.0;
+                }
+                else {
+                    var stepRatio = d / duration;
+                }
+                var center = data.center;
+                for (i = 0, l = points.length; i < l; ++i) {
+                    var p = projectedPoints[i], diffLat = p.lat - center.lat, diffLng = p.lng - center.lng;
+                    polylines.push([center, new L.LatLng(center.lat + diffLat * stepRatio, center.lng + diffLng * stepRatio)]);
+                }
+                _this._lines.setLatLngs(polylines);
+            }, interval);
+        }, 1);
+        this._lines.setLatLngs(polylines);
+        this._map.addLayer(this._lines);
+        if (data.marker) {
+            this._clusterMarker = data.marker.setOpacity(0.3);
+        }
+    },
+    _generatePointsCircle: function (count, centerPt) {
+        var circumference = this.spiderfyDistanceMultiplier * this._circleFootSeparation * (2 + count), legLength = circumference / this._2PI, angleStep = this._2PI / count, res = [], i, angle;
+        res.length = count;
+        for (i = count - 1; i >= 0; i--) {
+            angle = this._circleStartAngle + i * angleStep;
+            res[i] = new L.Point(Math.round(centerPt.x + legLength * Math.cos(angle)), Math.round(centerPt.y + legLength * Math.sin(angle)));
+        }
+        return res;
+    },
+    _generatePointsSpiral: function (count, centerPt) {
+        var legLength = this.spiderfyDistanceMultiplier * this._spiralLengthStart, separation = this.spiderfyDistanceMultiplier * this._spiralFootSeparation, lengthFactor = this.spiderfyDistanceMultiplier * this._spiralLengthFactor, angle = 0, res = [], i;
+        res.length = count;
+        for (i = count - 1; i >= 0; i--) {
+            angle += separation / legLength + i * 0.0005;
+            res[i] = new L.Point(Math.round(centerPt.x + legLength * Math.cos(angle)), Math.round(centerPt.y + legLength * Math.sin(angle)));
+            legLength += this._2PI * lengthFactor / angle;
+        }
+        return res;
+    },
+    Unspiderfy: function () {
+        var _this = this;
+        for (var i = 0, l = this._currentMarkers.length; i < l; ++i) {
+            this._currentMarkers[i].setLatLng(this._currentCenter).setOpacity(0);
+        }
+        var markers = this._currentMarkers;
+        window.setTimeout(function () {
+            for (i = 0, l = markers.length; i < l; ++i) {
+                _this._map.removeLayer(markers[i]);
+            }
+        }, 300);
+        this._currentMarkers = [];
+        this._map.removeLayer(this._lines);
+        if (this._clusterMarker) {
+            this._clusterMarker.setOpacity(1);
+        }
+    },
+    onRemove: function (map) {
+        this.Unspiderfy();
+        map.off('overlappingmarkers', this.Spiderfy, this);
+        map.off('click', this.Unspiderfy, this);
+        map.off('zoomend', this.Unspiderfy, this);
+    }
+});
 
+
+/*** EXPORTS FROM exports-loader ***/
+exports["PruneCluster"] = (PruneCluster);
+exports["PruneClusterForLeaflet"] = (PruneClusterForLeaflet);
 
 /***/ }),
 /* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(111);
+module.exports = __webpack_require__(316);
+
+
+/***/ }),
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -32387,7 +33350,7 @@ module.exports = __webpack_require__(314);
  * building robust, powerful web applications using React + Laravel.
  */
 
-__webpack_require__(111);
+__webpack_require__(112);
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -32395,14 +33358,14 @@ __webpack_require__(111);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__webpack_require__(135);
+__webpack_require__(136);
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(112); // Lodash.js
+window._ = __webpack_require__(113); // Lodash.js
 window.L = __webpack_require__(1); // Leaflet.js
 window.Popper = __webpack_require__(68).default;
 
@@ -32415,7 +33378,7 @@ window.Popper = __webpack_require__(68).default;
 try {
   window.$ = window.jQuery = __webpack_require__(69);
 
-  __webpack_require__(114);
+  __webpack_require__(115);
 } catch (e) {}
 
 /**
@@ -32424,7 +33387,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(115);
+window.axios = __webpack_require__(116);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -32460,7 +33423,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -49572,10 +50535,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34), __webpack_require__(113)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35), __webpack_require__(114)(module)))
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -49603,7 +50566,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -53553,13 +54516,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(116);
+module.exports = __webpack_require__(117);
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53567,8 +54530,8 @@ module.exports = __webpack_require__(116);
 
 var utils = __webpack_require__(3);
 var bind = __webpack_require__(70);
-var Axios = __webpack_require__(118);
-var defaults = __webpack_require__(35);
+var Axios = __webpack_require__(119);
+var defaults = __webpack_require__(36);
 
 /**
  * Create an instance of Axios
@@ -53602,14 +54565,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(74);
-axios.CancelToken = __webpack_require__(133);
+axios.CancelToken = __webpack_require__(134);
 axios.isCancel = __webpack_require__(73);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(134);
+axios.spread = __webpack_require__(135);
 
 module.exports = axios;
 
@@ -53618,7 +54581,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports) {
 
 /*!
@@ -53645,16 +54608,16 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(35);
+var defaults = __webpack_require__(36);
 var utils = __webpack_require__(3);
-var InterceptorManager = __webpack_require__(128);
-var dispatchRequest = __webpack_require__(129);
+var InterceptorManager = __webpack_require__(129);
+var dispatchRequest = __webpack_require__(130);
 
 /**
  * Create a new instance of Axios
@@ -53731,7 +54694,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -53921,7 +54884,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53940,7 +54903,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53973,7 +54936,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54001,7 +54964,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54074,7 +55037,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54134,7 +55097,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54209,7 +55172,7 @@ module.exports = (
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54252,7 +55215,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54312,7 +55275,7 @@ module.exports = (
 
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54371,18 +55334,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(3);
-var transformData = __webpack_require__(130);
+var transformData = __webpack_require__(131);
 var isCancel = __webpack_require__(73);
-var defaults = __webpack_require__(35);
-var isAbsoluteURL = __webpack_require__(131);
-var combineURLs = __webpack_require__(132);
+var defaults = __webpack_require__(36);
+var isAbsoluteURL = __webpack_require__(132);
+var combineURLs = __webpack_require__(133);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -54464,7 +55427,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54491,7 +55454,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54512,7 +55475,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54533,7 +55496,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54597,7 +55560,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54631,18 +55594,18 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Content__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Content__ = __webpack_require__(169);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54695,7 +55658,7 @@ if (document.getElementById('routing')) {
 }
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54716,8 +55679,8 @@ if (true) {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(36);
-var checkPropTypes = __webpack_require__(37);
+var _assign = __webpack_require__(37);
+var checkPropTypes = __webpack_require__(38);
 
 // TODO: this is special because it gets imported during build.
 
@@ -56428,7 +57391,7 @@ module.exports = react;
 
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56450,10 +57413,10 @@ if (true) {
 'use strict';
 
 var React = __webpack_require__(0);
-var _assign = __webpack_require__(36);
-var checkPropTypes = __webpack_require__(37);
-var schedule = __webpack_require__(138);
-var tracing = __webpack_require__(140);
+var _assign = __webpack_require__(37);
+var checkPropTypes = __webpack_require__(38);
+var schedule = __webpack_require__(139);
+var tracing = __webpack_require__(141);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -74694,7 +75657,7 @@ module.exports = reactDom;
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74703,12 +75666,12 @@ module.exports = reactDom;
 if (false) {
   module.exports = require('./cjs/schedule.production.min.js');
 } else {
-  module.exports = __webpack_require__(139);
+  module.exports = __webpack_require__(140);
 }
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75137,7 +76100,7 @@ exports.unstable_cancelScheduledWork = unstable_cancelScheduledWork;
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75146,12 +76109,12 @@ exports.unstable_cancelScheduledWork = unstable_cancelScheduledWork;
 if (false) {
   module.exports = require('./cjs/schedule-tracing.production.min.js');
 } else {
-  module.exports = __webpack_require__(141);
+  module.exports = __webpack_require__(142);
 }
 
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75585,18 +76548,18 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(40);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -75651,7 +76614,7 @@ BrowserRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (BrowserRouter);
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75664,10 +76627,10 @@ BrowserRouter.propTypes = {
 
 
 
-var assign = __webpack_require__(36);
+var assign = __webpack_require__(37);
 
 var ReactPropTypesSecret = __webpack_require__(75);
-var checkPropTypes = __webpack_require__(37);
+var checkPropTypes = __webpack_require__(38);
 
 var printWarning = function() {};
 
@@ -76213,17 +77176,17 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(76);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -76517,7 +77480,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createBrowserHistory);
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76593,7 +77556,7 @@ function resolvePathname(to) {
 /* harmony default export */ __webpack_exports__["a"] = (resolvePathname);
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76637,17 +77600,17 @@ function valueEqual(a, b) {
 /* harmony default export */ __webpack_exports__["a"] = (valueEqual);
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(76);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -76958,15 +77921,15 @@ var createHashHistory = function createHashHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createHashHistory);
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(39);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -77126,18 +78089,18 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createMemoryHistory);
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(40);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -77191,29 +78154,29 @@ HashRouter.propTypes = {
 /* unused harmony default export */ var _unused_webpack_default_export = (HashRouter);
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__ = __webpack_require__(152);
 // Written in this round about way for babel-transform-imports
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(41);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -77268,7 +78231,7 @@ MemoryRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (MemoryRouter);
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77354,7 +78317,7 @@ NavLink.defaultProps = {
 /* unused harmony default export */ var _unused_webpack_default_export = (NavLink);
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports) {
 
 module.exports = Array.isArray || function (arr) {
@@ -77363,18 +78326,18 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__ = __webpack_require__(156);
 // Written in this round about way for babel-transform-imports
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77382,7 +78345,7 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -77465,18 +78428,18 @@ Prompt.contextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Prompt);
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__ = __webpack_require__(158);
 // Written in this round about way for babel-transform-imports
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77484,9 +78447,9 @@ Prompt.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__generatePath__ = __webpack_require__(81);
@@ -77605,31 +78568,31 @@ Redirect.contextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Redirect);
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__ = __webpack_require__(160);
 // Written in this round about way for babel-transform-imports
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__["a" /* default */]);
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(41);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -77782,18 +78745,18 @@ StaticRouter.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (StaticRouter);
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__ = __webpack_require__(162);
 // Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__["a" /* default */]);
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77801,11 +78764,11 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(42);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -77885,7 +78848,7 @@ Switch.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Switch);
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77896,29 +78859,29 @@ Switch.propTypes = {
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_generatePath__["a" /* default */]);
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(42);
 // Written in this round about way for babel-transform-imports
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__["a" /* default */]);
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__ = __webpack_require__(166);
 // Written in this round about way for babel-transform-imports
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__["a" /* default */]);
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77926,7 +78889,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(79);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -77967,7 +78930,7 @@ var withRouter = function withRouter(Component) {
 /* harmony default export */ __webpack_exports__["a"] = (withRouter);
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78042,13 +79005,13 @@ module.exports = hoistNonReactStatics;
 
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(8);
 
 
 
@@ -78088,7 +79051,7 @@ var Header = function Header() {
             { className: 'nav-item' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                { className: 'nav-link', to: 'allLocations' },
+                { className: 'nav-link', to: '/allLocations' },
                 'Property Listing'
             )
         ),
@@ -78116,28 +79079,30 @@ var Header = function Header() {
 /* harmony default export */ __webpack_exports__["a"] = (Header);
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Main__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Form__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Map__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__registerLocation__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__editLocation__ = __webpack_require__(311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__createContract__ = __webpack_require__(312);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__editContract__ = __webpack_require__(313);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__allLocations__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Main__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Form__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Map__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__registerLocation__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__allLocations__ = __webpack_require__(311);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__viewLocation__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__editLocation__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__createContract__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__editContract__ = __webpack_require__(315);
 
 
 
 
 // React Components
+
 
 
 
@@ -78160,21 +79125,25 @@ var Children = function Children() {
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/form', component: __WEBPACK_IMPORTED_MODULE_4__Form__["a" /* default */] }),
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/map', component: __WEBPACK_IMPORTED_MODULE_5__Map__["a" /* default */] }),
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/registerLocation', component: __WEBPACK_IMPORTED_MODULE_6__registerLocation__["a" /* default */] }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editLocation', component: __WEBPACK_IMPORTED_MODULE_7__editLocation__["a" /* default */], exact: true }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createContract', component: __WEBPACK_IMPORTED_MODULE_8__createContract__["a" /* default */] }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editContract', component: __WEBPACK_IMPORTED_MODULE_9__editContract__["a" /* default */], exact: true }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: 'location/allLocations', component: __WEBPACK_IMPORTED_MODULE_10__allLocations__["a" /* default */], exact: true })
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/viewLocation', component: __WEBPACK_IMPORTED_MODULE_8__viewLocation__["a" /* default */], exact: true }),
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editLocation', component: __WEBPACK_IMPORTED_MODULE_9__editLocation__["a" /* default */], exact: true }),
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createContract', component: __WEBPACK_IMPORTED_MODULE_10__createContract__["a" /* default */] }),
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editContract', component: __WEBPACK_IMPORTED_MODULE_11__editContract__["a" /* default */], exact: true }),
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/allLocations', component: __WEBPACK_IMPORTED_MODULE_7__allLocations__["a" /* default */], exact: true })
 	);
 };
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -78268,13 +79237,13 @@ var Main = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Main);
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -78426,17 +79395,17 @@ var FormTest = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (FormTest);
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(22);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -78893,7 +79862,7 @@ var MapTest = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (MapTest);
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78907,7 +79876,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-var ReactIs = __webpack_require__(173);
+var ReactIs = __webpack_require__(174);
 var React = __webpack_require__(0);
 var REACT_STATICS = {
     childContextTypes: true,
@@ -78981,7 +79950,7 @@ module.exports = hoistNonReactStatics;
 
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78990,12 +79959,12 @@ module.exports = hoistNonReactStatics;
 if (false) {
   module.exports = require('./cjs/react-is.production.min.js');
 } else {
-  module.exports = __webpack_require__(174);
+  module.exports = __webpack_require__(175);
 }
 
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79136,14 +80105,14 @@ exports.isStrictMode = isStrictMode;
 
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapControl__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapControl__ = __webpack_require__(23);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -79176,14 +80145,14 @@ var AttributionControl = function (_MapControl) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(AttributionControl));
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(11);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -79231,11 +80200,11 @@ var Circle = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(Circle));
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__basePick_js__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__basePick_js__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__flatRest_js__ = __webpack_require__(89);
 
 
@@ -79265,11 +80234,11 @@ var pick = Object(__WEBPACK_IMPORTED_MODULE_1__flatRest_js__["a" /* default */])
 
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__basePickBy_js__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__basePickBy_js__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hasIn_js__ = __webpack_require__(88);
 
 
@@ -79293,12 +80262,12 @@ function basePick(object, paths) {
 
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseSet_js__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseSet_js__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__castPath_js__ = __webpack_require__(17);
 
 
@@ -79333,7 +80302,7 @@ function basePickBy(object, paths, predicate) {
 
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79387,7 +80356,7 @@ function getRawTag(value) {
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79416,11 +80385,11 @@ function objectToString(value) {
 
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__memoizeCapped_js__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__memoizeCapped_js__ = __webpack_require__(184);
 
 
 /** Used to match property names within property paths. */
@@ -79451,11 +80420,11 @@ var stringToPath = Object(__WEBPACK_IMPORTED_MODULE_0__memoizeCapped_js__["a" /*
 
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__memoize_js__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__memoize_js__ = __webpack_require__(185);
 
 
 /** Used as the maximum memoize cache size. */
@@ -79485,7 +80454,7 @@ function memoizeCapped(func) {
 
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79566,12 +80535,12 @@ memoize.Cache = __WEBPACK_IMPORTED_MODULE_0__MapCache_js__["a" /* default */];
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Hash_js__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ListCache_js__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Hash_js__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ListCache_js__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Map_js__ = __webpack_require__(48);
 
 
@@ -79597,15 +80566,15 @@ function mapCacheClear() {
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hashClear_js__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hashDelete_js__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hashGet_js__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hashHas_js__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__hashSet_js__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hashClear_js__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hashDelete_js__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hashGet_js__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hashHas_js__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__hashSet_js__ = __webpack_require__(196);
 
 
 
@@ -79641,11 +80610,11 @@ Hash.prototype.set = __WEBPACK_IMPORTED_MODULE_4__hashSet_js__["a" /* default */
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(30);
 
 
 /**
@@ -79664,12 +80633,12 @@ function hashClear() {
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isFunction_js__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isMasked_js__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isMasked_js__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObject_js__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__toSource_js__ = __webpack_require__(83);
 
@@ -79722,11 +80691,11 @@ function baseIsNative(value) {
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coreJsData_js__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coreJsData_js__ = __webpack_require__(191);
 
 
 /** Used to detect methods masquerading as native. */
@@ -79750,7 +80719,7 @@ function isMasked(func) {
 
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79764,7 +80733,7 @@ var coreJsData = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */]['__co
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79784,7 +80753,7 @@ function getValue(object, key) {
 
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79808,11 +80777,11 @@ function hashDelete(key) {
 
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(30);
 
 
 /** Used to stand-in for `undefined` hash values. */
@@ -79846,11 +80815,11 @@ function hashGet(key) {
 
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(30);
 
 
 /** Used for built-in method references. */
@@ -79877,11 +80846,11 @@ function hashHas(key) {
 
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nativeCreate_js__ = __webpack_require__(30);
 
 
 /** Used to stand-in for `undefined` hash values. */
@@ -79908,7 +80877,7 @@ function hashSet(key, value) {
 
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79928,11 +80897,11 @@ function listCacheClear() {
 
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(32);
 
 
 /** Used for built-in method references. */
@@ -79971,11 +80940,11 @@ function listCacheDelete(key) {
 
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(32);
 
 
 /**
@@ -79998,11 +80967,11 @@ function listCacheGet(key) {
 
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(32);
 
 
 /**
@@ -80022,11 +80991,11 @@ function listCacheHas(key) {
 
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assocIndexOf_js__ = __webpack_require__(32);
 
 
 /**
@@ -80056,11 +81025,11 @@ function listCacheSet(key, value) {
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(33);
 
 
 /**
@@ -80082,7 +81051,7 @@ function mapCacheDelete(key) {
 
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80104,11 +81073,11 @@ function isKeyable(value) {
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(33);
 
 
 /**
@@ -80128,11 +81097,11 @@ function mapCacheGet(key) {
 
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(33);
 
 
 /**
@@ -80152,11 +81121,11 @@ function mapCacheHas(key) {
 
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getMapData_js__ = __webpack_require__(33);
 
 
 /**
@@ -80182,7 +81151,7 @@ function mapCacheSet(key, value) {
 
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80230,7 +81199,7 @@ function baseToString(value) {
 
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80289,7 +81258,7 @@ function baseSet(object, path, value, customizer) {
 
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80309,7 +81278,7 @@ function baseHasIn(object, key) {
 
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80361,12 +81330,12 @@ function hasPath(object, path, hasFunc) {
 
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -80388,11 +81357,11 @@ function baseIsArguments(value) {
 
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseFlatten_js__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseFlatten_js__ = __webpack_require__(213);
 
 
 /**
@@ -80418,12 +81387,12 @@ function flatten(array) {
 
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayPush_js__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isFlattenable_js__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isFlattenable_js__ = __webpack_require__(214);
 
 
 
@@ -80465,7 +81434,7 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
 
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80495,11 +81464,11 @@ function isFlattenable(value) {
 
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__apply_js__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__apply_js__ = __webpack_require__(216);
 
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -80539,7 +81508,7 @@ function overRest(func, start, transform) {
 
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80567,12 +81536,12 @@ function apply(func, thisArg, args) {
 
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseSetToString_js__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shortOut_js__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseSetToString_js__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shortOut_js__ = __webpack_require__(220);
 
 
 
@@ -80590,11 +81559,11 @@ var setToString = Object(__WEBPACK_IMPORTED_MODULE_1__shortOut_js__["a" /* defau
 
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constant_js__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constant_js__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__defineProperty_js__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__identity_js__ = __webpack_require__(54);
 
@@ -80622,7 +81591,7 @@ var baseSetToString = !__WEBPACK_IMPORTED_MODULE_1__defineProperty_js__["a" /* d
 
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80655,7 +81624,7 @@ function constant(value) {
 
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80699,15 +81668,15 @@ function shortOut(func) {
 
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Stack_js__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__equalArrays_js__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equalByTag_js__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__equalObjects_js__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__getTag_js__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equalByTag_js__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__equalObjects_js__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__getTag_js__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__isArray_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__isBuffer_js__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__isTypedArray_js__ = __webpack_require__(97);
@@ -80797,11 +81766,11 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListCache_js__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListCache_js__ = __webpack_require__(31);
 
 
 /**
@@ -80820,7 +81789,7 @@ function stackClear() {
 
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80845,7 +81814,7 @@ function stackDelete(key) {
 
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80866,7 +81835,7 @@ function stackGet(key) {
 
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80887,11 +81856,11 @@ function stackHas(key) {
 
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListCache_js__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListCache_js__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Map_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapCache_js__ = __webpack_require__(45);
 
@@ -80931,13 +81900,13 @@ function stackSet(key, value) {
 
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MapCache_js__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setCacheAdd_js__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setCacheHas_js__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__setCacheAdd_js__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setCacheHas_js__ = __webpack_require__(229);
 
 
 
@@ -80968,7 +81937,7 @@ SetCache.prototype.has = __WEBPACK_IMPORTED_MODULE_2__setCacheHas_js__["a" /* de
 
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80994,7 +81963,7 @@ function setCacheAdd(value) {
 
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81015,7 +81984,7 @@ function setCacheHas(value) {
 
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81045,7 +82014,7 @@ function arraySome(array, predicate) {
 
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81065,7 +82034,7 @@ function cacheHas(cache, key) {
 
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81073,8 +82042,8 @@ function cacheHas(cache, key) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Uint8Array_js__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eq_js__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__equalArrays_js__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mapToArray_js__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__setToArray_js__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mapToArray_js__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__setToArray_js__ = __webpack_require__(234);
 
 
 
@@ -81190,7 +82159,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81215,7 +82184,7 @@ function mapToArray(map) {
 
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81240,7 +82209,7 @@ function setToArray(set) {
 
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81337,7 +82306,7 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81369,7 +82338,7 @@ function arrayFilter(array, predicate) {
 
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81396,7 +82365,7 @@ function baseTimes(n, iteratee) {
 
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81421,13 +82390,13 @@ function stubFalse() {
 
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isLength_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -81491,12 +82460,12 @@ function baseIsTypedArray(value) {
 
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isPrototype_js__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nativeKeys_js__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nativeKeys_js__ = __webpack_require__(241);
 
 
 
@@ -81530,7 +82499,7 @@ function baseKeys(object) {
 
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81544,7 +82513,7 @@ var nativeKeys = Object(__WEBPACK_IMPORTED_MODULE_0__overArg_js__["a" /* default
 
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81560,7 +82529,7 @@ var DataView = Object(__WEBPACK_IMPORTED_MODULE_0__getNative_js__["a" /* default
 
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81576,7 +82545,7 @@ var Promise = Object(__WEBPACK_IMPORTED_MODULE_0__getNative_js__["a" /* default 
 
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81592,7 +82561,7 @@ var Set = Object(__WEBPACK_IMPORTED_MODULE_0__getNative_js__["a" /* default */])
 
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81608,12 +82577,12 @@ var WeakMap = Object(__WEBPACK_IMPORTED_MODULE_0__getNative_js__["a" /* default 
 
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseFor_js__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keys_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseFor_js__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keys_js__ = __webpack_require__(24);
 
 
 
@@ -81633,11 +82602,11 @@ function baseForOwn(object, iteratee) {
 
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBaseFor_js__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBaseFor_js__ = __webpack_require__(248);
 
 
 /**
@@ -81657,7 +82626,7 @@ var baseFor = Object(__WEBPACK_IMPORTED_MODULE_0__createBaseFor_js__["a" /* defa
 
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81689,7 +82658,7 @@ function createBaseFor(fromRight) {
 
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81729,7 +82698,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81751,14 +82720,14 @@ function castFunction(value) {
 
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(11);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -81804,14 +82773,14 @@ var CircleMarker = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(CircleMarker));
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(11);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -81856,7 +82825,7 @@ var FeatureGroup = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(FeatureGroup));
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81864,7 +82833,7 @@ var FeatureGroup = function (_Path) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Path__ = __webpack_require__(11);
 
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -81908,7 +82877,7 @@ var GeoJSON = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* withLeaflet */])(GeoJSON));
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81967,7 +82936,7 @@ var ImageOverlay = function (_MapLayer) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(ImageOverlay));
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82011,7 +82980,7 @@ var LayerGroup = function (_MapLayer) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(LayerGroup));
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82021,7 +82990,7 @@ var LayerGroup = function (_MapLayer) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MapControl__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MapControl__ = __webpack_require__(23);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -82245,7 +83214,7 @@ LayersControl.Overlay = Overlay;
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* withLeaflet */])(LayersControl));
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82255,7 +83224,7 @@ LayersControl.Overlay = Overlay;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__MapComponent__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__MapComponent__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_updateClassName__ = __webpack_require__(102);
 
 
@@ -82527,31 +83496,31 @@ var Map = function (_MapComponent) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Map);
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Stack_js__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__arrayEach_js__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assignValue_js__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseAssign_js__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__baseAssignIn_js__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cloneBuffer_js__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__copyArray_js__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__copySymbols_js__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__copySymbolsIn_js__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseAssign_js__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__baseAssignIn_js__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cloneBuffer_js__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__copyArray_js__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__copySymbols_js__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__copySymbolsIn_js__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__getAllKeys_js__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__getAllKeysIn_js__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__getTag_js__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__initCloneArray_js__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__initCloneByTag_js__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__initCloneObject_js__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__getTag_js__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__initCloneArray_js__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__initCloneByTag_js__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__initCloneObject_js__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__isArray_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__isBuffer_js__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__isMap_js__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__isMap_js__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__isObject_js__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__isSet_js__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__keys_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__isSet_js__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__keys_js__ = __webpack_require__(24);
 
 
 
@@ -82726,12 +83695,12 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keys_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keys_js__ = __webpack_require__(24);
 
 
 
@@ -82752,11 +83721,11 @@ function baseAssign(object, source) {
 
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keysIn_js__ = __webpack_require__(104);
 
 
@@ -82778,13 +83747,13 @@ function baseAssignIn(object, source) {
 
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isObject_js__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isPrototype_js__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nativeKeysIn_js__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nativeKeysIn_js__ = __webpack_require__(262);
 
 
 
@@ -82821,7 +83790,7 @@ function baseKeysIn(object) {
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82848,7 +83817,7 @@ function nativeKeysIn(object) {
 
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82892,7 +83861,7 @@ function cloneBuffer(buffer, isDeep) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(59)(module)))
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82919,11 +83888,11 @@ function copyArray(source, array) {
 
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getSymbols_js__ = __webpack_require__(57);
 
 
@@ -82944,11 +83913,11 @@ function copySymbols(source, object) {
 
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__copyObject_js__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getSymbolsIn_js__ = __webpack_require__(105);
 
 
@@ -82969,7 +83938,7 @@ function copySymbolsIn(source, object) {
 
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83002,15 +83971,15 @@ function initCloneArray(array) {
 
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__cloneArrayBuffer_js__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cloneDataView_js__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cloneRegExp_js__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cloneSymbol_js__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloneTypedArray_js__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cloneDataView_js__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cloneRegExp_js__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cloneSymbol_js__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloneTypedArray_js__ = __webpack_require__(272);
 
 
 
@@ -83091,7 +84060,7 @@ function initCloneByTag(object, tag, isDeep) {
 
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83115,7 +84084,7 @@ function cloneDataView(dataView, isDeep) {
 
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83139,7 +84108,7 @@ function cloneRegExp(regexp) {
 
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83165,7 +84134,7 @@ function cloneSymbol(symbol) {
 
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83189,11 +84158,11 @@ function cloneTypedArray(typedArray, isDeep) {
 
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseCreate_js__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseCreate_js__ = __webpack_require__(274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isPrototype_js__ = __webpack_require__(62);
 
@@ -83217,7 +84186,7 @@ function initCloneObject(object) {
 
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83255,11 +84224,11 @@ var baseCreate = (function() {
 
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsMap_js__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsMap_js__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseUnary_js__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nodeUtil_js__ = __webpack_require__(61);
 
@@ -83292,12 +84261,12 @@ var isMap = nodeIsMap ? Object(__WEBPACK_IMPORTED_MODULE_1__baseUnary_js__["a" /
 
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getTag_js__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getTag_js__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -83319,11 +84288,11 @@ function baseIsMap(value) {
 
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsSet_js__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsSet_js__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseUnary_js__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nodeUtil_js__ = __webpack_require__(61);
 
@@ -83356,12 +84325,12 @@ var isSet = nodeIsSet ? Object(__WEBPACK_IMPORTED_MODULE_1__baseUnary_js__["a" /
 
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getTag_js__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getTag_js__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -83383,13 +84352,13 @@ function baseIsSet(value) {
 
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__castPath_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__last_js__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parent_js__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__last_js__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parent_js__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__toKey_js__ = __webpack_require__(20);
 
 
@@ -83414,7 +84383,7 @@ function baseUnset(object, path) {
 
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83441,12 +84410,12 @@ function last(array) {
 
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseSlice_js__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseSlice_js__ = __webpack_require__(282);
 
 
 
@@ -83466,7 +84435,7 @@ function parent(object, path) {
 
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83504,11 +84473,11 @@ function baseSlice(array, start, end) {
 
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isPlainObject_js__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isPlainObject_js__ = __webpack_require__(284);
 
 
 /**
@@ -83528,13 +84497,13 @@ function customOmitClone(value) {
 
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(12);
 
 
 
@@ -83600,7 +84569,7 @@ function isPlainObject(value) {
 
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83679,16 +84648,16 @@ var Marker = function (_MapLayer) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* withLeaflet */])(Marker));
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_uniqueId__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_uniqueId__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_omit__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_es_forEach__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_warning__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_warning__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__context__ = __webpack_require__(2);
 
@@ -83864,7 +84833,7 @@ var Pane = function (_Component) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_5__context__["b" /* withLeaflet */])(Pane));
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83900,14 +84869,14 @@ function uniqueId(prefix) {
 
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(11);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -83947,14 +84916,14 @@ var Polygon = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(Polygon));
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(11);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -83994,7 +84963,7 @@ var Polyline = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(Polyline));
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84122,14 +85091,14 @@ Popup.defaultProps = {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(Popup));
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Path__ = __webpack_require__(11);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84169,14 +85138,14 @@ var Rectangle = function (_Path) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(Rectangle));
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapControl__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapControl__ = __webpack_require__(23);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84209,7 +85178,7 @@ var ScaleControl = function (_MapControl) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(ScaleControl));
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84256,7 +85225,7 @@ var TileLayer = function (_GridLayer) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(TileLayer));
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84345,7 +85314,7 @@ Tooltip.defaultProps = {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(Tooltip));
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84414,17 +85383,17 @@ var VideoOverlay = function (_MapLayer) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(VideoOverlay));
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_reduce__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_reduce__ = __webpack_require__(297);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isEqual__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__GridLayer__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MapComponent__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MapComponent__ = __webpack_require__(25);
 
 
 
@@ -84497,14 +85466,14 @@ var WMSTileLayer = function (_GridLayer) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_3__context__["b" /* withLeaflet */])(WMSTileLayer));
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayReduce_js__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrayReduce_js__ = __webpack_require__(298);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseEach_js__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__baseIteratee_js__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseReduce_js__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__baseIteratee_js__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseReduce_js__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__isArray_js__ = __webpack_require__(5);
 
 
@@ -84560,7 +85529,7 @@ function reduce(collection, iteratee, accumulator) {
 
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84593,15 +85562,15 @@ function arrayReduce(array, iteratee, accumulator, initAccum) {
 
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseMatches_js__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseMatchesProperty_js__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseMatches_js__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseMatchesProperty_js__ = __webpack_require__(303);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__identity_js__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__isArray_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__property_js__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__property_js__ = __webpack_require__(305);
 
 
 
@@ -84636,12 +85605,12 @@ function baseIteratee(value) {
 
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsMatch_js__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getMatchData_js__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsMatch_js__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getMatchData_js__ = __webpack_require__(302);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__matchesStrictComparable_js__ = __webpack_require__(108);
 
 
@@ -84668,7 +85637,7 @@ function baseMatches(source) {
 
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84739,12 +85708,12 @@ function baseIsMatch(object, source, matchData, customizer) {
 
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isStrictComparable_js__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keys_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keys_js__ = __webpack_require__(24);
 
 
 
@@ -84772,12 +85741,12 @@ function getMatchData(object) {
 
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseIsEqual_js__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__get_js__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__get_js__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hasIn_js__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__isKey_js__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__isStrictComparable_js__ = __webpack_require__(107);
@@ -84819,11 +85788,11 @@ function baseMatchesProperty(path, srcValue) {
 
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(29);
 
 
 /**
@@ -84860,12 +85829,12 @@ function get(object, path, defaultValue) {
 
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseProperty_js__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__basePropertyDeep_js__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseProperty_js__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__basePropertyDeep_js__ = __webpack_require__(307);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isKey_js__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__toKey_js__ = __webpack_require__(20);
 
@@ -84903,7 +85872,7 @@ function property(path) {
 
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84924,11 +85893,11 @@ function baseProperty(key) {
 
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGet_js__ = __webpack_require__(29);
 
 
 /**
@@ -84948,7 +85917,7 @@ function basePropertyDeep(path) {
 
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84978,14 +85947,14 @@ function baseReduce(collection, iteratee, accumulator, initAccum, eachFunc) {
 
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapControl__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MapControl__ = __webpack_require__(23);
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85018,20 +85987,20 @@ var ZoomControl = function (_MapControl) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* withLeaflet */])(ZoomControl));
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -85485,6 +86454,21 @@ var registerLocation = function (_Component) {
                 });
             });
         }
+
+        // get all locations from backend
+
+    }, {
+        key: 'getAllLocations',
+        value: function getAllLocations() {
+            var _this4 = this;
+
+            axios.get('/location/allLocations').then(function (response // console.log(response.data.locations)
+            ) {
+                return _this4.setState({
+                    locations: [].concat(_toConsumableArray(response.data.locations))
+                });
+            });
+        }
     }, {
         key: 'deleteLocation',
         value: function deleteLocation(id) {
@@ -85502,10 +86486,10 @@ var registerLocation = function (_Component) {
     }, {
         key: 'updateLocation',
         value: function updateLocation() {
-            var _this4 = this;
+            var _this5 = this;
 
             axios.put('/location/' + id).then(function (response) {
-                _this4.getLocations();
+                _this5.getLocations();
             });
         }
 
@@ -85522,7 +86506,7 @@ var registerLocation = function (_Component) {
     }, {
         key: 'renderLocations',
         value: function renderLocations() {
-            var _this5 = this;
+            var _this6 = this;
 
             // console.log("---------- this.state.locations ----------");
             // console.log(this.state.locations);
@@ -85550,9 +86534,14 @@ var registerLocation = function (_Component) {
                             location.locationName
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+                            { className: 'btn btn-sm btn-success', to: '/' + location._id + '/viewLocation' },
+                            'View'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'button',
                             { onClick: function onClick() {
-                                    return _this5.deleteLocation(location._id);
+                                    return _this6.deleteLocation(location._id);
                                 }, className: 'btn btn-sm btn-warning float-right' },
                             'Delete'
                         ),
@@ -85757,979 +86746,1183 @@ var registerLocation = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (registerLocation);
 
 /***/ }),
-/* 310 */
-/***/ (function(module, exports) {
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var PruneCluster;
-(function (PruneCluster_1) {
-    var Point = (function () {
-        function Point() {
-        }
-        return Point;
-    }());
-    PruneCluster_1.Point = Point;
-    var ClusterObject = (function () {
-        function ClusterObject() {
-        }
-        return ClusterObject;
-    }());
-    PruneCluster_1.ClusterObject = ClusterObject;
-    var hashCodeCounter = 1;
-    var maxHashCodeValue = Math.pow(2, 53) - 1;
-    var Marker = (function (_super) {
-        __extends(Marker, _super);
-        function Marker(lat, lng, data, category, weight, filtered) {
-            if (data === void 0) { data = {}; }
-            if (weight === void 0) { weight = 1; }
-            if (filtered === void 0) { filtered = false; }
-            var _this = _super.call(this) || this;
-            _this.data = data;
-            _this.position = { lat: +lat, lng: +lng };
-            _this.weight = weight;
-            _this.category = category;
-            _this.filtered = filtered;
-            _this.hashCode = hashCodeCounter++;
-            return _this;
-        }
-        Marker.prototype.Move = function (lat, lng) {
-            this.position.lat = +lat;
-            this.position.lng = +lng;
-        };
-        Marker.prototype.SetData = function (data) {
-            for (var key in data) {
-                this.data[key] = data[key];
-            }
-        };
-        return Marker;
-    }(ClusterObject));
-    PruneCluster_1.Marker = Marker;
-    var Cluster = (function (_super) {
-        __extends(Cluster, _super);
-        function Cluster(marker) {
-            var _this = _super.call(this) || this;
-            _this.stats = [0, 0, 0, 0, 0, 0, 0, 0];
-            _this.data = {};
-            if (!marker) {
-                _this.hashCode = 1;
-                if (Cluster.ENABLE_MARKERS_LIST) {
-                    _this._clusterMarkers = [];
-                }
-                return _this;
-            }
-            if (Cluster.ENABLE_MARKERS_LIST) {
-                _this._clusterMarkers = [marker];
-            }
-            _this.lastMarker = marker;
-            _this.hashCode = 31 + marker.hashCode;
-            _this.population = 1;
-            if (marker.category !== undefined) {
-                _this.stats[marker.category] = 1;
-            }
-            _this.totalWeight = marker.weight;
-            _this.position = {
-                lat: marker.position.lat,
-                lng: marker.position.lng
-            };
-            _this.averagePosition = {
-                lat: marker.position.lat,
-                lng: marker.position.lng
-            };
-            return _this;
-        }
-        Cluster.prototype.AddMarker = function (marker) {
-            if (Cluster.ENABLE_MARKERS_LIST) {
-                this._clusterMarkers.push(marker);
-            }
-            var h = this.hashCode;
-            h = ((h << 5) - h) + marker.hashCode;
-            if (h >= maxHashCodeValue) {
-                this.hashCode = h % maxHashCodeValue;
-            }
-            else {
-                this.hashCode = h;
-            }
-            this.lastMarker = marker;
-            var weight = marker.weight, currentTotalWeight = this.totalWeight, newWeight = weight + currentTotalWeight;
-            this.averagePosition.lat =
-                (this.averagePosition.lat * currentTotalWeight +
-                    marker.position.lat * weight) / newWeight;
-            this.averagePosition.lng =
-                (this.averagePosition.lng * currentTotalWeight +
-                    marker.position.lng * weight) / newWeight;
-            ++this.population;
-            this.totalWeight = newWeight;
-            if (marker.category !== undefined) {
-                this.stats[marker.category] = (this.stats[marker.category] + 1) || 1;
-            }
-        };
-        Cluster.prototype.Reset = function () {
-            this.hashCode = 1;
-            this.lastMarker = undefined;
-            this.population = 0;
-            this.totalWeight = 0;
-            this.stats = [0, 0, 0, 0, 0, 0, 0, 0];
-            if (Cluster.ENABLE_MARKERS_LIST) {
-                this._clusterMarkers = [];
-            }
-        };
-        Cluster.prototype.ComputeBounds = function (cluster) {
-            var proj = cluster.Project(this.position.lat, this.position.lng);
-            var size = cluster.Size;
-            var nbX = Math.floor(proj.x / size), nbY = Math.floor(proj.y / size), startX = nbX * size, startY = nbY * size;
-            var a = cluster.UnProject(startX, startY), b = cluster.UnProject(startX + size, startY + size);
-            this.bounds = {
-                minLat: b.lat,
-                maxLat: a.lat,
-                minLng: a.lng,
-                maxLng: b.lng
-            };
-        };
-        Cluster.prototype.GetClusterMarkers = function () {
-            return this._clusterMarkers;
-        };
-        Cluster.prototype.ApplyCluster = function (newCluster) {
-            this.hashCode = this.hashCode * 41 + newCluster.hashCode * 43;
-            if (this.hashCode > maxHashCodeValue) {
-                this.hashCode = this.hashCode = maxHashCodeValue;
-            }
-            var weight = newCluster.totalWeight, currentTotalWeight = this.totalWeight, newWeight = weight + currentTotalWeight;
-            this.averagePosition.lat =
-                (this.averagePosition.lat * currentTotalWeight +
-                    newCluster.averagePosition.lat * weight) / newWeight;
-            this.averagePosition.lng =
-                (this.averagePosition.lng * currentTotalWeight +
-                    newCluster.averagePosition.lng * weight) / newWeight;
-            this.population += newCluster.population;
-            this.totalWeight = newWeight;
-            this.bounds.minLat = Math.min(this.bounds.minLat, newCluster.bounds.minLat);
-            this.bounds.minLng = Math.min(this.bounds.minLng, newCluster.bounds.minLng);
-            this.bounds.maxLat = Math.max(this.bounds.maxLat, newCluster.bounds.maxLat);
-            this.bounds.maxLng = Math.max(this.bounds.maxLng, newCluster.bounds.maxLng);
-            for (var category in newCluster.stats) {
-                if (newCluster.stats.hasOwnProperty(category)) {
-                    if (this.stats.hasOwnProperty(category)) {
-                        this.stats[category] += newCluster.stats[category];
-                    }
-                    else {
-                        this.stats[category] = newCluster.stats[category];
-                    }
-                }
-            }
-            if (Cluster.ENABLE_MARKERS_LIST) {
-                this._clusterMarkers = this._clusterMarkers.concat(newCluster.GetClusterMarkers());
-            }
-        };
-        Cluster.ENABLE_MARKERS_LIST = false;
-        return Cluster;
-    }(ClusterObject));
-    PruneCluster_1.Cluster = Cluster;
-    function checkPositionInsideBounds(a, b) {
-        return (a.lat >= b.minLat && a.lat <= b.maxLat) &&
-            a.lng >= b.minLng && a.lng <= b.maxLng;
-    }
-    function insertionSort(list) {
-        for (var i = 1, j, tmp, tmpLng, length = list.length; i < length; ++i) {
-            tmp = list[i];
-            tmpLng = tmp.position.lng;
-            for (j = i - 1; j >= 0 && list[j].position.lng > tmpLng; --j) {
-                list[j + 1] = list[j];
-            }
-            list[j + 1] = tmp;
-        }
-    }
-    function shouldUseInsertionSort(total, nbChanges) {
-        if (nbChanges > 300) {
-            return false;
-        }
-        else {
-            return (nbChanges / total) < 0.2;
-        }
-    }
-    var PruneCluster = (function () {
-        function PruneCluster() {
-            this._markers = [];
-            this._nbChanges = 0;
-            this._clusters = [];
-            this.Size = 166;
-            this.ViewPadding = 0.2;
-        }
-        PruneCluster.prototype.RegisterMarker = function (marker) {
-            if (marker._removeFlag) {
-                delete marker._removeFlag;
-            }
-            this._markers.push(marker);
-            this._nbChanges += 1;
-        };
-        PruneCluster.prototype.RegisterMarkers = function (markers) {
-            var _this = this;
-            markers.forEach(function (marker) {
-                _this.RegisterMarker(marker);
-            });
-        };
-        PruneCluster.prototype._sortMarkers = function () {
-            var markers = this._markers, length = markers.length;
-            if (this._nbChanges && !shouldUseInsertionSort(length, this._nbChanges)) {
-                this._markers.sort(function (a, b) { return a.position.lng - b.position.lng; });
-            }
-            else {
-                insertionSort(markers);
-            }
-            this._nbChanges = 0;
-        };
-        PruneCluster.prototype._sortClusters = function () {
-            insertionSort(this._clusters);
-        };
-        PruneCluster.prototype._indexLowerBoundLng = function (lng) {
-            var markers = this._markers, it, step, first = 0, count = markers.length;
-            while (count > 0) {
-                step = Math.floor(count / 2);
-                it = first + step;
-                if (markers[it].position.lng < lng) {
-                    first = ++it;
-                    count -= step + 1;
-                }
-                else {
-                    count = step;
-                }
-            }
-            return first;
-        };
-        PruneCluster.prototype._resetClusterViews = function () {
-            for (var i = 0, l = this._clusters.length; i < l; ++i) {
-                var cluster = this._clusters[i];
-                cluster.Reset();
-                cluster.ComputeBounds(this);
-            }
-        };
-        PruneCluster.prototype.ProcessView = function (bounds) {
-            var heightBuffer = Math.abs(bounds.maxLat - bounds.minLat) * this.ViewPadding, widthBuffer = Math.abs(bounds.maxLng - bounds.minLng) * this.ViewPadding;
-            var extendedBounds = {
-                minLat: bounds.minLat - heightBuffer - heightBuffer,
-                maxLat: bounds.maxLat + heightBuffer + heightBuffer,
-                minLng: bounds.minLng - widthBuffer - widthBuffer,
-                maxLng: bounds.maxLng + widthBuffer + widthBuffer
-            };
-            this._sortMarkers();
-            this._resetClusterViews();
-            var firstIndex = this._indexLowerBoundLng(extendedBounds.minLng);
-            var markers = this._markers, clusters = this._clusters;
-            var workingClusterList = clusters.slice(0);
-            for (var i = firstIndex, l = markers.length; i < l; ++i) {
-                var marker = markers[i], markerPosition = marker.position;
-                if (markerPosition.lng > extendedBounds.maxLng) {
-                    break;
-                }
-                if (markerPosition.lat > extendedBounds.minLat &&
-                    markerPosition.lat < extendedBounds.maxLat &&
-                    !marker.filtered) {
-                    var clusterFound = false, cluster;
-                    for (var j = 0, ll = workingClusterList.length; j < ll; ++j) {
-                        cluster = workingClusterList[j];
-                        if (cluster.bounds.maxLng < marker.position.lng) {
-                            workingClusterList.splice(j, 1);
-                            --j;
-                            --ll;
-                            continue;
-                        }
-                        if (checkPositionInsideBounds(markerPosition, cluster.bounds)) {
-                            cluster.AddMarker(marker);
-                            clusterFound = true;
-                            break;
-                        }
-                    }
-                    if (!clusterFound) {
-                        cluster = new Cluster(marker);
-                        cluster.ComputeBounds(this);
-                        clusters.push(cluster);
-                        workingClusterList.push(cluster);
-                    }
-                }
-            }
-            var newClustersList = [];
-            for (i = 0, l = clusters.length; i < l; ++i) {
-                cluster = clusters[i];
-                if (cluster.population > 0) {
-                    newClustersList.push(cluster);
-                }
-            }
-            this._clusters = newClustersList;
-            this._sortClusters();
-            return this._clusters;
-        };
-        PruneCluster.prototype.RemoveMarkers = function (markers) {
-            if (!markers) {
-                this._markers = [];
-                return;
-            }
-            for (var i = 0, l = markers.length; i < l; ++i) {
-                markers[i]._removeFlag = true;
-            }
-            var newMarkersList = [];
-            for (i = 0, l = this._markers.length; i < l; ++i) {
-                if (!this._markers[i]._removeFlag) {
-                    newMarkersList.push(this._markers[i]);
-                }
-                else {
-                    delete this._markers[i]._removeFlag;
-                }
-            }
-            this._markers = newMarkersList;
-        };
-        PruneCluster.prototype.FindMarkersInArea = function (area) {
-            var aMinLat = area.minLat, aMaxLat = area.maxLat, aMinLng = area.minLng, aMaxLng = area.maxLng, markers = this._markers, result = [];
-            var firstIndex = this._indexLowerBoundLng(aMinLng);
-            for (var i = firstIndex, l = markers.length; i < l; ++i) {
-                var pos = markers[i].position;
-                if (pos.lng > aMaxLng) {
-                    break;
-                }
-                if (pos.lat >= aMinLat && pos.lat <= aMaxLat &&
-                    pos.lng >= aMinLng) {
-                    result.push(markers[i]);
-                }
-            }
-            return result;
-        };
-        PruneCluster.prototype.ComputeBounds = function (markers, withFiltered) {
-            if (withFiltered === void 0) { withFiltered = true; }
-            if (!markers || !markers.length) {
-                return null;
-            }
-            var rMinLat = Number.MAX_VALUE, rMaxLat = -Number.MAX_VALUE, rMinLng = Number.MAX_VALUE, rMaxLng = -Number.MAX_VALUE;
-            for (var i = 0, l = markers.length; i < l; ++i) {
-                if (!withFiltered && markers[i].filtered) {
-                    continue;
-                }
-                var pos = markers[i].position;
-                if (pos.lat < rMinLat)
-                    rMinLat = pos.lat;
-                if (pos.lat > rMaxLat)
-                    rMaxLat = pos.lat;
-                if (pos.lng < rMinLng)
-                    rMinLng = pos.lng;
-                if (pos.lng > rMaxLng)
-                    rMaxLng = pos.lng;
-            }
-            return {
-                minLat: rMinLat,
-                maxLat: rMaxLat,
-                minLng: rMinLng,
-                maxLng: rMaxLng
-            };
-        };
-        PruneCluster.prototype.FindMarkersBoundsInArea = function (area) {
-            return this.ComputeBounds(this.FindMarkersInArea(area));
-        };
-        PruneCluster.prototype.ComputeGlobalBounds = function (withFiltered) {
-            if (withFiltered === void 0) { withFiltered = true; }
-            return this.ComputeBounds(this._markers, withFiltered);
-        };
-        PruneCluster.prototype.GetMarkers = function () {
-            return this._markers;
-        };
-        PruneCluster.prototype.GetPopulation = function () {
-            return this._markers.length;
-        };
-        PruneCluster.prototype.ResetClusters = function () {
-            this._clusters = [];
-        };
-        return PruneCluster;
-    }());
-    PruneCluster_1.PruneCluster = PruneCluster;
-})(PruneCluster || (PruneCluster = {}));
-var PruneCluster;
-(function (PruneCluster) {
-})(PruneCluster || (PruneCluster = {}));
-var PruneClusterForLeaflet = (L.Layer ? L.Layer : L.Class).extend({
-    initialize: function (size, clusterMargin) {
-        var _this = this;
-        if (size === void 0) { size = 120; }
-        if (clusterMargin === void 0) { clusterMargin = 20; }
-        this.Cluster = new PruneCluster.PruneCluster();
-        this.Cluster.Size = size;
-        this.clusterMargin = Math.min(clusterMargin, size / 4);
-        this.Cluster.Project = function (lat, lng) {
-            return _this._map.project(new L.LatLng(lat, lng), Math.floor(_this._map.getZoom()));
-        };
-        this.Cluster.UnProject = function (x, y) {
-            return _this._map.unproject(new L.Point(x, y), Math.floor(_this._map.getZoom()));
-        };
-        this._objectsOnMap = [];
-        this.spiderfier = new PruneClusterLeafletSpiderfier(this);
-        this._hardMove = false;
-        this._resetIcons = false;
-        this._removeTimeoutId = 0;
-        this._markersRemoveListTimeout = [];
-    },
-    RegisterMarker: function (marker) {
-        this.Cluster.RegisterMarker(marker);
-    },
-    RegisterMarkers: function (markers) {
-        this.Cluster.RegisterMarkers(markers);
-    },
-    RemoveMarkers: function (markers) {
-        this.Cluster.RemoveMarkers(markers);
-    },
-    BuildLeafletCluster: function (cluster, position) {
-        var _this = this;
-        var m = new L.Marker(position, {
-            icon: this.BuildLeafletClusterIcon(cluster)
-        });
-        m._leafletClusterBounds = cluster.bounds;
-        m.on('click', function () {
-            var cbounds = m._leafletClusterBounds;
-            var markersArea = _this.Cluster.FindMarkersInArea(cbounds);
-            var b = _this.Cluster.ComputeBounds(markersArea);
-            if (b) {
-                var bounds = new L.LatLngBounds(new L.LatLng(b.minLat, b.maxLng), new L.LatLng(b.maxLat, b.minLng));
-                var zoomLevelBefore = _this._map.getZoom(), zoomLevelAfter = _this._map.getBoundsZoom(bounds, false, new L.Point(20, 20));
-                if (zoomLevelAfter === zoomLevelBefore) {
-                    var filteredBounds = [];
-                    for (var i = 0, l = _this._objectsOnMap.length; i < l; ++i) {
-                        var o = _this._objectsOnMap[i];
-                        if (o.data._leafletMarker !== m) {
-                            if (o.bounds.minLat >= cbounds.minLat &&
-                                o.bounds.maxLat <= cbounds.maxLat &&
-                                o.bounds.minLng >= cbounds.minLng &&
-                                o.bounds.maxLng <= cbounds.maxLng) {
-                                filteredBounds.push(o.bounds);
-                            }
-                        }
-                    }
-                    if (filteredBounds.length > 0) {
-                        var newMarkersArea = [];
-                        var ll = filteredBounds.length;
-                        for (i = 0, l = markersArea.length; i < l; ++i) {
-                            var markerPos = markersArea[i].position;
-                            var isFiltered = false;
-                            for (var j = 0; j < ll; ++j) {
-                                var currentFilteredBounds = filteredBounds[j];
-                                if (markerPos.lat >= currentFilteredBounds.minLat &&
-                                    markerPos.lat <= currentFilteredBounds.maxLat &&
-                                    markerPos.lng >= currentFilteredBounds.minLng &&
-                                    markerPos.lng <= currentFilteredBounds.maxLng) {
-                                    isFiltered = true;
-                                    break;
-                                }
-                            }
-                            if (!isFiltered) {
-                                newMarkersArea.push(markersArea[i]);
-                            }
-                        }
-                        markersArea = newMarkersArea;
-                    }
-                    if (markersArea.length < 200 || zoomLevelAfter >= _this._map.getMaxZoom()) {
-                        _this._map.fire('overlappingmarkers', {
-                            cluster: _this,
-                            markers: markersArea,
-                            center: m.getLatLng(),
-                            marker: m
-                        });
-                    }
-                    else {
-                        zoomLevelAfter++;
-                    }
-                    _this._map.setView(m.getLatLng(), zoomLevelAfter);
-                }
-                else {
-                    _this._map.fitBounds(bounds);
-                }
-            }
-        });
-        return m;
-    },
-    BuildLeafletClusterIcon: function (cluster) {
-        var c = 'prunecluster prunecluster-';
-        var iconSize = 38;
-        var maxPopulation = this.Cluster.GetPopulation();
-        if (cluster.population < Math.max(10, maxPopulation * 0.01)) {
-            c += 'small';
-        }
-        else if (cluster.population < Math.max(100, maxPopulation * 0.05)) {
-            c += 'medium';
-            iconSize = 40;
-        }
-        else {
-            c += 'large';
-            iconSize = 44;
-        }
-        return new L.DivIcon({
-            html: "<div><span>" + cluster.population + "</span></div>",
-            className: c,
-            iconSize: L.point(iconSize, iconSize)
-        });
-    },
-    BuildLeafletMarker: function (marker, position) {
-        var m = new L.Marker(position);
-        this.PrepareLeafletMarker(m, marker.data, marker.category);
-        return m;
-    },
-    PrepareLeafletMarker: function (marker, data, category) {
-        if (data.icon) {
-            if (typeof data.icon === 'function') {
-                marker.setIcon(data.icon(data, category));
-            }
-            else {
-                marker.setIcon(data.icon);
-            }
-        }
-        if (data.popup) {
-            var content = typeof data.popup === 'function' ? data.popup(data, category) : data.popup;
-            if (marker.getPopup()) {
-                marker.setPopupContent(content, data.popupOptions);
-            }
-            else {
-                marker.bindPopup(content, data.popupOptions);
-            }
-        }
-    },
-    onAdd: function (map) {
-        this._map = map;
-        map.on('movestart', this._moveStart, this);
-        map.on('moveend', this._moveEnd, this);
-        map.on('zoomend', this._zoomStart, this);
-        map.on('zoomend', this._zoomEnd, this);
-        this.ProcessView();
-        map.addLayer(this.spiderfier);
-    },
-    onRemove: function (map) {
-        map.off('movestart', this._moveStart, this);
-        map.off('moveend', this._moveEnd, this);
-        map.off('zoomend', this._zoomStart, this);
-        map.off('zoomend', this._zoomEnd, this);
-        for (var i = 0, l = this._objectsOnMap.length; i < l; ++i) {
-            map.removeLayer(this._objectsOnMap[i].data._leafletMarker);
-        }
-        this._objectsOnMap = [];
-        this.Cluster.ResetClusters();
-        map.removeLayer(this.spiderfier);
-        this._map = null;
-    },
-    _moveStart: function () {
-        this._moveInProgress = true;
-    },
-    _moveEnd: function (e) {
-        this._moveInProgress = false;
-        this._hardMove = e.hard;
-        this.ProcessView();
-    },
-    _zoomStart: function () {
-        this._zoomInProgress = true;
-    },
-    _zoomEnd: function () {
-        this._zoomInProgress = false;
-        this.ProcessView();
-    },
-    ProcessView: function () {
-        var _this = this;
-        if (!this._map || this._zoomInProgress || this._moveInProgress) {
-            return;
-        }
-        var map = this._map, bounds = map.getBounds(), zoom = Math.floor(map.getZoom()), marginRatio = this.clusterMargin / this.Cluster.Size, resetIcons = this._resetIcons;
-        var southWest = bounds.getSouthWest(), northEast = bounds.getNorthEast();
-        var clusters = this.Cluster.ProcessView({
-            minLat: southWest.lat,
-            minLng: southWest.lng,
-            maxLat: northEast.lat,
-            maxLng: northEast.lng
-        });
-        var objectsOnMap = this._objectsOnMap, newObjectsOnMap = [], markersOnMap = new Array(objectsOnMap.length);
-        for (var i = 0, l = objectsOnMap.length; i < l; ++i) {
-            var marker = objectsOnMap[i].data._leafletMarker;
-            markersOnMap[i] = marker;
-            marker._removeFromMap = true;
-        }
-        var clusterCreationList = [];
-        var clusterCreationListPopOne = [];
-        var opacityUpdateList = [];
-        var workingList = [];
-        for (i = 0, l = clusters.length; i < l; ++i) {
-            var icluster = clusters[i], iclusterData = icluster.data;
-            var latMargin = (icluster.bounds.maxLat - icluster.bounds.minLat) * marginRatio, lngMargin = (icluster.bounds.maxLng - icluster.bounds.minLng) * marginRatio;
-            for (var j = 0, ll = workingList.length; j < ll; ++j) {
-                var c = workingList[j];
-                if (c.bounds.maxLng < icluster.bounds.minLng) {
-                    workingList.splice(j, 1);
-                    --j;
-                    --ll;
-                    continue;
-                }
-                var oldMaxLng = c.averagePosition.lng + lngMargin, oldMinLat = c.averagePosition.lat - latMargin, oldMaxLat = c.averagePosition.lat + latMargin, newMinLng = icluster.averagePosition.lng - lngMargin, newMinLat = icluster.averagePosition.lat - latMargin, newMaxLat = icluster.averagePosition.lat + latMargin;
-                if (oldMaxLng > newMinLng && oldMaxLat > newMinLat && oldMinLat < newMaxLat) {
-                    iclusterData._leafletCollision = true;
-                    c.ApplyCluster(icluster);
-                    break;
-                }
-            }
-            if (!iclusterData._leafletCollision) {
-                workingList.push(icluster);
-            }
-        }
-        clusters.forEach(function (cluster) {
-            var m = undefined;
-            var data = cluster.data;
-            if (data._leafletCollision) {
-                data._leafletCollision = false;
-                data._leafletOldPopulation = 0;
-                data._leafletOldHashCode = 0;
-                return;
-            }
-            var position = new L.LatLng(cluster.averagePosition.lat, cluster.averagePosition.lng);
-            var oldMarker = data._leafletMarker;
-            if (oldMarker) {
-                if (cluster.population === 1 && data._leafletOldPopulation === 1 && cluster.hashCode === oldMarker._hashCode) {
-                    if (resetIcons || oldMarker._zoomLevel !== zoom || cluster.lastMarker.data.forceIconRedraw) {
-                        _this.PrepareLeafletMarker(oldMarker, cluster.lastMarker.data, cluster.lastMarker.category);
-                        if (cluster.lastMarker.data.forceIconRedraw) {
-                            cluster.lastMarker.data.forceIconRedraw = false;
-                        }
-                    }
-                    oldMarker.setLatLng(position);
-                    m = oldMarker;
-                }
-                else if (cluster.population > 1 && data._leafletOldPopulation > 1 && (oldMarker._zoomLevel === zoom ||
-                    data._leafletPosition.equals(position))) {
-                    oldMarker.setLatLng(position);
-                    if (resetIcons || cluster.population != data._leafletOldPopulation ||
-                        cluster.hashCode !== data._leafletOldHashCode) {
-                        var boundsCopy = {};
-                        L.Util.extend(boundsCopy, cluster.bounds);
-                        oldMarker._leafletClusterBounds = boundsCopy;
-                        oldMarker.setIcon(_this.BuildLeafletClusterIcon(cluster));
-                    }
-                    data._leafletOldPopulation = cluster.population;
-                    data._leafletOldHashCode = cluster.hashCode;
-                    m = oldMarker;
-                }
-            }
-            if (!m) {
-                if (cluster.population === 1) {
-                    clusterCreationListPopOne.push(cluster);
-                }
-                else {
-                    clusterCreationList.push(cluster);
-                }
-                data._leafletPosition = position;
-                data._leafletOldPopulation = cluster.population;
-                data._leafletOldHashCode = cluster.hashCode;
-            }
-            else {
-                m._removeFromMap = false;
-                newObjectsOnMap.push(cluster);
-                m._zoomLevel = zoom;
-                m._hashCode = cluster.hashCode;
-                m._population = cluster.population;
-                data._leafletMarker = m;
-                data._leafletPosition = position;
-            }
-        });
-        clusterCreationList = clusterCreationListPopOne.concat(clusterCreationList);
-        for (i = 0, l = objectsOnMap.length; i < l; ++i) {
-            icluster = objectsOnMap[i];
-            var idata = icluster.data;
-            marker = idata._leafletMarker;
-            if (idata._leafletMarker._removeFromMap) {
-                var remove = true;
-                if (marker._zoomLevel === zoom) {
-                    var pa = icluster.averagePosition;
-                    latMargin = (icluster.bounds.maxLat - icluster.bounds.minLat) * marginRatio,
-                        lngMargin = (icluster.bounds.maxLng - icluster.bounds.minLng) * marginRatio;
-                    for (j = 0, ll = clusterCreationList.length; j < ll; ++j) {
-                        var jcluster = clusterCreationList[j], jdata = jcluster.data;
-                        if (marker._population === 1 && jcluster.population === 1 &&
-                            marker._hashCode === jcluster.hashCode) {
-                            if (resetIcons || jcluster.lastMarker.data.forceIconRedraw) {
-                                this.PrepareLeafletMarker(marker, jcluster.lastMarker.data, jcluster.lastMarker.category);
-                                if (jcluster.lastMarker.data.forceIconRedraw) {
-                                    jcluster.lastMarker.data.forceIconRedraw = false;
-                                }
-                            }
-                            marker.setLatLng(jdata._leafletPosition);
-                            remove = false;
-                        }
-                        else {
-                            var pb = jcluster.averagePosition;
-                            var oldMinLng = pa.lng - lngMargin, newMaxLng = pb.lng + lngMargin;
-                            oldMaxLng = pa.lng + lngMargin;
-                            oldMinLat = pa.lat - latMargin;
-                            oldMaxLat = pa.lat + latMargin;
-                            newMinLng = pb.lng - lngMargin;
-                            newMinLat = pb.lat - latMargin;
-                            newMaxLat = pb.lat + latMargin;
-                            if ((marker._population > 1 && jcluster.population > 1) &&
-                                (oldMaxLng > newMinLng && oldMinLng < newMaxLng && oldMaxLat > newMinLat && oldMinLat < newMaxLat)) {
-                                marker.setLatLng(jdata._leafletPosition);
-                                marker.setIcon(this.BuildLeafletClusterIcon(jcluster));
-                                var poisson = {};
-                                L.Util.extend(poisson, jcluster.bounds);
-                                marker._leafletClusterBounds = poisson;
-                                jdata._leafletOldPopulation = jcluster.population;
-                                jdata._leafletOldHashCode = jcluster.hashCode;
-                                marker._population = jcluster.population;
-                                remove = false;
-                            }
-                        }
-                        if (!remove) {
-                            jdata._leafletMarker = marker;
-                            marker._removeFromMap = false;
-                            newObjectsOnMap.push(jcluster);
-                            clusterCreationList.splice(j, 1);
-                            --j;
-                            --ll;
-                            break;
-                        }
-                    }
-                }
-                if (remove) {
-                    if (!marker._removeFromMap)
-                        console.error("wtf");
-                }
-            }
-        }
-        for (i = 0, l = clusterCreationList.length; i < l; ++i) {
-            icluster = clusterCreationList[i],
-                idata = icluster.data;
-            var iposition = idata._leafletPosition;
-            var creationMarker;
-            if (icluster.population === 1) {
-                creationMarker = this.BuildLeafletMarker(icluster.lastMarker, iposition);
-            }
-            else {
-                creationMarker = this.BuildLeafletCluster(icluster, iposition);
-            }
-            creationMarker.addTo(map);
-            creationMarker.setOpacity(0);
-            opacityUpdateList.push(creationMarker);
-            idata._leafletMarker = creationMarker;
-            creationMarker._zoomLevel = zoom;
-            creationMarker._hashCode = icluster.hashCode;
-            creationMarker._population = icluster.population;
-            newObjectsOnMap.push(icluster);
-        }
-        window.setTimeout(function () {
-            for (i = 0, l = opacityUpdateList.length; i < l; ++i) {
-                var m = opacityUpdateList[i];
-                if (m._icon)
-                    L.DomUtil.addClass(m._icon, "prunecluster-anim");
-                if (m._shadow)
-                    L.DomUtil.addClass(m._shadow, "prunecluster-anim");
-                m.setOpacity(1);
-            }
-        }, 1);
-        if (this._hardMove) {
-            for (i = 0, l = markersOnMap.length; i < l; ++i) {
-                marker = markersOnMap[i];
-                if (marker._removeFromMap) {
-                    map.removeLayer(marker);
-                }
-            }
-        }
-        else {
-            if (this._removeTimeoutId !== 0) {
-                window.clearTimeout(this._removeTimeoutId);
-                for (i = 0, l = this._markersRemoveListTimeout.length; i < l; ++i) {
-                    map.removeLayer(this._markersRemoveListTimeout[i]);
-                }
-            }
-            var toRemove = [];
-            for (i = 0, l = markersOnMap.length; i < l; ++i) {
-                marker = markersOnMap[i];
-                if (marker._removeFromMap) {
-                    marker.setOpacity(0);
-                    toRemove.push(marker);
-                }
-            }
-            if (toRemove.length > 0) {
-                this._removeTimeoutId = window.setTimeout(function () {
-                    for (i = 0, l = toRemove.length; i < l; ++i) {
-                        map.removeLayer(toRemove[i]);
-                    }
-                    _this._removeTimeoutId = 0;
-                }, 300);
-            }
-            this._markersRemoveListTimeout = toRemove;
-        }
-        this._objectsOnMap = newObjectsOnMap;
-        this._hardMove = false;
-        this._resetIcons = false;
-    },
-    FitBounds: function (withFiltered) {
-        if (withFiltered === void 0) { withFiltered = true; }
-        var bounds = this.Cluster.ComputeGlobalBounds(withFiltered);
-        if (bounds) {
-            this._map.fitBounds(new L.LatLngBounds(new L.LatLng(bounds.minLat, bounds.maxLng), new L.LatLng(bounds.maxLat, bounds.minLng)));
-        }
-    },
-    GetMarkers: function () {
-        return this.Cluster.GetMarkers();
-    },
-    RedrawIcons: function (processView) {
-        if (processView === void 0) { processView = true; }
-        this._resetIcons = true;
-        if (processView) {
-            this.ProcessView();
-        }
-    }
-});
-var PruneClusterLeafletSpiderfier = (L.Layer ? L.Layer : L.Class).extend({
-    _2PI: Math.PI * 2,
-    _circleFootSeparation: 25,
-    _circleStartAngle: Math.PI / 6,
-    _spiralFootSeparation: 28,
-    _spiralLengthStart: 11,
-    _spiralLengthFactor: 5,
-    _spiralCountTrigger: 8,
-    spiderfyDistanceMultiplier: 1,
-    initialize: function (cluster) {
-        this._cluster = cluster;
-        this._currentMarkers = [];
-        this._multiLines = !!L.multiPolyline;
-        this._lines = this._multiLines ?
-            L.multiPolyline([], { weight: 1.5, color: '#222' }) :
-            L.polyline([], { weight: 1.5, color: '#222' });
-    },
-    onAdd: function (map) {
-        this._map = map;
-        this._map.on('overlappingmarkers', this.Spiderfy, this);
-        this._map.on('click', this.Unspiderfy, this);
-        this._map.on('zoomend', this.Unspiderfy, this);
-    },
-    Spiderfy: function (data) {
-        var _this = this;
-        if (data.cluster !== this._cluster) {
-            return;
-        }
-        this.Unspiderfy();
-        var markers = data.markers.filter(function (marker) {
-            return !marker.filtered;
-        });
-        this._currentCenter = data.center;
-        var centerPoint = this._map.latLngToLayerPoint(data.center);
-        var points;
-        if (markers.length >= this._spiralCountTrigger) {
-            points = this._generatePointsSpiral(markers.length, centerPoint);
-        }
-        else {
-            if (this._multiLines) {
-                centerPoint.y += 10;
-            }
-            points = this._generatePointsCircle(markers.length, centerPoint);
-        }
-        var polylines = [];
-        var leafletMarkers = [];
-        var projectedPoints = [];
-        for (var i = 0, l = points.length; i < l; ++i) {
-            var pos = this._map.layerPointToLatLng(points[i]);
-            var m = this._cluster.BuildLeafletMarker(markers[i], data.center);
-            m.setZIndexOffset(5000);
-            m.setOpacity(0);
-            this._currentMarkers.push(m);
-            this._map.addLayer(m);
-            leafletMarkers.push(m);
-            projectedPoints.push(pos);
-        }
-        window.setTimeout(function () {
-            for (i = 0, l = points.length; i < l; ++i) {
-                leafletMarkers[i].setLatLng(projectedPoints[i])
-                    .setOpacity(1);
-            }
-            var startTime = +new Date();
-            var interval = 42, duration = 290;
-            var anim = window.setInterval(function () {
-                polylines = [];
-                var now = +new Date();
-                var d = now - startTime;
-                if (d >= duration) {
-                    window.clearInterval(anim);
-                    stepRatio = 1.0;
-                }
-                else {
-                    var stepRatio = d / duration;
-                }
-                var center = data.center;
-                for (i = 0, l = points.length; i < l; ++i) {
-                    var p = projectedPoints[i], diffLat = p.lat - center.lat, diffLng = p.lng - center.lng;
-                    polylines.push([center, new L.LatLng(center.lat + diffLat * stepRatio, center.lng + diffLng * stepRatio)]);
-                }
-                _this._lines.setLatLngs(polylines);
-            }, interval);
-        }, 1);
-        this._lines.setLatLngs(polylines);
-        this._map.addLayer(this._lines);
-        if (data.marker) {
-            this._clusterMarker = data.marker.setOpacity(0.3);
-        }
-    },
-    _generatePointsCircle: function (count, centerPt) {
-        var circumference = this.spiderfyDistanceMultiplier * this._circleFootSeparation * (2 + count), legLength = circumference / this._2PI, angleStep = this._2PI / count, res = [], i, angle;
-        res.length = count;
-        for (i = count - 1; i >= 0; i--) {
-            angle = this._circleStartAngle + i * angleStep;
-            res[i] = new L.Point(Math.round(centerPt.x + legLength * Math.cos(angle)), Math.round(centerPt.y + legLength * Math.sin(angle)));
-        }
-        return res;
-    },
-    _generatePointsSpiral: function (count, centerPt) {
-        var legLength = this.spiderfyDistanceMultiplier * this._spiralLengthStart, separation = this.spiderfyDistanceMultiplier * this._spiralFootSeparation, lengthFactor = this.spiderfyDistanceMultiplier * this._spiralLengthFactor, angle = 0, res = [], i;
-        res.length = count;
-        for (i = count - 1; i >= 0; i--) {
-            angle += separation / legLength + i * 0.0005;
-            res[i] = new L.Point(Math.round(centerPt.x + legLength * Math.cos(angle)), Math.round(centerPt.y + legLength * Math.sin(angle)));
-            legLength += this._2PI * lengthFactor / angle;
-        }
-        return res;
-    },
-    Unspiderfy: function () {
-        var _this = this;
-        for (var i = 0, l = this._currentMarkers.length; i < l; ++i) {
-            this._currentMarkers[i].setLatLng(this._currentCenter).setOpacity(0);
-        }
-        var markers = this._currentMarkers;
-        window.setTimeout(function () {
-            for (i = 0, l = markers.length; i < l; ++i) {
-                _this._map.removeLayer(markers[i]);
-            }
-        }, 300);
-        this._currentMarkers = [];
-        this._map.removeLayer(this._lines);
-        if (this._clusterMarker) {
-            this._clusterMarker.setOpacity(1);
-        }
-    },
-    onRemove: function (map) {
-        this.Unspiderfy();
-        map.off('overlappingmarkers', this.Spiderfy, this);
-        map.off('click', this.Unspiderfy, this);
-        map.off('zoomend', this.Unspiderfy, this);
-    }
-});
-
-
-/*** EXPORTS FROM exports-loader ***/
-exports["PruneCluster"] = (PruneCluster);
-exports["PruneClusterForLeaflet"] = (PruneClusterForLeaflet);
-
-/***/ }),
 /* 311 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(8);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+var mapStyle = {
+    width: "100%",
+    height: "400px"
+};
+
+var allLocations = function (_Component) {
+    _inherits(allLocations, _Component);
+
+    function allLocations(props) {
+        _classCallCheck(this, allLocations);
+
+        var _this = _possibleConstructorReturn(this, (allLocations.__proto__ || Object.getPrototypeOf(allLocations)).call(this, props));
+
+        _this.state = {
+            locations: []
+        };
+
+        // this.handleChange = this.handleChange.bind(this);
+
+        // this.submitLocation = this.submitLocation.bind(this);
+
+        _this.renderLocations = _this.renderLocations.bind(_this);
+
+        // this.deleteLocation = this.deleteLocation.bind(this);
+
+        _this.updateLocation = _this.updateLocation.bind(_this);
+        return _this;
+    }
+
+    _createClass(allLocations, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            // this.getLocations();
+            this.getAllLocations();
+
+            console.log("---------- this.state componentWillMount ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentWillMount ----------");
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log("---------- this.state componentDidMount() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidMount() ----------");
+
+            // create map
+            this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
+                center: [1.5510714615890955, 110.34356832504274],
+                zoom: 16,
+                layers: [__WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                })]
+            });
+
+            // MapClick.on('click', L.bind(onMapClick, null, ID))
+            // var testBed = this
+
+            function updateLatLng(state, e) {
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                // console.log(e);
+                // console.log(state);
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                document.getElementById('locationLatitude').value = e.latlng.lat;
+                document.getElementById('locationLongitude').value = e.latlng.lng;
+
+                // state.setState({
+                //     locationLatitude: e.latlng.lat,
+                //     locationLongitude: e.latlng.lng
+                // })
+            }
+
+            // this.map.on('click', function(e){
+            //
+            //     console.log("---------- e componentDidMount() ----------");
+            //     console.log(e);
+            //     console.log("---------- e componentDidMount() ----------");
+            //     // var coord = e.latlng;
+            //     // var lat = coord.lat;
+            //     // var lng = coord.lng;
+            //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            //
+            //     //need to set state
+            //     //this.state()
+            //
+            //     // document.getElementById('locationLatitude').value = e.latlng.lat;
+            //     // document.getElementById('locationLongitude').value = e.latlng.lng;
+            //     //
+            //     //
+            //     // this.setState({
+            //     //     locationLatitude: e.latlng.lat,
+            //     //     locationLongitude: e.latlng.lng
+            //     // })
+            //
+            //
+            // });
+
+            // this.map.on('click', L.bind(updateLatLng, null, this));
+
+            // .on("click", function(e){
+            //     updateLatLng(e, );
+            // });
+
+            // this.map.on("click", updateLatLng.bind(null, this));
+
+            // add layer
+            // this.layer = L.layerGroup().addTo(this.map);
+
+            // method called here
+            // this.updateMarkers(this.props.markersData);
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            console.log("---------- this.state componentDidUpdate() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidUpdate() ----------");
+
+            var data = this.state.locations;
+
+            // console.log("---------- data ----------");
+            // console.log(data);
+            // console.log("---------- data ----------");
+
+
+            var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
+
+            __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Cluster.ENABLE_MARKERS_LIST = true;
+
+            pruneCluster.PrepareLeafletMarker = function (leafletMarker, data) {
+                // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
+
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log(data);
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log("---------- this PrepareLeafletMarker ----------");
+                // console.log(this);
+                // console.log("---------- this PrepareLeafletMarker ----------");
+
+                //listeners can be applied to markers in this function
+                leafletMarker.on('click', function () {
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                    console.log(data);
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                });
+
+                // A popup can already be attached to the marker
+                // bindPopup can override it, but it's faster to update the content instead
+                if (leafletMarker.getPopup()) {
+                    leafletMarker.setPopupContent(data.popup);
+                } else {
+                    leafletMarker.bindPopup(data.popup);
+                }
+
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+
+            };
+
+            pruneCluster.BuildLeafletCluster = function (cluster, position) {
+                var m = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Marker(position, {
+                    icon: pruneCluster.BuildLeafletClusterIcon(cluster)
+                });
+
+                m.on('click', function () {
+                    // Compute the  cluster bounds (it's slow : O(n))
+                    var markersArea = pruneCluster.Cluster.FindMarkersInArea(cluster.bounds);
+                    var b = pruneCluster.Cluster.ComputeBounds(markersArea);
+
+                    if (b) {
+                        var bounds = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLngBounds(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.minLat, b.maxLng), new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.maxLat, b.minLng));
+
+                        var zoomLevelBefore = pruneCluster._map.getZoom();
+                        var zoomLevelAfter = pruneCluster._map.getBoundsZoom(bounds, false, new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(20, 20, null));
+
+                        // If the zoom level doesn't change
+                        if (zoomLevelAfter === zoomLevelBefore) {
+                            // Send an event for the LeafletSpiderfier
+                            pruneCluster._map.fire('overlappingmarkers', {
+                                cluster: pruneCluster,
+                                markers: markersArea,
+                                center: m.getLatLng(),
+                                marker: m
+                            });
+
+                            pruneCluster._map.setView(position, zoomLevelAfter);
+                        } else {
+                            pruneCluster._map.fitBounds(bounds);
+                        }
+                    }
+                });
+                m.on('mouseover', function () {
+                    //do mouseover stuff here
+                });
+                m.on('mouseout', function () {
+                    //do mouseout stuff here
+                });
+
+                return m;
+            };
+
+            pruneCluster.BuildLeafletClusterIcon = function (cluster) {
+
+                var e = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster();
+
+                e.stats = cluster.stats; // if you have categories on your markers
+                e.population = cluster.population; // the number of markers inside the cluster
+
+                var markers = cluster.GetClusterMarkers();
+
+                // console.log("---------- markers ----------");
+                // console.log(markers);
+                // console.log("---------- markers ----------");
+
+                return e;
+            };
+
+            var colors = ['#ff4b00', '#bac900', '#EC1813', '#55BCBE', '#D2204C', '#FF0000', '#ada59a', '#3e647e'],
+                pi2 = Math.PI * 2;
+
+            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.extend({
+                options: {
+                    iconSize: new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(44, 44),
+                    className: 'prunecluster leaflet-markercluster-icon'
+                },
+
+                createIcon: function createIcon() {
+                    // based on L.Icon.Canvas from shramov/leaflet-plugins (BSD licence)
+                    var e = document.createElement('canvas');
+                    this._setIconStyles(e, 'icon');
+                    var s = this.options.iconSize;
+                    e.width = s.x;
+                    e.height = s.y;
+                    this.draw(e.getContext('2d'), s.x, s.y);
+                    return e;
+                },
+
+                createShadow: function createShadow() {
+                    return null;
+                },
+
+                draw: function draw(canvas, width, height) {
+                    var lol = 0;
+                    var start = 0;
+                    for (var i = 0, l = colors.length; i < l; ++i) {
+
+                        var size = this.stats[i] / this.population;
+
+                        if (size > 0) {
+                            canvas.beginPath();
+                            canvas.moveTo(22, 22);
+                            canvas.fillStyle = colors[i];
+                            var from = start + 0.14,
+                                to = start + size * pi2;
+
+                            if (to < from) {
+                                from = start;
+                            }
+                            canvas.arc(22, 22, 22, from, to);
+
+                            start = start + size * pi2;
+                            canvas.lineTo(22, 22);
+                            canvas.fill();
+                            canvas.closePath();
+                        }
+                    }
+
+                    canvas.beginPath();
+                    canvas.fillStyle = 'white';
+                    canvas.arc(22, 22, 18, 0, Math.PI * 2);
+                    canvas.fill();
+                    canvas.closePath();
+
+                    canvas.fillStyle = '#555';
+                    canvas.textAlign = 'center';
+                    canvas.textBaseline = 'middle';
+                    canvas.font = 'bold 12px sans-serif';
+
+                    canvas.fillText(this.population, 22, 22, 40);
+                }
+            });
+
+            data.forEach(function (d) {
+                // console.log("---------- d ----------");
+                // console.log(d);
+                // console.log("---------- d ----------");
+
+                var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
+
+                var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude, {
+                    popup: popupContent
+                });
+
+                // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+
+                // var z = document.createElement('p'); // is a node
+                // z.innerHTML = 'test satu dua tiga';
+                //
+                //
+                // marker.data.data = d;
+
+                //TODO: this should correlate to location status or location type
+                marker.category = 1;
+
+                // console.log("---------- marker ----------");
+                // console.log(marker);
+                // console.log("---------- marker ----------");
+
+                pruneCluster.RegisterMarker(marker);
+            });
+
+            this.map.addLayer(pruneCluster);
+
+            // var testBed = L.marker([1.5510714615890955, 110.34356832504274]).addTo(this.map)
+            //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            //     .openPopup();
+            //
+            // console.log("---------- testBed ----------");
+            // console.log(testBed);
+            // console.log("---------- testBed ----------");
+
+            // console.log("---------- this.map ----------");
+            // console.log(this.map);
+            // console.log("---------- this.map ----------");
+            // console.log("---------- pruneCluster ----------");
+            // console.log(pruneCluster);
+            // console.log("---------- pruneCluster ----------");
+
+            // // check if position has changed
+            // if (this.props.markerPosition !== markerPosition) {
+            //     this.marker.setLatLng(this.props.markerPosition);
+            // }
+            //
+            // // check if data has changed
+            // if (this.props.markersData !== markersData) {
+            //     this.updateMarkers(this.props.markersData);
+            // }
+        }
+
+        // // handle change
+        // handleChange(e) {
+        //     // this.setState({
+        //     //     locationOwnerID: e.target.value,
+        //     //     locationName: e.target.value,
+        //     //     locationAddress: e.target.value,
+        //     //     locationDescription: e.target.value,
+        //     //     locationStatus: e.target.value,
+        //     //     locationRating: e.target.value,
+        //     //     locationLatitude: e.target.value,
+        //     //     locationLongitude: e.target.value
+        //     // });
+        //     // console.log('Name: ', e.target.name);
+        //     // console.log('Value: ', e.target.value);
+        //     //
+        //     // this.setState({[e.target.name]: e.target.value});
+        //     // console.log('onChange', this.state);
+        // }
+
+        // get all locations from backend
+
+    }, {
+        key: 'getLocations',
+        value: function getLocations() {
+            var _this2 = this;
+
+            axios.get('/location').then(function (response // console.log(response.data.locations)
+            ) {
+                return _this2.setState({
+                    locations: [].concat(_toConsumableArray(response.data.locations))
+                });
+            });
+        }
+    }, {
+        key: 'getLocation',
+        value: function getLocation() {
+            var _this3 = this;
+
+            axios.get('/location/' + this.props.match.params.id).then(function (response // console.log(response.data.locations)
+            ) {
+                return _this3.setState({
+                    location: response.data.location
+                });
+            });
+        }
+
+        // get all locations from backend
+
+    }, {
+        key: 'getAllLocations',
+        value: function getAllLocations() {
+            var _this4 = this;
+
+            axios.get('/location/allLocations').then(function (response // console.log(response.data.locations)
+            ) {
+                return _this4.setState({
+                    locations: [].concat(_toConsumableArray(response.data.locations))
+                });
+            });
+        }
+
+        // submitLocation(e) {
+        //     console.log("---------- this.state submitContract----------");
+        //     console.log(this.state);
+        //     console.log("---------- this.state submitContract----------");
+        //     // stop browser's default behaviour of reloading on form submit
+        //     e.preventDefault();
+        //     axios.post('/locations', {
+        //             // locationOwnerID: this.state.locationOwnerID,
+        //             locationName: this.state.locationName,
+        //             locationAddress: this.state.locationAddress,
+        //             locationDescription: this.state.locationDescription,
+        //             locationStatus: this.state.locationStatus,
+        //             locationRating: this.state.locationRating,
+        //             locationLatitude: this.state.locationLatitude,
+        //             locationLongitude: this.state.locationLongitude
+        //         })
+        //         .then(response => {
+        //
+        //             this.setState({
+        //                 locations: [response.data, ...this.state.locations]
+        //             });
+        //
+        //             console.log('response', response);
+        //             console.log('this.state', this.state);
+        //         });
+        //
+        //
+        // }
+
+        // // get all locations from backend
+        // getLocations() {
+        //     axios.get('/allLocations')
+        //         .then(response => {
+        //             this.setState({
+        //                 locations: [...response.data.locations]
+        //             })
+        //
+        //             console.log("---------- this.state getLocations() PRE ----------");
+        //             console.log(this.state);
+        //             console.log("---------- this.state getLocations() PRE ----------");
+        //         })
+        //     console.log("---------- this.state getLocations() POST ----------");
+        //     console.log(this.state);
+        //     console.log("---------- this.state getLocations() POST ----------");
+        // }
+
+    }, {
+        key: 'deleteLocation',
+        value: function deleteLocation(id) {
+            // remove from local state
+            var isNotId = function isNotId(location) {
+                return location._id !== id;
+            };
+            var updatedLocations = this.state.locations.filter(isNotId);
+
+            this.setState({ locations: updatedLocations });
+
+            // make delete request to the backend
+            axios.delete('/location/' + id);
+        }
+    }, {
+        key: 'updateLocation',
+        value: function updateLocation() {
+            var _this5 = this;
+
+            axios.put('/location/' + id).then(function (response) {
+                _this5.getLocations();
+            });
+        }
+
+        // example leaflet function
+
+    }, {
+        key: 'updateMarkers',
+        value: function updateMarkers(markersData) {}
+        // Do something...
+
+
+        // render locations
+
+    }, {
+        key: 'renderLocations',
+        value: function renderLocations() {
+            var _this6 = this;
+
+            console.log("---------- this.state.locations renderLocations()----------");
+            console.log(this.state.locations);
+            console.log("---------- this.state.locations renderLocations()----------");
+
+            // this.state.locations.forEach(function (d){
+            //     console.log(d);
+            //
+            //     html += "<div key="+ d._id + " className='media'><div className='media-body'><p>" + d.locationName + "</p></div></div> </br>";
+            //     console.log(html);
+            // })
+            //
+            // return html;
+
+            return this.state.locations.map(function (location) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { key: location._id, className: 'media' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            location.locationName
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+                            { className: 'btn btn-sm btn-success', to: '/' + location._id + '/viewLocation' },
+                            'View'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    return _this6.deleteLocation(location._id);
+                                }, className: 'btn btn-sm btn-warning float-right' },
+                            'Delete'
+                        )
+                    )
+                );
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row justify-content-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-8' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'card' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-header' },
+                                'Register Location'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-body' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'map', style: mapStyle }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                                this.renderLocations()
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
+                    )
+                )
+            );
+        }
+    }]);
+
+    return allLocations;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (allLocations);
+
+/***/ }),
+/* 312 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(8);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+var mapStyle = {
+    width: "100%",
+    height: "400px"
+};
+
+var viewLocation = function (_Component) {
+    _inherits(viewLocation, _Component);
+
+    function viewLocation(props) {
+        _classCallCheck(this, viewLocation);
+
+        var _this = _possibleConstructorReturn(this, (viewLocation.__proto__ || Object.getPrototypeOf(viewLocation)).call(this, props));
+
+        _this.state = {
+            // locationOwnerID: '',
+            // locationName: '',
+            // locationAddress: '',
+            // locationDescription: '',
+            // locationStatus: '',
+            // locationRating: '',
+            // locationLatitude: '',
+            // locationLongitude: '',
+            location: location
+        };
+
+        // bind
+        // this.handleChange = this.handleChange.bind(this);
+        // this.submitLocation = this.submitLocation.bind(this);
+        return _this;
+    }
+
+    _createClass(viewLocation, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            // this.getLocations();
+            this.getLocation();
+
+            console.log("---------- this.state componentWillMount ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentWillMount ----------");
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log("---------- this.state componentDidMount() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidMount() ----------");
+
+            // create map
+            this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
+                center: [1.5510714615890955, 110.34356832504274],
+                zoom: 16,
+                layers: [__WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                })]
+            });
+
+            // function updateLatLng(state, e){
+            //     // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //     // console.log(e);
+            //     // console.log(state);
+            //     // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //     document.getElementById('locationLatitude').value = e.latlng.lat;
+            //     document.getElementById('locationLongitude').value = e.latlng.lng;
+            //
+            //     state.setState({
+            //         locationLatitude: e.latlng.lat,
+            //         locationLongitude: e.latlng.lng
+            //     })
+            // }
+
+            // this.map.on('click', function(e){
+            //     // var coord = e.latlng;
+            //     // var lat = coord.lat;
+            //     // var lng = coord.lng;
+            //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            //
+            //     //need to set state
+            //     //this.state()
+            //
+            //     document.getElementById('locationLatitude').value = e.latlng.lat;
+            //     document.getElementById('locationLongitude').value = e.latlng.lng;
+            //
+            //     this.setState({
+            //         locationLatitude: e.latlng.lat,
+            //         locationLongitude: e.latlng.lng
+            //     })
+            //
+            //
+            // });
+
+            // this.map.on("click", updateLatLng.bind(null, this));
+
+            // add layer
+            this.layer = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.layerGroup().addTo(this.map);
+
+            // method called here
+            this.updateMarkers(this.props.markersData);
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            console.log("---------- this.state componentDidUpdate() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidUpdate() ----------");
+
+            var data = this.state.location;
+
+            console.log("---------- data componentDidUpdate() ----------");
+            console.log(data);
+            console.log("---------- data componentDidUpdate() ----------");
+
+            var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
+
+            __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Cluster.ENABLE_MARKERS_LIST = true;
+
+            pruneCluster.PrepareLeafletMarker = function (leafletMarker, data) {
+                // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
+
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log(data);
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log("---------- this PrepareLeafletMarker ----------");
+                // console.log(this);
+                // console.log("---------- this PrepareLeafletMarker ----------");
+
+                //listeners can be applied to markers in this function
+                leafletMarker.on('click', function () {
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                    console.log(data);
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                });
+
+                // A popup can already be attached to the marker
+                // bindPopup can override it, but it's faster to update the content instead
+                if (leafletMarker.getPopup()) {
+                    leafletMarker.setPopupContent(data.popup);
+                } else {
+                    leafletMarker.bindPopup(data.popup);
+                }
+
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+
+            };
+
+            pruneCluster.BuildLeafletCluster = function (cluster, position) {
+                var m = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Marker(position, {
+                    icon: pruneCluster.BuildLeafletClusterIcon(cluster)
+                });
+
+                m.on('click', function () {
+                    // Compute the  cluster bounds (it's slow : O(n))
+                    var markersArea = pruneCluster.Cluster.FindMarkersInArea(cluster.bounds);
+                    var b = pruneCluster.Cluster.ComputeBounds(markersArea);
+
+                    if (b) {
+                        var bounds = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLngBounds(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.minLat, b.maxLng), new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.maxLat, b.minLng));
+
+                        var zoomLevelBefore = pruneCluster._map.getZoom();
+                        var zoomLevelAfter = pruneCluster._map.getBoundsZoom(bounds, false, new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(20, 20, null));
+
+                        // If the zoom level doesn't change
+                        if (zoomLevelAfter === zoomLevelBefore) {
+                            // Send an event for the LeafletSpiderfier
+                            pruneCluster._map.fire('overlappingmarkers', {
+                                cluster: pruneCluster,
+                                markers: markersArea,
+                                center: m.getLatLng(),
+                                marker: m
+                            });
+
+                            pruneCluster._map.setView(position, zoomLevelAfter);
+                        } else {
+                            pruneCluster._map.fitBounds(bounds);
+                        }
+                    }
+                });
+                m.on('mouseover', function () {
+                    //do mouseover stuff here
+                });
+                m.on('mouseout', function () {
+                    //do mouseout stuff here
+                });
+
+                return m;
+            };
+
+            pruneCluster.BuildLeafletClusterIcon = function (cluster) {
+
+                var e = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster();
+
+                e.stats = cluster.stats; // if you have categories on your markers
+                e.population = cluster.population; // the number of markers inside the cluster
+
+                var markers = cluster.GetClusterMarkers();
+
+                // console.log("---------- markers ----------");
+                // console.log(markers);
+                // console.log("---------- markers ----------");
+
+                return e;
+            };
+
+            var colors = ['#ff4b00', '#bac900', '#EC1813', '#55BCBE', '#D2204C', '#FF0000', '#ada59a', '#3e647e'],
+                pi2 = Math.PI * 2;
+
+            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.extend({
+                options: {
+                    iconSize: new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(44, 44),
+                    className: 'prunecluster leaflet-markercluster-icon'
+                },
+
+                createIcon: function createIcon() {
+                    // based on L.Icon.Canvas from shramov/leaflet-plugins (BSD licence)
+                    var e = document.createElement('canvas');
+                    this._setIconStyles(e, 'icon');
+                    var s = this.options.iconSize;
+                    e.width = s.x;
+                    e.height = s.y;
+                    this.draw(e.getContext('2d'), s.x, s.y);
+                    return e;
+                },
+
+                createShadow: function createShadow() {
+                    return null;
+                },
+
+                draw: function draw(canvas, width, height) {
+                    var lol = 0;
+                    var start = 0;
+                    for (var i = 0, l = colors.length; i < l; ++i) {
+
+                        var size = this.stats[i] / this.population;
+
+                        if (size > 0) {
+                            canvas.beginPath();
+                            canvas.moveTo(22, 22);
+                            canvas.fillStyle = colors[i];
+                            var from = start + 0.14,
+                                to = start + size * pi2;
+
+                            if (to < from) {
+                                from = start;
+                            }
+                            canvas.arc(22, 22, 22, from, to);
+
+                            start = start + size * pi2;
+                            canvas.lineTo(22, 22);
+                            canvas.fill();
+                            canvas.closePath();
+                        }
+                    }
+
+                    canvas.beginPath();
+                    canvas.fillStyle = 'white';
+                    canvas.arc(22, 22, 18, 0, Math.PI * 2);
+                    canvas.fill();
+                    canvas.closePath();
+
+                    canvas.fillStyle = '#555';
+                    canvas.textAlign = 'center';
+                    canvas.textBaseline = 'middle';
+                    canvas.font = 'bold 12px sans-serif';
+
+                    canvas.fillText(this.population, 22, 22, 40);
+                }
+            });
+
+            var popupContent = "Property Name: " + data.locationName + "</br>" + "Property Address: " + data.locationAddress + "</br>" + "Property Description: " + data.locationDescription + "</br>" + "Property Rating: " + data.locationRating + "</br>" + "Property Status: " + data.locationStatus + "</br>";
+
+            var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(data.locationLatitude, data.locationLongitude, {
+                popup: popupContent
+            });
+
+            // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+
+            // var z = document.createElement('p'); // is a node
+            // z.innerHTML = 'test satu dua tiga';
+            //
+            //
+            // marker.data.data = d;
+
+            //TODO: this should correlate to location status or location type
+            marker.category = 1;
+
+            // console.log("---------- marker ----------");
+            // console.log(marker);
+            // console.log("---------- marker ----------");
+
+            pruneCluster.RegisterMarker(marker);
+            // data.forEach(function (d){
+            //     // console.log("---------- d ----------");
+            //     // console.log(d);
+            //     // console.log("---------- d ----------");
+            //
+            //
+            // })
+
+            this.map.addLayer(pruneCluster);
+
+            // document.getElementById('locationName').value = this.state.locations[0].locationName;
+            // document.getElementById('locationAddress').value = this.state.locations[0].locationAddress;
+            // document.getElementById('locationDescription').value = this.state.locations[0].locationDescription;
+            // document.getElementById('locationStatus').value = this.state.locations[0].locationStatus;
+            // document.getElementById('locationRating').value = this.state.locations[0].locationRating;
+            // document.getElementById('locationLatitude').value = this.state.locations[0].locationLatitude;
+            // document.getElementById('locationLongitude').value = this.state.locations[0].locationLongitude;
+
+
+            // // check if position has changed
+            // if (this.props.markerPosition !== markerPosition) {
+            //     this.marker.setLatLng(this.props.markerPosition);
+            // }
+            //
+            // // check if data has changed
+            // if (this.props.markersData !== markersData) {
+            //     this.updateMarkers(this.props.markersData);
+            // }
+        }
+
+        // handle change
+        // handleChange(e) {
+        //     // this.setState({
+        //     //     locationOwnerID: e.target.value,
+        //     //     locationName: e.target.value,
+        //     //     locationAddress: e.target.value,
+        //     //     locationDescription: e.target.value,
+        //     //     locationStatus: e.target.value,
+        //     //     locationRating: e.target.value,
+        //     //     locationLatitude: e.target.value,
+        //     //     locationLongitude: e.target.value
+        //     // });
+        //     // console.log('Name: ', e.target.name);
+        //     // console.log('Value: ', e.target.value);
+        //     //
+        //     //
+        //     //
+        //     this.setState({[e.target.name]: e.target.value});
+        //     // console.log('onChange', this.state);
+        // }
+
+        // submitLocation(e) {
+        //     // stop browser's default behaviour of reloading on form submit
+        //     e.preventDefault();
+        //     axios
+        //         .put(`/location/${this.props.match.params.id}`, {
+        //             locationName: this.state.locationName,
+        //             locationAddress: this.state.locationAddress,
+        //             locationDescription: this.state.locationDescription,
+        //             locationStatus: this.state.locationStatus,
+        //             locationRating: this.state.locationRating,
+        //             locationLatitude: this.state.locationLatitude,
+        //             locationLongitude: this.state.locationLongitude
+        //         })
+        //         .then(response => {
+        //             console.log('successfully edited the location');
+        //             this.props.history.push('/');
+        //         });
+        //
+        // }
+
+    }, {
+        key: 'getLocation',
+        value: function getLocation() {
+            var _this2 = this;
+
+            // axios.get('/location').then((
+            //     response // console.log(response.data.locations)
+            // ) =>
+            //     this.setState({
+            //         locations: [...response.data.locations]
+            //     })
+            // );
+
+            axios.get('/location/' + this.props.match.params.id).then(function (response // console.log(response.data.locations)
+            ) {
+                return _this2.setState({
+                    location: response.data,
+                    locationName: response.data.locationName,
+                    locationAddress: response.data.locationAddress,
+                    locationDescription: response.data.locationDescription,
+                    locationStatus: response.data.locationStatus,
+                    locationRating: response.data.locationRating,
+                    locationLatitude: response.data.locationLatitude,
+                    locationLongitude: response.data.locationLongitude,
+                    ownerName: response.data.user.name,
+                    ownerEmail: response.data.user.email
+                });
+            });
+        }
+
+        // renderLocation() {
+        //     console.log("---------- this.state.locations renderLocations()----------");
+        //     console.log(this.state);
+        //     console.log("---------- this.state.locations renderLocations()----------");
+        //
+        //     console.log('fire');
+        //
+        //     // this.state.locations.forEach(function (d){
+        //     //     console.log(d);
+        //     //
+        //     //     html += "<div key="+ d._id + " className='media'><div className='media-body'><p>" + d.locationName + "</p></div></div> </br>";
+        //     //     console.log(html);
+        //     // })
+        //     //
+        //     // return html;
+        //
+        //     return this.state.locations.map(location => (
+        //         <div key={location._id} className="media">
+        //             <div className="media-body">
+        //                 <p>{location.locationName}</p>
+        //                 <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
+        //                     View
+        //                 </Link>
+        //                 <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
+        //                     Delete
+        //                 </button>
+        //
+        //             </div>
+        //         </div>
+        //     ));
+        // }
+
+        // example leaflet function
+
+    }, {
+        key: 'updateMarkers',
+        value: function updateMarkers(markersData) {
+            // Do something...
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row justify-content-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-8' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'card' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-header' },
+                                'Register Location'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-body' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'map', style: mapStyle }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Name: ',
+                                    this.state.locationName
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Address: ',
+                                    this.state.locationAddress
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Description: ',
+                                    this.state.locationDescription
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Status: ',
+                                    this.state.locationStatus
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Rating: ',
+                                    this.state.locationRating
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Latitude: ',
+                                    this.state.locationLatitude
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Longitude: ',
+                                    this.state.locationLongitude
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Owner Name: ',
+                                    this.state.ownerName
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'p',
+                                    null,
+                                    'Owner Email: ',
+                                    this.state.ownerEmail
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null)
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
+                    )
+                )
+            );
+        }
+    }]);
+
+    return viewLocation;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (viewLocation);
+
+/***/ }),
+/* 313 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -86739,6 +87932,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -86852,6 +88047,201 @@ var editLocation = function (_Component) {
             console.log(this.state);
             console.log("---------- this.state componentDidUpdate() ----------");
 
+            var data = this.state;
+
+            var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
+
+            __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Cluster.ENABLE_MARKERS_LIST = true;
+
+            pruneCluster.PrepareLeafletMarker = function (leafletMarker, data) {
+                // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
+
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log(data);
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log("---------- this PrepareLeafletMarker ----------");
+                // console.log(this);
+                // console.log("---------- this PrepareLeafletMarker ----------");
+
+                //listeners can be applied to markers in this function
+                leafletMarker.on('click', function () {
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                    console.log(data);
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                });
+
+                // A popup can already be attached to the marker
+                // bindPopup can override it, but it's faster to update the content instead
+                if (leafletMarker.getPopup()) {
+                    leafletMarker.setPopupContent(data.popup);
+                } else {
+                    leafletMarker.bindPopup(data.popup);
+                }
+
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+
+            };
+
+            pruneCluster.BuildLeafletCluster = function (cluster, position) {
+                var m = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Marker(position, {
+                    icon: pruneCluster.BuildLeafletClusterIcon(cluster)
+                });
+
+                m.on('click', function () {
+                    // Compute the  cluster bounds (it's slow : O(n))
+                    var markersArea = pruneCluster.Cluster.FindMarkersInArea(cluster.bounds);
+                    var b = pruneCluster.Cluster.ComputeBounds(markersArea);
+
+                    if (b) {
+                        var bounds = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLngBounds(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.minLat, b.maxLng), new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.maxLat, b.minLng));
+
+                        var zoomLevelBefore = pruneCluster._map.getZoom();
+                        var zoomLevelAfter = pruneCluster._map.getBoundsZoom(bounds, false, new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(20, 20, null));
+
+                        // If the zoom level doesn't change
+                        if (zoomLevelAfter === zoomLevelBefore) {
+                            // Send an event for the LeafletSpiderfier
+                            pruneCluster._map.fire('overlappingmarkers', {
+                                cluster: pruneCluster,
+                                markers: markersArea,
+                                center: m.getLatLng(),
+                                marker: m
+                            });
+
+                            pruneCluster._map.setView(position, zoomLevelAfter);
+                        } else {
+                            pruneCluster._map.fitBounds(bounds);
+                        }
+                    }
+                });
+                m.on('mouseover', function () {
+                    //do mouseover stuff here
+                });
+                m.on('mouseout', function () {
+                    //do mouseout stuff here
+                });
+
+                return m;
+            };
+
+            pruneCluster.BuildLeafletClusterIcon = function (cluster) {
+
+                var e = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster();
+
+                e.stats = cluster.stats; // if you have categories on your markers
+                e.population = cluster.population; // the number of markers inside the cluster
+
+                var markers = cluster.GetClusterMarkers();
+
+                // console.log("---------- markers ----------");
+                // console.log(markers);
+                // console.log("---------- markers ----------");
+
+                return e;
+            };
+
+            var colors = ['#ff4b00', '#bac900', '#EC1813', '#55BCBE', '#D2204C', '#FF0000', '#ada59a', '#3e647e'],
+                pi2 = Math.PI * 2;
+
+            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.extend({
+                options: {
+                    iconSize: new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(44, 44),
+                    className: 'prunecluster leaflet-markercluster-icon'
+                },
+
+                createIcon: function createIcon() {
+                    // based on L.Icon.Canvas from shramov/leaflet-plugins (BSD licence)
+                    var e = document.createElement('canvas');
+                    this._setIconStyles(e, 'icon');
+                    var s = this.options.iconSize;
+                    e.width = s.x;
+                    e.height = s.y;
+                    this.draw(e.getContext('2d'), s.x, s.y);
+                    return e;
+                },
+
+                createShadow: function createShadow() {
+                    return null;
+                },
+
+                draw: function draw(canvas, width, height) {
+                    var lol = 0;
+                    var start = 0;
+                    for (var i = 0, l = colors.length; i < l; ++i) {
+
+                        var size = this.stats[i] / this.population;
+
+                        if (size > 0) {
+                            canvas.beginPath();
+                            canvas.moveTo(22, 22);
+                            canvas.fillStyle = colors[i];
+                            var from = start + 0.14,
+                                to = start + size * pi2;
+
+                            if (to < from) {
+                                from = start;
+                            }
+                            canvas.arc(22, 22, 22, from, to);
+
+                            start = start + size * pi2;
+                            canvas.lineTo(22, 22);
+                            canvas.fill();
+                            canvas.closePath();
+                        }
+                    }
+
+                    canvas.beginPath();
+                    canvas.fillStyle = 'white';
+                    canvas.arc(22, 22, 18, 0, Math.PI * 2);
+                    canvas.fill();
+                    canvas.closePath();
+
+                    canvas.fillStyle = '#555';
+                    canvas.textAlign = 'center';
+                    canvas.textBaseline = 'middle';
+                    canvas.font = 'bold 12px sans-serif';
+
+                    canvas.fillText(this.population, 22, 22, 40);
+                }
+            });
+
+            var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
+
+            var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude, {
+                popup: popupContent
+            });
+
+            // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+
+            // var z = document.createElement('p'); // is a node
+            // z.innerHTML = 'test satu dua tiga';
+            //
+            //
+            // marker.data.data = d;
+
+            //TODO: this should correlate to location status or location type
+            marker.category = 1;
+
+            // console.log("---------- marker ----------");
+            // console.log(marker);
+            // console.log("---------- marker ----------");
+
+            pruneCluster.RegisterMarker(marker);
+            // data.forEach(function (d){
+            //     // console.log("---------- d ----------");
+            //     // console.log(d);
+            //     // console.log("---------- d ----------");
+            //
+            //
+            // })
+
+            this.map.addLayer(pruneCluster);
+
             // document.getElementById('locationName').value = this.state.locations[0].locationName;
             // document.getElementById('locationAddress').value = this.state.locations[0].locationAddress;
             // document.getElementById('locationDescription').value = this.state.locations[0].locationDescription;
@@ -86902,7 +88292,7 @@ var editLocation = function (_Component) {
 
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
-            axios.put('/locations/' + this.props.match.params.id, {
+            axios.put('/location/' + this.props.match.params.id, {
                 locationName: this.state.locationName,
                 locationAddress: this.state.locationAddress,
                 locationDescription: this.state.locationDescription,
@@ -86920,7 +88310,7 @@ var editLocation = function (_Component) {
         value: function getLocations() {
             var _this3 = this;
 
-            axios.get('/locations/' + this.props.match.params.id + '/edit').then(function (response // console.log(response.data.locations)
+            axios.get('/location/' + this.props.match.params.id + '/edit').then(function (response // console.log(response.data.locations)
             ) {
                 return _this3.setState({
                     locationName: response.data.location.locationName,
@@ -87132,15 +88522,15 @@ var editLocation = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (editLocation);
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -87629,13 +89019,13 @@ var createContract = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (createContract);
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -88026,758 +89416,10 @@ var editContract = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (editContract);
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(12);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-
-
-var mapStyle = {
-    width: "100%",
-    height: "400px"
-};
-
-var allLocations = function (_Component) {
-    _inherits(allLocations, _Component);
-
-    function allLocations(props) {
-        _classCallCheck(this, allLocations);
-
-        var _this = _possibleConstructorReturn(this, (allLocations.__proto__ || Object.getPrototypeOf(allLocations)).call(this, props));
-
-        _this.state = {
-            locations: []
-        };
-
-        // this.handleChange = this.handleChange.bind(this);
-
-        // this.submitLocation = this.submitLocation.bind(this);
-
-        _this.renderLocations = _this.renderLocations.bind(_this);
-
-        // this.deleteLocation = this.deleteLocation.bind(this);
-
-        _this.updateLocation = _this.updateLocation.bind(_this);
-        return _this;
-    }
-
-    _createClass(allLocations, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            // this.getLocations();
-            this.getLocations();
-
-            console.log("---------- this.state componentWillMount ----------");
-            console.log(this.state);
-            console.log("---------- this.state componentWillMount ----------");
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            console.log("---------- this.state componentDidMount() ----------");
-            console.log(this.state);
-            console.log("---------- this.state componentDidMount() ----------");
-
-            // create map
-            this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
-                center: [1.5510714615890955, 110.34356832504274],
-                zoom: 16,
-                layers: [__WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                })]
-            });
-
-            // MapClick.on('click', L.bind(onMapClick, null, ID))
-            // var testBed = this
-
-            function updateLatLng(state, e) {
-                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                // console.log(e);
-                // console.log(state);
-                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                document.getElementById('locationLatitude').value = e.latlng.lat;
-                document.getElementById('locationLongitude').value = e.latlng.lng;
-
-                // state.setState({
-                //     locationLatitude: e.latlng.lat,
-                //     locationLongitude: e.latlng.lng
-                // })
-            }
-
-            // this.map.on('click', function(e){
-            //
-            //     console.log("---------- e componentDidMount() ----------");
-            //     console.log(e);
-            //     console.log("---------- e componentDidMount() ----------");
-            //     // var coord = e.latlng;
-            //     // var lat = coord.lat;
-            //     // var lng = coord.lng;
-            //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
-            //
-            //     //need to set state
-            //     //this.state()
-            //
-            //     // document.getElementById('locationLatitude').value = e.latlng.lat;
-            //     // document.getElementById('locationLongitude').value = e.latlng.lng;
-            //     //
-            //     //
-            //     // this.setState({
-            //     //     locationLatitude: e.latlng.lat,
-            //     //     locationLongitude: e.latlng.lng
-            //     // })
-            //
-            //
-            // });
-
-            // this.map.on('click', L.bind(updateLatLng, null, this));
-
-            // .on("click", function(e){
-            //     updateLatLng(e, );
-            // });
-
-            // this.map.on("click", updateLatLng.bind(null, this));
-
-            // add layer
-            // this.layer = L.layerGroup().addTo(this.map);
-
-            // method called here
-            // this.updateMarkers(this.props.markersData);
-        }
-    }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            console.log("---------- this.state componentDidUpdate() ----------");
-            console.log(this.state);
-            console.log("---------- this.state componentDidUpdate() ----------");
-
-            var data = this.state.locations;
-
-            // console.log("---------- data ----------");
-            // console.log(data);
-            // console.log("---------- data ----------");
-
-
-            var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
-
-            __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Cluster.ENABLE_MARKERS_LIST = true;
-
-            pruneCluster.PrepareLeafletMarker = function (leafletMarker, data) {
-                // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
-
-                // console.log("---------- data PrepareLeafletMarker ----------");
-                // console.log(data);
-                // console.log("---------- data PrepareLeafletMarker ----------");
-                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
-                // console.log(leafletMarker);
-                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
-                // console.log("---------- this PrepareLeafletMarker ----------");
-                // console.log(this);
-                // console.log("---------- this PrepareLeafletMarker ----------");
-
-                //listeners can be applied to markers in this function
-                leafletMarker.on('click', function () {
-                    console.log("---------- data PrepareLeafletMarker ----------");
-                    console.log(data);
-                    console.log("---------- data PrepareLeafletMarker ----------");
-                });
-
-                // A popup can already be attached to the marker
-                // bindPopup can override it, but it's faster to update the content instead
-                if (leafletMarker.getPopup()) {
-                    leafletMarker.setPopupContent(data.popup);
-                } else {
-                    leafletMarker.bindPopup(data.popup);
-                }
-
-                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
-                // console.log(leafletMarker);
-                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
-
-            };
-
-            pruneCluster.BuildLeafletCluster = function (cluster, position) {
-                var m = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Marker(position, {
-                    icon: pruneCluster.BuildLeafletClusterIcon(cluster)
-                });
-
-                m.on('click', function () {
-                    // Compute the  cluster bounds (it's slow : O(n))
-                    var markersArea = pruneCluster.Cluster.FindMarkersInArea(cluster.bounds);
-                    var b = pruneCluster.Cluster.ComputeBounds(markersArea);
-
-                    if (b) {
-                        var bounds = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLngBounds(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.minLat, b.maxLng), new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.maxLat, b.minLng));
-
-                        var zoomLevelBefore = pruneCluster._map.getZoom();
-                        var zoomLevelAfter = pruneCluster._map.getBoundsZoom(bounds, false, new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(20, 20, null));
-
-                        // If the zoom level doesn't change
-                        if (zoomLevelAfter === zoomLevelBefore) {
-                            // Send an event for the LeafletSpiderfier
-                            pruneCluster._map.fire('overlappingmarkers', {
-                                cluster: pruneCluster,
-                                markers: markersArea,
-                                center: m.getLatLng(),
-                                marker: m
-                            });
-
-                            pruneCluster._map.setView(position, zoomLevelAfter);
-                        } else {
-                            pruneCluster._map.fitBounds(bounds);
-                        }
-                    }
-                });
-                m.on('mouseover', function () {
-                    //do mouseover stuff here
-                });
-                m.on('mouseout', function () {
-                    //do mouseout stuff here
-                });
-
-                return m;
-            };
-
-            pruneCluster.BuildLeafletClusterIcon = function (cluster) {
-
-                var e = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster();
-
-                e.stats = cluster.stats; // if you have categories on your markers
-                e.population = cluster.population; // the number of markers inside the cluster
-
-                var markers = cluster.GetClusterMarkers();
-
-                // console.log("---------- markers ----------");
-                // console.log(markers);
-                // console.log("---------- markers ----------");
-
-                return e;
-            };
-
-            var colors = ['#ff4b00', '#bac900', '#EC1813', '#55BCBE', '#D2204C', '#FF0000', '#ada59a', '#3e647e'],
-                pi2 = Math.PI * 2;
-
-            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.extend({
-                options: {
-                    iconSize: new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(44, 44),
-                    className: 'prunecluster leaflet-markercluster-icon'
-                },
-
-                createIcon: function createIcon() {
-                    // based on L.Icon.Canvas from shramov/leaflet-plugins (BSD licence)
-                    var e = document.createElement('canvas');
-                    this._setIconStyles(e, 'icon');
-                    var s = this.options.iconSize;
-                    e.width = s.x;
-                    e.height = s.y;
-                    this.draw(e.getContext('2d'), s.x, s.y);
-                    return e;
-                },
-
-                createShadow: function createShadow() {
-                    return null;
-                },
-
-                draw: function draw(canvas, width, height) {
-                    var lol = 0;
-                    var start = 0;
-                    for (var i = 0, l = colors.length; i < l; ++i) {
-
-                        var size = this.stats[i] / this.population;
-
-                        if (size > 0) {
-                            canvas.beginPath();
-                            canvas.moveTo(22, 22);
-                            canvas.fillStyle = colors[i];
-                            var from = start + 0.14,
-                                to = start + size * pi2;
-
-                            if (to < from) {
-                                from = start;
-                            }
-                            canvas.arc(22, 22, 22, from, to);
-
-                            start = start + size * pi2;
-                            canvas.lineTo(22, 22);
-                            canvas.fill();
-                            canvas.closePath();
-                        }
-                    }
-
-                    canvas.beginPath();
-                    canvas.fillStyle = 'white';
-                    canvas.arc(22, 22, 18, 0, Math.PI * 2);
-                    canvas.fill();
-                    canvas.closePath();
-
-                    canvas.fillStyle = '#555';
-                    canvas.textAlign = 'center';
-                    canvas.textBaseline = 'middle';
-                    canvas.font = 'bold 12px sans-serif';
-
-                    canvas.fillText(this.population, 22, 22, 40);
-                }
-            });
-
-            data.forEach(function (d) {
-                // console.log("---------- d ----------");
-                // console.log(d);
-                // console.log("---------- d ----------");
-
-                var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
-
-                var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude, {
-                    popup: popupContent
-                });
-
-                // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
-
-                // var z = document.createElement('p'); // is a node
-                // z.innerHTML = 'test satu dua tiga';
-                //
-                //
-                // marker.data.data = d;
-
-                //TODO: this should correlate to location status or location type
-                marker.category = 1;
-
-                // console.log("---------- marker ----------");
-                // console.log(marker);
-                // console.log("---------- marker ----------");
-
-                pruneCluster.RegisterMarker(marker);
-            });
-
-            this.map.addLayer(pruneCluster);
-
-            // var testBed = L.marker([1.5510714615890955, 110.34356832504274]).addTo(this.map)
-            //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-            //     .openPopup();
-            //
-            // console.log("---------- testBed ----------");
-            // console.log(testBed);
-            // console.log("---------- testBed ----------");
-
-            // console.log("---------- this.map ----------");
-            // console.log(this.map);
-            // console.log("---------- this.map ----------");
-            // console.log("---------- pruneCluster ----------");
-            // console.log(pruneCluster);
-            // console.log("---------- pruneCluster ----------");
-
-            // // check if position has changed
-            // if (this.props.markerPosition !== markerPosition) {
-            //     this.marker.setLatLng(this.props.markerPosition);
-            // }
-            //
-            // // check if data has changed
-            // if (this.props.markersData !== markersData) {
-            //     this.updateMarkers(this.props.markersData);
-            // }
-        }
-
-        // // handle change
-        // handleChange(e) {
-        //     // this.setState({
-        //     //     locationOwnerID: e.target.value,
-        //     //     locationName: e.target.value,
-        //     //     locationAddress: e.target.value,
-        //     //     locationDescription: e.target.value,
-        //     //     locationStatus: e.target.value,
-        //     //     locationRating: e.target.value,
-        //     //     locationLatitude: e.target.value,
-        //     //     locationLongitude: e.target.value
-        //     // });
-        //     // console.log('Name: ', e.target.name);
-        //     // console.log('Value: ', e.target.value);
-        //     //
-        //     // this.setState({[e.target.name]: e.target.value});
-        //     // console.log('onChange', this.state);
-        // }
-
-        // get all locations from backend
-
-    }, {
-        key: 'getLocations',
-        value: function getLocations() {
-            var _this2 = this;
-
-            axios.get('/location').then(function (response) {
-                _this2.setState({
-                    locations: [].concat(_toConsumableArray(response.data.locations))
-                });
-
-                console.log("---------- this.state getLocations() PRE ----------");
-                console.log(_this2.state);
-                console.log("---------- this.state getLocations() PRE ----------");
-            });
-            console.log("---------- this.state getLocations() POST ----------");
-            console.log(this.state);
-            console.log("---------- this.state getLocations() POST ----------");
-        }
-
-        // submitLocation(e) {
-        //     console.log("---------- this.state submitContract----------");
-        //     console.log(this.state);
-        //     console.log("---------- this.state submitContract----------");
-        //     // stop browser's default behaviour of reloading on form submit
-        //     e.preventDefault();
-        //     axios.post('/locations', {
-        //             // locationOwnerID: this.state.locationOwnerID,
-        //             locationName: this.state.locationName,
-        //             locationAddress: this.state.locationAddress,
-        //             locationDescription: this.state.locationDescription,
-        //             locationStatus: this.state.locationStatus,
-        //             locationRating: this.state.locationRating,
-        //             locationLatitude: this.state.locationLatitude,
-        //             locationLongitude: this.state.locationLongitude
-        //         })
-        //         .then(response => {
-        //
-        //             this.setState({
-        //                 locations: [response.data, ...this.state.locations]
-        //             });
-        //
-        //             console.log('response', response);
-        //             console.log('this.state', this.state);
-        //         });
-        //
-        //
-        // }
-
-        // get all locations from backend
-
-    }, {
-        key: 'getLocations',
-        value: function getLocations() {
-            var _this3 = this;
-
-            axios.get('/location/allLocations').then(function (response) {
-                _this3.setState({
-                    locations: [].concat(_toConsumableArray(response.data.locations))
-                });
-
-                console.log("---------- this.state getLocations() PRE ----------");
-                console.log(_this3.state);
-                console.log("---------- this.state getLocations() PRE ----------");
-            });
-            console.log("---------- this.state getLocations() POST ----------");
-            console.log(this.state);
-            console.log("---------- this.state getLocations() POST ----------");
-        }
-    }, {
-        key: 'deleteLocation',
-        value: function deleteLocation(id) {
-            // remove from local state
-            var isNotId = function isNotId(location) {
-                return location._id !== id;
-            };
-            var updatedLocations = this.state.locations.filter(isNotId);
-
-            this.setState({ locations: updatedLocations });
-
-            // make delete request to the backend
-            axios.delete('/location/' + id);
-        }
-    }, {
-        key: 'updateLocation',
-        value: function updateLocation() {
-            var _this4 = this;
-
-            axios.put('/location/' + id).then(function (response) {
-                _this4.getLocations();
-            });
-        }
-
-        // example leaflet function
-
-    }, {
-        key: 'updateMarkers',
-        value: function updateMarkers(markersData) {}
-        // Do something...
-
-
-        // render locations
-
-    }, {
-        key: 'renderLocations',
-        value: function renderLocations() {
-            var _this5 = this;
-
-            console.log("---------- this.state.locations renderLocations()----------");
-            console.log(this.state.locations);
-            console.log("---------- this.state.locations renderLocations()----------");
-
-            // this.state.locations.forEach(function (d){
-            //     console.log(d);
-            //
-            //     html += "<div key="+ d._id + " className='media'><div className='media-body'><p>" + d.locationName + "</p></div></div> </br>";
-            //     console.log(html);
-            // })
-            //
-            // return html;
-
-            return this.state.locations.map(function (location) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { key: location._id, className: 'media' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'media-body' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'p',
-                            null,
-                            location.locationName
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { onClick: function onClick() {
-                                    return _this5.viewLocation(location._id);
-                                }, className: 'btn btn-sm btn-warning float-right' },
-                            'View'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { onClick: function onClick() {
-                                    return _this5.deleteLocation(location._id);
-                                }, className: 'btn btn-sm btn-warning float-right' },
-                            'Delete'
-                        ),
-                        '// ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
-                            { className: 'btn btn-sm btn-success', to: '/' + location._id + '/editLocation' },
-                            '//     Edit // '
-                        )
-                    )
-                );
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'container' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'row justify-content-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-8' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'card' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'div',
-                                { className: 'card-header' },
-                                'Register Location'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'div',
-                                { className: 'card-body' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'map', style: mapStyle }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'form',
-                                    { onSubmit: this.submitLocation },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-group' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Name:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationName',
-                                                    name: 'locationName',
-                                                    type: 'text',
-                                                    value: this.state.locationName,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Enter location name.',
-                                                    required: true
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Address:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationAddress',
-                                                    name: 'locationAddress',
-                                                    type: 'text',
-                                                    value: this.state.locationAddress,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Enter location address.',
-                                                    required: true
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Description:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationDescription',
-                                                    name: 'locationDescription',
-                                                    type: 'text',
-                                                    value: this.state.locationDescription,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Enter location description.'
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Status:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationStatus',
-                                                    name: 'locationStatus',
-                                                    type: 'text',
-                                                    value: this.state.locationStatus,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Enter location status.',
-                                                    required: true
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Rating:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationRating',
-                                                    name: 'locationRating',
-                                                    type: 'number',
-                                                    value: this.state.locationRating,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Enter location rating.',
-                                                    required: true,
-                                                    step: '0.01'
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Latitude:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationLatitude',
-                                                    name: 'locationLatitude',
-                                                    type: 'text',
-                                                    value: this.state.locationLatitude,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Click on map to set latitude.',
-                                                    step: '0.0',
-                                                    required: true,
-                                                    readOnly: true
-                                                })
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'p',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                null,
-                                                'Longitude:',
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                                                    id: 'locationLongitude',
-                                                    name: 'locationLongitude',
-                                                    type: 'text',
-                                                    value: this.state.locationLongitude,
-                                                    onChange: this.handleChange,
-                                                    className: 'form-control',
-                                                    placeholder: 'Click on map to set longitude.',
-                                                    step: '0.0',
-                                                    required: true,
-                                                    readOnly: true
-                                                })
-                                            )
-                                        )
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'button',
-                                        { type: 'submit', className: 'btn btn-primary' },
-                                        'Create Location'
-                                    )
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-                                this.renderLocations()
-                            )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
-                    )
-                )
-            );
-        }
-    }]);
-
-    return allLocations;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (allLocations);
 
 /***/ })
 /******/ ]);

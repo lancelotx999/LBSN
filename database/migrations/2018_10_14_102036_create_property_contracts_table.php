@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContractsTable extends Migration
+class CreatePropertyContractsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('property_contracts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('providerID'); // use id from User
             $table->string('receiverID'); // use id from User
-            $table->string('LocationID'); // use id from Location
-            $table->string('contractType');
+            $table->string('locationID'); // use id from Location
             $table->string('contractContent');
             $table->decimal('contractValue');
             $table->string('contractStatus');
             $table->string('providerSignature'); // use User password to sign for now
             $table->string('receiverSignature'); // use User password to sign for now
+
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('property_contracts');
     }
 }

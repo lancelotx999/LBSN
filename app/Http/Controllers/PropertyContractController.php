@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Contract;
+use App\PropertyContract;
 use App\User;
 use App\Location;
 use Illuminate\Http\Request;
 
-class ContractController extends Controller
+class PropertyContractController extends Controller
 {
     // apply auth middleware so only authenticated users have access
 	public function __construct() {
@@ -19,7 +19,7 @@ class ContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Contract $contract, User $user)
+    public function index(Request $request, PropertyContract $contract, User $user)
     {
         // get all the contracts based on current user id
 		$allContracts = $contract->whereIn('user_id', $request->user())->with('user');
@@ -40,7 +40,7 @@ class ContractController extends Controller
 		]);
     }
 
-	public function listAll(Request $request, Contract $contract, User $user){
+	public function listAll(Request $request, PropertyContract $contract, User $user){
 
 	}
 
@@ -68,7 +68,6 @@ class ContractController extends Controller
             'providerID' => 'required',
 			'receiverID' => 'required',
             'locationID' => 'required',
-			'contractType' => 'required',
             'contractValue' => 'required',
             'contractStatus' => 'required',
  		]);
@@ -79,7 +78,6 @@ class ContractController extends Controller
             'providerID' => $request->providerID,
             'receiverID' => $request->receiverID,
 			'locationID' => $request->locationID,
-			'contractType' => $request->contractType,
             'contractContent' => $request->contractContent,
             'contractValue' => $request->contractValue,
             'contractStatus' => $request->contractStatus,
@@ -110,7 +108,7 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        $contract = Contract::findOrFail($id);
+        $contract = PropertyContract::findOrFail($id);
 		return response()->json([
 			'contract' => $contract,
 		]);
@@ -126,7 +124,7 @@ class ContractController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-		$contract = Contract::findOrFail($id);
+		$contract = PropertyContract::findOrFail($id);
 		$contract->update($input);
 		return response()->json($contract->with('user')->find($contract->_id));
     }
@@ -139,6 +137,6 @@ class ContractController extends Controller
      */
     public function destroy($id)
     {
-        Contract::findOrFail($id)->delete();
+        PropertyContract::findOrFail($id)->delete();
     }
 }

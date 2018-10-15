@@ -9,20 +9,20 @@ import { Link } from 'react-router-dom';
 //     height: "400px"
 // }
 
-class editContract extends Component {
+class editServiceContract extends Component {
     constructor(props) {
         super(props);
         this.state = {
             providerID: '',
             receiverID: '',
-            locationID: '',
+            serviceID: '',
             contractType: '',
             contractContent: '',
             contractValue: '',
             contractStatus: '',
             providerSignature: '',
             receiverSignature: '',
-            contracts: []
+            serviceContract: []
         };
 
         // bind
@@ -52,13 +52,13 @@ class editContract extends Component {
         console.log(this.state);
         console.log("---------- this.state componentDidUpdate() ----------");
 
-        // document.getElementById('providerID').value = this.state.contracts[0].providerID;
-        // document.getElementById('receiverID').value = this.state.contracts[0].receiverID;
-        // document.getElementById('contractContent').value = this.state.contracts[0].contractContent;
-        // document.getElementById('contractValue').value = this.state.contracts[0].contractValue;
-        // document.getElementById('contractStatus').value = this.state.contracts[0].contractStatus;
-        // document.getElementById('providerSignature').value = this.state.contracts[0].providerSignature;
-        // document.getElementById('receiverSignature').value = this.state.contracts[0].receiverSignature;
+        // document.getElementById('providerID').value = this.state.serviceContract[0].providerID;
+        // document.getElementById('receiverID').value = this.state.serviceContract[0].receiverID;
+        // document.getElementById('contractContent').value = this.state.serviceContract[0].contractContent;
+        // document.getElementById('contractValue').value = this.state.serviceContract[0].contractValue;
+        // document.getElementById('contractStatus').value = this.state.serviceContract[0].contractStatus;
+        // document.getElementById('providerSignature').value = this.state.serviceContract[0].providerSignature;
+        // document.getElementById('receiverSignature').value = this.state.serviceContract[0].receiverSignature;
 
         // // check if position has changed
         // if (this.props.markerPosition !== markerPosition) {
@@ -97,11 +97,10 @@ class editContract extends Component {
         // stop browser's default behaviour of reloading on form submit
         e.preventDefault();
         axios
-            .put(`/contracts/${this.props.match.params.id}`, {
+            .put(`/serviceContract/${this.props.match.params.id}`, {
                 providerID: this.state.providerID,
                 receiverID: this.state.receiverID,
-                locationID: this.state.locationID,
-                contractType: this.state.contractType,
+                serviceID: this.state.serviceID,
                 contractContent: this.state.contractContent,
                 contractValue: this.state.contractValue,
                 contractStatus: this.state.contractStatus,
@@ -115,13 +114,13 @@ class editContract extends Component {
 
     }
 
-    // // get all contracts from backend
+    // // get all serviceContract from backend
     // getContracts() {
-    //     axios.get('/contracts').then((
-    //         response // console.log(response.data.contracts)
+    //     axios.get('/serviceContract').then((
+    //         response // console.log(response.data.serviceContract)
     //     ) =>
     //         this.setState({
-    //             contracts: [...response.data.contracts]
+    //             serviceContract: [...response.data.serviceContract]
     //         })
     //     );
     //
@@ -129,14 +128,13 @@ class editContract extends Component {
     // }
 
     getContracts() {
-        axios.get(`/contracts/${this.props.match.params.id}/edit`).then((
+        axios.get(`/serviceContract/${this.props.match.params.id}/edit`).then((
             response
         ) =>
             this.setState({
                 providerID: response.data.contract.providerID,
                 receiverID: response.data.contract.receiverID,
-                locationID: response.data.contract.locationID,
-                contractType: response.data.contract.contractType,
+                serviceID: response.data.contract.serviceID,
                 contractContent: response.data.contract.contractContent,
                 contractValue: response.data.contract.contractValue,
                 contractStatus: response.data.contract.contractStatus,
@@ -192,28 +190,14 @@ class editContract extends Component {
                                             <label>
                                                 Property:
                                                 <input
-                                                    id="locationID"
-                                                    name="locationID"
+                                                    id="serviceID"
+                                                    name="serviceID"
                                                     type="text"
-                                                    value={this.state.locationID}
+                                                    value={this.state.serviceID}
                                                     onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter receiver ID."
                                                     required
-                                                />
-                                            </label>
-                                        </p>
-                                        <p>
-                                            <label>
-                                                Contract Type:
-                                                <input
-                                                    id="contractType"
-                                                    name="contractType"
-                                                    type="text"
-                                                    value={this.state.contractType}
-                                                    onChange={this.handleChange}
-                                                    className="form-control"
-                                                    placeholder="Enter contract content."
                                                 />
                                             </label>
                                         </p>

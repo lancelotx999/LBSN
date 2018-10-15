@@ -18,6 +18,7 @@ export default class createContract extends Component {
             providerID: '',
             receiverID: '',
             locationID: '',
+            contractType: '',
             contractContent: '',
             contractValue: '',
             contractStatus: '',
@@ -123,6 +124,7 @@ export default class createContract extends Component {
                 providerID: this.state.providerID,
                 receiverID: this.state.receiverID,
                 locationID: this.state.locationID,
+                contractType: this.state.contractType,
                 contractContent: this.state.contractContent,
                 contractValue: this.state.contractValue,
                 contractStatus: this.state.contractStatus,
@@ -144,7 +146,7 @@ export default class createContract extends Component {
 
     // get all contracts from backend
     getContracts() {
-        axios.get('/contracts').then((
+        axios.get('/contract').then((
             response // console.log(response.data.contracts)
         ) =>
             this.setState({
@@ -272,7 +274,21 @@ export default class createContract extends Component {
                                         </p>
                                         <p>
                                             <label>
-                                                Content:
+                                                Contract Type:
+                                                <input
+                                                    id="contractType"
+                                                    name="contractType"
+                                                    type="text"
+                                                    value={this.state.contractType}
+                                                    onChange={this.handleChange}
+                                                    className="form-control"
+                                                    placeholder="Enter contract Type."
+                                                />
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                                Contract Content:
                                                 <input
                                                     id="contractContent"
                                                     name="contractContent"

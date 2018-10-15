@@ -17,5 +17,7 @@ Route::view('/welcome', 'welcome');
 
 Auth::routes();
 
-Route::resource('locations', 'LocationController');
-Route::resource('contracts', 'ContractController');
+Route::resource('location', 'LocationController');
+Route::resource('contract', 'ContractController');
+Route::resource('propertyContracts', 'PropertyContractController');
+Route::resource('serviceContracts', 'ServiceContractController');

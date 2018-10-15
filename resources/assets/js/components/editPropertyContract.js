@@ -9,20 +9,19 @@ import { Link } from 'react-router-dom';
 //     height: "400px"
 // }
 
-class editContract extends Component {
+class editPropertyContract extends Component {
     constructor(props) {
         super(props);
         this.state = {
             providerID: '',
             receiverID: '',
             locationID: '',
-            contractType: '',
             contractContent: '',
             contractValue: '',
             contractStatus: '',
             providerSignature: '',
             receiverSignature: '',
-            contracts: []
+            propertyContract: []
         };
 
         // bind
@@ -52,13 +51,13 @@ class editContract extends Component {
         console.log(this.state);
         console.log("---------- this.state componentDidUpdate() ----------");
 
-        // document.getElementById('providerID').value = this.state.contracts[0].providerID;
-        // document.getElementById('receiverID').value = this.state.contracts[0].receiverID;
-        // document.getElementById('contractContent').value = this.state.contracts[0].contractContent;
-        // document.getElementById('contractValue').value = this.state.contracts[0].contractValue;
-        // document.getElementById('contractStatus').value = this.state.contracts[0].contractStatus;
-        // document.getElementById('providerSignature').value = this.state.contracts[0].providerSignature;
-        // document.getElementById('receiverSignature').value = this.state.contracts[0].receiverSignature;
+        // document.getElementById('providerID').value = this.state.propertyContract[0].providerID;
+        // document.getElementById('receiverID').value = this.state.propertyContract[0].receiverID;
+        // document.getElementById('contractContent').value = this.state.propertyContract[0].contractContent;
+        // document.getElementById('contractValue').value = this.state.propertyContract[0].contractValue;
+        // document.getElementById('contractStatus').value = this.state.propertyContract[0].contractStatus;
+        // document.getElementById('providerSignature').value = this.state.propertyContract[0].providerSignature;
+        // document.getElementById('receiverSignature').value = this.state.propertyContract[0].receiverSignature;
 
         // // check if position has changed
         // if (this.props.markerPosition !== markerPosition) {
@@ -97,11 +96,10 @@ class editContract extends Component {
         // stop browser's default behaviour of reloading on form submit
         e.preventDefault();
         axios
-            .put(`/contracts/${this.props.match.params.id}`, {
+            .put(`/propertyContract/${this.props.match.params.id}`, {
                 providerID: this.state.providerID,
                 receiverID: this.state.receiverID,
                 locationID: this.state.locationID,
-                contractType: this.state.contractType,
                 contractContent: this.state.contractContent,
                 contractValue: this.state.contractValue,
                 contractStatus: this.state.contractStatus,
@@ -115,13 +113,13 @@ class editContract extends Component {
 
     }
 
-    // // get all contracts from backend
+    // // get all propertyContract from backend
     // getContracts() {
-    //     axios.get('/contracts').then((
-    //         response // console.log(response.data.contracts)
+    //     axios.get('/propertyContract').then((
+    //         response // console.log(response.data.propertyContract)
     //     ) =>
     //         this.setState({
-    //             contracts: [...response.data.contracts]
+    //             propertyContract: [...response.data.propertyContract]
     //         })
     //     );
     //
@@ -129,14 +127,13 @@ class editContract extends Component {
     // }
 
     getContracts() {
-        axios.get(`/contracts/${this.props.match.params.id}/edit`).then((
+        axios.get(`/propertyContract/${this.props.match.params.id}/edit`).then((
             response
         ) =>
             this.setState({
                 providerID: response.data.contract.providerID,
                 receiverID: response.data.contract.receiverID,
                 locationID: response.data.contract.locationID,
-                contractType: response.data.contract.contractType,
                 contractContent: response.data.contract.contractContent,
                 contractValue: response.data.contract.contractValue,
                 contractStatus: response.data.contract.contractStatus,

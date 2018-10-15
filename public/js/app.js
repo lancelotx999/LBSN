@@ -78088,6 +78088,15 @@ var Header = function Header() {
             { className: 'nav-item' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                { className: 'nav-link', to: 'allLocations' },
+                'Property Listing'
+            )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'nav-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
                 { className: 'nav-link', to: '/registerLocation' },
                 'Register Location'
             )
@@ -78123,6 +78132,7 @@ var Header = function Header() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__editLocation__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__createContract__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__editContract__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__allLocations__ = __webpack_require__(319);
 
 
 
@@ -78152,7 +78162,8 @@ var Children = function Children() {
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/registerLocation', component: __WEBPACK_IMPORTED_MODULE_6__registerLocation__["a" /* default */] }),
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editLocation', component: __WEBPACK_IMPORTED_MODULE_7__editLocation__["a" /* default */], exact: true }),
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createContract', component: __WEBPACK_IMPORTED_MODULE_8__createContract__["a" /* default */] }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editContract', component: __WEBPACK_IMPORTED_MODULE_9__editContract__["a" /* default */], exact: true })
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editContract', component: __WEBPACK_IMPORTED_MODULE_9__editContract__["a" /* default */], exact: true }),
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: 'location/allLocations', component: __WEBPACK_IMPORTED_MODULE_10__allLocations__["a" /* default */], exact: true })
 	);
 };
 
@@ -85440,7 +85451,7 @@ var registerLocation = function (_Component) {
             console.log("---------- this.state submitContract----------");
             // stop browser's default behaviour of reloading on form submit
             e.preventDefault();
-            axios.post('/locations', {
+            axios.post('/location', {
                 // locationOwnerID: this.state.locationOwnerID,
                 locationName: this.state.locationName,
                 locationAddress: this.state.locationAddress,
@@ -85467,7 +85478,7 @@ var registerLocation = function (_Component) {
         value: function getLocations() {
             var _this3 = this;
 
-            axios.get('/locations').then(function (response // console.log(response.data.locations)
+            axios.get('/location').then(function (response // console.log(response.data.locations)
             ) {
                 return _this3.setState({
                     locations: [].concat(_toConsumableArray(response.data.locations))
@@ -85486,14 +85497,14 @@ var registerLocation = function (_Component) {
             this.setState({ locations: updatedLocations });
 
             // make delete request to the backend
-            axios.delete('/locations/' + id);
+            axios.delete('/location/' + id);
         }
     }, {
         key: 'updateLocation',
         value: function updateLocation() {
             var _this4 = this;
 
-            axios.put('/locations/' + id).then(function (response) {
+            axios.put('/location/' + id).then(function (response) {
                 _this4.getLocations();
             });
         }
@@ -87167,6 +87178,7 @@ var createContract = function (_Component) {
             providerID: '',
             receiverID: '',
             locationID: '',
+            contractType: '',
             contractContent: '',
             contractValue: '',
             contractStatus: '',
@@ -87280,6 +87292,7 @@ var createContract = function (_Component) {
                 providerID: this.state.providerID,
                 receiverID: this.state.receiverID,
                 locationID: this.state.locationID,
+                contractType: this.state.contractType,
                 contractContent: this.state.contractContent,
                 contractValue: this.state.contractValue,
                 contractStatus: this.state.contractStatus,
@@ -87303,7 +87316,7 @@ var createContract = function (_Component) {
         value: function getContracts() {
             var _this3 = this;
 
-            axios.get('/contracts').then(function (response // console.log(response.data.contracts)
+            axios.get('/contract').then(function (response // console.log(response.data.contracts)
             ) {
                 return _this3.setState({
                     contracts: [].concat(_toConsumableArray(response.data.contracts)),
@@ -87486,7 +87499,25 @@ var createContract = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'label',
                                                 null,
-                                                'Content:',
+                                                'Contract Type:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'contractType',
+                                                    name: 'contractType',
+                                                    type: 'text',
+                                                    value: this.state.contractType,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter contract Type.'
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Contract Content:',
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
                                                     id: 'contractContent',
                                                     name: 'contractContent',
@@ -87638,6 +87669,7 @@ var editContract = function (_Component) {
             providerID: '',
             receiverID: '',
             locationID: '',
+            contractType: '',
             contractContent: '',
             contractValue: '',
             contractStatus: '',
@@ -87729,6 +87761,7 @@ var editContract = function (_Component) {
                 providerID: this.state.providerID,
                 receiverID: this.state.receiverID,
                 locationID: this.state.locationID,
+                contractType: this.state.contractType,
                 contractContent: this.state.contractContent,
                 contractValue: this.state.contractValue,
                 contractStatus: this.state.contractStatus,
@@ -87763,6 +87796,7 @@ var editContract = function (_Component) {
                     providerID: response.data.contract.providerID,
                     receiverID: response.data.contract.receiverID,
                     locationID: response.data.contract.locationID,
+                    contractType: response.data.contract.contractType,
                     contractContent: response.data.contract.contractContent,
                     contractValue: response.data.contract.contractValue,
                     contractStatus: response.data.contract.contractStatus,
@@ -87855,6 +87889,24 @@ var editContract = function (_Component) {
                                                     className: 'form-control',
                                                     placeholder: 'Enter receiver ID.',
                                                     required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Contract Type:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'contractType',
+                                                    name: 'contractType',
+                                                    type: 'text',
+                                                    value: this.state.contractType,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter contract content.'
                                                 })
                                             )
                                         ),
@@ -87978,6 +88030,754 @@ var editContract = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_leaflet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_leaflet__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(12);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+var mapStyle = {
+    width: "100%",
+    height: "400px"
+};
+
+var allLocations = function (_Component) {
+    _inherits(allLocations, _Component);
+
+    function allLocations(props) {
+        _classCallCheck(this, allLocations);
+
+        var _this = _possibleConstructorReturn(this, (allLocations.__proto__ || Object.getPrototypeOf(allLocations)).call(this, props));
+
+        _this.state = {
+            locations: []
+        };
+
+        // this.handleChange = this.handleChange.bind(this);
+
+        // this.submitLocation = this.submitLocation.bind(this);
+
+        _this.renderLocations = _this.renderLocations.bind(_this);
+
+        // this.deleteLocation = this.deleteLocation.bind(this);
+
+        _this.updateLocation = _this.updateLocation.bind(_this);
+        return _this;
+    }
+
+    _createClass(allLocations, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            // this.getLocations();
+            this.getLocations();
+
+            console.log("---------- this.state componentWillMount ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentWillMount ----------");
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log("---------- this.state componentDidMount() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidMount() ----------");
+
+            // create map
+            this.map = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.map('map', {
+                center: [1.5510714615890955, 110.34356832504274],
+                zoom: 16,
+                layers: [__WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                })]
+            });
+
+            // MapClick.on('click', L.bind(onMapClick, null, ID))
+            // var testBed = this
+
+            function updateLatLng(state, e) {
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                // console.log(e);
+                // console.log(state);
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                document.getElementById('locationLatitude').value = e.latlng.lat;
+                document.getElementById('locationLongitude').value = e.latlng.lng;
+
+                // state.setState({
+                //     locationLatitude: e.latlng.lat,
+                //     locationLongitude: e.latlng.lng
+                // })
+            }
+
+            // this.map.on('click', function(e){
+            //
+            //     console.log("---------- e componentDidMount() ----------");
+            //     console.log(e);
+            //     console.log("---------- e componentDidMount() ----------");
+            //     // var coord = e.latlng;
+            //     // var lat = coord.lat;
+            //     // var lng = coord.lng;
+            //     // console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+            //
+            //     //need to set state
+            //     //this.state()
+            //
+            //     // document.getElementById('locationLatitude').value = e.latlng.lat;
+            //     // document.getElementById('locationLongitude').value = e.latlng.lng;
+            //     //
+            //     //
+            //     // this.setState({
+            //     //     locationLatitude: e.latlng.lat,
+            //     //     locationLongitude: e.latlng.lng
+            //     // })
+            //
+            //
+            // });
+
+            // this.map.on('click', L.bind(updateLatLng, null, this));
+
+            // .on("click", function(e){
+            //     updateLatLng(e, );
+            // });
+
+            // this.map.on("click", updateLatLng.bind(null, this));
+
+            // add layer
+            // this.layer = L.layerGroup().addTo(this.map);
+
+            // method called here
+            // this.updateMarkers(this.props.markersData);
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            console.log("---------- this.state componentDidUpdate() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidUpdate() ----------");
+
+            var data = this.state.locations;
+
+            // console.log("---------- data ----------");
+            // console.log(data);
+            // console.log("---------- data ----------");
+
+
+            var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
+
+            __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Cluster.ENABLE_MARKERS_LIST = true;
+
+            pruneCluster.PrepareLeafletMarker = function (leafletMarker, data) {
+                // leafletMarker.setIcon(/*... */); // See http://leafletjs.com/reference.html#icon
+
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log(data);
+                // console.log("---------- data PrepareLeafletMarker ----------");
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log("---------- this PrepareLeafletMarker ----------");
+                // console.log(this);
+                // console.log("---------- this PrepareLeafletMarker ----------");
+
+                //listeners can be applied to markers in this function
+                leafletMarker.on('click', function () {
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                    console.log(data);
+                    console.log("---------- data PrepareLeafletMarker ----------");
+                });
+
+                // A popup can already be attached to the marker
+                // bindPopup can override it, but it's faster to update the content instead
+                if (leafletMarker.getPopup()) {
+                    leafletMarker.setPopupContent(data.popup);
+                } else {
+                    leafletMarker.bindPopup(data.popup);
+                }
+
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+                // console.log(leafletMarker);
+                // console.log("---------- leafletMarker PrepareLeafletMarker POST ----------");
+
+            };
+
+            pruneCluster.BuildLeafletCluster = function (cluster, position) {
+                var m = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Marker(position, {
+                    icon: pruneCluster.BuildLeafletClusterIcon(cluster)
+                });
+
+                m.on('click', function () {
+                    // Compute the  cluster bounds (it's slow : O(n))
+                    var markersArea = pruneCluster.Cluster.FindMarkersInArea(cluster.bounds);
+                    var b = pruneCluster.Cluster.ComputeBounds(markersArea);
+
+                    if (b) {
+                        var bounds = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLngBounds(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.minLat, b.maxLng), new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(b.maxLat, b.minLng));
+
+                        var zoomLevelBefore = pruneCluster._map.getZoom();
+                        var zoomLevelAfter = pruneCluster._map.getBoundsZoom(bounds, false, new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(20, 20, null));
+
+                        // If the zoom level doesn't change
+                        if (zoomLevelAfter === zoomLevelBefore) {
+                            // Send an event for the LeafletSpiderfier
+                            pruneCluster._map.fire('overlappingmarkers', {
+                                cluster: pruneCluster,
+                                markers: markersArea,
+                                center: m.getLatLng(),
+                                marker: m
+                            });
+
+                            pruneCluster._map.setView(position, zoomLevelAfter);
+                        } else {
+                            pruneCluster._map.fitBounds(bounds);
+                        }
+                    }
+                });
+                m.on('mouseover', function () {
+                    //do mouseover stuff here
+                });
+                m.on('mouseout', function () {
+                    //do mouseout stuff here
+                });
+
+                return m;
+            };
+
+            pruneCluster.BuildLeafletClusterIcon = function (cluster) {
+
+                var e = new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster();
+
+                e.stats = cluster.stats; // if you have categories on your markers
+                e.population = cluster.population; // the number of markers inside the cluster
+
+                var markers = cluster.GetClusterMarkers();
+
+                // console.log("---------- markers ----------");
+                // console.log(markers);
+                // console.log("---------- markers ----------");
+
+                return e;
+            };
+
+            var colors = ['#ff4b00', '#bac900', '#EC1813', '#55BCBE', '#D2204C', '#FF0000', '#ada59a', '#3e647e'],
+                pi2 = Math.PI * 2;
+
+            __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.MarkerCluster = __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Icon.extend({
+                options: {
+                    iconSize: new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.Point(44, 44),
+                    className: 'prunecluster leaflet-markercluster-icon'
+                },
+
+                createIcon: function createIcon() {
+                    // based on L.Icon.Canvas from shramov/leaflet-plugins (BSD licence)
+                    var e = document.createElement('canvas');
+                    this._setIconStyles(e, 'icon');
+                    var s = this.options.iconSize;
+                    e.width = s.x;
+                    e.height = s.y;
+                    this.draw(e.getContext('2d'), s.x, s.y);
+                    return e;
+                },
+
+                createShadow: function createShadow() {
+                    return null;
+                },
+
+                draw: function draw(canvas, width, height) {
+                    var lol = 0;
+                    var start = 0;
+                    for (var i = 0, l = colors.length; i < l; ++i) {
+
+                        var size = this.stats[i] / this.population;
+
+                        if (size > 0) {
+                            canvas.beginPath();
+                            canvas.moveTo(22, 22);
+                            canvas.fillStyle = colors[i];
+                            var from = start + 0.14,
+                                to = start + size * pi2;
+
+                            if (to < from) {
+                                from = start;
+                            }
+                            canvas.arc(22, 22, 22, from, to);
+
+                            start = start + size * pi2;
+                            canvas.lineTo(22, 22);
+                            canvas.fill();
+                            canvas.closePath();
+                        }
+                    }
+
+                    canvas.beginPath();
+                    canvas.fillStyle = 'white';
+                    canvas.arc(22, 22, 18, 0, Math.PI * 2);
+                    canvas.fill();
+                    canvas.closePath();
+
+                    canvas.fillStyle = '#555';
+                    canvas.textAlign = 'center';
+                    canvas.textBaseline = 'middle';
+                    canvas.font = 'bold 12px sans-serif';
+
+                    canvas.fillText(this.population, 22, 22, 40);
+                }
+            });
+
+            data.forEach(function (d) {
+                // console.log("---------- d ----------");
+                // console.log(d);
+                // console.log("---------- d ----------");
+
+                var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
+
+                var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude, {
+                    popup: popupContent
+                });
+
+                // var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude);
+
+                // var z = document.createElement('p'); // is a node
+                // z.innerHTML = 'test satu dua tiga';
+                //
+                //
+                // marker.data.data = d;
+
+                //TODO: this should correlate to location status or location type
+                marker.category = 1;
+
+                // console.log("---------- marker ----------");
+                // console.log(marker);
+                // console.log("---------- marker ----------");
+
+                pruneCluster.RegisterMarker(marker);
+            });
+
+            this.map.addLayer(pruneCluster);
+
+            // var testBed = L.marker([1.5510714615890955, 110.34356832504274]).addTo(this.map)
+            //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            //     .openPopup();
+            //
+            // console.log("---------- testBed ----------");
+            // console.log(testBed);
+            // console.log("---------- testBed ----------");
+
+            // console.log("---------- this.map ----------");
+            // console.log(this.map);
+            // console.log("---------- this.map ----------");
+            // console.log("---------- pruneCluster ----------");
+            // console.log(pruneCluster);
+            // console.log("---------- pruneCluster ----------");
+
+            // // check if position has changed
+            // if (this.props.markerPosition !== markerPosition) {
+            //     this.marker.setLatLng(this.props.markerPosition);
+            // }
+            //
+            // // check if data has changed
+            // if (this.props.markersData !== markersData) {
+            //     this.updateMarkers(this.props.markersData);
+            // }
+        }
+
+        // // handle change
+        // handleChange(e) {
+        //     // this.setState({
+        //     //     locationOwnerID: e.target.value,
+        //     //     locationName: e.target.value,
+        //     //     locationAddress: e.target.value,
+        //     //     locationDescription: e.target.value,
+        //     //     locationStatus: e.target.value,
+        //     //     locationRating: e.target.value,
+        //     //     locationLatitude: e.target.value,
+        //     //     locationLongitude: e.target.value
+        //     // });
+        //     // console.log('Name: ', e.target.name);
+        //     // console.log('Value: ', e.target.value);
+        //     //
+        //     // this.setState({[e.target.name]: e.target.value});
+        //     // console.log('onChange', this.state);
+        // }
+
+        // get all locations from backend
+
+    }, {
+        key: 'getLocations',
+        value: function getLocations() {
+            var _this2 = this;
+
+            axios.get('/location').then(function (response) {
+                _this2.setState({
+                    locations: [].concat(_toConsumableArray(response.data.locations))
+                });
+
+                console.log("---------- this.state getLocations() PRE ----------");
+                console.log(_this2.state);
+                console.log("---------- this.state getLocations() PRE ----------");
+            });
+            console.log("---------- this.state getLocations() POST ----------");
+            console.log(this.state);
+            console.log("---------- this.state getLocations() POST ----------");
+        }
+
+        // submitLocation(e) {
+        //     console.log("---------- this.state submitContract----------");
+        //     console.log(this.state);
+        //     console.log("---------- this.state submitContract----------");
+        //     // stop browser's default behaviour of reloading on form submit
+        //     e.preventDefault();
+        //     axios.post('/locations', {
+        //             // locationOwnerID: this.state.locationOwnerID,
+        //             locationName: this.state.locationName,
+        //             locationAddress: this.state.locationAddress,
+        //             locationDescription: this.state.locationDescription,
+        //             locationStatus: this.state.locationStatus,
+        //             locationRating: this.state.locationRating,
+        //             locationLatitude: this.state.locationLatitude,
+        //             locationLongitude: this.state.locationLongitude
+        //         })
+        //         .then(response => {
+        //
+        //             this.setState({
+        //                 locations: [response.data, ...this.state.locations]
+        //             });
+        //
+        //             console.log('response', response);
+        //             console.log('this.state', this.state);
+        //         });
+        //
+        //
+        // }
+
+        // get all locations from backend
+
+    }, {
+        key: 'getLocations',
+        value: function getLocations() {
+            var _this3 = this;
+
+            axios.get('/location/allLocations').then(function (response) {
+                _this3.setState({
+                    locations: [].concat(_toConsumableArray(response.data.locations))
+                });
+
+                console.log("---------- this.state getLocations() PRE ----------");
+                console.log(_this3.state);
+                console.log("---------- this.state getLocations() PRE ----------");
+            });
+            console.log("---------- this.state getLocations() POST ----------");
+            console.log(this.state);
+            console.log("---------- this.state getLocations() POST ----------");
+        }
+    }, {
+        key: 'deleteLocation',
+        value: function deleteLocation(id) {
+            // remove from local state
+            var isNotId = function isNotId(location) {
+                return location._id !== id;
+            };
+            var updatedLocations = this.state.locations.filter(isNotId);
+
+            this.setState({ locations: updatedLocations });
+
+            // make delete request to the backend
+            axios.delete('/location/' + id);
+        }
+    }, {
+        key: 'updateLocation',
+        value: function updateLocation() {
+            var _this4 = this;
+
+            axios.put('/location/' + id).then(function (response) {
+                _this4.getLocations();
+            });
+        }
+
+        // example leaflet function
+
+    }, {
+        key: 'updateMarkers',
+        value: function updateMarkers(markersData) {}
+        // Do something...
+
+
+        // render locations
+
+    }, {
+        key: 'renderLocations',
+        value: function renderLocations() {
+            var _this5 = this;
+
+            console.log("---------- this.state.locations renderLocations()----------");
+            console.log(this.state.locations);
+            console.log("---------- this.state.locations renderLocations()----------");
+
+            // this.state.locations.forEach(function (d){
+            //     console.log(d);
+            //
+            //     html += "<div key="+ d._id + " className='media'><div className='media-body'><p>" + d.locationName + "</p></div></div> </br>";
+            //     console.log(html);
+            // })
+            //
+            // return html;
+
+            return this.state.locations.map(function (location) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { key: location._id, className: 'media' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            location.locationName
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    return _this5.viewLocation(location._id);
+                                }, className: 'btn btn-sm btn-warning float-right' },
+                            'View'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    return _this5.deleteLocation(location._id);
+                                }, className: 'btn btn-sm btn-warning float-right' },
+                            'Delete'
+                        ),
+                        '// ',
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+                            { className: 'btn btn-sm btn-success', to: '/' + location._id + '/editLocation' },
+                            '//     Edit // '
+                        )
+                    )
+                );
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row justify-content-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-8' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'card' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-header' },
+                                'Register Location'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-body' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'map', style: mapStyle }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'form',
+                                    { onSubmit: this.submitLocation },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-group' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Name:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationName',
+                                                    name: 'locationName',
+                                                    type: 'text',
+                                                    value: this.state.locationName,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter location name.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Address:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationAddress',
+                                                    name: 'locationAddress',
+                                                    type: 'text',
+                                                    value: this.state.locationAddress,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter location address.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Description:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationDescription',
+                                                    name: 'locationDescription',
+                                                    type: 'text',
+                                                    value: this.state.locationDescription,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter location description.'
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Status:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationStatus',
+                                                    name: 'locationStatus',
+                                                    type: 'text',
+                                                    value: this.state.locationStatus,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter location status.',
+                                                    required: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Rating:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationRating',
+                                                    name: 'locationRating',
+                                                    type: 'number',
+                                                    value: this.state.locationRating,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Enter location rating.',
+                                                    required: true,
+                                                    step: '0.01'
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Latitude:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationLatitude',
+                                                    name: 'locationLatitude',
+                                                    type: 'text',
+                                                    value: this.state.locationLatitude,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Click on map to set latitude.',
+                                                    step: '0.0',
+                                                    required: true,
+                                                    readOnly: true
+                                                })
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                null,
+                                                'Longitude:',
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                                                    id: 'locationLongitude',
+                                                    name: 'locationLongitude',
+                                                    type: 'text',
+                                                    value: this.state.locationLongitude,
+                                                    onChange: this.handleChange,
+                                                    className: 'form-control',
+                                                    placeholder: 'Click on map to set longitude.',
+                                                    step: '0.0',
+                                                    required: true,
+                                                    readOnly: true
+                                                })
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'button',
+                                        { type: 'submit', className: 'btn btn-primary' },
+                                        'Create Location'
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                                this.renderLocations()
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
+                    )
+                )
+            );
+        }
+    }]);
+
+    return allLocations;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (allLocations);
 
 /***/ })
 /******/ ]);

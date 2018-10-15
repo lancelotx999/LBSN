@@ -11,28 +11,20 @@ const mapStyle = {
     height: "400px"
 }
 
-export default class registerLocation extends Component {
+export default class allLocations extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // locationOwnerID: '',
-            locationName: '',
-            locationAddress: '',
-            locationDescription: '',
-            locationStatus: '',
-            locationRating: '',
-            locationLatitude: '',
-            locationLongitude: '',
             locations: []
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
 
-        this.submitLocation = this.submitLocation.bind(this);
+        // this.submitLocation = this.submitLocation.bind(this);
 
         this.renderLocations = this.renderLocations.bind(this);
 
-        this.deleteLocation = this.deleteLocation.bind(this);
+        // this.deleteLocation = this.deleteLocation.bind(this);
 
         this.updateLocation = this.updateLocation.bind(this);
     }
@@ -41,9 +33,9 @@ export default class registerLocation extends Component {
         // this.getLocations();
         this.getLocations();
 
-        // console.log("---------- this.state componentWillMount ----------");
-        // console.log(this.state);
-        // console.log("---------- this.state componentWillMount ----------");
+        console.log("---------- this.state componentWillMount ----------");
+        console.log(this.state);
+        console.log("---------- this.state componentWillMount ----------");
     }
 
     componentDidMount() {
@@ -73,10 +65,10 @@ export default class registerLocation extends Component {
             document.getElementById('locationLatitude').value = e.latlng.lat;
             document.getElementById('locationLongitude').value = e.latlng.lng;
 
-            state.setState({
-                locationLatitude: e.latlng.lat,
-                locationLongitude: e.latlng.lng
-            })
+            // state.setState({
+            //     locationLatitude: e.latlng.lat,
+            //     locationLongitude: e.latlng.lng
+            // })
         }
 
 
@@ -111,19 +103,19 @@ export default class registerLocation extends Component {
         //     updateLatLng(e, );
         // });
 
-        this.map.on("click", updateLatLng.bind(null, this));
+        // this.map.on("click", updateLatLng.bind(null, this));
 
         // add layer
-        this.layer = L.layerGroup().addTo(this.map);
+        // this.layer = L.layerGroup().addTo(this.map);
 
         // method called here
-        this.updateMarkers(this.props.markersData);
+        // this.updateMarkers(this.props.markersData);
     }
 
     componentDidUpdate() {
-        // console.log("---------- this.state componentDidUpdate() ----------");
-        // console.log(this.state);
-        // console.log("---------- this.state componentDidUpdate() ----------");
+        console.log("---------- this.state componentDidUpdate() ----------");
+        console.log(this.state);
+        console.log("---------- this.state componentDidUpdate() ----------");
 
         var data = this.state.locations;
 
@@ -362,79 +354,86 @@ export default class registerLocation extends Component {
         // }
     }
 
-    // handle change
-    handleChange(e) {
-        // this.setState({
-        //     locationOwnerID: e.target.value,
-        //     locationName: e.target.value,
-        //     locationAddress: e.target.value,
-        //     locationDescription: e.target.value,
-        //     locationStatus: e.target.value,
-        //     locationRating: e.target.value,
-        //     locationLatitude: e.target.value,
-        //     locationLongitude: e.target.value
-        // });
-        // console.log('Name: ', e.target.name);
-        // console.log('Value: ', e.target.value);
-        //
-        this.setState({[e.target.name]: e.target.value});
-        // console.log('onChange', this.state);
-    }
-    // // get all locations from backend
-    // getLocations() {
-    //     axios.get('/locations')
-    //         .then(response => {
-    //             this.setState({
-    //                 locations: [...response.data.locations]
-    //             })
-    //
-    //             console.log("---------- this.state getLocations() PRE ----------");
-    //             console.log(this.state);
-    //             console.log("---------- this.state getLocations() PRE ----------");
-    //         })
-    //     console.log("---------- this.state getLocations() POST ----------");
-    //     console.log(this.state);
-    //     console.log("---------- this.state getLocations() POST ----------");
+    // // handle change
+    // handleChange(e) {
+    //     // this.setState({
+    //     //     locationOwnerID: e.target.value,
+    //     //     locationName: e.target.value,
+    //     //     locationAddress: e.target.value,
+    //     //     locationDescription: e.target.value,
+    //     //     locationStatus: e.target.value,
+    //     //     locationRating: e.target.value,
+    //     //     locationLatitude: e.target.value,
+    //     //     locationLongitude: e.target.value
+    //     // });
+    //     // console.log('Name: ', e.target.name);
+    //     // console.log('Value: ', e.target.value);
+    //     //
+    //     // this.setState({[e.target.name]: e.target.value});
+    //     // console.log('onChange', this.state);
     // }
-
-    submitLocation(e) {
-        console.log("---------- this.state submitContract----------");
-        console.log(this.state);
-        console.log("---------- this.state submitContract----------");
-        // stop browser's default behaviour of reloading on form submit
-        e.preventDefault();
-        axios.post('/location', {
-                // locationOwnerID: this.state.locationOwnerID,
-                locationName: this.state.locationName,
-                locationAddress: this.state.locationAddress,
-                locationDescription: this.state.locationDescription,
-                locationStatus: this.state.locationStatus,
-                locationRating: this.state.locationRating,
-                locationLatitude: this.state.locationLatitude,
-                locationLongitude: this.state.locationLongitude
-            })
-            .then(response => {
-
-                this.setState({
-                    locations: [response.data, ...this.state.locations]
-                });
-
-                console.log('response', response);
-                console.log('this.state', this.state);
-            });
-
-
-    }
 
     // get all locations from backend
     getLocations() {
-        axios.get('/location').then((
-            response // console.log(response.data.locations)
-        ) =>
-            this.setState({
-                locations: [...response.data.locations]
+        axios.get('/location')
+            .then(response => {
+                this.setState({
+                    locations: [...response.data.locations]
+                })
+
+                console.log("---------- this.state getLocations() PRE ----------");
+                console.log(this.state);
+                console.log("---------- this.state getLocations() PRE ----------");
             })
-        );
+        console.log("---------- this.state getLocations() POST ----------");
+        console.log(this.state);
+        console.log("---------- this.state getLocations() POST ----------");
+    }
+
+    // submitLocation(e) {
+    //     console.log("---------- this.state submitContract----------");
+    //     console.log(this.state);
+    //     console.log("---------- this.state submitContract----------");
+    //     // stop browser's default behaviour of reloading on form submit
+    //     e.preventDefault();
+    //     axios.post('/locations', {
+    //             // locationOwnerID: this.state.locationOwnerID,
+    //             locationName: this.state.locationName,
+    //             locationAddress: this.state.locationAddress,
+    //             locationDescription: this.state.locationDescription,
+    //             locationStatus: this.state.locationStatus,
+    //             locationRating: this.state.locationRating,
+    //             locationLatitude: this.state.locationLatitude,
+    //             locationLongitude: this.state.locationLongitude
+    //         })
+    //         .then(response => {
+    //
+    //             this.setState({
+    //                 locations: [response.data, ...this.state.locations]
+    //             });
+    //
+    //             console.log('response', response);
+    //             console.log('this.state', this.state);
+    //         });
+    //
+    //
+    // }
+
+    // get all locations from backend
+    getLocations() {
+        axios.get('/location/allLocations')
+            .then(response => {
+                this.setState({
+                    locations: [...response.data.locations]
+                })
+
+                console.log("---------- this.state getLocations() PRE ----------");
+                console.log(this.state);
+                console.log("---------- this.state getLocations() PRE ----------");
+            })
+        console.log("---------- this.state getLocations() POST ----------");
+        console.log(this.state);
+        console.log("---------- this.state getLocations() POST ----------");
     }
 
     deleteLocation(id) {
@@ -466,9 +465,9 @@ export default class registerLocation extends Component {
 
     // render locations
     renderLocations() {
-        // console.log("---------- this.state.locations ----------");
-        // console.log(this.state.locations);
-        // console.log("---------- this.state.locations ----------");
+        console.log("---------- this.state.locations renderLocations()----------");
+        console.log(this.state.locations);
+        console.log("---------- this.state.locations renderLocations()----------");
 
         // this.state.locations.forEach(function (d){
         //     console.log(d);
@@ -483,12 +482,15 @@ export default class registerLocation extends Component {
             <div key={location._id} className="media">
                 <div className="media-body">
                     <p>{location.locationName}</p>
+                    <button onClick={() => this.viewLocation(location._id)}className="btn btn-sm btn-warning float-right">
+                        View
+                    </button>
                     <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
                         Delete
                     </button>
-                    <Link className="btn btn-sm btn-success" to={`/${location._id}/editLocation`}>
-                        Edit
-                    </Link>
+                    // <Link className="btn btn-sm btn-success" to={`/${location._id}/editLocation`}>
+                    //     Edit
+                    // </Link>
 
                 </div>
             </div>
@@ -503,8 +505,9 @@ export default class registerLocation extends Component {
                         <div className="card">
                             <div className="card-header">Register Location</div>
                             <div className="card-body">
+                                <div id="map" style={mapStyle} />
+
                                 <form onSubmit={this.submitLocation}>
-                                    <div id="map" style={mapStyle} />
                                     <hr />
                                     <div className="form-group">
                                         <p>

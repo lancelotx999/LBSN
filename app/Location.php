@@ -14,6 +14,11 @@ class Location extends Eloquent {
         return $this->belongsTo(User::class);
     }
 
+    // relationship should be polymorphic
+    // public function contract() {
+    //     return $this->belongsTo(Contract::class);
+    // }
+
     // protected $collection = 'location';
     // protected $table = 'location';
 

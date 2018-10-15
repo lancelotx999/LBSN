@@ -10,7 +10,7 @@ import RegisterLocation from '../registerLocation'
 import EditLocation from '../editLocation'
 import CreateContract from '../createContract'
 import EditContract from '../editContract'
-
+import AllLocation from '../allLocations'
 const Content = () => {
 	return ReactDOM.createPortal(
 		<Children />,
@@ -31,6 +31,7 @@ const Children = () => {
 			<Route path="/:id/editLocation" component={EditLocation} exact={true} />
 			<Route path="/createContract" component={ CreateContract } />
 			<Route path="/:id/editContract" component={EditContract} exact={true} />
+			<Route path="location/allLocations" component={AllLocation} exact={true} />
 
     	</Switch>
 	)

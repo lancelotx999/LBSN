@@ -30,6 +30,16 @@ class LocationController extends Controller
 		]);
     }
 
+	public function allLocations(){
+		Log::debug('Some message.');
+		$locations = Location::all();
+
+		return response()->json([
+			'locations' => $locations,
+		]);
+
+	}
+
     /**
      * Show the form for creating a new resource.
      *

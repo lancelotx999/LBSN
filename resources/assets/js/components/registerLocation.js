@@ -121,15 +121,15 @@ export default class registerLocation extends Component {
     }
 
     componentDidUpdate() {
-        // console.log("---------- this.state componentDidUpdate() ----------");
-        // console.log(this.state);
-        // console.log("---------- this.state componentDidUpdate() ----------");
+        console.log("---------- this.state componentDidUpdate() ----------");
+        console.log(this.state);
+        console.log("---------- this.state componentDidUpdate() ----------");
 
         var data = this.state.locations;
 
-        // console.log("---------- data ----------");
-        // console.log(data);
-        // console.log("---------- data ----------");
+        console.log("---------- data ----------");
+        console.log(data);
+        console.log("---------- data ----------");
 
 
         var pruneCluster = new PruneClusterForLeaflet();

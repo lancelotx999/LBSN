@@ -86143,16 +86143,15 @@ var registerLocation = function (_Component) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-            // console.log("---------- this.state componentDidUpdate() ----------");
-            // console.log(this.state);
-            // console.log("---------- this.state componentDidUpdate() ----------");
+            console.log("---------- this.state componentDidUpdate() ----------");
+            console.log(this.state);
+            console.log("---------- this.state componentDidUpdate() ----------");
 
             var data = this.state.locations;
 
-            // console.log("---------- data ----------");
-            // console.log(data);
-            // console.log("---------- data ----------");
-
+            console.log("---------- data ----------");
+            console.log(data);
+            console.log("---------- data ----------");
 
             var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
 

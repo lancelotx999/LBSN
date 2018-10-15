@@ -14,17 +14,28 @@ const mapStyle = {
 class editLocation extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             // locationOwnerID: '',
-            locationName: '',
-            locationAddress: '',
-            locationDescription: '',
-            locationStatus: '',
-            locationRating: '',
-            locationLatitude: '',
-            locationLongitude: '',
-            locations: []
+            // locationName: '',
+            // locationAddress: '',
+            // locationDescription: '',
+            // locationStatus: '',
+            // locationRating: '',
+            // locationLatitude: '',
+            // locationLongitude: '',
+            location: []
         };
+
+        
+
+        console.log("---------- this.props ----------")
+        console.log(this.props)
+        console.log("---------- this.props ----------")
+        console.log("---------- this.state ----------")
+        console.log(this.state)
+        console.log("---------- this.state ----------")
+
 
         // bind
         this.handleChange = this.handleChange.bind(this);
@@ -380,13 +391,13 @@ class editLocation extends Component {
         ) =>
             this.setState({
                 location: response.data,
-                locationName: response.data.locationName,
-                locationAddress: response.data.locationAddress,
-                locationDescription: response.data.locationDescription,
-                locationStatus: response.data.locationStatus,
-                locationRating: response.data.locationRating,
-                locationLatitude: response.data.locationLatitude,
-                locationLongitude: response.data.locationLongitude
+                // locationName: response.data.locationName,
+                // locationAddress: response.data.locationAddress,
+                // locationDescription: response.data.locationDescription,
+                // locationStatus: response.data.locationStatus,
+                // locationRating: response.data.locationRating,
+                // locationLatitude: response.data.locationLatitude,
+                // locationLongitude: response.data.locationLongitude
             })
         );
     }

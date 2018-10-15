@@ -86810,8 +86810,8 @@ var allLocations = function (_Component) {
     _createClass(allLocations, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            // this.getLocations();
-            this.getAllLocations();
+            this.getLocations();
+            // this.getAllLocations();
 
             console.log("---------- this.state componentWillMount ----------");
             console.log(this.state);
@@ -87956,15 +87956,22 @@ var editLocation = function (_Component) {
 
         _this.state = {
             // locationOwnerID: '',
-            locationName: '',
-            locationAddress: '',
-            locationDescription: '',
-            locationStatus: '',
-            locationRating: '',
-            locationLatitude: '',
-            locationLongitude: '',
-            locations: []
+            // locationName: '',
+            // locationAddress: '',
+            // locationDescription: '',
+            // locationStatus: '',
+            // locationRating: '',
+            // locationLatitude: '',
+            // locationLongitude: '',
+            location: []
         };
+
+        console.log("---------- this.props ----------");
+        console.log(_this.props);
+        console.log("---------- this.props ----------");
+        console.log("---------- this.state ----------");
+        console.log(_this.state);
+        console.log("---------- this.state ----------");
 
         // bind
         _this.handleChange = _this.handleChange.bind(_this);
@@ -88313,14 +88320,14 @@ var editLocation = function (_Component) {
             axios.get('/location/' + this.props.match.params.id + '/edit').then(function (response // console.log(response.data.locations)
             ) {
                 return _this3.setState({
-                    location: response.data,
-                    locationName: response.data.locationName,
-                    locationAddress: response.data.locationAddress,
-                    locationDescription: response.data.locationDescription,
-                    locationStatus: response.data.locationStatus,
-                    locationRating: response.data.locationRating,
-                    locationLatitude: response.data.locationLatitude,
-                    locationLongitude: response.data.locationLongitude
+                    location: response.data
+                    // locationName: response.data.locationName,
+                    // locationAddress: response.data.locationAddress,
+                    // locationDescription: response.data.locationDescription,
+                    // locationStatus: response.data.locationStatus,
+                    // locationRating: response.data.locationRating,
+                    // locationLatitude: response.data.locationLatitude,
+                    // locationLongitude: response.data.locationLongitude
                 });
             });
         }

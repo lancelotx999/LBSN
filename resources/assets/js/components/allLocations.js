@@ -30,8 +30,8 @@ export default class allLocations extends Component {
     }
 
     componentWillMount() {
-        // this.getLocations();
-        this.getAllLocations();
+        this.getLocations();
+        // this.getAllLocations();
 
         console.log("---------- this.state componentWillMount ----------");
         console.log(this.state);

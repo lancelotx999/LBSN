@@ -87401,7 +87401,7 @@ var viewLocation = function (_Component) {
             // locationRating: '',
             // locationLatitude: '',
             // locationLongitude: '',
-            location: location
+            location: []
         };
 
         // bind
@@ -88047,7 +88047,7 @@ var editLocation = function (_Component) {
             console.log(this.state);
             console.log("---------- this.state componentDidUpdate() ----------");
 
-            var data = this.state;
+            var data = this.state.location;
 
             var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
 
@@ -88210,9 +88210,9 @@ var editLocation = function (_Component) {
                 }
             });
 
-            var popupContent = "Property Name: " + d.locationName + "</br>" + "Property Address: " + d.locationAddress + "</br>" + "Property Description: " + d.locationDescription + "</br>" + "Property Rating: " + d.locationRating + "</br>" + "Property Status: " + d.locationStatus + "</br>" + "Property Owner Name: " + d.user.name + "</br>" + "Property Owner Email: " + d.user.email + "</br>";
+            var popupContent = "Property Name: " + data.locationName + "</br>" + "Property Address: " + data.locationAddress + "</br>" + "Property Description: " + data.locationDescription + "</br>" + "Property Rating: " + data.locationRating + "</br>" + "Property Status: " + data.locationStatus + "</br>" + "Property Owner Name: " + data.user.name + "</br>" + "Property Owner Email: " + data.user.email + "</br>";
 
-            var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(d.locationLatitude, d.locationLongitude, {
+            var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(data.locationLatitude, data.locationLongitude, {
                 popup: popupContent
             });
 
@@ -88313,13 +88313,14 @@ var editLocation = function (_Component) {
             axios.get('/location/' + this.props.match.params.id + '/edit').then(function (response // console.log(response.data.locations)
             ) {
                 return _this3.setState({
-                    locationName: response.data.location.locationName,
-                    locationAddress: response.data.location.locationAddress,
-                    locationDescription: response.data.location.locationDescription,
-                    locationStatus: response.data.location.locationStatus,
-                    locationRating: response.data.location.locationRating,
-                    locationLatitude: response.data.location.locationLatitude,
-                    locationLongitude: response.data.location.locationLongitude
+                    location: response.data,
+                    locationName: response.data.locationName,
+                    locationAddress: response.data.locationAddress,
+                    locationDescription: response.data.locationDescription,
+                    locationStatus: response.data.locationStatus,
+                    locationRating: response.data.locationRating,
+                    locationLatitude: response.data.locationLatitude,
+                    locationLongitude: response.data.locationLongitude
                 });
             });
         }

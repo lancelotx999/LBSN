@@ -23,7 +23,7 @@ class viewLocation extends Component {
             // locationRating: '',
             // locationLatitude: '',
             // locationLongitude: '',
-            location
+            location : []
         };
 
         // bind

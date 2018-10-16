@@ -292,4 +292,4 @@ class editServiceContract extends Component {
 
 }
 
-export default editContract;
+export default editServiceContract;

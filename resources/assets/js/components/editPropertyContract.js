@@ -305,4 +305,4 @@ class editPropertyContract extends Component {
 
 }
 
-export default editContract;
+export default editPropertyContract;

@@ -489,7 +489,7 @@ class viewLocation extends Component {
                                 <p>
                                     Owner Email: {this.state.ownerEmail}
                                 </p>
-                                <a href='createPropertyContract/{this.state.locationLongitude}'>{this.state.locationID}</a>
+                                <a href={'/createPropertyContract/' + this.state.locationID}>Create Property Contract</a>
                                 <hr />
                             </div>
                         </div>

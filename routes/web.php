@@ -20,5 +20,6 @@ Auth::routes();
 Route::get('/allLocations', 'LocationController@allLocations');
 Route::resource('location', 'LocationController');
 Route::resource('contract', 'ContractController');
-Route::resource('propertyContracts', 'PropertyContractController');
-Route::resource('serviceContracts', 'ServiceContractController');
+// Route::get('/createPropertyContract/{locationID}', 'PropertyContractController');
+Route::resource('propertyContract', 'PropertyContractController');
+Route::resource('serviceContract', 'ServiceContractController');

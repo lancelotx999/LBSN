@@ -31,12 +31,19 @@ class LocationController extends Controller
     }
 
 	public function allLocations(){
-		$locations = Location::all();
+		$locations = Location::with('user')->get();
 		// $locations = $locations->with('user');
 
+		// $a=array("red","green");
+		// array_push($a,"blue","yellow");
+		// print_r($a);
+
+		// $location = Location::findOrFail($id);
+		// return response()->json($location->with('user')->find($location->_id));
 		// return response()->json($locations->with('user')->find($locations->_id));
 		// return response()->json($locations->with('user')->find($location->_id));
 		// return response()->json($locations);
+		// return response()->json($locations->with('user'));
 		return response()->json([
 			'locations' => $locations,
 		]);
@@ -96,7 +103,6 @@ class LocationController extends Controller
 		$location = Location::findOrFail($id);
 		// echo $location;
 		// var_dump($location);
-		return response()->json($location->with('user')->find($location->_id));
 		return response()->json($location->with('user')->find($location->_id));
     }
 

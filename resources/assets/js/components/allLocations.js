@@ -494,20 +494,20 @@ export default class allLocations extends Component {
         //
         // return html;
 
-        // return this.state.locations.map(location => (
-        //     <div key={location._id} className="media">
-        //         <div className="media-body">
-        //             <p>{location.locationName}</p>
-        //             <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
-        //                 View
-        //             </Link>
-        //             <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
-        //                 Delete
-        //             </button>
-        //
-        //         </div>
-        //     </div>
-        // ));
+        return this.state.locations.map(location => (
+            <div key={location._id} className="media">
+                <div className="media-body">
+                    <p>{location.locationName}</p>
+                    <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
+                        View
+                    </Link>
+                    <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
+                        Delete
+                    </button>
+
+                </div>
+            </div>
+        ));
     }
 
     render() {

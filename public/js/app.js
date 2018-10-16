@@ -87264,6 +87264,8 @@ var allLocations = function (_Component) {
     }, {
         key: 'renderLocations',
         value: function renderLocations() {
+            var _this6 = this;
+
             console.log("---------- this.state.locations renderLocations()----------");
             console.log(this.state.locations);
             console.log("---------- this.state.locations renderLocations()----------");
@@ -87277,20 +87279,33 @@ var allLocations = function (_Component) {
             //
             // return html;
 
-            // return this.state.locations.map(location => (
-            //     <div key={location._id} className="media">
-            //         <div className="media-body">
-            //             <p>{location.locationName}</p>
-            //             <Link className="btn btn-sm btn-success" to={`/${location._id}/viewLocation`}>
-            //                 View
-            //             </Link>
-            //             <button onClick={() => this.deleteLocation(location._id)}className="btn btn-sm btn-warning float-right">
-            //                 Delete
-            //             </button>
-            //
-            //         </div>
-            //     </div>
-            // ));
+            return this.state.locations.map(function (location) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { key: location._id, className: 'media' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            location.locationName
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+                            { className: 'btn btn-sm btn-success', to: '/' + location._id + '/viewLocation' },
+                            'View'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    return _this6.deleteLocation(location._id);
+                                }, className: 'btn btn-sm btn-warning float-right' },
+                            'Delete'
+                        )
+                    )
+                );
+            });
         }
     }, {
         key: 'render',

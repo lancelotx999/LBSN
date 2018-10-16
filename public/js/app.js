@@ -79064,14 +79064,41 @@ var Header = function Header() {
                 'Register Location'
             )
         ),
+        '// ',
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
             { className: 'nav-item' },
+            '//     ',
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
                 { className: 'nav-link', to: '/createContract' },
                 'Register Contract'
-            )
+            ),
+            '// '
+        ),
+        '// ',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'nav-item' },
+            '//     ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                { className: 'nav-link', to: '/createServiceContract' },
+                'Register Service Contract'
+            ),
+            '// '
+        ),
+        '// ',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'nav-item' },
+            '//     ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                { className: 'nav-link', to: '/createPropertyContract' },
+                'Register Property Contract'
+            ),
+            '// '
         )
     );
 };
@@ -79111,6 +79138,11 @@ var Header = function Header() {
 
 
 
+// import CreatePropertyContract from '../createPropertyContract'
+// import EditPropertyContract from '../editPropertyContract'
+// import CreateServiceContract from '../createServiceContract'
+// import EditServiceContract from '../editServiceContract'
+
 var Content = function Content() {
 	return __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.createPortal(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Children, null), document.getElementById('content'));
 };
@@ -79132,7 +79164,15 @@ var Children = function Children() {
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createContract', component: __WEBPACK_IMPORTED_MODULE_10__createContract__["a" /* default */] }),
 		'// ',
 		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/:id/editContract', component: __WEBPACK_IMPORTED_MODULE_11__editContract__["a" /* default */], exact: true }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/allLocations', component: __WEBPACK_IMPORTED_MODULE_7__allLocations__["a" /* default */], exact: true })
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/allLocations', component: __WEBPACK_IMPORTED_MODULE_7__allLocations__["a" /* default */], exact: true }),
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createPropertyContract/:id', component: CreatePropertyContract }),
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/editPropertyContract/:id', component: EditPropertyContract }),
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/createServiceContract/:id', component: CreateServiceContract }),
+		'// ',
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/editServiceContract/:id', component: EditServiceContract })
 	);
 };
 
@@ -87393,6 +87433,7 @@ var viewLocation = function (_Component) {
 
         _this.state = {
             // locationOwnerID: '',
+            // locationID: '',
             // locationName: '',
             // locationAddress: '',
             // locationDescription: '',
@@ -87485,6 +87526,12 @@ var viewLocation = function (_Component) {
             console.log("---------- this.state componentDidUpdate() ----------");
 
             var data = this.state.location;
+
+            this.map.panTo(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(data.locationLatitude, data.locationLongitude));
+
+            console.log("---------- this.map.options componentDidUpdate() ----------");
+            console.log(this.map.options);
+            console.log("---------- this.map.options componentDidUpdate() ----------");
 
             console.log("---------- data componentDidUpdate() ----------");
             console.log(data);
@@ -87651,7 +87698,7 @@ var viewLocation = function (_Component) {
                 }
             });
 
-            var popupContent = "Property Name: " + data.locationName + "</br>" + "Property Address: " + data.locationAddress + "</br>" + "Property Description: " + data.locationDescription + "</br>" + "Property Rating: " + data.locationRating + "</br>" + "Property Status: " + data.locationStatus + "</br>";
+            var popupContent = "Property Name: " + data.locationName + "</br>" + "Property Address: " + data.locationAddress + "</br>" + "Property Description: " + data.locationDescription + "</br>" + "Property Rating: " + data.locationRating + "</br>" + "Property Status: " + data.locationStatus + "</br>" + "Property Owner Name: " + data.user.name + "</br>" + "Property Owner email: " + data.user.email + "</br>";
 
             var marker = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneCluster"].Marker(data.locationLatitude, data.locationLongitude, {
                 popup: popupContent
@@ -87761,6 +87808,7 @@ var viewLocation = function (_Component) {
             ) {
                 return _this2.setState({
                     location: response.data,
+                    locationID: response.data._id,
                     locationName: response.data.locationName,
                     locationAddress: response.data.locationAddress,
                     locationDescription: response.data.locationDescription,
@@ -87891,6 +87939,11 @@ var viewLocation = function (_Component) {
                                     null,
                                     'Owner Email: ',
                                     this.state.ownerEmail
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: 'createPropertyContract/{this.state.locationLongitude}' },
+                                    this.state.locationID
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null)
                             )
@@ -88054,6 +88107,8 @@ var editLocation = function (_Component) {
             console.log("---------- this.state componentDidUpdate() ----------");
 
             var data = this.state.location;
+
+            this.map.panTo(new __WEBPACK_IMPORTED_MODULE_2_leaflet___default.a.LatLng(data.locationLatitude, data.locationLongitude));
 
             var pruneCluster = new __WEBPACK_IMPORTED_MODULE_4_exports_loader_PruneCluster_PruneClusterForLeaflet_prunecluster_dist_PruneCluster_js__["PruneClusterForLeaflet"]();
 

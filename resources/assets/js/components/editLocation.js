@@ -27,7 +27,7 @@ class editLocation extends Component {
             location: []
         };
 
-        
+
 
         console.log("---------- this.props ----------")
         console.log(this.props)
@@ -116,6 +116,8 @@ class editLocation extends Component {
         console.log("---------- this.state componentDidUpdate() ----------");
 
         var data = this.state.location;
+        
+        this.map.panTo(new L.LatLng(data.locationLatitude, data.locationLongitude));
 
         var pruneCluster = new PruneClusterForLeaflet();
 

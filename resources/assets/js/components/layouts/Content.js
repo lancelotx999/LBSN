@@ -12,6 +12,11 @@ import ViewLocation from '../viewLocation'
 import EditLocation from '../editLocation'
 import CreateContract from '../createContract'
 import EditContract from '../editContract'
+// import CreatePropertyContract from '../createPropertyContract'
+// import EditPropertyContract from '../editPropertyContract'
+// import CreateServiceContract from '../createServiceContract'
+// import EditServiceContract from '../editServiceContract'
+
 const Content = () => {
 	return ReactDOM.createPortal(
 		<Children />,
@@ -34,6 +39,10 @@ const Children = () => {
 			<Route path="/createContract" component={ CreateContract } />
 			// <Route path="/:id/editContract" component={EditContract} exact={true} />
 			<Route path="/allLocations" component={AllLocation} exact={true} />
+			// <Route path="/createPropertyContract/:id" component={ CreatePropertyContract } />
+			// <Route path="/editPropertyContract/:id" component={ EditPropertyContract } />
+			// <Route path="/createServiceContract/:id" component={ CreateServiceContract } />
+			// <Route path="/editServiceContract/:id" component={ EditServiceContract } />
 
     	</Switch>
 	)

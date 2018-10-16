@@ -16,6 +16,7 @@ class viewLocation extends Component {
         super(props);
         this.state = {
             // locationOwnerID: '',
+            // locationID: '',
             // locationName: '',
             // locationAddress: '',
             // locationDescription: '',
@@ -105,6 +106,12 @@ class viewLocation extends Component {
         console.log("---------- this.state componentDidUpdate() ----------");
 
         var data = this.state.location;
+
+        this.map.panTo(new L.LatLng(data.locationLatitude, data.locationLongitude));
+
+        console.log("---------- this.map.options componentDidUpdate() ----------");
+        console.log(this.map.options);
+        console.log("---------- this.map.options componentDidUpdate() ----------");
 
         console.log("---------- data componentDidUpdate() ----------");
         console.log(data);
@@ -281,7 +288,9 @@ class viewLocation extends Component {
                             "Property Address: " + data.locationAddress + "</br>" +
                             "Property Description: " + data.locationDescription + "</br>" +
                             "Property Rating: " + data.locationRating + "</br>" +
-                            "Property Status: " + data.locationStatus + "</br>";
+                            "Property Status: " + data.locationStatus + "</br>" +
+                            "Property Owner Name: " + data.user.name + "</br>" +
+                            "Property Owner email: " + data.user.email + "</br>";
 
         var marker = new PruneCluster.Marker(data.locationLatitude, data.locationLongitude,{
             popup: popupContent
@@ -390,6 +399,7 @@ class viewLocation extends Component {
         ) =>
             this.setState({
                 location: response.data,
+                locationID: response.data._id,
                 locationName: response.data.locationName,
                 locationAddress: response.data.locationAddress,
                 locationDescription: response.data.locationDescription,
@@ -479,7 +489,7 @@ class viewLocation extends Component {
                                 <p>
                                     Owner Email: {this.state.ownerEmail}
                                 </p>
-
+                                <a href='createPropertyContract/{this.state.locationLongitude}'>{this.state.locationID}</a>
                                 <hr />
                             </div>
                         </div>

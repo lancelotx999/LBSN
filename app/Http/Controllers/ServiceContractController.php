@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ServiceContract;
 use App\User;
 use App\Location;
+use App\Contract;
+use App\ServiceContract;
 use Illuminate\Http\Request;
 
 class ServiceContractController extends Controller
@@ -73,7 +74,7 @@ class ServiceContractController extends Controller
  		]);
 
  		// create a new contract based on user contracts relationship
- 		$contract = $request->user()->contracts()->create([
+ 		$contract = $request->user()->serviceContracts()->create([
             // 'contractOwnerID' => $request->contractOwnerID,
             'providerID' => $request->providerID,
             'receiverID' => $request->receiverID,
@@ -86,7 +87,7 @@ class ServiceContractController extends Controller
  		]);
 
  		// return contract with user object
- 		return response()->json($contract->with('user')->find($contract->_id));
+ 		return redirect()->back();
     }
 
     /**
@@ -97,7 +98,10 @@ class ServiceContractController extends Controller
      */
     public function show($id)
     {
-        //
+        $location = Location::with('user')->findOrFail($id);
+        $contracts = ServiceContract::with('user')->take(10)->get();
+
+        return view('property.create', compact('location', 'contracts'));
     }
 
     /**
@@ -108,10 +112,12 @@ class ServiceContractController extends Controller
      */
     public function edit($id)
     {
-        $contract = ServiceContract::findOrFail($id);
-		return response()->json([
-			'contract' => $contract,
-		]);
+        $contract = ServiceContract::with('user')->findOrFail($id);
+
+        return view('service.edit', compact('contract'));
+		// return response()->json([
+		// 	'contract' => $contract,
+		// ]);
     }
 
     /**
@@ -124,9 +130,9 @@ class ServiceContractController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-		$contract = ServiceContract::findOrFail($id);
+		$contract = ServiceContract::with('user')->findOrFail($id);
 		$contract->update($input);
-		return response()->json($contract->with('user')->find($contract->_id));
+		return redirect()->route('serviceContract.edit', ['contract' => $contract ]);
     }
 
     /**
@@ -138,5 +144,7 @@ class ServiceContractController extends Controller
     public function destroy($id)
     {
         ServiceContract::findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }

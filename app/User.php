@@ -40,4 +40,12 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     public function contracts() {
         return $this->hasMany(Contract::class);
     }
+
+    public function propertyContracts() {
+        return $this->hasMany(PropertyContract::class);
+    }
+
+    public function serviceContracts() {
+        return $this->hasMany(ServiceContract::class);
+    }
 }

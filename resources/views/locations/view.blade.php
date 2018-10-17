@@ -40,9 +40,16 @@
                     <p>
                         Owner Email: {{ $location->user->email }}
                     </p>
-                    <a href="{{ route('propertyContract.create', $location->_id) }}">
-                    	Create Property Contract
-                	</a>
+                    <p>
+                        <a href="{{ route('propertyContract.show', $location->_id) }}">
+                            Create Property Contract
+            	        </a>
+                    <p />
+                    <p>
+                        <a href="{{ route('serviceContract.show', $location->_id) }}">
+                            Create Service Contract
+                        </a>
+                    <p />
                     <hr />
                 </div>
             </div>

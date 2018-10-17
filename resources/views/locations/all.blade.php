@@ -11,12 +11,12 @@
             <div class="card">
                 <div class="card-header">Register Location</div>
                 <div class="card-body">
-                    <div id="map" style={mapStyle}></div>
+                    <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
                     @foreach ($locations as $location)
 	                    <div id="{{ $location->_id }}" class="media">
 			                <div class="media-body">
-			                    <p>{{ $location->locationName }}</p>
+			                    <h5>{{ $location->locationName }}</h5>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <a href="{{ route('location.show', $location->_id) }}">
@@ -42,6 +42,7 @@
                                         </form>
                                     </div>
                                 </div>
+                                <hr />
 			                </div>
 			            </div>
 		            @endforeach

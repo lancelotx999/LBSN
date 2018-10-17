@@ -89,7 +89,7 @@ class editPropertyContract extends Component {
         //
         //
         this.setState({[e.target.name]: e.target.value});
-        // console.log('onChange', this.state);
+    
     }
 
     submitContract(e) {
@@ -163,7 +163,6 @@ class editPropertyContract extends Component {
                                                     name="providerID"
                                                     type="text"
                                                     value={this.state.providerID}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter provider ID."
                                                     required
@@ -178,7 +177,6 @@ class editPropertyContract extends Component {
                                                     name="receiverID"
                                                     type="text"
                                                     value={this.state.receiverID}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter receiver ID."
                                                     required
@@ -193,7 +191,6 @@ class editPropertyContract extends Component {
                                                     name="locationID"
                                                     type="text"
                                                     value={this.state.locationID}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter receiver ID."
                                                     required
@@ -208,7 +205,6 @@ class editPropertyContract extends Component {
                                                     name="contractType"
                                                     type="text"
                                                     value={this.state.contractType}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter contract content."
                                                 />
@@ -222,7 +218,6 @@ class editPropertyContract extends Component {
                                                     name="contractContent"
                                                     type="text"
                                                     value={this.state.contractContent}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter contract content."
                                                 />
@@ -236,7 +231,6 @@ class editPropertyContract extends Component {
                                                     name="contractValue"
                                                     type="text"
                                                     value={this.state.contractValue}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter contract value."
                                                     required
@@ -251,7 +245,6 @@ class editPropertyContract extends Component {
                                                     name="contractStatus"
                                                     type="text"
                                                     value={this.state.contractStatus}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Select contract status."
                                                     required
@@ -267,7 +260,6 @@ class editPropertyContract extends Component {
                                                     name="providerSignature"
                                                     type="password"
                                                     value={this.state.providerSignature}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter provider password."
                                                 />
@@ -281,7 +273,6 @@ class editPropertyContract extends Component {
                                                     name="receiverSignature"
                                                     type="password"
                                                     value={this.state.receiverSignature}
-                                                    onChange={this.handleChange}
                                                     className="form-control"
                                                     placeholder="Enter receiver password."
                                                 />

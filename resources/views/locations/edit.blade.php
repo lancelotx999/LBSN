@@ -125,6 +125,7 @@
                             Edit Location
                         </button>
                     </form>
+                    <hr />
                 </div>
             </div>
         </div>

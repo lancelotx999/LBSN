@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,8 +93,8 @@ class LocationController extends Controller
  		]);
 
  		// return location with user object
- 		return response()->json($location->with('user')->find($location->_id));
-        // return redirect()->route('location.create', ['user' => $user ])->with('user')->find($location->_id);
+ 		// return response()->json($location->with('user')->find($location->_id));
+        return redirect()->route('location.create');
  	}
 
     /**
@@ -104,10 +105,9 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-		$location = Location::findOrFail($id);
-		// echo $location;
-		// var_dump($location);
-		return response()->json($location->with('user')->find($location->_id));
+		$location = Location::with('user')->findOrFail($id);
+        
+		return view('locations.view', compact('location'));
     }
 
 	// // get all the locations based on current user id
@@ -128,8 +128,9 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-		$location = Location::findOrFail($id);
-		return response()->json($location->with('user')->find($location->_id));
+		$location = Location::with('user')->findOrFail($id);
+		
+        return view('locations.edit', compact('location'));
 		// return response()->json([
 		// 	'location' => $location,
 		// ]);
@@ -145,9 +146,9 @@ class LocationController extends Controller
     public function update(Request $request, $id)
     {
 		$input = $request->all();
-		$location = Location::findOrFail($id);
+		$location = Location::with('user')->findOrFail($id);
 		$location->update($input);
-		return response()->json($location->with('user')->find($location->_id));
+		return redirect()->route('location.edit', ['location' => $location ]);
     }
 
     /**
@@ -159,5 +160,7 @@ class LocationController extends Controller
     public function destroy($id)
     {
         Location::findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }

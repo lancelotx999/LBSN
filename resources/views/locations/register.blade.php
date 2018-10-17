@@ -167,6 +167,6 @@
 
     map.on("click", updateLatLng.bind(null, this));
 
-    
+
 </script>
 @endsection

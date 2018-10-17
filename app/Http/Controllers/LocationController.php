@@ -32,7 +32,6 @@ class LocationController extends Controller
     }
 
 	public function allLocations(){
-		$locations = Location::with('user')->get();
 		// $locations = $locations->with('user');
 
 		// $a=array("red","green");
@@ -45,9 +44,11 @@ class LocationController extends Controller
 		// return response()->json($locations->with('user')->find($location->_id));
 		// return response()->json($locations);
 		// return response()->json($locations->with('user'));
-		return response()->json([
-			'locations' => $locations,
-		]);
+		// return response()->json([
+		// 	'locations' => $locations,
+		// ]);
+		$locations = Location::with('user')->get();
+		return view('locations.all', compact('locations'));
 
 	}
 

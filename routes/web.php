@@ -11,7 +11,9 @@
 |
 */
 
-Route::view('/', 'layouts/app');
+Route::view('/', 'home');
+
+Route::view('/map', 'map');
 
 Route::view('/welcome', 'welcome');
 

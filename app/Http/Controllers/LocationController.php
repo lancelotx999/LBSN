@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {
@@ -57,7 +58,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $locations = Location::with('user')->take(10)->get();
+        return view('locations.register', compact('locations'));
     }
 
     /**
@@ -90,6 +92,7 @@ class LocationController extends Controller
 
  		// return location with user object
  		return response()->json($location->with('user')->find($location->_id));
+        // return redirect()->route('location.create', ['user' => $user ])->with('user')->find($location->_id);
  	}
 
     /**

@@ -89,11 +89,11 @@ class PropertyContractController extends Controller
             'receiverSignature' => $request->receiverSignature,
  		]);
 
-		PropertyContract::create($request->all());
-		$propertyContract = PropertyContract::where('unique_field', '=', $request->uniquefield)->first();
-
-		$propertyContract->users()->attach($request->user_id);
-		$propertyContract->location()->attach($request->location_id);
+		// PropertyContract::create($request->all());
+		// $propertyContract = PropertyContract::where('unique_field', '=', $request->uniquefield)->first();
+        //
+		// $propertyContract->users()->attach($request->user_id);
+		// $propertyContract->location()->attach($request->location_id);
 
  		// return contract with user object
  		return redirect()->back();

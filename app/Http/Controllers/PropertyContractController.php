@@ -52,7 +52,10 @@ class PropertyContractController extends Controller
      */
     public function create()
     {
+		// $location = Location::with('user')->findOrFail($id);
+        // $contracts = PropertyContract::with('user')->take(10)->get();
         //
+        // return view('propertyContract.create', compact('location', 'contracts'));
     }
 
     /**
@@ -101,7 +104,7 @@ class PropertyContractController extends Controller
         $location = Location::with('user')->findOrFail($id);
         $contracts = PropertyContract::with('user')->take(10)->get();
 
-        return view('property.create', compact('location', 'contracts'));
+        return view('propertyContract.create', compact('location', 'contracts'));
     }
 
     /**
@@ -112,9 +115,9 @@ class PropertyContractController extends Controller
      */
     public function edit($id)
     {
-        $contract = PropertyContract::with('user')->findOrFail($id);
-
-        return view('property.edit', compact('contract'));
+        // $contract = PropertyContract::with('user')->findOrFail($id);
+        //
+        // return view('propertyContract.edit', compact('contract'));
 		// return response()->json([
 		// 	'contract' => $contract,
 		// ]);

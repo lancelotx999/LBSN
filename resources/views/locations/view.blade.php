@@ -41,12 +41,12 @@
                         Owner Email: {{ $location->user->email }}
                     </p>
                     <p>
-                        <a href="{{ route('propertyContract.show', $location->_id) }}">
+                        <a href="{{ route('propertyContract.show', ['id' => $location->id]) }}">
                             Create Property Contract
             	        </a>
                     <p />
                     <p>
-                        <a href="{{ route('serviceContract.show', $location->_id) }}">
+                        <a href="{{ route('serviceContract.show', ['id' => $location->id]) }}">
                             Create Service Contract
                         </a>
                     <p />
@@ -77,6 +77,23 @@ if (empty($location)) { $location = null; }
     var read = "{{ $location }}";
     var json = read.replace(/&quot;/g, '"');
     var data = JSON.parse(json);
+
+    // var location = {!! json_encode($location->toArray()) !!};
+    //
+    // console.log("---------- read ----------");
+    // console.log(read);
+    // console.log("---------- read ----------");
+    // console.log("---------- json ----------");
+    // console.log(json);
+    // console.log("---------- json ----------");
+    // console.log("---------- data ----------");
+    // console.log(data);
+    // console.log("---------- data ----------");
+    // console.log("---------- locations ----------");
+    // console.log(location);
+    // console.log("---------- locations ----------");
+
+
 
     var pruneCluster = new PruneClusterForLeaflet();
 

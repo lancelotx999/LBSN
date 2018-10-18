@@ -23,5 +23,11 @@ Route::get('/allLocations', 'LocationController@allLocations');
 Route::resource('location', 'LocationController');
 Route::resource('contract', 'ContractController');
 // Route::get('/createPropertyContract/{locationID}', 'PropertyContractController');
+// Route::get('/propertyContract/create{id}',
+//     [
+//         'middleware' => 'auth',
+//         'as' => 'propertyContract.create',
+//         'uses' => 'PropertyContractController@create'
+//     ]);
 Route::resource('propertyContract', 'PropertyContractController');
 Route::resource('serviceContract', 'ServiceContractController');

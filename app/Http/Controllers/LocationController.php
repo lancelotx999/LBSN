@@ -21,15 +21,18 @@ class LocationController extends Controller
      */
     public function index(Request $request, Location $location)
     {
-        // get all the locations based on current user id
-		$allLocations = $location->whereIn('user_id', $request->user())->with('user');
-        // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
-		$locations = $allLocations->take(10)->get();
+        // // get all the locations based on current user id
+		// $allLocations = $location->whereIn('user_id', $request->user())->with('user');
+        // // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
+		// $locations = $allLocations->take(10)->get();
+        //
+		// // return json response
+		// return response()->json([
+		// 	'locations' => $locations,
+		// ]);
 
-		// return json response
-		return response()->json([
-			'locations' => $locations,
-		]);
+		$locations = Location::with('user')->get();
+		return view('locations.all', compact('locations'));
     }
 
 	public function allLocations(){
@@ -58,9 +61,13 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Location $location)
     {
-        $locations = Location::with('user')->take(10)->get();
+		// get all the locations based on current user id
+		$allLocations = $location->whereIn('user_id', $request->user())->with('user');
+        // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
+		$locations = $allLocations->take(10)->get();
+
         return view('locations.register', compact('locations'));
     }
 
@@ -105,8 +112,15 @@ class LocationController extends Controller
      */
     public function show($id)
     {
+		// // get all the locations based on current user id
+		// $allLocations = $location->whereIn('user_id', $request->user())->with('user');
+        // // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
+		// $locations = $allLocations->take(10)->get();
+        //
+        // return view('locations.register', compact('locations'));
+
 		$location = Location::with('user')->findOrFail($id);
-        
+
 		return view('locations.view', compact('location'));
     }
 
@@ -129,7 +143,7 @@ class LocationController extends Controller
     public function edit($id)
     {
 		$location = Location::with('user')->findOrFail($id);
-		
+
         return view('locations.edit', compact('location'));
 		// return response()->json([
 		// 	'location' => $location,

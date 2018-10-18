@@ -166,4 +166,30 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+
+    // var read = "{{ $location }}";
+    // var json = read.replace(/&quot;/g, '"');
+    // var location = JSON.parse(json);
+    //
+    // var read = "{{ $contracts }}";
+    // var json = read.replace(/&quot;/g, '"');
+    // var contracts = JSON.parse(json);
+    //
+    // // var location = {!! json_encode($location->toArray()) !!};
+    // // var contracts = {!! json_encode($contracts->toArray()) !!};
+
+    console.log("---------- location ----------");
+    console.log(location);
+    console.log("---------- location ----------");
+    console.log("---------- contracts ----------");
+    console.log(contracts);
+    console.log("---------- contracts ----------");
+
+
+
+</script>
+
 @endsection

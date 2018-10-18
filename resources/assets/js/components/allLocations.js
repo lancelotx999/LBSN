@@ -46,7 +46,7 @@ export default class allLocations extends Component {
 
         // create map
         this.map = L.map('map', {
-            center: [1.5510714615890955, 110.34356832504274],
+            center: [1.0, 110.0],
             zoom: 16,
             layers: [
                 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

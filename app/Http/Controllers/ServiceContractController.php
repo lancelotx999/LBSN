@@ -101,7 +101,7 @@ class ServiceContractController extends Controller
         $location = Location::with('user')->findOrFail($id);
         $contracts = ServiceContract::with('user')->take(10)->get();
 
-        return view('property.create', compact('location', 'contracts'));
+        return view('serviceContract.create', compact('location', 'contracts'));
     }
 
     /**
@@ -114,7 +114,7 @@ class ServiceContractController extends Controller
     {
         $contract = ServiceContract::with('user')->findOrFail($id);
 
-        return view('service.edit', compact('contract'));
+        return view('serviceContract.edit', compact('contract'));
 		// return response()->json([
 		// 	'contract' => $contract,
 		// ]);

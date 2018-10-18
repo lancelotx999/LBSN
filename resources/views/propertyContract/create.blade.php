@@ -178,8 +178,6 @@
     var json = read.replace(/&quot;/g, '"');
     var contracts = JSON.parse(json);
 
-    // // var location = {!! json_encode($location->toArray()) !!};
-    // // var contracts = {!! json_encode($contracts->toArray()) !!};
 
     console.log("---------- location ----------");
     console.log(location);

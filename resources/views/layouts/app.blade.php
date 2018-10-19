@@ -20,14 +20,11 @@
         ]); ?>;
     </script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet/leaflet.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -42,11 +39,24 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <div id="routing"></div>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/map">Map</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/allLocations">Property Listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('location.create') }}">Register Location</a>
+                        </li>                        
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        <!-- Authentication as -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -81,8 +91,7 @@
         </nav>
 
         <main class="py-4">
-            <div id="content"></div>
-            @yield('authentication')
+            @yield('content')
         </main>
     </div>
 </body>

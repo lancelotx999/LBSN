@@ -14,7 +14,7 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, Notifiable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +23,7 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     protected $fillable = [
         'name', 'email', 'password', 'role'
     ];
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -41,5 +41,21 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
     public function getRouteKeyName()
     {
         return 'name'; //this will return user name as route 
+    }
+
+    public function locations() {
+        return $this->hasMany(Location::class);
+    }
+
+    public function contracts() {
+        return $this->hasMany(Contract::class);
+    }
+
+    public function propertyContracts() {
+        return $this->hasMany(PropertyContract::class);
+    }
+
+    public function serviceContracts() {
+        return $this->hasMany(ServiceContract::class);
     }
 }

@@ -12,7 +12,7 @@
 */
 
 Route::view('/', 'layouts/app');
-
 Route::view('/welcome', 'welcome');
+Route::get('/pdf', 'ReceiptGenerator@createReceipt');
 
 Auth::routes();

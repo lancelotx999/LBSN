@@ -10,6 +10,7 @@ class ReceiptGenerator extends Controller
 {
     public function createReceipt()
     {
+    	ReceiptPDF::SetPageOrientation('Portrait');
     	ReceiptPDF::SetTitle('Hello World');
  		ReceiptPDF::AddPage();
   		ReceiptPDF::Write(0, 'Hello World');

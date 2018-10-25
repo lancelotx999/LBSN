@@ -17,6 +17,7 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '8a9dc1de0ca7e01f3e08231539562f61' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/functions.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
@@ -74,6 +75,10 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
         ),
+        'O' => 
+        array (
+            'Opis\\Closure\\' => 13,
+        ),
         'N' => 
         array (
             'NunoMaduro\\Collision\\' => 21,
@@ -93,6 +98,7 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         'J' => 
         array (
             'JmesPath\\' => 9,
+            'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
         'I' => 
         array (
@@ -247,6 +253,10 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Opis\\Closure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/opis/closure/src',
+        ),
         'NunoMaduro\\Collision\\' => 
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
@@ -278,6 +288,10 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         'JmesPath\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
+        ),
+        'JakubOnderka\\PhpConsoleColor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
         ),
         'Illuminate\\' => 
         array (
@@ -374,10 +388,6 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
             ),
-            'JakubOnderka\\PhpConsoleColor' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
-            ),
         ),
         'D' => 
         array (
@@ -397,6 +407,7 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ReceiptGenerator' => __DIR__ . '/../..' . '/app/Http/Controllers/ReceiptGenerator.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -2387,8 +2398,8 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-        'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
-        'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
+        'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
+        'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
         'Jenssegers\\Mongodb\\Auth\\DatabaseTokenRepository' => __DIR__ . '/..' . '/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/DatabaseTokenRepository.php',
         'Jenssegers\\Mongodb\\Auth\\PasswordBrokerManager' => __DIR__ . '/..' . '/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/PasswordBrokerManager.php',
@@ -2761,6 +2772,16 @@ class ComposerStaticInit50981dc13c31526fd6f0141ae7a8fc48
         'NunoMaduro\\Collision\\Highlighter' => __DIR__ . '/..' . '/nunomaduro/collision/src/Highlighter.php',
         'NunoMaduro\\Collision\\Provider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Provider.php',
         'NunoMaduro\\Collision\\Writer' => __DIR__ . '/..' . '/nunomaduro/collision/src/Writer.php',
+        'Opis\\Closure\\Analyzer' => __DIR__ . '/..' . '/opis/closure/src/Analyzer.php',
+        'Opis\\Closure\\ClosureContext' => __DIR__ . '/..' . '/opis/closure/src/ClosureContext.php',
+        'Opis\\Closure\\ClosureScope' => __DIR__ . '/..' . '/opis/closure/src/ClosureScope.php',
+        'Opis\\Closure\\ClosureStream' => __DIR__ . '/..' . '/opis/closure/src/ClosureStream.php',
+        'Opis\\Closure\\ISecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/ISecurityProvider.php',
+        'Opis\\Closure\\ReflectionClosure' => __DIR__ . '/..' . '/opis/closure/src/ReflectionClosure.php',
+        'Opis\\Closure\\SecurityException' => __DIR__ . '/..' . '/opis/closure/src/SecurityException.php',
+        'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
+        'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
+        'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',

@@ -40,6 +40,18 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select Membership') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="custom-select form-control" id="role" name="role">
+                                    <option selected>Choose a membership</option>
+                                    <option value="user">Normal</option>
+                                    <option value="merchant">Merchant</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -63,7 +75,6 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <input type="hidden" name="role" value="user">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

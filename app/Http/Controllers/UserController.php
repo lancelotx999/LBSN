@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Location;
 
 class UserController extends Controller
 {
@@ -56,7 +57,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user = Auth::user();
+        $users = User::all();
+        $locations = Location::with('user')->get();
+        return view('users.show', compact('user', 'users', 'locations'));
     }
 
     /**

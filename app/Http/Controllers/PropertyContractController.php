@@ -81,7 +81,7 @@ class PropertyContractController extends Controller
  		$contract = $request->user()->propertyContracts()->create([
             // 'contractOwnerID' => $request->contractOwnerID,
 			'providerID' => $request->providerID,
-            'provider' => User::find($request->providerID),
+            'provider' => User::find($request->providerID)->get()->toArray(),
 			'receiverID' => $request->receiverID,
             'receiver' => User::find($request->receiverID),
 			'locationID' => $request->locationID,
@@ -110,8 +110,8 @@ class PropertyContractController extends Controller
 		// // $contract->provider = User::find($contract->providerID);
 		// // $contract->receiver = User::find($contract->receiverID);
 		// // $contract->location = Location::find($contract->locationID);
-
-		$contract->save();
+        //
+		// $contract->save();
 
 		// $provider = User::find($contract->providerID);
         //
@@ -149,7 +149,7 @@ class PropertyContractController extends Controller
 
  		// return contract with user object
 		// return $contract;
-		return $contract;
+		// return $contract;
  		return redirect()->back();
     }
 

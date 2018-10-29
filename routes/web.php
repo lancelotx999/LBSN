@@ -13,6 +13,6 @@
 
 Route::view('/', 'layouts/app');
 Route::view('/welcome', 'welcome');
-Route::get('/pdf', 'ReceiptGenerator@createReceipt');
+Route::get('/pdf', 'InvoiceController@generateInvoice');
 
 Auth::routes();

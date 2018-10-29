@@ -2,14 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Moloquent;
 
-class Invoice extends Model
+class Invoice extends Moloquent
 {
     protected $guarded = [
     	'sender','receiver','price','service','paid',
     ];
 
     protected $table = 'invoices';
+
+    public function users()
+    {
+    	return $this->belongsToMany(User::class);
+    }
 
 }

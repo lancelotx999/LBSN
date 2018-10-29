@@ -81,18 +81,25 @@ class PropertyContractController extends Controller
  		$contract = $request->user()->propertyContracts()->create([
             // 'contractOwnerID' => $request->contractOwnerID,
 			'providerID' => $request->providerID,
-            'provider' => User::find($request->providerID)->get()->toArray(),
+            'provider' => User::where('_id',$request->providerID)->first()->toArray(),
 			'receiverID' => $request->receiverID,
-            'receiver' => User::find($request->receiverID),
+            'receiver' => User::where('_id',$request->receiverID)->first()->toArray(),
 			'locationID' => $request->locationID,
-			'location' => Location::find($request->locationID),
+			'location' => Location::where('_id',$request->locationID)->first()->toArray(),
             'contractContent' => $request->contractContent,
             'contractValue' => $request->contractValue,
             'contractStatus' => $request->contractStatus,
             'providerSignature' => $request->providerSignature,
             'receiverSignature' => $request->receiverSignature,
  		]);
-
+		// $townComments = User::where('_id',$request->providerID)->get()->toArray();
+        //
+		// $city = City::with('station')->where('name',$town)->first();
+		// $townID = 1;
+		// $townComments = TownComment::where('town_id',$townID)->get();
+		// $city->town_comments = $townComments;
+        //
+		// $city->town_comments = $townComments->toArray();
 		// $location = Location::with('user')->findOrFail($id);
 
 

@@ -34,6 +34,7 @@
                                         name="receiverID"
                                         type="text"
                                         class="form-control"
+                                        value="{{ Auth::user()->id }}"
                                         placeholder="Enter receiver ID."
                                         required
                                     />
@@ -179,6 +180,12 @@
     var json2 = read2.replace(/&quot;/g, '"');
     var contractsData = JSON.parse(json2);
 
+    // console.log("---------- json ----------");
+    // console.log(json);
+    // console.log("---------- json ----------");
+    // console.log("---------- json2 ----------");
+    // console.log(json2);
+    // console.log("---------- json2 ----------");
 
     console.log("---------- locationData ----------");
     console.log(locationData);

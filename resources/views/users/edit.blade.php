@@ -104,15 +104,6 @@
 					</form>
 				</div>
             </div>
-
-            <br />
-
-            @if (session('status'))
-			    <div class="alert alert-success">
-			        {{ session('status') }}
-			    </div>
-			    <hr />
-        	@endif
         </div>
     </div>
 </div>

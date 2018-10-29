@@ -19,18 +19,20 @@ Route::view('/welcome', 'welcome');
 
 Auth::routes();
 
-// Edit profile
+// User profile
 Route::resource('users', 'UserController');
 
+// Contracts
 Route::get('/allLocations', 'LocationController@allLocations');
 Route::resource('location', 'LocationController');
 Route::resource('contract', 'ContractController');
-// Route::get('/createPropertyContract/{locationID}', 'PropertyContractController');
-// Route::get('/propertyContract/create{id}',
-//     [
-//         'middleware' => 'auth',
-//         'as' => 'propertyContract.create',
-//         'uses' => 'PropertyContractController@create'
-//     ]);
 Route::resource('propertyContract', 'PropertyContractController');
 Route::resource('serviceContract', 'ServiceContractController');
+
+// Messenger
+Route::get('tests', 'MessageController@tests');
+Route::get('message/{id}', 'MessageController@chatHistory')->name('message.read');
+Route::group(['prefix'=>'ajax', 'as'=>'ajax::'], function() {
+   Route::post('message/send', 'MessageController@ajaxSendMessage')->name('message.new');
+   Route::delete('message/delete/{id}', 'MessageController@ajaxDeleteMessage')->name('message.delete');
+});

@@ -142,7 +142,10 @@
 						</div>
 					</div>
 				</div>
-			@elseif ($user->role == 'user' || $user->role == 'merchant')
+			<br />
+			@endif
+
+			@if ($user->role == 'merchant' || $user->role == 'user')
 				<div class="card">
 					<div class="card-header">Recent Property Purchases</div>
 					<div class="card-body">
@@ -175,7 +178,15 @@
 						</div>
 					</div>
 				</div>
+			<br />
 			@endif
+
+            @if (session('status'))
+			    <div class="alert alert-success">
+			        {{ session('status') }}
+			    </div>
+			    <hr />
+        	@endif
         </div>
     </div>
 </div>
@@ -231,7 +242,7 @@
 	                    	<div class="col-md-6">
 	                    		<select id="role-{{ $all->id }}" name="role" class="custom-select">
 	                    			<option value="user" selected>User</option>
-	                    			<option value="merchant">Admin</option>
+	                    			<option value="merchant">Merchant</option>
 	                    			<option value="admin">Admin</option>
 	                    		</select>
 	                    	</div>

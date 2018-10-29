@@ -160,6 +160,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
+        Nahid\Talk\TalkServiceProvider::class,
 
     ],
 
@@ -209,7 +210,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Talk'      => Nahid\Talk\Facades\Talk::class,
 
     ],
 

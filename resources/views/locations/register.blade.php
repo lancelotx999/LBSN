@@ -176,10 +176,6 @@
 
     map.on("click", updateLatLng.bind(null, this));
 
-    // var read = "{{ $location }}";
-    // var json = read.replace(/&quot;/g, '"');
-    // var data = JSON.parse(json);
-
     var locations = {!! json_encode($locations->toArray()) !!};
 
     console.log("---------- locations ----------");

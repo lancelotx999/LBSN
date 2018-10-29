@@ -52,10 +52,10 @@ class PropertyContractController extends Controller
      */
     public function create()
     {
-		// $location = Location::with('user')->findOrFail($id);
-        // $contracts = PropertyContract::with('user')->take(10)->get();
-        //
-        // return view('propertyContract.create', compact('location', 'contracts'));
+		$location = Location::with('user')->findOrFail($id);
+        $contracts = PropertyContract::with('user')->take(10)->get();
+
+        return view('propertyContract.create', compact('location', 'contracts'));
     }
 
     /**
@@ -64,7 +64,7 @@ class PropertyContractController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         // validate
  		$this->validate($request, [
@@ -76,18 +76,70 @@ class PropertyContractController extends Controller
             'contractStatus' => 'required',
  		]);
 
- 		// create a new contract based on user contracts relationship
+
+		// create a new contract based on user contracts relationship
  		$contract = $request->user()->propertyContracts()->create([
             // 'contractOwnerID' => $request->contractOwnerID,
-            'providerID' => $request->providerID,
-            'receiverID' => $request->receiverID,
+			'providerID' => $request->providerID,
+            'provider' => User::find($request->providerID),
+			'receiverID' => $request->receiverID,
+            'receiver' => User::find($request->receiverID),
 			'locationID' => $request->locationID,
+			'location' => Location::find($request->locationID),
             'contractContent' => $request->contractContent,
             'contractValue' => $request->contractValue,
             'contractStatus' => $request->contractStatus,
             'providerSignature' => $request->providerSignature,
             'receiverSignature' => $request->receiverSignature,
  		]);
+
+		// $location = Location::with('user')->findOrFail($id);
+
+
+		// $contract->user()->saveMany([
+		// 	new User(['provider' => User::find($contract->providerID)]),
+		// 	new User(['receiver' => User::find($contract->receiverID)]),
+		// 	new Location(['location' => User::find($contract->locationID)]),
+		// ]);
+		// $users = User::where('_id', '==', $contract->providerID)->get();
+
+		// $contract->provider = User::where('_id', '=', $contract->providerID)->first();
+		// $contract->receiver = User::where('_id', '=', $contract->receiverID)->first();
+		// $contract->location = Location::where('_id', '=', $contract->locationID)->first();
+        //
+		// // $contract->provider = User::find($contract->providerID);
+		// // $contract->receiver = User::find($contract->receiverID);
+		// // $contract->location = Location::find($contract->locationID);
+
+		$contract->save();
+
+		// $provider = User::find($contract->providerID);
+        //
+		// $receiver = User::find($contract->receiverID);
+
+
+		// $buy->user()->attach($buyId);
+
+		// $location = Location::find(1);
+        //
+		// $contract->user()->saveMany([
+		// 	new user(['provider' => User::find($contract->providerID)]),
+		// 	new user(['receiver' => User::find($contract->receiverID)]),
+		// ]);
+
+		// $contract = App\Post::find(1);
+
+		// $contract->comments()->saveMany([
+		// 	new App\Comment(['message' => 'A new comment.']),
+		// 	new App\Comment(['message' => 'Another comment.']),
+		// ]);
+
+		// $contract = $request->user()->propertyContracts()->create([
+
+		// $contract = $location->user()->create([
+		// 	'provider' => 'A new comment.',
+		// 	'receiver' => 'A new comment.',
+		// ]);
 
 		// PropertyContract::create($request->all());
 		// $propertyContract = PropertyContract::where('unique_field', '=', $request->uniquefield)->first();
@@ -96,6 +148,8 @@ class PropertyContractController extends Controller
 		// $propertyContract->location()->attach($request->location_id);
 
  		// return contract with user object
+		// return $contract;
+		return $contract;
  		return redirect()->back();
     }
 

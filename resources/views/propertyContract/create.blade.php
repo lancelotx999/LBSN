@@ -20,6 +20,7 @@
                                         name="providerID"
                                         type="text"
                                         class="form-control"
+                                        value="{{ $location->user_id }}"
                                         placeholder="Enter provider ID."
                                         required
                                     />
@@ -172,19 +173,19 @@
 
     var read = "{{ $location }}";
     var json = read.replace(/&quot;/g, '"');
-    var location = JSON.parse(json);
+    var locationData = JSON.parse(json);
 
-    var read = "{{ $contracts }}";
-    var json = read.replace(/&quot;/g, '"');
-    var contracts = JSON.parse(json);
+    var read2 = "{{ $contracts }}";
+    var json2 = read2.replace(/&quot;/g, '"');
+    var contractsData = JSON.parse(json2);
 
 
-    console.log("---------- location ----------");
-    console.log(location);
-    console.log("---------- location ----------");
-    console.log("---------- contracts ----------");
-    console.log(contracts);
-    console.log("---------- contracts ----------");
+    console.log("---------- locationData ----------");
+    console.log(locationData);
+    console.log("---------- locationData ----------");
+    console.log("---------- contractsData ----------");
+    console.log(contractsData);
+    console.log("---------- contractsData ----------");
 
 
 

@@ -10479,20 +10479,19 @@ a.text-dark:focus {
 }
 
 #map {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 50px - 32px);
   position: relative;
 }
 
 #sidebar,
 .filter {
-  position: absolute;
-  z-index: 2000;
+  position: relative;
+  z-index: 9999;
 }
 
 #sidebar {
-  width: 35vh;
-  min-width: 350px;
-  height: calc(100vh - 50px);
+  width: 350px;
+  height: calc(100vh - 50px - 32px);
   background: #ffffff;
   overflow: auto;
 }

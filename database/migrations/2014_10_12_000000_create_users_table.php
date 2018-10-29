@@ -18,11 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });
 
-         DB::table('users')->insert(
+        DB::table('users')->insert(
         array(
             'name' => "KBI",
             'email' => "ripariumnizer@gmail.com",

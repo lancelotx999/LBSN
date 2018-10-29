@@ -15,16 +15,16 @@ class User extends Moloquent implements
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, Notifiable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -37,5 +37,31 @@ class User extends Moloquent implements
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name'; //this will return user name as route 
+    }
+
+    public function locations() {
+        return $this->hasMany(Location::class);
+    }
+
+    public function contracts() {
+        return $this->hasMany(Contract::class);
+    }
+
+    public function propertyContracts() {
+        return $this->hasMany(PropertyContract::class);
+    }
+
+    public function serviceContracts() {
+        return $this->hasMany(ServiceContract::class);
     }
 }

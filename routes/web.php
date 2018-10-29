@@ -11,8 +11,29 @@
 |
 */
 
-Route::view('/', 'layouts/app');
+Route::view('/', 'home');
+
+Route::view('/map', 'map');
+
 Route::view('/welcome', 'welcome');
 Route::get('/pdf', 'InvoiceController@generateInvoice');
 
 Auth::routes();
+
+// User profile
+Route::resource('users', 'UserController');
+
+// Contracts
+Route::get('/allLocations', 'LocationController@allLocations');
+Route::resource('location', 'LocationController');
+Route::resource('contract', 'ContractController');
+Route::resource('propertyContract', 'PropertyContractController');
+Route::resource('serviceContract', 'ServiceContractController');
+
+// Messenger
+Route::get('tests', 'MessageController@tests');
+Route::get('message/{id}', 'MessageController@chatHistory')->name('message.read');
+Route::group(['prefix'=>'ajax', 'as'=>'ajax::'], function() {
+   Route::post('message/send', 'MessageController@ajaxSendMessage')->name('message.new');
+   Route::delete('message/delete/{id}', 'MessageController@ajaxDeleteMessage')->name('message.delete');
+});

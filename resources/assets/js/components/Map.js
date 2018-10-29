@@ -29,7 +29,7 @@ export default class MapTest extends Component {
     }
 
     componentDidUpdate({ markerPosition }) {
-        // check if position has changed 
+        // check if position has changed
         if (this.props.markerPosition !== markerPosition) {
             this.marker.setLatLng(this.props.markerPosition);
         }
@@ -49,7 +49,6 @@ export default class MapTest extends Component {
     
     render() {
         return (
-            
             <div className="container-fluid wrapper">
                 <div className="row">
                     <div className="col-xs-12 col-sm-12">

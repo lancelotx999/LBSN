@@ -10,11 +10,18 @@ const Header = () => {
         	<li className="nav-item">
             	<Link className="nav-link" to="/form">Form</Link>
         	</li>
-        	<li className="nav-item">
+			<li className="nav-item">
             	<Link className="nav-link" to="/map">Map</Link>
         	</li>
+			<li className="nav-item">
+            	<Link className="nav-link" to="/allLocations">Property Listing</Link>
+        	</li>
+			<li className="nav-item">
+                <Link className="nav-link" to="/registerLocation">Register Location</Link>
+            </li>
+			
         </ul>
 	)
-} 
+}
 
 export default Header

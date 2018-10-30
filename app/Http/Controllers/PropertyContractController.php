@@ -42,7 +42,27 @@ class PropertyContractController extends Controller
     }
 
 	public function listAll(Request $request, PropertyContract $contract, User $user){
+		// // get all the contracts based on current user id
+		// $allContracts = $contract->whereIn('user_id', $request->user())->with('user');
+        // // $contracts = $allContracts->orderBy('created_at', 'desc')->take(10)->get();
+		// $contracts = $allContracts->take(10)->get();
 
+		// $allUsers = User::get();
+		// $allUsers = Auth::user()->get()
+		$allContracts = $contract->whereIn('user_id', $request->user())->with('user');
+
+		$users = User::all();
+		$locations = Location::all();
+		$propertyContracts = PropertyContract::all();
+
+
+		return view('propertyContract.all', compact('users', 'locations', 'propertyContracts'));
+		// return json response
+		// return response()->json([
+		// 	'contracts' => $contracts,
+		// 	'users' => $allUsers,
+		// 	'locations' => $allLocations
+		// ]);
 	}
 
     /**

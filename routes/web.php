@@ -29,5 +29,6 @@ Route::resource('contract', 'ContractController');
 //         'as' => 'propertyContract.create',
 //         'uses' => 'PropertyContractController@create'
 //     ]);
+Route::get('/allPropertyContracts', 'PropertyContractController@listAll');
 Route::resource('propertyContract', 'PropertyContractController');
 Route::resource('serviceContract', 'ServiceContractController');

@@ -16,12 +16,14 @@ Route::view('/', 'home');
 Route::view('/map', 'map');
 
 Route::view('/welcome', 'welcome');
-Route::get('/pdf', 'InvoiceController@generateInvoice');
 
 Auth::routes();
 
 // User profile
 Route::resource('users', 'UserController');
+
+// Invoice
+Route::resource('invoice', 'InvoiceController');
 
 // Contracts
 Route::get('/allLocations', 'LocationController@allLocations');

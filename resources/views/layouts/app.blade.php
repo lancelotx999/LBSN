@@ -51,7 +51,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('location.create') }}">Register Location</a>
-                        </li>                        
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('invoice.index') }}">See Invoice</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -24,6 +24,7 @@ Route::resource('users', 'UserController');
 
 // Invoice
 Route::resource('invoice', 'InvoiceController');
+Route::get('/userid', 'InvoiceController@getCurrentUserRole');
 
 // Contracts
 Route::get('/allLocations', 'LocationController@allLocations');
@@ -39,3 +40,8 @@ Route::group(['prefix'=>'ajax', 'as'=>'ajax::'], function() {
    Route::post('message/send', 'MessageController@ajaxSendMessage')->name('message.new');
    Route::delete('message/delete/{id}', 'MessageController@ajaxDeleteMessage')->name('message.delete');
 });
+
+Route::get('/sinvoice', 'InvoiceController@store');
+Route::get('/showinvoice', 'InvoiceController@show');
+
+

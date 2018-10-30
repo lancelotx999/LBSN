@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Invoice;
+use Auth;
 use ReceiptPDF;
 use Moloquent;
 
@@ -13,6 +14,12 @@ class InvoiceController extends Controller
     // apply auth middleware so only authenticated users have access
     public function __construct() {
         $this->middleware('auth');
+    }
+
+    public function getCurrentUserRole()
+    {
+        $role = Auth::user()->role;
+        dd($role);
     }
 
     /**
@@ -48,7 +55,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        // validate
+        // Validation Logic
         $this->validate($request, [
             'sender' => 'required',
             'receiver' => 'required',
@@ -56,15 +63,16 @@ class InvoiceController extends Controller
             'service' => 'required',
             'paid' => 'required',
         ]);
-        // create a new location based on user locations relationship
-        $invoice = $request->user()->invoices()->create([
-            // 'locationOwnerID' => $request->locationOwnerID,
-            'sender' => $request->sender,
-            'receiver' => $request->receiver,
-            'price' => $request->price,
-            'service' => $request->service,
-            'paid' => $request->paid,
-        ]);
+
+        // create a new Invoice based on input
+        $invoice = new Invoice;
+        $invoice->sender = $request->sender;
+        $invoice->receiver = $request->receiver;
+        $invoice->price = $request->price;
+        $invoice->service = $request->service;
+        $invoice->paid = $request->paid;
+
+        $invoice->save();
 
         return redirect()->back();
     }

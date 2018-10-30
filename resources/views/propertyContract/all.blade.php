@@ -16,7 +16,7 @@
                     @foreach ($propertyContracts as $propertyContract)
 	                    <div id="{{ $propertyContract->_id }}" class="media">
 			                <div class="media-body">
-			                    <h5>{{ $propertyContract->location->locationName }}</h5>
+			                    <h5>{{ $propertyContract->user->name }}</h5>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <a href="{{ route('propertyContract.show', $propertyContract->_id) }}">

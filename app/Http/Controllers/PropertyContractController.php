@@ -7,6 +7,7 @@ use App\Location;
 use App\Contract;
 use App\PropertyContract;
 use Illuminate\Http\Request;
+use Auth;
 
 class PropertyContractController extends Controller
 {
@@ -55,6 +56,8 @@ class PropertyContractController extends Controller
 		$locations = Location::all();
 		$propertyContracts = PropertyContract::all();
 
+		// return $propertyContracts;
+
 
 		return view('propertyContract.all', compact('users', 'locations', 'propertyContracts'));
 		// return json response
@@ -70,7 +73,7 @@ class PropertyContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
 		$location = Location::with('user')->findOrFail($id);
         $contracts = PropertyContract::with('user')->take(10)->get();
@@ -98,20 +101,57 @@ class PropertyContractController extends Controller
 
 
 		// create a new contract based on user contracts relationship
- 		$contract = $request->user()->propertyContracts()->create([
-            // 'contractOwnerID' => $request->contractOwnerID,
-			'providerID' => $request->providerID,
-            'provider' => User::where('_id',$request->providerID)->first()->toArray(),
-			'receiverID' => $request->receiverID,
-            'receiver' => User::where('_id',$request->receiverID)->first()->toArray(),
-			'locationID' => $request->locationID,
-			'location' => Location::where('_id',$request->locationID)->first()->toArray(),
-            'contractContent' => $request->contractContent,
-            'contractValue' => $request->contractValue,
-            'contractStatus' => $request->contractStatus,
-            'providerSignature' => $request->providerSignature,
-            'receiverSignature' => $request->receiverSignature,
- 		]);
+ 		// $contract = $request->user()->propertyContracts()->create([
+        //     // 'contractOwnerID' => $request->contractOwnerID,
+		// 	'providerID' => $request->providerID,
+        //     'provider' => User::where('_id',$request->providerID)->first()->toArray(),
+		// 	'receiverID' => $request->receiverID,
+        //     'receiver' => User::where('_id',$request->receiverID)->first()->toArray(),
+		// 	'locationID' => $request->locationID,
+		// 	'location' => Location::where('_id',$request->locationID)->first()->toArray(),
+        //     'contractContent' => $request->contractContent,
+        //     'contractValue' => $request->contractValue,
+        //     'contractStatus' => $request->contractStatus,
+        //     'providerSignature' => $request->providerSignature,
+        //     'receiverSignature' => $request->receiverSignature,
+ 		// ]);
+
+		// create a new contract based on user contracts relationship
+ 		$contract = $request->user()->propertyContracts()->create();
+
+		// return $contract;
+
+		// $currentUser = Auth::user();
+		// $User['name'] = $currentUser->name;
+		// // dd($User);
+
+
+		// create a new Invoice based on input
+	   // $contract = new PropertyContract;
+	   // $contract->userID = Auth::id();
+	   // $contract->user = User::where('_id',Auth::id())->first()->toArray();
+	   // $contract->user2 = User::where('_id',Auth::id())->first()->toArray();
+	   // $contract->user = Auth::user();
+	   $contract->providerID = $request->providerID;
+	   $contract->provider = User::where('_id',$request->providerID)->first()->toArray();
+	   $contract->receiverID = $request->receiverID;
+	   $contract->receiver = User::where('_id',$request->receiverID)->first()->toArray();
+	   $contract->locationID = $request->locationID;
+	   $contract->location = Location::where('_id',$request->locationID)->first()->toArray();
+	   $contract->contractContent = $request->contractContent;
+	   $contract->contractValue = $request->contractValue;
+	   $contract->contractStatus = $request->contractStatus;
+	   $contract->providerSignature = $request->providerSignature;
+	   $contract->receiverSignature = $request->receiverSignature;
+
+	   $contract->save();
+
+	   return redirect()->back();
+
+
+
+		// $contract->provider()->save($contract->provider);
+
 		// $townComments = User::where('_id',$request->providerID)->get()->toArray();
         //
 		// $city = City::with('station')->where('name',$town)->first();
@@ -188,10 +228,15 @@ class PropertyContractController extends Controller
      */
     public function show($id)
     {
-        $location = Location::with('user')->findOrFail($id);
-        $contracts = PropertyContract::with('user')->take(10)->get();
+		// $location = Location::with('user')->findOrFail($id);
+        //
+		// return view('propertyContract.view');
+        //
+        $propertyContract = PropertyContract::with('user')->findOrFail($id);
+        // $propertyContract = PropertyContract::with('user')->take(10)->get();
 
-        return view('propertyContract.create', compact('location', 'contracts'));
+
+        return view('propertyContract.view', compact('propertyContract'));
     }
 
     /**
@@ -202,9 +247,9 @@ class PropertyContractController extends Controller
      */
     public function edit($id)
     {
-        // $contract = PropertyContract::with('user')->findOrFail($id);
-        //
-        // return view('propertyContract.edit', compact('contract'));
+        $contract = PropertyContract::with('user')->findOrFail($id);
+
+        return view('propertyContract.edit', compact('contract'));
 		// return response()->json([
 		// 	'contract' => $contract,
 		// ]);

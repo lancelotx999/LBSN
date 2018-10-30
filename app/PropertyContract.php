@@ -12,6 +12,14 @@ class PropertyContract extends Eloquent
         return $this->belongsTo(User::class);
     }
 
+    public function provider() {
+        return $this->hasOne(User::class);
+    }
+
+    public function receiver() {
+        return $this->hasOne(User::class);
+    }
+
     // public function location() {
     //     return $this->belongsTo(Location::class);
     // }

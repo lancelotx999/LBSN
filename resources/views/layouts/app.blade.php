@@ -48,8 +48,11 @@
                             <a class="nav-link" href="/allLocations">Property Listing</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/allPropertyContracts">Property Contracts Listing</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('location.create') }}">Register Location</a>
-                        </li>                        
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

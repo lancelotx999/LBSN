@@ -15,15 +15,19 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('providerID'); // use id from User
-            $table->string('receiverID'); // use id from User
-            $table->string('LocationID'); // use id from Location
-            $table->string('contractType');
-            $table->string('contractContent');
-            $table->decimal('contractValue');
-            $table->string('contractStatus');
-            $table->string('providerSignature'); // use User password to sign for now
-            $table->string('receiverSignature'); // use User password to sign for now
+
+            $table->string('provider_id'); 
+            $table->string('receiver_id');
+
+            $table->string('item_id'); 
+
+            $table->string('type');
+            $table->string('description');
+            $table->decimal('price');
+            
+            $table->boolean('paid');
+
+
             $table->timestamps();
         });
     }

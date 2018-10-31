@@ -22,7 +22,7 @@ class User extends Moloquent implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role'
+        'name', 'email', 'password', 'contact_number', 'role','rating','verified',
     ];
 
     /**
@@ -34,11 +34,6 @@ class User extends Moloquent implements
         'password', 'remember_token',
     ];
 
-    public function invoices()
-    {
-        return $this->hasMany(Invoice::class);
-    }
-
     /**
      * Get the route key for the model.
      *
@@ -49,19 +44,4 @@ class User extends Moloquent implements
         return 'name'; //this will return user name as route 
     }
 
-    public function locations() {
-        return $this->hasMany(Location::class);
-    }
-
-    public function contracts() {
-        return $this->hasMany(Contract::class);
-    }
-
-    public function propertyContracts() {
-        return $this->hasMany(PropertyContract::class);
-    }
-
-    public function serviceContracts() {
-        return $this->hasMany(ServiceContract::class);
-    }
 }

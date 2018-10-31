@@ -18,7 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('contact_number');
             $table->string('role');
+            $table->double('rating');
+            $table->boolean('verified');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -29,6 +32,7 @@ class CreateUsersTable extends Migration
             'email' => "admin@LBSN.com",
             'password' => bcrypt("LBSN"),
             'role' => "admin",
+            'verified' => true,
         ));
     }
 

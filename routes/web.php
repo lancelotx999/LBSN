@@ -22,6 +22,11 @@ Auth::routes();
 // User profile
 Route::resource('users', 'UserController');
 
+// Resource Routes
+Route::resource('business', 'BusinessController');
+Route::resource('property', 'PropertyController');
+Route::resource('contract', 'ContractController');
+
 // Invoice
 Route::resource('invoice', 'InvoiceController');
 Route::get('/test', 'InvoiceController@test');

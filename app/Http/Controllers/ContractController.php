@@ -2,47 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Contract;
-use App\User;
-use App\Location;
 use Illuminate\Http\Request;
+use Auth;
+use Moloquent;
+use App\Contract;
 
 class ContractController extends Controller
 {
-    // apply auth middleware so only authenticated users have access
-	public function __construct() {
+    // Apply auth middleware so only authenticated users have access
+	public function __construct() 
+    {
 		$this->middleware('auth');
 	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request, Contract $contract, User $user)
+    // List all contracts if user is admin 
+    // Shows only user contracts if user is a user/merchant
+    public function index()
     {
-        // get all the contracts based on current user id
-		$allContracts = $contract->whereIn('user_id', $request->user())->with('user');
-        // $contracts = $allContracts->orderBy('created_at', 'desc')->take(10)->get();
-		$contracts = $allContracts->take(10)->get();
-
-		// $allUsers = User::get();
-		// $allUsers = Auth::user()->get()
-		$allUsers = User::all();
-		$allLocations = Location::all();
-
-
-		// return json response
-		return response()->json([
-			'contracts' => $contracts,
-			'users' => $allUsers,
-			'locations' => $allLocations
-		]);
+        if (Auth::user()->role === 'admin')
+        {
+            $contracts = Contract::all();
+        }
+        else
+        {
+            $contracts = Contract::where('provider_id','=', Auth::user()->id)-> orWhere('receiver_id','=', Auth::user()->id)->get();
+        }
+        
+        return view('contracts.index', compact('contracts'));
     }
 
-	public function listAll(Request $request, Contract $contract, User $user){
+    public function showAll()
+    {
+        $contracts = Contract::all();
+        return view('contracts.index', compact('contracts'));
+    }
 
-	}
+    // Gets all the Contracts associated with specified user
+    public function showUserContracts($user_id)
+    {
+        $user_contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+        return view('contracts.index', compact('user_contracts'));
+    }
 
     /**
      * Show the form for creating a new resource.

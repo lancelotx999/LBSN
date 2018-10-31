@@ -178,14 +178,5 @@ class InvoiceController extends Controller
         return $invoices;
     }
 
-    public function showInvoicebyService($service)
-    {
-
-    }
-
-    public function deleteInvoicebyID($invoice_id)
-    {
-
-    }
 
 }

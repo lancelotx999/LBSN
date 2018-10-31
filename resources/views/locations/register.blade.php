@@ -119,39 +119,42 @@
                         </button>
                     </form>
                     <hr />
-                    @foreach ($locations as $location)
-	                    <div id="{{ $location->_id }}" class="media">
-			                <div class="media-body">
-                                <h5>{{ $location->locationName }}</h5>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="{{ route('location.show', $location->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                View
-                                            </button>
-                                        </a>
-                                        <a href="{{ route('location.edit', $location->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                Edit
-                                            </button>
-                                        </a>
-                                    </div>
+                    @isset($locations)
+                        @foreach ($locations as $location)
+    	                    <div id="{{ $location->_id }}" class="media">
+    			                <div class="media-body">
+                                    <h5>{{ $location->locationName }}</h5>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a href="{{ route('location.show', $location->_id) }}">
+                                                <button class="btn btn-sm btn-success">
+                                                    View
+                                                </button>
+                                            </a>
+                                            <a href="{{ route('location.edit', $location->_id) }}">
+                                                <button class="btn btn-sm btn-success">
+                                                    Edit
+                                                </button>
+                                            </a>
+                                        </div>
 
-                                    <div class="col-sm-8">
-        			                    <form method="POST" action="{{ route('location.destroy', $location->_id) }}">
-        			                    	@csrf
-        									@method('DELETE')
+                                        <div class="col-sm-8">
+            			                    <form method="POST" action="{{ route('location.destroy', $location->_id) }}">
+            			                    	@csrf
+            									@method('DELETE')
 
-        				                    <button type="submit" class="btn btn-sm btn-danger float-right">
-        				                        DELETE
-        				                    </button>
-        			                	</form>
+            				                    <button type="submit" class="btn btn-sm btn-danger float-right">
+            				                        DELETE
+            				                    </button>
+            			                	</form>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-			                </div>
-			            </div>
-		            @endforeach
+                                    <hr />
+    			                </div>
+    			            </div>
+    		            @endforeach
+                    @endisset
+
                 </div>
             </div>
         </div>

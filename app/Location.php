@@ -13,6 +13,7 @@ class Location extends Eloquent {
     public function user() {
         return $this->belongsTo(User::class);
     }
+    
     public function propertyContract() {
         return $this->belongsTo(PropertyContract::class);
     }

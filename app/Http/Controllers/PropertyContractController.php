@@ -119,6 +119,7 @@ class PropertyContractController extends Controller
 		// create a new contract based on user contracts relationship
  		$contract = $request->user()->propertyContracts()->create();
 
+
 		// return $contract;
 
 		// $currentUser = Auth::user();
@@ -127,24 +128,24 @@ class PropertyContractController extends Controller
 
 
 		// create a new Invoice based on input
-	   // $contract = new PropertyContract;
-	   // $contract->userID = Auth::id();
-	   // $contract->user = User::where('_id',Auth::id())->first()->toArray();
-	   // $contract->user2 = User::where('_id',Auth::id())->first()->toArray();
-	   // $contract->user = Auth::user();
-	   $contract->providerID = $request->providerID;
-	   $contract->provider = User::where('_id',$request->providerID)->first()->toArray();
-	   $contract->receiverID = $request->receiverID;
-	   $contract->receiver = User::where('_id',$request->receiverID)->first()->toArray();
-	   $contract->locationID = $request->locationID;
-	   $contract->location = Location::where('_id',$request->locationID)->first()->toArray();
-	   $contract->contractContent = $request->contractContent;
-	   $contract->contractValue = $request->contractValue;
-	   $contract->contractStatus = $request->contractStatus;
-	   $contract->providerSignature = $request->providerSignature;
-	   $contract->receiverSignature = $request->receiverSignature;
+		// $contract = new PropertyContract;
+		// $contract->userID = Auth::id();
+		// $contract->user = User::where('_id',Auth::id())->first()->toArray();
+		// $contract->user2 = User::where('_id',Auth::id())->first()->toArray();
+		// $contract->user = Auth::user();
+		$contract->providerID = $request->providerID;
+		$contract->provider = User::where('_id',$request->providerID)->first()->toArray();
+		$contract->receiverID = $request->receiverID;
+		$contract->receiver = User::where('_id',$request->receiverID)->first()->toArray();
+		$contract->locationID = $request->locationID;
+		$contract->location = Location::where('_id',$request->locationID)->first()->toArray();
+		$contract->contractContent = $request->contractContent;
+		$contract->contractValue = $request->contractValue;
+		$contract->contractStatus = $request->contractStatus;
+		$contract->providerSignature = $request->providerSignature;
+		$contract->receiverSignature = $request->receiverSignature;
 
-	   $contract->save();
+		$contract->save();
 
 	   return redirect()->back();
 

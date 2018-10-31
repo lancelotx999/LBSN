@@ -64,11 +64,11 @@ class LocationController extends Controller
     public function create(Request $request, Location $location)
     {
 		// get all the locations based on current user id
-		$allLocations = $location->whereIn('user_id', $request->user())->with('user');
+		// $allLocations = $location->whereIn('user_id', $request->user())->with('user');
         // $locations = $allLocations->orderBy('created_at', 'desc')->take(10)->get();
-		$locations = $allLocations->take(10)->get();
+		// $locations = $allLocations->take(10)->get();
 
-        return view('locations.register', compact('locations'));
+        return view('locations.register');
     }
 
     /**

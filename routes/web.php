@@ -24,7 +24,7 @@ Route::resource('users', 'UserController');
 
 // Invoice
 Route::resource('invoice', 'InvoiceController');
-Route::get('/userid', 'InvoiceController@getCurrentUserRole');
+Route::get('/test', 'InvoiceController@test');
 
 // Contracts
 Route::get('/allLocations', 'LocationController@allLocations');

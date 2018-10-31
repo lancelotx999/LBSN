@@ -16,9 +16,9 @@ class InvoiceController extends Controller
         $this->middleware('auth');
     }
 
-    public function getCurrentUserRole()
+    public function test()
     {
-        $role = Auth::user()->role;
+        $role = Auth::user()->id; 
         dd($role);
     }
 
@@ -29,7 +29,15 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::with('user')->get();
+        if (Auth::user()->role === 'admin')
+        {
+            $invoices = Invoice::all();
+        }
+        else
+        {
+            $invoices = Invoice::where('sender','=',Auth::user()->id)-> orWhere('receiver','=',Auth::user()->id)->get();
+        }
+        
         return view('invoices.index', compact('invoices'));
     }
 
@@ -72,7 +80,7 @@ class InvoiceController extends Controller
         $invoice->service = $request->service;
         $invoice->paid = $request->paid;
 
-        $invoice->save();
+        $invoice->save();     
 
         return redirect()->back();
     }
@@ -85,7 +93,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        $invoice = Invoice::with('user')->findOrFail($id);
+        $invoice = Invoice::findOrFail($id);
 
         return view('invoices.show', compact('invoice'));
     }
@@ -98,7 +106,7 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
-        $invoice = Invoice::with('user')->findOrFail($id);
+        $invoice = Invoice::findOrFail($id);
 
         return view('invoices.edit', compact('invoice'));
     }
@@ -112,9 +120,15 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $invoice = Invoice::with('user')->findOrFail($id);
-        $invoice->update($input);
+        $invoice = Invoice::findOrFail($id);
+        
+        $invoice->sender = $request->sender;
+        $invoice->receiver = $request->receiver;
+        $invoice->price = $request->price;
+        $invoice->service = $request->service;
+        $invoice->paid = $request->paid;
+
+        $invoice->save();
         return redirect()->route('invoice.edit', ['invoice' => $invoice ]);
     }
 

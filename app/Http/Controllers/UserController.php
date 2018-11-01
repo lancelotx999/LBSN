@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\User;
 use App\Business;
 use App\Contract;
@@ -14,106 +14,89 @@ use App\Review;
 
 class UserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+  // Apply auth middleware so only authenticated users have access
+    public function __construct() 
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+    // List all Users if user is admin 
+    // Shows only self if user is a merchant / normal user
     public function index()
     {
-        //
+        if (Auth::user()->role === 'admin')
+        {
+            $users = User::all();
+            return view('users.index', compact('users'));
+        }
+        else
+        {   
+            $users = Auth::user();
+            return view('users.index', compact('users'));
+        }          
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
+    // Gets all reviews
+    public function showAll()
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
+
     public function create()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show(User $user)
-    {
-        $user = Auth::user();
-        $users = User::all();
-        $user_properties = Property::where('owner_id','=', $owner_id)->get();
   
-        return view('users.show', compact('user', 'users', 'locations'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit(User $user)
-    {   
-        $user = Auth::user();
-        $users = User::all();
-        return view('users.edit', compact('user', 'users'));
+    public function store(Request $request)
+    {
+      
     }
 
-    public function update(User $user)
-    { 
-        $this->validate(request(), [
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('users.show', compact('user'));
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+         $this->validate($request(), 
+        [
             'name' => 'required',
             'email' => 'required|string|email|max:255',
-            'role' => 'required',
-            'password' => 'required|min:6|confirmed'
+            'password' => 'required|min:6|confirmed',
+            'contact_number' => 'required',
+            'role' => 'required'
+            'verified' => 'required'
         ]);
 
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->role = request('role');
-        $user->password = bcrypt(request('password'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->contact_number = $request->contact_number;
+        $user->role = $request->role;
+        $user->verified = $request->verified;
 
         $user->save();
-
         // redirect
         return redirect()->route('users.show', ['user' => $user ])->with('status', 'Profile successfully updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        // delete user
-        $user->delete();
+        User::findOrFail($id)->delete();
 
-        // redirect
-        return redirect('/');
+        return redirect()->back();
     }
 }

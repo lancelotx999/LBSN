@@ -52,7 +52,7 @@ class PropertyController extends Controller
     	return view('properties.index', compact('user_properties'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function create()
     {
         $user_properties = Property::where('owner_id','=',Auth::user()->id)->get();
         $properties = $user_properties->take(10)->get();
@@ -75,7 +75,7 @@ class PropertyController extends Controller
             'longitude' => 'required',
         ]);
 
-        // create a new Invoice based on input
+        // create a new Property based on input
         $property = new Property;
 
         $property->owner_id = $request->owner_id;
@@ -109,7 +109,7 @@ class PropertyController extends Controller
 
     public function update(Request $request, $id)
     {
-        $property = Invoice::findOrFail($id);
+        $property = Property::findOrFail($id);
         
         $property->owner_id = $request->owner_id;
         $property->name = $request->name;

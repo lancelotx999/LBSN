@@ -10,6 +10,6 @@ class Property extends Moloquent
 
     protected $guarded = 
     [
-    	'owner_id','name','address','description','status', 'rating', 'latitude', 'longitude', 'verified' ,
+    	'owner_id','name','address','description','status', 'latitude', 'longitude', 'verified' ,
     ];
 }

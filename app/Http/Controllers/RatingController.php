@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Moloquent;
+use App\Rating;
 
 class RatingController extends Controller
 {
@@ -55,9 +58,9 @@ class RatingController extends Controller
     	return view('ratings.index', compact('ratings'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function create()
     {
-        $user_ratings = Rating::where('owner_id','=',Auth::user()->id)->get();
+        $user_ratings = Rating::where('rater_id','=',Auth::user()->id)->get();
         $ratings = $user_ratings->take(10)->get();
 
         return view('ratings.create', compact('ratings'));

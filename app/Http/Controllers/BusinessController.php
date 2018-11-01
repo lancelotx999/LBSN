@@ -22,6 +22,7 @@ class BusinessController extends Controller
         if (Auth::user()->role === 'admin')
         {
             $businesses = Business::all();
+            return view('businesses.index', compact('businesses'));
         }
         else if (Auth::user()->role === 'merchant')
         {
@@ -33,9 +34,8 @@ class BusinessController extends Controller
         else
         {
         	$businesses = Business::all();
-        }
-        
-        return view('businesses.index', compact('businesses'));
+            return view('businesses.index', compact('businesses'));
+        }       
     }
 
     // Gets all bussinesses
@@ -52,7 +52,7 @@ class BusinessController extends Controller
     	return view('businesses.index', compact('user_businesses'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function create()
     {
         $user_businesses = Business::where('owner_id','=',Auth::user()->id)->get();
         $businesses = $user_businesses->take(10)->get();
@@ -73,7 +73,7 @@ class BusinessController extends Controller
             'contact_number' => 'required',
         ]);
 
-        // create a new Invoice based on input
+        // create a new Business based on input
         $business = new Business;
 
         $business->owner_id = $request->owner_id;
@@ -87,7 +87,6 @@ class BusinessController extends Controller
 
         return redirect()->back();
     }
-
 
     public function show($id)
     {

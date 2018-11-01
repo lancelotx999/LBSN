@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Moloquent;
+use App\Review;
 
 class ReviewController extends Controller
 {
@@ -55,7 +58,7 @@ class ReviewController extends Controller
     	return view('reviews.index', compact('reviews'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function create()
     {
         $user_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
         $reviews = $user_reviews->take(10)->get();

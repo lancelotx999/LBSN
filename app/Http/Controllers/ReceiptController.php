@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Moloquent;
+use App\Receipt;
+use App\Contract;
 
 class ReceiptController extends Controller
 {

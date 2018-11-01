@@ -2,9 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Moloquent;
 
-class Receipt extends Model
+class Receipt extends Moloquent
 {
-    //
+    protected $table = 'receipts';
+
+    protected $guarded = 
+    [
+       'contract_id', 'payment_method','price'
+    ];
 }

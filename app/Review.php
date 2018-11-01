@@ -2,9 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Moloquent;
 
-class Review extends Model
+class Review extends Moloquent
 {
-    //
+    protected $table = 'reviews';
+
+    protected $guarded = 
+    [
+    	'reviewer_id', 'reviewee_id' , 'content',
+    ];
 }

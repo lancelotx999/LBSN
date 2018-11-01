@@ -86,8 +86,6 @@ class PropertyController extends Controller
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
 
-        $property->rating = 0;
-
         $property->save();     
 
         return redirect()->back();

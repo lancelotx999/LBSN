@@ -81,7 +81,6 @@ class BusinessController extends Controller
         $business->description = $request->description;
         $business->services = $request->services;	// Need to implement string separation
         $business->contact_number = $request->contact_number;
-        $business->rating = 0;
 
         $business->save();     
 

@@ -15,8 +15,8 @@ class BusinessController extends Controller
         $this->middleware('auth');
     }
 
-    // List all businesses if user is admin / normal user
-    // Shows only user businesses if user is a merchant
+    // Returns all businesses if user is admin / normal user
+    // Returns both all businesses and the owned businesses if merchant
     public function index()
     {
         if (Auth::user()->role === 'admin')
@@ -46,7 +46,7 @@ class BusinessController extends Controller
     }
 
     // Gets all the bussinesses associated with specified user
-    public function showUserProperties($owner_id)
+    public function showUserBusinesses($owner_id)
     {
     	$user_businesses = Business::where('owner_id','=', $owner_id)->get();
     	return view('businesses.index', compact('user_businesses'));
@@ -81,6 +81,7 @@ class BusinessController extends Controller
         $business->description = $request->description;
         $business->services = $request->services;	// Need to implement string separation
         $business->contact_number = $request->contact_number;
+        $business->verified = false;
 
         $business->save();     
 
@@ -111,6 +112,7 @@ class BusinessController extends Controller
         $business->description = $request->description;
         $business->services = $request->services;	// Need to implement string separation
         $business->contact_number = $request->contact_number;
+        $business->verified = $request->verified;
 
         $business->save();  
 

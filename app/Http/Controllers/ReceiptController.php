@@ -6,34 +6,108 @@ use Illuminate\Http\Request;
 
 class ReceiptController extends Controller
 {
-	public function getContract($contract_id)
-	{
-		$contract = Contract::findOrFail($contract_id)->getAttributes();
-	}
-
-    public function generateReceipt($provider_id , $receiver_id , $price , $service)
+  // Apply auth middleware so only authenticated users have access
+    public function __construct() 
     {
-        ReceiptPDF::SetCreator('LBSN');
-        ReceiptPDF::SetTitle('Invoice');
-        ReceiptPDF::SetSubject('LBSN Invoice');
+        $this->middleware('auth');
+    }
 
-        ReceiptPDF::AddPage();
+    // List all receipts if user is admin 
+    // Shows only user receipts if user is a merchant / normal user
+    public function index()
+    {
+        if (Auth::user()->role === 'admin')
+        {
+            $receipts = Receipt::all();
+            return view('receipts.index', compact('receipts'));
+        }
+        else
+        {
+            $contracts = Contract::where('provider_id','=', Auth::user()->id)-> orWhere('receiver_id','=', Auth::user()->id)->get();
             
-        
-        ReceiptPDF::Write(1, 'Hello World');
-        ReceiptPDF::Output('Invoice.pdf', 'I');
-
-        $this->store($provider_id , $receiver_id , $price , $service);
-
+            $receipts = Receipt::where('contract_id','=',Auth::user()->id)->get();
+            return view('receipts.index', compact('receipts'));
+        }          
     }
 
-    public function generateHTML($provider_id , $receiver_id , $price , $service)
+    // Gets all reviews
+    public function showAll()
     {
-        $html =
-        '
-
-        ';
-
-        return $html;
+        $receipts = Receipt::all();
+        return view('receipts.index', compact('receipts'));
     }
+
+    // Gets all the receipts associated with specified user
+    public function showUserReceipts($user_id)
+    {
+        $reviews = Review::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
+        return view('reviews.index', compact('reviews'));
+    }
+
+    public function create(Request $request, Invoice $invoice)
+    {
+        $user_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
+        $reviews = $user_reviews->take(10)->get();
+
+        return view('reviews.create', compact('reviews'));
+    }
+
+
+    public function store(Request $request)
+    {
+        // Validation Logic
+        $this->validate($request, 
+        [
+            'reviewer_id' => 'required',
+            'reviewee_id' => 'required',
+            'content' => 'required',
+        ]);
+
+        // create a new Review based on input
+        $review = new Review;
+
+        $review->reviewer_id = $request->reviewer_id;
+        $review->reviewee_id = $request->reviewee_id;
+        $review->content = $request->content;
+
+        $review->save();     
+
+        return redirect()->back();
+    }
+
+
+    public function show($id)
+    {
+        $review = Review::findOrFail($id);
+
+        return view('reviews.show', compact('review'));
+    }
+
+    public function edit($id)
+    {
+        $review = Review::findOrFail($id);
+
+        return view('reviews.edit', compact('review'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $review = Review::findOrFail($id);
+        
+        $review->reviewer_id = $request->reviewer_id;
+        $review->reviewee_id = $request->reviewee_id;
+        $review->content = $request->content;
+
+        $review->save();  
+
+        return redirect()->route('reviews.edit', ['review' => $review ]);
+    }
+
+    public function destroy($id)
+    {
+        Review::findOrFail($id)->delete();
+
+        return redirect()->back();
+    }
+
 }

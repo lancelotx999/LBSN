@@ -85,6 +85,7 @@ class PropertyController extends Controller
         $property->status = $request->status;
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
+        $property->verified = false;
 
         $property->save();     
 
@@ -117,6 +118,7 @@ class PropertyController extends Controller
         $property->status = $request->status;
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
+        $property->verified = $request->verified;
 
         $property->save();  
 

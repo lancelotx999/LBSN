@@ -25,6 +25,8 @@ class CreatePropertiesTable extends Migration
             $table->double('latitude', 10, 7); // Location Data
             $table->double('longitude', 10, 7); // Location Data
 
+            $table->boolean('verified');
+
             $table->timestamps();
         });
     }

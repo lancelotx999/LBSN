@@ -44,101 +44,75 @@ class ContractController extends Controller
         return view('contracts.index', compact('user_contracts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $user_contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+        $contracts = $user_contracts->take(10)->get();
+
+        return view('contracts.create', compact('contracts'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // validate
+        // Validation Logic
  		$this->validate($request, [
-            // 'contractOwnerID' => 'required|max:100',
-            'providerID' => 'required',
-			'receiverID' => 'required',
-            'locationID' => 'required',
-			'contractType' => 'required',
-            'contractValue' => 'required',
-            'contractStatus' => 'required',
+            'provider_id' => 'required',
+			'receiver_id' => 'required',
+            'item_id' => 'required',
+			'type' => 'required',
+            'description' => 'required',
+            'price' => 'required',
  		]);
 
- 		// create a new contract based on user contracts relationship
- 		$contract = $request->user()->contracts()->create([
-            // 'contractOwnerID' => $request->contractOwnerID,
-            'providerID' => $request->providerID,
-            'receiverID' => $request->receiverID,
-			'locationID' => $request->locationID,
-			'contractType' => $request->contractType,
-            'contractContent' => $request->contractContent,
-            'contractValue' => $request->contractValue,
-            'contractStatus' => $request->contractStatus,
-            'providerSignature' => $request->providerSignature,
-            'receiverSignature' => $request->receiverSignature,
- 		]);
+        $contract = new Contract;
 
- 		// return contract with user object
- 		return response()->json($contract->with('user')->find($contract->_id));
+        $contract->provider_id = $request->provider_id;
+        $contract->receiver_id = $request->receiver_id;
+        $contract->item_id = $request->item_id;
+        $contract->type = $request->type;
+        $contract->description = $request->description;
+        $contract->price = $request->price;
+        $contract->paid = false;
+
+        $contract->save();
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $contract = Contract::findOrFail($id);
+
+        return view('contracts.show', compact('contract'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $contract = Contract::findOrFail($id);
-		return response()->json([
-			'contract' => $contract,
-		]);
+
+        return view('contracts.edit', compact('contract'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-		$contract = Contract::findOrFail($id);
-		$contract->update($input);
-		return response()->json($contract->with('user')->find($contract->_id));
+        $contract = Contract::findOrFail($id);
+        
+        $contract->provider_id = $request->provider_id;
+        $contract->receiver_id = $request->receiver_id;
+        $contract->item_id = $request->item_id;
+        $contract->type = $request->type;
+        $contract->description = $request->description;
+        $contract->price = $request->price;
+        $contract->paid = $request->paid;
+
+        $contract->save();  
+
+        return redirect()->route('contracts.edit', ['contract' => $contract ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Contract::findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }

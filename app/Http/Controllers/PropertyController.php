@@ -28,7 +28,7 @@ class PropertyController extends Controller
             $user_properties = Property::where('owner_id','=',Auth::user()->id)->get();
             $properties = Property::all();
 
-            return view('properties.index', compact('user_properties'));
+            return view('properties.index', compact('user_properties','properties'));
         }
         else
         {
@@ -66,7 +66,7 @@ class PropertyController extends Controller
         // Validation Logic
         $this->validate($request, 
         [
-            'ownder_id' => 'required',
+            'owner_id' => 'required',
             'name' => 'required',
             'address' => 'required',
             'description' => 'required',
@@ -85,6 +85,8 @@ class PropertyController extends Controller
         $property->status = $request->status;
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
+
+        $property->rating = 0;
 
         $property->save();     
 
@@ -120,7 +122,7 @@ class PropertyController extends Controller
 
         $property->save();  
 
-        return redirect()->route('invoice.edit', ['invoice' => $invoice ]);
+        return redirect()->route('properties.edit', ['property' => $property ]);
     }
 
     public function destroy($id)
@@ -129,6 +131,5 @@ class PropertyController extends Controller
 
         return redirect()->back();
     }
-
 
 }

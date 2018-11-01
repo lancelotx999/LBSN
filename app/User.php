@@ -4,11 +4,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Moloquent;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends \Jenssegers\Mongodb\Eloquent\Model implements
+class User extends Moloquent implements
     AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract
@@ -21,7 +22,7 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role'
+        'name', 'email', 'password', 'contact_number', 'role','rating','verified',
     ];
 
     /**
@@ -43,19 +44,4 @@ class User extends \Jenssegers\Mongodb\Eloquent\Model implements
         return 'name'; //this will return user name as route 
     }
 
-    public function locations() {
-        return $this->hasMany(Location::class);
-    }
-
-    public function contracts() {
-        return $this->hasMany(Contract::class);
-    }
-
-    public function propertyContracts() {
-        return $this->hasMany(PropertyContract::class);
-    }
-
-    public function serviceContracts() {
-        return $this->hasMany(ServiceContract::class);
-    }
 }

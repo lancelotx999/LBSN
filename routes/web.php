@@ -22,17 +22,13 @@ Auth::routes();
 // User profile
 Route::resource('users', 'UserController');
 
-// Contracts
-Route::get('/allLocations', 'LocationController@allLocations');
-Route::resource('location', 'LocationController');
+// Resource Routes
+Route::resource('business', 'BusinessController');
+Route::resource('property', 'PropertyController');
 Route::resource('contract', 'ContractController');
-Route::resource('propertyContract', 'PropertyContractController');
-Route::resource('serviceContract', 'ServiceContractController');
 
-// Messenger
-Route::get('tests', 'MessageController@tests');
-Route::get('message/{id}', 'MessageController@chatHistory')->name('message.read');
-Route::group(['prefix'=>'ajax', 'as'=>'ajax::'], function() {
-   Route::post('message/send', 'MessageController@ajaxSendMessage')->name('message.new');
-   Route::delete('message/delete/{id}', 'MessageController@ajaxDeleteMessage')->name('message.delete');
-});
+// Testing Routes
+Route::resource('/test1', 'BusinessController@test');
+Route::resource('/test2', 'PropertyController@test');
+Route::resource('/test3', 'ContractController@test');
+Route::resource('/test4', 'ReceiptController@test');

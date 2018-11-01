@@ -9,31 +9,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet/leaflet.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet-draw/leaflet.draw.css') }}" rel="stylesheet">
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/> -->
-
-
-
-
+    
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/fontawesome/all.min.js') }}" ></script>
+    <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/leaflet-draw/leaflet.draw.js') }}"></script>
     <script type="text/javascript">
         // rename myToken as you like
         window.myToken =  <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>;
     </script>
-    <!-- <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script> -->
-    <script src="{{ asset('js/leaflet.js') }}"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script> -->  
-    <script src="{{ asset('js/leaflet-draw/leaflet.draw.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-   
 </head>
 <body>
     <div id="app">
@@ -60,7 +54,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('location.create') }}">Register Location</a>
-                        </li>                        
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('invoice.index') }}">See Invoice</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

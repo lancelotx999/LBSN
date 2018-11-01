@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Location;
+use App\Business;
+use App\Contract;
+use App\Property;
+use App\Receipt;
+use App\Rating;
+use App\Review;
 
 class UserController extends Controller
 {
@@ -59,7 +64,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $users = User::all();
-        $locations = Location::with('user')->get();
+        $user_properties = Property::where('owner_id','=', $owner_id)->get();
+  
         return view('users.show', compact('user', 'users', 'locations'));
     }
 

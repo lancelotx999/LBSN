@@ -5,50 +5,60 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
-use App\Receipt;
-use App\Contract;
+use App\Review;
 
-class ReceiptController extends Controller
+class ReviewController extends Controller
 {
-  // Apply auth middleware so only authenticated users have access
+   // Apply auth middleware so only authenticated users have access
     public function __construct() 
     {
         $this->middleware('auth');
     }
 
-    // List all receipts if user is admin 
-    // Shows only user receipts if user is a merchant / normal user
+    // List all reviews if user is admin 
+    // Shows only user reviews if user is a merchant / normal user
     public function index()
     {
         if (Auth::user()->role === 'admin')
         {
-            $receipts = Receipt::all();
-            return view('receipts.index', compact('receipts'));
+            $reviews = Review::all();
+            return view('reviews.index', compact('reviews'));
         }
         else
         {
-            $contracts = Contract::where('provider_id','=', Auth::user()->id)-> orWhere('receiver_id','=', Auth::user()->id)->get();
-            
-            $receipts = Receipt::where('contract_id','=',Auth::user()->id)->get();
-            return view('receipts.index', compact('receipts'));
+        	$sent_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
+        	$received_reviews = Review::where('reviewee_id','=',Auth::user()->id)->get();
+        	return view('reviews.index', compact('sent_reviews','received_reviews'));
         }          
     }
 
     // Gets all reviews
     public function showAll()
     {
-        $receipts = Receipt::all();
-        return view('receipts.index', compact('receipts'));
-    }
-
-    // Gets all the receipts associated with specified user
-    public function showUserReceipts($user_id)
-    {
-        $reviews = Review::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
+        $reviews = Review::all();
         return view('reviews.index', compact('reviews'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    // Gets all the reviews associated with specified user
+    public function showUserAllReviews($user_id)
+    {
+    	$reviews = Review::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
+    	return view('reviews.index', compact('reviews'));
+    }
+
+    public function showUserReviewers($user_id)
+    {
+    	$reviews = Review::where('reviewer_id','=', $user_id)->get();
+    	return view('reviews.index', compact('reviews'));
+    }
+
+    public function showUserReviewee($user_id)
+    {
+    	$reviews = Review::where('reviewee_id','=', $user_id)->get();
+    	return view('reviews.index', compact('reviews'));
+    }
+
+    public function create()
     {
         $user_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
         $reviews = $user_reviews->take(10)->get();

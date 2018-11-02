@@ -21,10 +21,11 @@ class CreatePropertiesTable extends Migration
             $table->string('address', 100); // Address of Property
             $table->string('description', 255); // Description of Property
             $table->string('status', 255); // eg : Rent or Sale
-            $table->double('rating', 3, 2); // Rating of Property
 
             $table->double('latitude', 10, 7); // Location Data
             $table->double('longitude', 10, 7); // Location Data
+
+            $table->boolean('verified');
 
             $table->timestamps();
         });

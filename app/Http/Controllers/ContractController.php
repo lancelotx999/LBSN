@@ -22,13 +22,14 @@ class ContractController extends Controller
         if (Auth::user()->role === 'admin')
         {
             $contracts = Contract::all();
+            return view('contracts.index', compact('contracts'));
         }
         else
         {
-            $contracts = Contract::where('provider_id','=', Auth::user()->id)-> orWhere('receiver_id','=', Auth::user()->id)->get();
-        }
-        
-        return view('contracts.index', compact('contracts'));
+            $sent_contracts = Contract::where('provider_id','=',Auth::user()->id)->get();
+            $received_contracts = Contract::where('receiver_id','=',Auth::user()->id)->get();
+            return view('contracts.index', compact('sent_contracts','received_contracts'));
+        }    
     }
 
     public function showAll()
@@ -38,15 +39,27 @@ class ContractController extends Controller
     }
 
     // Gets all the Contracts associated with specified user
-    public function showUserContracts($user_id)
+    public function showAllUserContracts($user_id)
     {
         $user_contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
         return view('contracts.index', compact('user_contracts'));
     }
 
+    public function showProviderContracts($user_id)
+    {
+        $contracts = Contract::where('provider_id','=', $user_id)->get();
+        return view('contracts.index', compact('contracts'));
+    }
+
+    public function showReceiverContracts($user_id)
+    {
+        $contracts = Contract::where('receiver_id','=', $user_id)->get();
+        return view('contracts.index', compact('contracts'));
+    }
+
     public function create()
     {
-        $user_contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+        $user_contracts = Contract::where('provider_id','=', $user_id)->get();
         $contracts = $user_contracts->take(10)->get();
 
         return view('contracts.create', compact('contracts'));

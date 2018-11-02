@@ -23,7 +23,7 @@ class CreateContractsTable extends Migration
 
             $table->string('type');
             $table->string('description');
-            $table->decimal('price');
+            $table->double('price');
             
             $table->boolean('paid');
 

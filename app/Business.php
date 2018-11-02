@@ -10,6 +10,6 @@ class Business extends Moloquent
 
     protected $guarded = 
     [
-    	'owner_id', 'name', 'description', 'services', 'contact_number', 'rating',
+    	'owner_id', 'name', 'description', 'services', 'contact_number', 'verified',
     ];
 }

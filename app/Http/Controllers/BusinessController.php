@@ -15,13 +15,14 @@ class BusinessController extends Controller
         $this->middleware('auth');
     }
 
-    // List all businesses if user is admin / normal user
-    // Shows only user businesses if user is a merchant
+    // Returns all businesses if user is admin / normal user
+    // Returns both all businesses and the owned businesses if merchant
     public function index()
     {
         if (Auth::user()->role === 'admin')
         {
             $businesses = Business::all();
+            return view('businesses.index', compact('businesses'));
         }
         else if (Auth::user()->role === 'merchant')
         {
@@ -33,9 +34,8 @@ class BusinessController extends Controller
         else
         {
         	$businesses = Business::all();
-        }
-        
-        return view('businesses.index', compact('businesses'));
+            return view('businesses.index', compact('businesses'));
+        }       
     }
 
     // Gets all bussinesses
@@ -46,13 +46,13 @@ class BusinessController extends Controller
     }
 
     // Gets all the bussinesses associated with specified user
-    public function showUserProperties($owner_id)
+    public function showUserBusinesses($owner_id)
     {
     	$user_businesses = Business::where('owner_id','=', $owner_id)->get();
     	return view('businesses.index', compact('user_businesses'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function create()
     {
         $user_businesses = Business::where('owner_id','=',Auth::user()->id)->get();
         $businesses = $user_businesses->take(10)->get();
@@ -73,7 +73,7 @@ class BusinessController extends Controller
             'contact_number' => 'required',
         ]);
 
-        // create a new Invoice based on input
+        // create a new Business based on input
         $business = new Business;
 
         $business->owner_id = $request->owner_id;
@@ -81,13 +81,12 @@ class BusinessController extends Controller
         $business->description = $request->description;
         $business->services = $request->services;	// Need to implement string separation
         $business->contact_number = $request->contact_number;
-        $business->rating = 0;
+        $business->verified = false;
 
         $business->save();     
 
         return redirect()->back();
     }
-
 
     public function show($id)
     {
@@ -112,6 +111,7 @@ class BusinessController extends Controller
         $business->description = $request->description;
         $business->services = $request->services;	// Need to implement string separation
         $business->contact_number = $request->contact_number;
+        $business->verified = $request->verified;
 
         $business->save();  
 

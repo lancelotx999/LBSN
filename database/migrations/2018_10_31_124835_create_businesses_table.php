@@ -21,7 +21,8 @@ class CreateBusinessesTable extends Migration
             $table->string('description');
             $table->string('services');
             $table->string('contact_number');
-            $table->double('rating');
+
+            $table->boolean('verified');
 
             $table->timestamps();
         });

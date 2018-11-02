@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('contact_number');
             $table->string('role');
-            $table->double('rating');
+
             $table->boolean('verified');
             $table->rememberToken();
             $table->timestamps();

@@ -2,143 +2,139 @@
 
 namespace App\Http\Controllers;
 
-use App\Contract;
-use App\User;
-use App\Location;
 use Illuminate\Http\Request;
+use Auth;
+use Moloquent;
+use App\Contract;
+use App\Receipt;
 
 class ContractController extends Controller
 {
-    // apply auth middleware so only authenticated users have access
-	public function __construct() {
+    // Apply auth middleware so only authenticated users have access
+	public function __construct() 
+    {
 		$this->middleware('auth');
 	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request, Contract $contract, User $user)
+    // List all contracts if user is admin 
+    // Shows only user contracts if user is a user/merchant
+    public function index()
     {
-        // get all the contracts based on current user id
-		$allContracts = $contract->whereIn('user_id', $request->user())->with('user');
-        // $contracts = $allContracts->orderBy('created_at', 'desc')->take(10)->get();
-		$contracts = $allContracts->take(10)->get();
-
-		// $allUsers = User::get();
-		// $allUsers = Auth::user()->get()
-		$allUsers = User::all();
-		$allLocations = Location::all();
-
-
-		// return json response
-		return response()->json([
-			'contracts' => $contracts,
-			'users' => $allUsers,
-			'locations' => $allLocations
-		]);
+        if (Auth::user()->role === 'admin')
+        {
+            $contracts = Contract::all();
+            return view('contracts.index', compact('contracts'));
+        }
+        else
+        {
+            $sent_contracts = Contract::where('provider_id','=',Auth::user()->id)->get();
+            $received_contracts = Contract::where('receiver_id','=',Auth::user()->id)->get();
+            return view('contracts.index', compact('sent_contracts','received_contracts'));
+        }    
     }
 
-	public function listAll(Request $request, Contract $contract, User $user){
+    public function showAll()
+    {
+        $contracts = Contract::all();
+        return view('contracts.index', compact('contracts'));
+    }
 
-	}
+    // Gets all the Contracts associated with specified user
+    public function showAllUserContracts($user_id)
+    {
+        $user_contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+        return view('contracts.index', compact('user_contracts'));
+    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function showProviderContracts($user_id)
+    {
+        $contracts = Contract::where('provider_id','=', $user_id)->get();
+        return view('contracts.index', compact('contracts'));
+    }
+
+    public function showReceiverContracts($user_id)
+    {
+        $contracts = Contract::where('receiver_id','=', $user_id)->get();
+        return view('contracts.index', compact('contracts'));
+    }
+
+    public function showReceipts($contract_id)
+    {
+        $receipts = Receipt::where('contract_id','=', $contract_id)->get();
+        return view('receipts.index', compact('receipts'));
+    }
+
     public function create()
     {
-        //
+        $user_contracts = Contract::where('provider_id','=', $user_id)->get();
+        $contracts = $user_contracts->take(10)->get();
+
+        return view('contracts.create', compact('contracts'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // validate
+        // Validation Logic
  		$this->validate($request, [
-            // 'contractOwnerID' => 'required|max:100',
-            'providerID' => 'required',
-			'receiverID' => 'required',
-            'locationID' => 'required',
-			'contractType' => 'required',
-            'contractValue' => 'required',
-            'contractStatus' => 'required',
+            'provider_id' => 'required',
+			'receiver_id' => 'required',
+            'item_id' => 'required',
+			'type' => 'required',
+            'description' => 'required',
+            'price' => 'required',
  		]);
 
- 		// create a new contract based on user contracts relationship
- 		$contract = $request->user()->contracts()->create([
-            // 'contractOwnerID' => $request->contractOwnerID,
-            'providerID' => $request->providerID,
-            'receiverID' => $request->receiverID,
-			'locationID' => $request->locationID,
-			'contractType' => $request->contractType,
-            'contractContent' => $request->contractContent,
-            'contractValue' => $request->contractValue,
-            'contractStatus' => $request->contractStatus,
-            'providerSignature' => $request->providerSignature,
-            'receiverSignature' => $request->receiverSignature,
- 		]);
+        $contract = new Contract;
 
- 		// return contract with user object
- 		return response()->json($contract->with('user')->find($contract->_id));
+        $contract->provider_id = $request->provider_id;
+        $contract->receiver_id = $request->receiver_id;
+        $contract->item_id = $request->item_id;
+        $contract->type = $request->type;
+        $contract->description = $request->description;
+        $contract->price = $request->price;
+        $contract->paid = false;
+        $contract->fulfilled = false;
+
+        $contract->save();
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $contract = Contract::findOrFail($id);
+
+        return view('contracts.show', compact('contract'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $contract = Contract::findOrFail($id);
-		return response()->json([
-			'contract' => $contract,
-		]);
+
+        return view('contracts.edit', compact('contract'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-		$contract = Contract::findOrFail($id);
-		$contract->update($input);
-		return response()->json($contract->with('user')->find($contract->_id));
+        $contract = Contract::findOrFail($id);
+        
+        $contract->provider_id = $request->provider_id;
+        $contract->receiver_id = $request->receiver_id;
+        $contract->item_id = $request->item_id;
+        $contract->type = $request->type;
+        $contract->description = $request->description;
+        $contract->price = $request->price;
+        $contract->paid = $request->paid;
+        $contract->fulfilled = $request->fulfilled;
+
+        $contract->save();  
+
+        return redirect()->route('contracts.edit', ['contract' => $contract ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Contract::findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }

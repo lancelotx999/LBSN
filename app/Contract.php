@@ -2,23 +2,17 @@
 
 namespace App;
 
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Moloquent;
 
-class Contract extends Eloquent {
+class Contract extends Moloquent 
+{
+    protected $table = 'contracts';
 
-    protected $fillable = ['providerID', 'receiverID', 'locationID', 'contractType', 'contractContent', 'contractValue', 'contractStatus', 'providerSignature', 'receiverSignature'];
+    protected $guarded = 
+    [
+        'provider_id', 'receiver_id', 'item_id', 'type', 'description', 'price', 'paid',
+    ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
 
-    // relationship should be polymorphic
-    // public function location()
-    // {
-    //     return $this->hasOne('App\Location');
-    // }
 
-    // public function user() {
-    //     return $this->hasMany(User::class);
-    // }
 }

@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/fontawesome/all.min.js') }}" defer></script>
     <script type="text/javascript">
         // rename myToken as you like
         window.myToken =  <?php echo json_encode([
@@ -22,6 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet/leaflet.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -48,10 +50,10 @@
                             <a class="nav-link" href="/allLocations">Property Listing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/allPropertyContracts">Property Contracts Listing</a>
+                            <a class="nav-link" href="#">Register Location</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('location.create') }}">Register Location</a>
+                            <a class="nav-link" href="#">See Invoice</a>
                         </li>
                     </ul>
 
@@ -72,6 +74,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a  class="dropdown-item" 
+                                        href="{{ route('users.show', ['user' => Auth::user() ]) }}">Show Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

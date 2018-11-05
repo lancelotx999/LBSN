@@ -179,8 +179,6 @@
 
     map.on("click", updateLatLng.bind(null, this));
 
-
-
     @isset($locations)
         var locations = {!! json_encode($locations->toArray()) !!};
 

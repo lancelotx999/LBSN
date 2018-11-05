@@ -19,10 +19,14 @@ Route::view('/welcome', 'welcome');
 
 Auth::routes();
 
-Route::get('/allLocations', 'LocationController@allLocations');
-Route::resource('location', 'LocationController');
+// User profile
+Route::resource('users', 'UserController');
+
+// Resource Routes
+Route::resource('business', 'BusinessController');
+Route::resource('property', 'PropertyController');
 Route::resource('contract', 'ContractController');
-// Route::get('/createPropertyContract/{locationID}', 'PropertyContractController');
+
 Route::get('/propertyContract/create/{id}',
     [
         'middleware' => 'auth',
@@ -32,3 +36,13 @@ Route::get('/propertyContract/create/{id}',
 Route::get('/allPropertyContracts', 'PropertyContractController@listAll');
 Route::resource('propertyContract', 'PropertyContractController');
 Route::resource('serviceContract', 'ServiceContractController');
+
+// Testing Routes
+Route::get('/test1', 'BusinessController@test');
+Route::get('/test2', 'ContractController@test');
+Route::get('/test3', 'PropertyController@test');
+Route::get('/test4', 'RatingController@test');
+Route::get('/test5', 'ReceiptController@test');
+Route::get('/test6', 'ReviewController@test');
+Route::get('/test7', 'UserController@test');
+

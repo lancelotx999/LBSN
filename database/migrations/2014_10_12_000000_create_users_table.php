@@ -18,17 +18,42 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('contact_number');
+            $table->string('role');
+
+            $table->boolean('verified');
             $table->rememberToken();
             $table->timestamps();
         });
 
-         DB::table('users')->insert(
+        DB::table('users')->insert(
         array(
-            'name' => "KBI",
-            'email' => "ripariumnizer@gmail.com",
-            'password' => bcrypt("KBI555"),
+            'name' => "LBSN",
+            'email' => "admin@LBSN.com",
+            'password' => bcrypt("LBSN"),
             'role' => "admin",
+            'verified' => true,
         ));
+
+        DB::table('users')->insert(
+        array(
+            'name' => "Test_1",
+            'email' => "test_1@LBSN.com",
+            'password' => bcrypt("123"),
+            'role' => "user",
+            'verified' => false,
+        ));
+
+        DB::table('users')->insert(
+        array(
+            'name' => "Test_2",
+            'email' => "test_2@LBSN.com",
+            'password' => bcrypt("123"),
+            'role' => "merchant",
+            'verified' => false,
+        ));
+
+
     }
 
     /**

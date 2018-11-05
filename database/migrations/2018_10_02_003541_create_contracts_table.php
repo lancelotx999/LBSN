@@ -15,18 +15,49 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('providerID'); // use id from User
-            $table->string('receiverID'); // use id from User
-            $table->string('LocationID'); // use id from Location
-            $table->string('contractType');
-            $table->string('contractContent');
-            $table->decimal('contractValue');
-            $table->string('contractStatus');
-            $table->string('providerSignature'); // use User password to sign for now
-            $table->string('receiverSignature'); // use User password to sign for now
+
+            $table->string('provider_id'); 
+            $table->string('receiver_id');
+
+            $table->string('item_id'); 
+
+            $table->string('type');
+            $table->string('description');
+            $table->double('price');
+            
+            $table->boolean('paid');
+            $table->boolean('fulfilled');
+
             $table->timestamps();
         });
+
+            DB::table('contracts')->insert(
+        array(
+            'provider_id' => "5bdfe2db84220c09e56acd44",
+            'receiver_id' => "5bdfe2db84220c09e56acd43",
+            'item_id' => "5bdfeb6884220c0f7f0d803b",
+            'type' => "Service",
+            'description' => "Cleaning receiver's property",
+            'price' => 100.5,
+
+            'paid' => false,
+            'fulfilled' => false,
+        ));
+
+            DB::table('contracts')->insert(
+        array(
+            'provider_id' => "5bdfe2db84220c09e56acd44",
+            'receiver_id' => "5bdfe2db84220c09e56acd43",
+            'item_id' => "5bdfeb6884220c0f7f0d803b",
+            'type' => "Service",
+            'description' => "Cleaning receiver's property AGAIN",
+            'price' => 200.5,
+
+            'paid' => false,
+            'fulfilled' => false,
+        ));            
     }
+
 
     /**
      * Reverse the migrations.

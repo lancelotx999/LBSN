@@ -53,11 +53,20 @@ class UserController extends Controller
       
     }
 
-    public function show($id)
+    public function getContract($id)
     {
         $user = User::findOrFail($id);
 
-        return view('users.show', compact('user'));
+        return view('users.contract', compact('user'));
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        $users = User::all();
+        $properties = Property::with('user')->get();
+
+        return view('users.show', compact('user', 'users', 'properties'));
     }
 
     public function showUserDetails($user_id)
@@ -102,7 +111,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|min:6|confirmed',
             'contact_number' => 'required',
-            'role' => 'required'
+            'role' => 'required',
             'verified' => 'required'
         ]);
 

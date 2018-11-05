@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">Register Location</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('location.store') }}">
+                    <form method="POST" action="{{ route('property.store') }}">
                     	@csrf
                     	@method('POST')
 
@@ -22,8 +22,8 @@
                                 <label>
                                     Name:
                                     <input
-                                        id="locationName"
-                                        name="locationName"
+                                        id="name"
+                                        name="name"
                                         type="text"
                                         class="form-control"
                                         placeholder="Enter location name."
@@ -35,8 +35,8 @@
                                 <label>
                                     Address:
                                     <input
-                                        id="locationAddress"
-                                        name="locationAddress"
+                                        id="address"
+                                        name="address"
                                         type="text"
                                         class="form-control"
                                         placeholder="Enter location address."
@@ -48,8 +48,8 @@
                                 <label>
                                     Description:
                                     <input
-                                        id="locationDescription"
-                                        name="locationDescription"
+                                        id="description"
+                                        name="description"
                                         type="text"
                                         class="form-control"
                                         placeholder="Enter location description."
@@ -59,28 +59,16 @@
                             <p>
                                 <label>
                                     Status:
-                                    <input
-                                        id="locationStatus"
-                                        name="locationStatus"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter location status."
+                                    <select
+                                        id="status"
+                                        name="status"
+                                        class="form-control custom-select"
                                         required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Rating:
-                                    <input
-                                        id="locationRating"
-                                        name="locationRating"
-                                        type="number"
-                                        class="form-control"
-                                        placeholder="Enter location rating."
-                                        required
-                                        step="0.01"
-                                    />
+                                    >
+                                        <option selected>Select the property status</option>
+                                        <option value="rent">Rent</option>
+                                        <option value="sell">Sell</option>
+                                    </select>
                                 </label>
                             </p>
                             <p>
@@ -88,7 +76,7 @@
                                     Latitude:
                                     <input
                                         id="locationLatitude"
-                                        name="locationLatitude"
+                                        name="latitude"
                                         type="text"
                                         class="form-control"
                                         placeholder="Click on map to set latitude."
@@ -103,7 +91,7 @@
                                     Longitude:
                                     <input
                                         id="locationLongitude"
-                                        name="locationLongitude"
+                                        name="longitude"
                                         type="text"
                                         class="form-control"
                                         placeholder="Click on map to set longitude."
@@ -114,44 +102,21 @@
                                 </label>
                             </p>
                         </div>
+                        <input
+                            id="owner_id"
+                            name="owner_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ Auth::id() }}"
+                            placeholder="Enter owner ID."
+                            required
+                        />
                         <button type="submit" class="btn btn-primary">
                             Create Location
                         </button>
                     </form>
                     <hr />
-                    @foreach ($locations as $location)
-	                    <div id="{{ $location->_id }}" class="media">
-			                <div class="media-body">
-                                <h5>{{ $location->locationName }}</h5>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="{{ route('location.show', $location->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                View
-                                            </button>
-                                        </a>
-                                        <a href="{{ route('location.edit', $location->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                Edit
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-sm-8">
-        			                    <form method="POST" action="{{ route('location.destroy', $location->_id) }}">
-        			                    	@csrf
-        									@method('DELETE')
-
-        				                    <button type="submit" class="btn btn-sm btn-danger float-right">
-        				                        DELETE
-        				                    </button>
-        			                	</form>
-                                    </div>
-                                </div>
-                                <hr />
-			                </div>
-			            </div>
-		            @endforeach
+                    
                 </div>
             </div>
         </div>
@@ -175,12 +140,6 @@
     };
 
     map.on("click", updateLatLng.bind(null, this));
-
-    var locations = {!! json_encode($locations->toArray()) !!};
-
-    console.log("---------- locations ----------");
-    console.log(locations);
-    console.log("---------- locations ----------");
 
     // var pruneCluster = new PruneClusterForLeaflet();
     //
@@ -391,6 +350,5 @@
         L.marker([d.locationLatitude, d.locationLongitude]).addTo(map)
             .bindPopup(popupContent);
     })
-
 </script>
 @endsection

@@ -64,6 +64,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <input type="hidden" name="role" value="user">
+                                <input type="hidden" name="verified" value="false">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

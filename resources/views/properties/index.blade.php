@@ -9,22 +9,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register Location</div>
+                <div class="card-header">All Properties</div>
                 <div class="card-body">
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
-                    @foreach ($locations as $location)
-	                    <div id="{{ $location->_id }}" class="media">
+                    @foreach ($properties as $property)
+	                    <div id="{{ $property->_id }}" class="media">
 			                <div class="media-body">
-			                    <h5>{{ $location->locationName }}</h5>
+			                    <h5>{{ $property->name }}</h5>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <a href="{{ route('location.show', $location->_id) }}">
+                                        <a href="{{ route('property.show', $property->_id) }}">
                                             <button class="btn btn-sm btn-success">
                                                 View
                                             </button>
                                         </a>
-                                        <a href="{{ route('location.edit', $location->_id) }}">
+                                        <a href="{{ route('property.edit', $property->_id) }}">
                                             <button class="btn btn-sm btn-success">
                                                 Edit
                                             </button>
@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="col-sm-8">
-                                        <form method="POST" action="{{ route('location.destroy', $location->_id) }}">
+                                        <form method="POST" action="{{ route('property.destroy', $property->_id) }}">
                                             @csrf
                                             @method('DELETE')
 
@@ -46,13 +46,12 @@
 			                </div>
 			            </div>
 		            @endforeach
+                    <a href="{{ route('property.create') }}">Create properties</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 
 <script type="text/javascript">
     var map = L.map('map', {
@@ -65,7 +64,7 @@
         ]
     })
 
-    var locations = {!! json_encode($locations->toArray()) !!};
+    var locations = {!! json_encode($properties->toArray()) !!};
 
     console.log("---------- locations ----------");
     console.log(locations);
@@ -280,7 +279,5 @@
         L.marker([d.locationLatitude, d.locationLongitude]).addTo(map)
             .bindPopup(popupContent);
     })
-
-
 </script>
 @endsection

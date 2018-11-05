@@ -20,7 +20,7 @@
 			<h6>
 				<a href="{{ url('/') }}">Home</a> 
 				<i class="fas fa-angle-right"></i>
-				<a href="{{ route('users.show', ['user' => Auth::user() ]) }}">Member</a>
+				<a href="{{ route('users.show', ['user' => Auth::id() ]) }}">Member</a>
 			</h6><hr />
 		</div>
 	</div>
@@ -29,15 +29,21 @@
 			<div class="card">
 				<div class="card-header">Account</div>
 				<div class="card-body">
-					<a class="btn btn-default" href="{{ route('users.show', ['user' => Auth::user() ]) }}">
+					<a class="btn btn-default" href="{{ route('users.show', ['user' => Auth::id() ]) }}">
 						My Dashboard
 					</a>
 
 					<hr />
 
-					<a class="btn btn-default" href="{{ route('users.edit', ['user' => Auth::user() ]) }}">
+					<a class="btn btn-default" href="{{ route('users.edit', ['user' => Auth::id() ]) }}">
 						My Profile
 					</a>
+
+                    <hr />
+
+                    <a class="btn btn-default" href="{{ route('users.contract', ['user' => Auth::id() ]) }}">
+                        My Contract
+                    </a>
 				</div>
 			</div>
 		</div>
@@ -126,15 +132,15 @@
 			        			</thead>
 
 		        				<tbody>
-									@foreach ($locations as $location)
+									@foreach ($properties as $property)
 										<tr>
-											<td>{{ $users->where('_id', $location->user_id)[0]->name }}</td>
-											<td>{{ $users->where('_id', $location->user_id)[0]->email }}</td>
-											<td>{{ $location->locationDescription }}</td>
-											<td>{{ $location->locationStatus }}</td>
-											<td>{{ $location->locationRating }}</td>
-											<td>{{ $location->locationLatitude }}</td>
-											<td>{{ $location->locationLongitude }}</td>
+											<td>{{ $users->where('_id', $property->user_id)[0]->name }}</td>
+											<td>{{ $users->where('_id', $property->user_id)[0]->email }}</td>
+											<td>{{ $property->description }}</td>
+											<td>{{ $property->status }}</td>
+											<td>{{ $property->rating }}</td>
+											<td>{{ $property->latitude }}</td>
+											<td>{{ $property->longitude }}</td>
 										<tr/>
 									@endforeach
 								</tbody>
@@ -162,15 +168,15 @@
 			        			</thead>
 
 		        				<tbody>
-									@foreach ($locations as $location)
+									@foreach ($properties as $property)
 										<tr>
-											<td>{{ $location->locationName }}</td>
-											<td>{{ $location->locationAddress }}</td>
-											<td>{{ $location->locationDescription }}</td>
-											<td>{{ $location->locationStatus }}</td>
-											<td>{{ $location->locationRating }}</td>
-											<td>{{ $location->locationLatitude }}</td>
-											<td>{{ $location->locationLongitude }}</td>
+											<td>{{ $property->name }}</td>
+											<td>{{ $property->address }}</td>
+											<td>{{ $property->description }}</td>
+											<td>{{ $property->status }}</td>
+											<td>{{ $property->rating }}</td>
+											<td>{{ $property->latitude }}</td>
+											<td>{{ $property->longitude }}</td>
 										<tr/>
 									@endforeach
 								</tbody>

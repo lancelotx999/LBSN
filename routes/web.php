@@ -21,6 +21,7 @@ Auth::routes();
 
 // User profile
 Route::resource('users', 'UserController');
+Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.contract');
 
 // Resource Routes
 Route::resource('business', 'BusinessController');

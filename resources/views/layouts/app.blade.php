@@ -50,10 +50,10 @@
                             <a class="nav-link" href="/allLocations">Property Listing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('location.create') }}">Register Location</a>
+                            <a class="nav-link" href="#">Register Location</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('invoice.index') }}">See Invoice</a>
+                            <a class="nav-link" href="#">See Invoice</a>
                         </li>
                     </ul>
 

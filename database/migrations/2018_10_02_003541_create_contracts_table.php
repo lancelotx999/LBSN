@@ -26,11 +26,38 @@ class CreateContractsTable extends Migration
             $table->double('price');
             
             $table->boolean('paid');
-
+            $table->boolean('fulfilled');
 
             $table->timestamps();
         });
+
+            DB::table('contracts')->insert(
+        array(
+            'provider_id' => "5bdfe2db84220c09e56acd44",
+            'receiver_id' => "5bdfe2db84220c09e56acd43",
+            'item_id' => "5bdfeb6884220c0f7f0d803b",
+            'type' => "Service",
+            'description' => "Cleaning receiver's property",
+            'price' => 100.5,
+
+            'paid' => false,
+            'fulfilled' => false,
+        ));
+
+            DB::table('contracts')->insert(
+        array(
+            'provider_id' => "5bdfe2db84220c09e56acd44",
+            'receiver_id' => "5bdfe2db84220c09e56acd43",
+            'item_id' => "5bdfeb6884220c0f7f0d803b",
+            'type' => "Service",
+            'description' => "Cleaning receiver's property AGAIN",
+            'price' => 200.5,
+
+            'paid' => false,
+            'fulfilled' => false,
+        ));            
     }
+
 
     /**
      * Reverse the migrations.

@@ -26,6 +26,16 @@ class CreateBusinessesTable extends Migration
 
             $table->timestamps();
         });
+
+        DB::table('businesses')->insert(
+        array(
+            'owner_id' => "5bdfe2db84220c09e56acd44",
+            'name' => "Cleaning Service",
+            'description' => "We clean everything!",
+            'services' => "Cleaning",
+            'contact_number' => "012-5555555",
+            'verified' => true,
+        ));
     }
 
     /**

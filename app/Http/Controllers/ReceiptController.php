@@ -44,8 +44,28 @@ class ReceiptController extends Controller
     // Gets all the receipts associated with specified user
     public function showUserReceipts($user_id)
     {
-        $reviews = Review::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
-        return view('reviews.index', compact('reviews'));
+        $contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+
+        $receipts = Receipt::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
+
+        dd($contracts);
+        return view('receipts.index', compact('receipts'));
+    }
+
+    public function test()
+    {
+        $user_id = '5bdfe2db84220c09e56acd43';
+        $counter = 0;
+
+        $contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+
+        foreach ($contracts as $contract)
+        {
+            $receipts = Receipt::where('contract_id','=', $contract->id)->get();
+            $counter++;
+        }
+
+        dd($receipts);
     }
 
     public function create(Request $request, Invoice $invoice)

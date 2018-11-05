@@ -102,7 +102,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|min:6|confirmed',
             'contact_number' => 'required',
-            'role' => 'required'
+            'role' => 'required',
             'verified' => 'required'
         ]);
 

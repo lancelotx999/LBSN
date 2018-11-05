@@ -28,7 +28,10 @@ Route::resource('property', 'PropertyController');
 Route::resource('contract', 'ContractController');
 
 // Testing Routes
-Route::resource('/test1', 'BusinessController@test');
-Route::resource('/test2', 'PropertyController@test');
-Route::resource('/test3', 'ContractController@test');
-Route::resource('/test4', 'ReceiptController@test');
+Route::get('/test1', 'BusinessController@test');
+Route::get('/test2', 'ContractController@test');
+Route::get('/test3', 'PropertyController@test');
+Route::get('/test4', 'RatingController@test');
+Route::get('/test5', 'ReceiptController@test');
+Route::get('/test6', 'ReviewController@test');
+Route::get('/test7', 'UserController@test');

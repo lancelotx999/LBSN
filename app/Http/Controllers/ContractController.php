@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
 use App\Contract;
+use App\Receipt;
 
 class ContractController extends Controller
 {
@@ -57,6 +58,12 @@ class ContractController extends Controller
         return view('contracts.index', compact('contracts'));
     }
 
+    public function showReceipts($contract_id)
+    {
+        $receipts = Receipt::where('contract_id','=', $contract_id)->get();
+        return view('receipts.index', compact('receipts'));
+    }
+
     public function create()
     {
         $user_contracts = Contract::where('provider_id','=', $user_id)->get();
@@ -86,6 +93,7 @@ class ContractController extends Controller
         $contract->description = $request->description;
         $contract->price = $request->price;
         $contract->paid = false;
+        $contract->fulfilled = false;
 
         $contract->save();
         return redirect()->back();
@@ -116,6 +124,7 @@ class ContractController extends Controller
         $contract->description = $request->description;
         $contract->price = $request->price;
         $contract->paid = $request->paid;
+        $contract->fulfilled = $request->fulfilled;
 
         $contract->save();  
 

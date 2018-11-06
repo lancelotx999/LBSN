@@ -10,7 +10,7 @@ use App\Property;
 class PropertyController extends Controller
 {
    // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -34,7 +34,7 @@ class PropertyController extends Controller
         {
         	$properties = Property::all();
         }
-        
+
         return view('properties.index', compact('properties'));
     }
 
@@ -42,6 +42,7 @@ class PropertyController extends Controller
     public function showAll()
     {
     	$properties = Property::all();
+
     	return view('properties.index', compact('properties'));
     }
 
@@ -61,7 +62,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
+        $this->validate($request,
         [
             'owner_id' => 'required',
             'name' => 'required',
@@ -84,7 +85,7 @@ class PropertyController extends Controller
         $property->longitude = $request->longitude;
         $property->verified = false;
 
-        $property->save();     
+        $property->save();
 
         return redirect()->route('property.index');
     }
@@ -107,7 +108,7 @@ class PropertyController extends Controller
     public function update(Request $request, $id)
     {
         $property = Property::findOrFail($id);
-        
+
         $property->owner_id = $request->owner_id;
         $property->name = $request->name;
         $property->address = $request->address;
@@ -117,7 +118,7 @@ class PropertyController extends Controller
         $property->longitude = $request->longitude;
         $property->verified = $request->verified;
 
-        $property->save();  
+        $property->save();
 
         return redirect()->route('properties.edit', ['property' => $property ]);
     }

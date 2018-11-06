@@ -14,39 +14,33 @@
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
                     <p>
-                        Name: {{ $location->locationName }}
+                        Name: {{ $property->name }}
                     </p>
                     <p>
-                        Address: {{ $location->locationAddress }}
+                        Address: {{ $property->address }}
                     </p>
                     <p>
-                        Description: {{ $location->locationDescription }}
+                        Description: {{ $property->description }}
                     </p>
                     <p>
-                        Status: {{ $location->locationStatus }}
+                        Status: {{ $property->status }}
                     </p>
                     <p>
-                        Rating: {{ $location->locationRating }}
+                        Rating: {{ $property->locationRating }}
                     </p>
                     <p>
-                        Latitude: {{ $location->locationLatitude }}
+                        Latitude: {{ $property->latitude }}
                     </p>
                     <p>
-                        Longitude: {{ $location->locationLongitude }}
+                        Longitude: {{ $property->longitude }}
                     </p>
                     <p>
-                        Owner Name: {{ $location->user->name }}
-                    </p>
-                    <p>
-                        Owner Email: {{ $location->user->email }}
-                    </p>
-                    <p>
-                        <a href="{{ route('propertyContract.show', ['id' => $location->id]) }}">
+                        <a href="{{ route('property.show', ['id' => $property->id]) }}">
                             Create Property Contract
             	        </a>
                     <p />
                     <p>
-                        <a href="{{ route('serviceContract.show', ['id' => $location->id]) }}">
+                        <a href="{{ route('property.show', ['id' => $property->id]) }}">
                             Create Service Contract
                         </a>
                     <p />
@@ -59,7 +53,7 @@
 
 @php
 
-if (empty($location)) { $location = null; }
+if (empty($property)) { $property = null; }
 
 @endphp
 
@@ -74,11 +68,11 @@ if (empty($location)) { $location = null; }
         ]
     })
 
-    var read = "{{ $location }}";
+    var read = "{{ $property }}";
     var json = read.replace(/&quot;/g, '"');
     var data = JSON.parse(json);
 
-    // var location = {!! json_encode($location->toArray()) !!};
+    // var location = {!! json_encode($property->toArray()) !!};
     //
     // console.log("---------- read ----------");
     // console.log(read);

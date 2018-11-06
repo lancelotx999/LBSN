@@ -16,7 +16,7 @@
     <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet-draw/leaflet.draw.css') }}" rel="stylesheet">
-    
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/fontawesome/all.min.js') }}" ></script>
@@ -53,6 +53,9 @@
                             <a class="nav-link" href="{{ route('property.index') }}">Properties</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/property/listing">Property Listing</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Register Location</a>
                         </li>
                         <li class="nav-item">
@@ -77,7 +80,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a  class="dropdown-item" 
+                                    <a  class="dropdown-item"
                                         href="{{ route('users.show', ['user' => Auth::id() ]) }}">My Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

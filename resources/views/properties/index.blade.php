@@ -14,7 +14,7 @@
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
                     @foreach ($properties as $property)
-	                    <div id="{{ $property->_id }}" class="media">
+	                    <!-- <div id="{{ $property->_id }}" class="media">
 			                <div class="media-body">
 			                    <h5>{{ $property->name }}</h5>
                                 <div class="row">
@@ -44,7 +44,53 @@
                                 </div>
                                 <hr />
 			                </div>
-			            </div>
+			            </div> -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
+                                </img>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <h5>{{ $property->name }}</h5>
+                                </div>
+                                <div class="row">
+                                    <p>{{ $property->address }}</p>
+                                </div>
+                                <div class="row">
+                                    <p>{{ $property->description }}</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="{{ route('property.show', $property->_id) }}">
+                                    <button class="btn btn-sm btn-success">
+                                        View
+                                    </button>
+                                </a>
+                                <a href="{{ route('property.edit', $property->_id) }}">
+                                    <button class="btn btn-sm btn-success">
+                                        Edit
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <form method="POST" action="{{ route('property.destroy', $property->_id) }}">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-sm btn-danger float-right">
+                                        DELETE
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+
 		            @endforeach
                     <a href="{{ route('property.create') }}">Create properties</a>
                 </div>

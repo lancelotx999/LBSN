@@ -23,6 +23,8 @@ Auth::routes();
 Route::resource('users', 'UserController');
 Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.contract');
 
+Route::get('/property/listing', 'PropertyController@showAll');
+
 // Resource Routes
 Route::resource('business', 'BusinessController');
 Route::resource('property', 'PropertyController');

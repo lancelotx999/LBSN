@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
 use App\Property;
+use App\Rating;
 
 class PropertyController extends Controller
 {
@@ -94,6 +95,18 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property = Property::findOrFail($id);
+
+        $ratings = Rating::where('ratee_id','=', $id)->get();
+
+        $totalRates = 0;
+        $totalUsers = 0;
+
+        foreach ($ratings as $rating) {
+            $totalRates = $totalRates + $rating->rate;
+            $totalUsers++;
+        }
+
+        $property->rate = $totalRates/$totalUsers;
 
         return view('properties.show', compact('property'));
     }

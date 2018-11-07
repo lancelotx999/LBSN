@@ -27,8 +27,6 @@
                     </p>
                     <p>
                         Rating:
-                        <!-- <div class="rateit" data-rateit-mode="font"  style="font-size:50px">
-                        </div> -->
                         <select id="ratingModule">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -94,6 +92,7 @@ if (empty($property)) { $property = null; }
     $(function() {
         $('#ratingModule').barrating({
             theme: 'css-stars',
+            initialRating: data.rate,
             onSelect: function(value, text, event) {
                 if (typeof(event) !== 'undefined') {
                     // rating was selected by a user
@@ -116,8 +115,8 @@ if (empty($property)) { $property = null; }
                         url: '/rating',
                         data: data,
                         success: function() {
-                            console.log(this);
-                            console.log("Valueadded");
+                            // console.log(this);
+                            // console.log("Valueadded");
                         }
                     })
                 }

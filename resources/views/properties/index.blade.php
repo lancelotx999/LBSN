@@ -57,10 +57,12 @@
                                 <div class="row">
                                     <p>{{ $property->description }}</p>
                                 </div>
-
-
                             </div>
                         </div>
+                        <div class="row">
+                            <p>Review ({{ count($property->reviews) }})</p>
+                        </div>
+                        
                         <div class="row">
                             <div class="col-sm-4">
                                 <a href="{{ route('property.show', $property->_id) }}">
@@ -107,11 +109,11 @@
         ]
     })
 
-    var locations = {!! json_encode($properties->toArray()) !!};
+    var properties = {!! json_encode($properties->toArray()) !!};
 
-    console.log("---------- locations ----------");
-    console.log(locations);
-    console.log("---------- locations ----------");
+    console.log("---------- properties ----------");
+    console.log(properties);
+    console.log("---------- properties ----------");
 
     // var pruneCluster = new PruneClusterForLeaflet();
     //
@@ -276,7 +278,7 @@
     //     }
     // });
     //
-    // locations.forEach(function (d){
+    // properties.forEach(function (d){
     //     console.log("---------- d ----------");
     //     console.log(d);
     //     console.log("---------- d ----------");
@@ -306,7 +308,7 @@
     //
     // this.map.addLayer(pruneCluster);
 
-    locations.forEach(function(d){
+    properties.forEach(function(d){
         console.log("---------- d ----------");
         console.log(d);
         console.log("---------- d ----------");

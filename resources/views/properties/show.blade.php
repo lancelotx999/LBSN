@@ -52,6 +52,42 @@
                         </a>
                     <p />
                     <hr />
+                    <form method="POST" action="{{ route('review.store') }}">
+                        @csrf
+                        @method('POST')
+
+                        <textarea id="content" name="content" rows="5" cols="50" placeholder="Please leave a review."></textarea>
+                        <input
+                            id="reviewer_id"
+                            name="reviewer_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ Auth::id() }}"
+                            placeholder="Enter reviewer_id ID."
+                            required
+                        />
+                        <input
+                            id="reviewee_id"
+                            name="reviewee_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ $property->_id }}"
+                            placeholder="Enter reviewee_id ID."
+                            required
+                        />
+                        <button type="submit" class="btn btn-primary">
+                            Review
+                        </button>
+                    </form>
+
+                    <hr />
+                    Reviews
+                    <hr />
+                    @foreach ($property->reviews as $review)
+                        <p>{{ $review->content }}</p>
+                        <hr />
+		            @endforeach
+
                 </div>
             </div>
         </div>
@@ -63,21 +99,6 @@
 if (empty($property)) { $property = null; }
 
 @endphp
-<style>
-    /* .br-theme-bars-reversed .br-widget a {
-        background-color: pink;
-    }
-
-    .br-theme-bars-reversed .br-widget a.br-active,
-    .br-theme-bars-reversed .br-widget a.br-selected {
-        background-color: #ff446a;
-    }
-
-    .br-theme-bars-reversed .br-widget .br-current-rating {
-        color: #ff446a;
-        font-size: 20px;
-    } */
-</style>
 
 <script type="text/javascript">
 
@@ -96,23 +117,23 @@ if (empty($property)) { $property = null; }
             onSelect: function(value, text, event) {
                 if (typeof(event) !== 'undefined') {
                     // rating was selected by a user
-                    console.log("---------- data ----------");
-                    console.log(data);
-                    console.log("---------- data ----------");
+                    // console.log("---------- data ----------");
+                    // console.log(data);
+                    // console.log("---------- data ----------");
 
                     data.rater_id = '{{ Auth::user()->id }}';
                     data.ratee_id = data._id;
                     data.rate = $(event.target).data("rating-value");
 
-                    console.log("---------- data ----------");
-                    console.log(data);
-                    console.log("---------- data ----------");
+                    // console.log("---------- data ----------");
+                    // console.log(data);
+                    // console.log("---------- data ----------");
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         type: "POST",
-                        url: '/rating',
+                        url: '/rating/store',
                         data: data,
                         success: function() {
                             // console.log(this);

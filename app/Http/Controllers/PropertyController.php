@@ -7,6 +7,7 @@ use Auth;
 use Moloquent;
 use App\Property;
 use App\Rating;
+use App\Review;
 
 class PropertyController extends Controller
 {
@@ -20,6 +21,7 @@ class PropertyController extends Controller
     // Shows only user properties if user is a merchant
     public function index()
     {
+
         if (Auth::user()->role === 'admin')
         {
             $properties = Property::all();
@@ -43,6 +45,27 @@ class PropertyController extends Controller
     public function showAll()
     {
     	$properties = Property::all();
+
+        foreach ($properties as $property) {
+            $ratings = Rating::where('ratee_id','=', $property->id)->get();
+            $reviews = Review::where('reviewee_id','=', $property->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0) {
+                foreach ($ratings as $rating) {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $property->rate = $totalRates/$totalUsers;
+
+            }
+            else {
+                $property->rate = 0;
+            }
+            $property->reviews = $reviews;
+        }
 
     	return view('properties.index', compact('properties'));
     }
@@ -112,6 +135,10 @@ class PropertyController extends Controller
         else {
             $property->rate = 0;
         }
+
+        $reviews = Review::where('reviewee_id','=', $id)->get();
+
+        $property->reviews = $reviews;
 
         return view('properties.show', compact('property'));
     }

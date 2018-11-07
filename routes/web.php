@@ -24,12 +24,14 @@ Route::resource('users', 'UserController');
 Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.contract');
 
 Route::get('/property/listing', 'PropertyController@showAll');
-Route::post('/rating', 'RatingController@store');
+Route::post('/rating/store', 'RatingController@store');
+Route::post('/review/store', 'ReviewController@store');
 
 // Resource Routes
 Route::resource('business', 'BusinessController');
 Route::resource('property', 'PropertyController');
 Route::resource('contract', 'ContractController');
+Route::resource('review', 'ReviewController');
 
 // Testing Routes
 Route::resource('/test1', 'BusinessController@test');

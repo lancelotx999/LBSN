@@ -6,10 +6,21 @@
 <script src="{{ asset('js/PruneCluster.js') }}"></script>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h6>
+                <a href="{{ url('/') }}">Home</a> 
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.index') }}">Properties</a>
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.create') }}">Create New Property</a>
+            </h6><hr />
+        </div>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Register Location</div>
+                <div class="card-header">Create Property</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('property.store') }}">
                     	@csrf
@@ -65,7 +76,7 @@
                                         class="form-control custom-select"
                                         required
                                     >
-                                        <option selected>Select the property status</option>
+                                        <option selected>Select property status</option>
                                         <option value="rent">Rent</option>
                                         <option value="sell">Sell</option>
                                     </select>
@@ -107,7 +118,7 @@
                             name="owner_id"
                             type="hidden"
                             class="form-control"
-                            value="{{ Auth::id() }}"
+                            value="{{ $property->owner_id }}"
                             placeholder="Enter owner ID."
                             required
                         />

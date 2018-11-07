@@ -6,51 +6,53 @@
 <script src="{{ asset('js/PruneCluster.js') }}"></script>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h6>
+                <a href="{{ url('/') }}">Home</a> 
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.index') }}">Properties</a>
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.show', $property->_id) }}">View {{ $property->name }}</a>
+            </h6><hr />
+        </div>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Register Location</div>
+                <div class="card-header">View Property</div>
                 <div class="card-body">
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
                     <p>
-                        Name: {{ $location->locationName }}
+                        Name: {{ $property->name }}
                     </p>
                     <p>
-                        Address: {{ $location->locationAddress }}
+                        Address: {{ $property->address }}
                     </p>
                     <p>
-                        Description: {{ $location->locationDescription }}
+                        Description: {{ $property->description }}
                     </p>
                     <p>
-                        Status: {{ $location->locationStatus }}
+                        Status: {{ $property->status }}
                     </p>
                     <p>
-                        Rating: {{ $location->locationRating }}
+                        Rating: {{ $property->rating }}
                     </p>
                     <p>
-                        Latitude: {{ $location->locationLatitude }}
+                        Latitude: {{ $property->latitude }}
                     </p>
                     <p>
-                        Longitude: {{ $location->locationLongitude }}
+                        Longitude: {{ $property->longitude }}
                     </p>
                     <p>
-                        Owner Name: {{ $location->user->name }}
+                        Owner Name: {{ $users->where('_id', $property->owner_id)[0]->name }}
                     </p>
                     <p>
-                        Owner Email: {{ $location->user->email }}
+                        Owner Email: {{ $users->where('_id', $property->owner_id)[0]->email }}
                     </p>
-                    <p>
-                        <a href="{{ route('propertyContract.show', ['id' => $location->id]) }}">
-                            Create Property Contract
-            	        </a>
-                    <p />
-                    <p>
-                        <a href="{{ route('serviceContract.show', ['id' => $location->id]) }}">
-                            Create Service Contract
-                        </a>
-                    <p />
                     <hr />
+                    <p><a href="{{ url()->previous() }}">Return to previous page</a></p>
                 </div>
             </div>
         </div>
@@ -59,7 +61,7 @@
 
 @php
 
-if (empty($location)) { $location = null; }
+if (empty($property)) { $property = null; }
 
 @endphp
 
@@ -73,27 +75,6 @@ if (empty($location)) { $location = null; }
             }),
         ]
     })
-
-    var read = "{{ $location }}";
-    var json = read.replace(/&quot;/g, '"');
-    var data = JSON.parse(json);
-
-    // var location = {!! json_encode($location->toArray()) !!};
-    //
-    // console.log("---------- read ----------");
-    // console.log(read);
-    // console.log("---------- read ----------");
-    // console.log("---------- json ----------");
-    // console.log(json);
-    // console.log("---------- json ----------");
-    // console.log("---------- data ----------");
-    // console.log(data);
-    // console.log("---------- data ----------");
-    // console.log("---------- locations ----------");
-    // console.log(location);
-    // console.log("---------- locations ----------");
-
-
 
     var pruneCluster = new PruneClusterForLeaflet();
 

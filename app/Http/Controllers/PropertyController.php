@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
 use App\Property;
+Use App\User;
 
 class PropertyController extends Controller
 {
@@ -93,8 +94,9 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property = Property::findOrFail($id);
+        $users = User::all();
 
-        return view('properties.show', compact('property'));
+        return view('properties.show', compact('property', 'users'));
     }
 
     public function edit($id)
@@ -119,7 +121,7 @@ class PropertyController extends Controller
 
         $property->save();  
 
-        return redirect()->route('properties.edit', ['property' => $property ]);
+        return redirect()->back();
     }
 
     public function destroy($id)

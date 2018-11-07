@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $users = User::all();
-        $properties = Property::with('user')->get();
+        $properties = Property::all();
 
         return view('users.show', compact('user', 'users', 'properties'));
     }

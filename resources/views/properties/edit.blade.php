@@ -6,12 +6,23 @@
 <script src="{{ asset('js/PruneCluster.js') }}"></script>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h6>
+                <a href="{{ url('/') }}">Home</a> 
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.index') }}">Properties</a>
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.edit', $property->_id) }}">Edit {{ $property->name }}</a>
+            </h6><hr />
+        </div>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Register Location</div>
+                <div class="card-header">Edit Property</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('location.update', $location) }}">
+                    <form method="POST" action="{{ route('property.update', $property) }}">
                     	@csrf
                     	@method('PATCH')
 
@@ -22,12 +33,12 @@
                                 <label>
                                     Name:
                                     <input
-                                        id="locationName"
-                                        name="locationName"
+                                        id="name"
+                                        name="name"
                                         type="text"
-                                        value="{{ $location->locationName }}"
                                         class="form-control"
                                         placeholder="Enter location name."
+                                        value="{{ $property->name }}"
                                         required
                                     />
                                 </label>
@@ -36,12 +47,12 @@
                                 <label>
                                     Address:
                                     <input
-                                        id="locationAddress"
-                                        name="locationAddress"
+                                        id="address"
+                                        name="address"
                                         type="text"
-                                        value="{{ $location->locationAddress }}"
                                         class="form-control"
                                         placeholder="Enter location address."
+                                        value="{{ $property->address }}"
                                         required
                                     />
                                 </label>
@@ -50,42 +61,28 @@
                                 <label>
                                     Description:
                                     <input
-                                        id="locationDescription"
-                                        name="locationDescription"
+                                        id="description"
+                                        name="description"
                                         type="text"
-                                        value="{{ $location->locationDescription }}"
                                         class="form-control"
                                         placeholder="Enter location description."
+                                        value="{{ $property->description }}"
                                     />
                                 </label>
                             </p>
                             <p>
                                 <label>
                                     Status:
-                                    <input
-                                        id="locationStatus"
-                                        name="locationStatus"
-                                        type="text"
-                                        value="{{ $location->locationStatus }}"
-                                        class="form-control"
-                                        placeholder="Enter location status."
+                                    <select
+                                        id="status"
+                                        name="status"
+                                        class="form-control custom-select"
                                         required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Rating:
-                                    <input
-                                        id="locationRating"
-                                        name="locationRating"
-                                        type="number"
-                                        value="{{ $location->locationRating }}"
-                                        class="form-control"
-                                        placeholder="Enter location rating."
-                                        required
-                                        step="0.01"
-                                    />
+                                    >
+                                        <option selected>Select property status</option>
+                                        <option value="rent">Rent</option>
+                                        <option value="sell">Sell</option>
+                                    </select>
                                 </label>
                             </p>
                             <p>
@@ -93,12 +90,12 @@
                                     Latitude:
                                     <input
                                         id="locationLatitude"
-                                        name="locationLatitude"
+                                        name="latitude"
                                         type="text"
-                                        value="{{ $location->locationLatitude }}"
                                         class="form-control"
                                         placeholder="Click on map to set latitude."
                                         step="0.0"
+                                        value="{{ $property->latitude }}"
                                         required
                                         readOnly
                                     />
@@ -109,20 +106,29 @@
                                     Longitude:
                                     <input
                                         id="locationLongitude"
-                                        name="locationLongitude"
+                                        name="longitude"
                                         type="text"
-                                        value="{{ $location->locationLongitude }}"
                                         class="form-control"
                                         placeholder="Click on map to set longitude."
                                         step="0.0"
+                                        value="{{ $property->longitude }}"
                                         required
                                         readOnly
                                     />
                                 </label>
                             </p>
                         </div>
+                        <input
+                            id="owner_id"
+                            name="owner_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ Auth::id() }}"
+                            placeholder="Enter owner ID."
+                            required
+                        />
                         <button type="submit" class="btn btn-primary">
-                            Edit Location
+                            Edit Property
                         </button>
                     </form>
                     <hr />
@@ -134,7 +140,7 @@
 
 @php
 
-if (empty($location)) { $location = null; }
+if (empty($property)) { $property = null; }
 
 @endphp
 
@@ -165,27 +171,6 @@ if (empty($location)) { $location = null; }
             }),
         ]
     })
-
-    var read = "{{ $location }}";
-    var json = read.replace(/&quot;/g, '"');
-    var data = JSON.parse(json);
-
-
-    var locations = {!! json_encode($locations->toArray()) !!};
-    // data = locations;
-
-    console.log("---------- read ----------");
-    console.log(read);
-    console.log("---------- read ----------");
-    console.log("---------- json ----------");
-    console.log(json);
-    console.log("---------- json ----------");
-    console.log("---------- data ----------");
-    console.log(data);
-    console.log("---------- data ----------");
-    console.log("---------- locations ----------");
-    console.log(locations);
-    console.log("---------- locations ----------");
 
     // var pruneCluster = new PruneClusterForLeaflet();
     //

@@ -6,8 +6,17 @@
 <script src="{{ asset('js/PruneCluster.js') }}"></script>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h6>
+                <a href="{{ url('/') }}">Home</a> 
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('property.index') }}">Properties</a>
+            </h6><hr />
+        </div>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">All Properties</div>
                 <div class="card-body">

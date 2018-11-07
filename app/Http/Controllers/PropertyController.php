@@ -99,14 +99,19 @@ class PropertyController extends Controller
         $ratings = Rating::where('ratee_id','=', $id)->get();
 
         $totalRates = 0;
-        $totalUsers = 0;
+        $totalUsers = count($ratings);
 
-        foreach ($ratings as $rating) {
-            $totalRates = $totalRates + $rating->rate;
-            $totalUsers++;
+        if ($totalUsers > 0) {
+            foreach ($ratings as $rating) {
+                $totalRates = $totalRates + $rating->rate;
+            }
+
+            $property->rate = $totalRates/$totalUsers;
+
         }
-
-        $property->rate = $totalRates/$totalUsers;
+        else {
+            $property->rate = 0;
+        }
 
         return view('properties.show', compact('property'));
     }

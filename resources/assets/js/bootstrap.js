@@ -11,6 +11,9 @@ window.Popper = require('popper.js').default;
 
 try {
     window.$ = window.jQuery = require('jquery');
+    // window.jquery-bar-rating = require('jquery-bar-rating');
+    // require('jquery.rateit');
+    // require('jquery-bar-rating');
 
     require('bootstrap');
 } catch (e) {}

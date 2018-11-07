@@ -4,6 +4,9 @@
 
 <script src="{{ asset('js/leaflet.js') }}"></script>
 <script src="{{ asset('js/PruneCluster.js') }}"></script>
+<script src="{{ asset('js/jquery.rateit/jquery.rateit.min.js') }}"></script>
+<script src="{{ asset('css/rateit') }}"></script>
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -26,7 +29,8 @@
                         Status: {{ $property->status }}
                     </p>
                     <p>
-                        Rating: {{ $property->locationRating }}
+                        <div class="rateit">
+                        </div>
                     </p>
                     <p>
                         Latitude: {{ $property->latitude }}
@@ -56,8 +60,29 @@
 if (empty($property)) { $property = null; }
 
 @endphp
+<style>
+    /* .br-theme-bars-reversed .br-widget a {
+        background-color: pink;
+    }
+
+    .br-theme-bars-reversed .br-widget a.br-active,
+    .br-theme-bars-reversed .br-widget a.br-selected {
+        background-color: #ff446a;
+    }
+
+    .br-theme-bars-reversed .br-widget .br-current-rating {
+        color: #ff446a;
+        font-size: 20px;
+    } */
+</style>
 
 <script type="text/javascript">
+
+    // $(function() {
+    //     $('#example').barrating({
+    //         theme: 'bars-reversed'
+    //     });
+    // });
 	var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
         zoom: 16,

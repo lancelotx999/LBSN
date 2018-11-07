@@ -49,7 +49,18 @@
                             </div>
                             <div class="col-sm-9">
                                 <div class="row">
-                                    <h5>{{ $property->name }}</h5>
+                                    <div class="col-sm-6">
+                                        <h5>{{ $property->name }}</h5>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select id="ratingModule{{ $property->id }}" style="float: right;">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <p>{{ $property->address }}</p>
@@ -59,6 +70,7 @@
                                 </div>
                                 <div class="row">
                                     <p>Review(s): ({{ count($property->reviews) }})</p>
+
                                 </div>
                             </div>
                         </div>
@@ -99,6 +111,30 @@
 </div>
 
 <script type="text/javascript">
+
+
+    var properties = {!! json_encode($properties->toArray()) !!};
+
+    console.log("---------- properties ----------");
+    console.log(properties);
+    console.log("---------- properties ----------");
+
+    properties.forEach(function(d){
+        console.log("---------- d ----------");
+        console.log(d);
+        console.log("---------- d ----------");
+        console.log('#ratingModule'+d._id);
+        $(function() {
+            $('#ratingModule'+d._id).barrating({
+                theme: 'css-stars',
+                initialRating: d.rate,
+                readonly: true
+            });
+        });
+    })
+
+
+
     var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
         zoom: 16,
@@ -109,11 +145,7 @@
         ]
     })
 
-    var properties = {!! json_encode($properties->toArray()) !!};
 
-    console.log("---------- properties ----------");
-    console.log(properties);
-    console.log("---------- properties ----------");
 
     // var pruneCluster = new PruneClusterForLeaflet();
     //

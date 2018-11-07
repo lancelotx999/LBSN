@@ -57,12 +57,12 @@
                                 <div class="row">
                                     <p>{{ $property->description }}</p>
                                 </div>
+                                <div class="row">
+                                    <p>Review(s): ({{ count($property->reviews) }})</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <p>Review ({{ count($property->reviews) }})</p>
-                        </div>
-                        
+
                         <div class="row">
                             <div class="col-sm-4">
                                 <a href="{{ route('property.show', $property->_id) }}">

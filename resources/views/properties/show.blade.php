@@ -84,7 +84,20 @@
                     Reviews
                     <hr />
                     @foreach ($property->reviews as $review)
-                        <p>{{ $review->content }}</p>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
+                                </img>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <h5><a href="/user/{{ $review->reviewer_id }}">{{ $review->user->name }}</a></h5>
+                                </div>
+                                <div class="row">
+                                    <p>{{ $review->content }}</p>
+                                </div>
+                            </div>
+                        </div>
                         <hr />
 		            @endforeach
 

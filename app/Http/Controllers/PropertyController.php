@@ -8,6 +8,7 @@ use Moloquent;
 use App\Property;
 use App\Rating;
 use App\Review;
+use App\User;
 
 class PropertyController extends Controller
 {
@@ -48,7 +49,6 @@ class PropertyController extends Controller
 
         foreach ($properties as $property) {
             $ratings = Rating::where('ratee_id','=', $property->id)->get();
-            $reviews = Review::where('reviewee_id','=', $property->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
@@ -64,6 +64,14 @@ class PropertyController extends Controller
             else {
                 $property->rate = 0;
             }
+
+            $reviews = Review::where('reviewee_id','=', $property->id)->get();
+
+            foreach ($reviews as $review) {
+                $user = User::findOrFail($review->reviewer_id);
+                $review->user = $user;
+            }
+
             $property->reviews = $reviews;
         }
 
@@ -137,6 +145,11 @@ class PropertyController extends Controller
         }
 
         $reviews = Review::where('reviewee_id','=', $id)->get();
+
+        foreach ($reviews as $review) {
+            $user = User::findOrFail($review->reviewer_id);
+            $review->user = $user;
+        }
 
         $property->reviews = $reviews;
 

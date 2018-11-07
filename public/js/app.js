@@ -13730,8 +13730,6 @@ window.Popper = __webpack_require__(3).default;
 
 try {
   window.$ = window.jQuery = __webpack_require__(4);
-  // window.jquery-bar-rating = require('jquery-bar-rating');
-  // require('jquery-bar-rating');
 
   __webpack_require__(16);
 } catch (e) {}

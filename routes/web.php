@@ -24,6 +24,7 @@ Route::resource('users', 'UserController');
 Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.contract');
 
 Route::get('/property/listing', 'PropertyController@showAll');
+Route::post('/rating', 'RatingController@store');
 
 // Resource Routes
 Route::resource('business', 'BusinessController');

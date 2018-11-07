@@ -2,10 +2,7 @@
 
 @section('content')
 
-<script src="{{ asset('js/leaflet.js') }}"></script>
-<script src="{{ asset('js/PruneCluster.js') }}"></script>
-<script src="{{ asset('js/jquery.rateit/jquery.rateit.min.js') }}"></script>
-<script src="{{ asset('css/rateit') }}"></script>
+
 
 
 <div class="container">
@@ -29,8 +26,16 @@
                         Status: {{ $property->status }}
                     </p>
                     <p>
-                        <div class="rateit">
-                        </div>
+                        Rating:
+                        <!-- <div class="rateit" data-rateit-mode="font"  style="font-size:50px">
+                        </div> -->
+                        <select id="ratingModule">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </p>
                     <p>
                         Latitude: {{ $property->latitude }}
@@ -78,12 +83,49 @@ if (empty($property)) { $property = null; }
 
 <script type="text/javascript">
 
-    // $(function() {
-    //     $('#example').barrating({
-    //         theme: 'bars-reversed'
-    //     });
-    // });
-	var map = L.map('map', {
+    var read = "{{ $property }}";
+    var json = read.replace(/&quot;/g, '"');
+    var data = JSON.parse(json);
+
+    console.log("---------- data ----------");
+    console.log(data);
+    console.log("---------- data ----------");
+
+    $(function() {
+        $('#ratingModule').barrating({
+            theme: 'css-stars',
+            onSelect: function(value, text, event) {
+                if (typeof(event) !== 'undefined') {
+                    // rating was selected by a user
+                    console.log("---------- data ----------");
+                    console.log(data);
+                    console.log("---------- data ----------");
+
+                    data.rater_id = '{{ Auth::user()->id }}';
+                    data.ratee_id = data._id;
+                    data.rate = $(event.target).data("rating-value");
+
+                    console.log("---------- data ----------");
+                    console.log(data);
+                    console.log("---------- data ----------");
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        url: '/rating',
+                        data: data,
+                        success: function() {
+                            console.log(this);
+                            console.log("Valueadded");
+                        }
+                    })
+                }
+            }
+        });
+    });
+
+    var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
         zoom: 16,
         layers: [
@@ -92,10 +134,6 @@ if (empty($property)) { $property = null; }
             }),
         ]
     })
-
-    var read = "{{ $property }}";
-    var json = read.replace(/&quot;/g, '"');
-    var data = JSON.parse(json);
 
     // var location = {!! json_encode($property->toArray()) !!};
     //

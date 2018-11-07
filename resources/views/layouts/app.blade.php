@@ -16,12 +16,20 @@
     <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet-draw/leaflet.draw.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery.rateit/rateit.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/fontawesome-stars.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/fontawesome-stars-o.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/css-stars.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/bootstrap-stars.css') }}" rel="stylesheet"></link>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/fontawesome/all.min.js') }}" ></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/PruneCluster.js') }}"></script>
     <script src="{{ asset('js/leaflet-draw/leaflet.draw.js') }}"></script>
+    <script src="{{ asset('js/jquery.rateit/jquery.rateit.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.barrating/jquery.barrating.min.js') }}"></script>
     <script type="text/javascript">
         // rename myToken as you like
         window.myToken =  <?php echo json_encode([

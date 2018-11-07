@@ -2,9 +2,6 @@
 
 @section('content')
 
-<script src="{{ asset('js/leaflet.js') }}"></script>
-<script src="{{ asset('js/PruneCluster.js') }}"></script>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

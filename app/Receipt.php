@@ -12,4 +12,5 @@ class Receipt extends Moloquent
     [
        'contract_id', 'payment_method','price'
     ];
+
 }

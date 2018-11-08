@@ -80,18 +80,16 @@ class UserController extends Controller
         $sent_reviews = Review::where('reviewer_id','=',$user_id)->get();
         $received_reviews = Review::where('reviewee_id','=',$user_id)->get();
 
-    }
+        $receipts = collect();
+        $contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
 
-    public function showSelfDetails()
-    {
-        $businesses = Business::where('owner_id','=', $user_id)->get();
-        $sent_contracts = Contract::where('provider_id','=',$user_id)->get();
-        $received_contracts = Contract::where('receiver_id','=',$user_id)->get();
-        $properties = Property::where('owner_id','=',$user_id)->get();
-        $sent_ratings = Rating::where('rater_id','=',$user_id)->get();
-        $received_ratings = Rating::where('ratee_id','=',$user_id)->get();
-        $sent_reviews = Review::where('reviewer_id','=',$user_id)->get();
-        $received_reviews = Review::where('reviewee_id','=',$user_id)->get();
+        foreach ($contracts as $contract)
+        {
+            $receipt = Receipt::whereIn('contract_id',[$contract->id])->get()->first();
+            $receipts->push($receipt);
+        }
+
+        return view('users.show', compact('user','businesses','sent_contracts','received_contracts','properties','sent_ratings','received_ratings','sent_reviews','received_reviews','receipts'));
     }
 
     public function edit($id)

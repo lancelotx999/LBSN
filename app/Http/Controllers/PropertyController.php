@@ -87,7 +87,9 @@ class PropertyController extends Controller
 
     public function create()
     {
-        return view('properties.create');
+        $user_properties = Property::where('owner_id','=',Auth::user()->id)->get();
+
+        return view('properties.create', compact('user_properties'));
     }
 
 

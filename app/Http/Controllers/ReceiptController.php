@@ -27,10 +27,25 @@ class ReceiptController extends Controller
         }
         else
         {
-            $contracts = Contract::where('provider_id','=', Auth::user()->id)-> orWhere('receiver_id','=', Auth::user()->id)->get();
-            
-            $receipts = Receipt::where('contract_id','=',Auth::user()->id)->get();
-            return view('receipts.index', compact('receipts'));
+            $provided_receipts = collect();
+            $received_receipts = collect();
+
+            $provided_contracts = Contract::where('provider_id','=', Auth::user()->id)->get();
+            $received_contracts = Contract::where('receiver_id','=', Auth::user()->id)->get();
+
+            foreach ($provided_contracts as $p_contract)
+            {
+                $p_receipt = Receipt::whereIn('contract_id',[$p_contract->id])->get()->first();
+                $provided_receipts->push($p_receipt);
+            }
+
+            foreach ($received_contracts as $r_contract)
+            {
+                $receipt = Receipt::whereIn('contract_id',[$r_contract->id])->get()->first();
+                $received_receipts->push($r_receipt);
+            }
+
+            return view('receipts.index', compact('provided_receipts','received_receipts'));
         }          
     }
 
@@ -44,16 +59,66 @@ class ReceiptController extends Controller
     // Gets all the receipts associated with specified user
     public function showUserReceipts($user_id)
     {
-        $reviews = Review::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
-        return view('reviews.index', compact('reviews'));
+        $provided_receipts = collect();
+        $received_receipts = collect();
+
+        $provided_contracts = Contract::where('provider_id','=', $user_id)->get();
+        $received_contracts = Contract::where('receiver_id','=', $user_id)->get();
+
+        foreach ($provided_contracts as $p_contract)
+        {
+            $p_receipt = Receipt::whereIn('contract_id',[$p_contract->id])->get()->first();
+            $provided_receipts->push($p_receipt);
+        }
+
+        foreach ($received_contracts as $r_contract)
+        {
+            $receipt = Receipt::whereIn('contract_id',[$r_contract->id])->get()->first();
+            $received_receipts->push($r_receipt);
+        }
+
+        return view('receipts.index', compact('provided_receipts','received_receipts'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function test()
     {
-        $user_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
-        $reviews = $user_reviews->take(10)->get();
+        $cons[0] = "5be3e44384220c1da3213b27";
+        $cons[1] = "5be3e44384220c1da3213b28";
+        $cons[2] = "swag";
+        $cons[3] = "dad";
 
-        return view('reviews.create', compact('reviews'));
+        $allReceipts = Receipt::all();
+        $counter = 0;
+
+        foreach ($allReceipts as $receipts)
+        {
+            foreach ($cons as $con)
+            {
+                if (in_array($con, $receipts->contract_id))
+                {
+                    $counter++;
+                }
+            }
+        }
+
+        if ($counter == 0)
+        {
+            $receipt = new Receipt;
+            $receipt->contract_id = $cons;
+            $receipt->payment_method = "Cash";
+            $receipt->price = 500;
+
+            $receipt->save();  
+        }
+        else
+        {
+            dd("ERROR");
+        }
+    }
+
+    public function create()
+    {
+        return view('receipts.create', compact('receipts'));
     }
 
 
@@ -62,19 +127,40 @@ class ReceiptController extends Controller
         // Validation Logic
         $this->validate($request, 
         [
-            'reviewer_id' => 'required',
-            'reviewee_id' => 'required',
-            'content' => 'required',
+            'contract_id' => 'required',
+            'payment_method' => 'required',
+            'price' => 'required',
         ]);
 
-        // create a new Review based on input
-        $review = new Review;
+        // create a new Receipt based on input
+        $allReceipts = Receipt::all();
+        $cids = $request->contract_id;
+        $counter = 0;
 
-        $review->reviewer_id = $request->reviewer_id;
-        $review->reviewee_id = $request->reviewee_id;
-        $review->content = $request->content;
+        foreach ($allReceipts as $receipts)
+        {
+            foreach ($cids as $cid)
+            {
+                if (in_array($cid, $receipts->contract_id))
+                {
+                    $counter++;
+                }
+            }
+        }
 
-        $review->save();     
+        if ($counter == 0)
+        {
+            $receipt = new Receipt;
+            $receipt->contract_id = $request->contract_id;
+            $receipt->payment_method = $request->payment_method;
+            $receipt->price = $request->price;
+
+            $receipt->save();  
+        }
+        else
+        {
+            dd("ERROR");
+        }
 
         return redirect()->back();
     }
@@ -82,34 +168,35 @@ class ReceiptController extends Controller
 
     public function show($id)
     {
-        $review = Review::findOrFail($id);
+        $receipt = Receipt::findOrFail($id);
 
-        return view('reviews.show', compact('review'));
+        return view('receipts.show', compact('receipt'));
     }
 
     public function edit($id)
     {
-        $review = Review::findOrFail($id);
+        $receipt = Receipt::findOrFail($id);
 
-        return view('reviews.edit', compact('review'));
+        return view('receipts.edit', compact('receipt'));
     }
 
     public function update(Request $request, $id)
     {
-        $review = Review::findOrFail($id);
-        
-        $review->reviewer_id = $request->reviewer_id;
-        $review->reviewee_id = $request->reviewee_id;
-        $review->content = $request->content;
+        $receipt = Receipt::findOrFail($id);
 
-        $review->save();  
+        $receipt->contract_id = $request->contract_id;
+        $receipt->payment_method = $request->payment_method;
+        $receipt->price = $request->price;
 
-        return redirect()->route('reviews.edit', ['review' => $review ]);
+        $receipt->save();     
+
+
+        return redirect()->route('receipts.edit', ['receipt' => $receipt ]);
     }
 
     public function destroy($id)
     {
-        Review::findOrFail($id)->delete();
+        Receipt::findOrFail($id)->delete();
 
         return redirect()->back();
     }

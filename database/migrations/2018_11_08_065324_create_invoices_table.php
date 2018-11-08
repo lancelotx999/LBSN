@@ -18,9 +18,10 @@ class CreateInvoicesTable extends Migration
             $table->string('provider_id');
             $table->string('receiver_id');
             $table->string('contract_id');
-            
+
             $table->string('tax');
             $table->double('total_price');
+            $table->double('grand_total');
 
             $table->boolean('paid');
             $table->timestamps();

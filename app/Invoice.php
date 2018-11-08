@@ -8,9 +8,9 @@ class Invoice extends Moloquent
 {
     protected $table = 'invoices';
 
-    protected $guarded = 
+    protected $guarded =
     [
-       'provider_id','receiver_id','contract_id', 'tax','total_price', 'paid',
+       'provider_id','receiver_id','contract_id', 'tax','total_price', 'grand_total', 'paid',
     ];
 
 }

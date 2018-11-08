@@ -12,12 +12,12 @@ use App\Contract;
 class ReceiptController extends Controller
 {
   // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
-    // List all receipts if user is admin 
+    // List all receipts if user is admin
     // Shows only user receipts if user is a merchant / normal user
     public function index()
     {
@@ -32,7 +32,7 @@ class ReceiptController extends Controller
             $received_receipts = Receipt::where('receiver_id','=', Auth::user()->id)->get();
 
             return view('receipts.index', compact('provided_receipts','received_receipts'));
-        }          
+        }
     }
 
     // Gets all reviews
@@ -60,7 +60,7 @@ class ReceiptController extends Controller
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
+        $this->validate($request,
             [
                 'invoice_id' => 'required',
                 'payment_method' => 'required',
@@ -72,8 +72,7 @@ class ReceiptController extends Controller
 
         foreach ($allReceipts as $receipts)
         {
-            if (in_array($request->invoice_id, $receipts->invoice_id))
-            {
+            if ($request->invoice_id == $receipts->invoice_id) {
                 $counter++;
             }
         }
@@ -90,7 +89,7 @@ class ReceiptController extends Controller
             $receipt->invoice_id = $request->invoice_id;
             $receipt->payment_method = $request->payment_method;
 
-            $receipt->save();  
+            $receipt->save();
         }
         else
         {
@@ -122,7 +121,7 @@ class ReceiptController extends Controller
         $receipt->invoice_id = $request->invoice_id;
         $receipt->payment_method = $request->payment_method;
 
-        $receipt->save();     
+        $receipt->save();
 
 
         return redirect()->route('receipts.edit', ['receipt' => $receipt ]);
@@ -137,7 +136,74 @@ class ReceiptController extends Controller
 
     public function test()
     {
+        // $cons[0] = "5be3e44384220c1da3213b27";
+        // $cons[1] = "5be3e44384220c1da3213b28";
+        // $cons[2] = "swag";
+        // $cons[3] = "dad";
+        $request = new class{};
 
+        $request->invoice_id = "5be439b2339b573fff297eb9";
+        $request->payment_method = "cash";
+
+        $allReceipts = Receipt::all();
+        $counter = 0;
+
+        // create a new Receipt based on input
+        $allReceipts = Receipt::all();
+        $counter = 0;
+
+        foreach ($allReceipts as $receipts)
+        {
+            // dd($receipts);
+            // if (in_array($request->invoice_id, $receipts->invoice_id))
+            // {
+            //     $counter++;
+            // }
+
+            if ($request->invoice_id == $receipts->invoice_id) {
+                $counter++;
+            }
+
+        }
+
+        // foreach ($allReceipts as $receipts)
+        // {
+        //     foreach ($cons as $con)
+        //     {
+        //         if (in_array($con, $receipts->contract_id))
+        //         {
+        //             $counter++;
+        //         }
+        //     }
+        // }
+        // dd($counter);
+
+        if ($counter == 0)
+        {
+            $invoice = Invoice::find($request->invoice_id);
+
+            $receipt = new Receipt;
+
+            $receipt->provider_id = $invoice->provider_id;
+            $receipt->receiver_id = $invoice->receiver_id;
+
+            $receipt->invoice_id = $request->invoice_id;
+            $receipt->payment_method = $request->payment_method;
+
+            // $receipt = new Receipt;
+            // $receipt->contract_id = $cons;
+            // $receipt->payment_method = "Cash";
+            // $receipt->price = 500;
+            // $receipt->save();
+
+            $receipt->save();
+        }
+        else
+        {
+            dd("ERROR");
+        }
+
+        dd($receipt);
     }
 
 }

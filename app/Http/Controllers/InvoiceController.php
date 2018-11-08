@@ -12,12 +12,12 @@ use App\Contract;
 class InvoiceController extends Controller
 {
   // Apply auth middleware so only authenticated users have access
-	public function __construct() 
+	public function __construct()
 	{
 		$this->middleware('auth');
 	}
 
-    // List all receipts if user is admin 
+    // List all receipts if user is admin
     // Shows only user receipts if user is a merchant / normal user
 	public function index()
 	{
@@ -32,7 +32,7 @@ class InvoiceController extends Controller
 			$received_invoices = Invoice::where('receiver_id','=', Auth::user()->id)->get();
 
 			return view('invoices.index', compact('provided_invoices','received_invoices'));
-		}          
+		}
 	}
 
     // Gets all reviews
@@ -58,7 +58,33 @@ class InvoiceController extends Controller
 
 	public function test()
 	{
+		$cids = ['5be42147339b57201c0ce5f9', '5be42147339b57201c0ce5fa'];
+		$pid = array(); $rid = array();
+		$total = 0;
 
+		foreach ($cids as $cid)
+		{
+			$contract = Contract::where('_id','=',$cid)->get()->first();
+			$total = $total + $contract->price;
+			// dd($contract);
+			array_push($pid,$contract->provider_id);
+			array_push($rid,$contract->receiver_id);
+			unset($cid);
+		}
+
+		$taxed = $total * 0.25;
+		$grandTotal = $total + $taxed;
+
+		$invoice = new Invoice;
+		$invoice->provider_id = $pid[0];
+		$invoice->receiver_id = $rid[0];
+		$invoice->contract_id = $cids;
+		$invoice->total_price = $total;
+		$invoice->tax = $taxed;
+		$invoice->grand_total = $grandTotal;
+		$invoice->paid = false;
+
+		$invoice->save();
 	}
 
 	public function create()
@@ -79,7 +105,7 @@ class InvoiceController extends Controller
 	public function store(Request $request)
 	{
         // Validation Logic
-		$this->validate($request, 
+		$this->validate($request,
 			[
 				'contract_id' => 'required',
 				'tax' => 'required',
@@ -107,41 +133,48 @@ class InvoiceController extends Controller
 
 		// Ensuring all provider and receiver ids are consistent in contracts
 		$pid = array(); $rid = array();
+		$total = 0;
 		foreach ($cids as $cid)
 		{
 			$contract = Contract::where('_id','=',$cid)->get()->first();
-			dd($contract);
+			$total = $total + $contract->price;
+			// dd($contract);
 			array_push($pid,$contract->provider_id);
 			array_push($rid,$contract->receiver_id);
 			unset($cid);
 		}
 
-		if ((count(array_unique($pid))) && (count(array_unique($rid))))
+		// if ((count(array_unique($pid))) && (count(array_unique($rid))))
+		// {
+        //
+		// }
+		// else
+		// {
+		// 	$counter++;
+		// }
+		// if ($counter == 0)
+		if((count(array_unique($pid)) && count(array_unique($rid)))==1)
 		{
-			
-		}
-		else
-		{
-			$counter++;
-		}
+			$taxed = $total * 0.25;
+			$grandTotal = $total + $taxed;
 
-		if ($counter == 0)
-		{
 			$invoice = new Invoice;
 			$invoice->provider_id = $pid[0];
 			$invoice->receiver_id = $rid[0];
-			$invoice->contract_id = $request->contract_id;
-			$invoice->tax = $request->tax;
-			$invoice->total_price = $request->total_price;
+			$invoice->contract_id = $cids;
+			$invoice->total_price = $total;
+			$invoice->tax = $taxed;
+			$invoice->grand_total = $grandTotal;
 			$invoice->paid = false;
 
-			$invoice->save();   
+			$invoice->save();
 		}
 		else
 		{
 			dd("ERROR");
 		}
 
+		// dd($invoice);
 		return redirect()->back();
 	}
 
@@ -165,14 +198,34 @@ class InvoiceController extends Controller
 		$invoice = Invoice::findOrFail($id);
 
 		$invoice->provider_id = $request->provider_id;
-		$invoice->receiver_id = $request->receiver_id;		
+		$invoice->receiver_id = $request->receiver_id;
 		$invoice->contract_id = $request->contract_id;
-		$invoice->tax = $request->tax;
-		$invoice->total_price = $request->total_price;
+
+		$cids = $request->contract_id;
+
+		$pid = array(); $rid = array();
+		$total = 0;
+
+		foreach ($cids as $cid)
+		{
+			$contract = Contract::where('_id','=',$cid)->get()->first();
+			$total = $total + $contract->price;
+			// dd($contract);
+			array_push($pid,$contract->provider_id);
+			array_push($rid,$contract->receiver_id);
+			unset($cid);
+		}
+
+		$taxed = $total * 0.25;
+		$grandTotal = $total + $taxed;
+
+		$invoice->total_price = $total;
+		$invoice->tax = $taxed;
+		$invoice->grand_total = $grandTotal;
+
 		$invoice->paid = $request->paid;
 
-		$invoice->save();     
-
+		$invoice->save();
 
 		return redirect()->route('invoices.edit', ['invoice' => $invoice ]);
 	}

@@ -189,15 +189,15 @@
 		            @endforeach
                     <tr>
                         <td colspan='3'>SUBTOTAL</td>
-                        <td class='total'>RM{{ $data->total }}</td>
+                        <td class='total'>RM{{ $data->total_price }}</td>
                     </tr>
                     <tr>
                         <td colspan='3'>TAX 25%</td>
-                        <td id='total' class='total'>RM{{ $data->taxed }}</td>
+                        <td id='total' class='total'>RM{{ $data->tax }}</td>
                     </tr>
                     <tr>
                         <td colspan='3' class='grand total'>GRAND TOTAL</td>
-                        <td id='grandTotal' class='grand total'>RM{{$data->grandTotal}}</td>
+                        <td id='grandTotal' class='grand total'>RM{{$data->grand_total}}</td>
                     </tr>
                 </tbody>
             </table>

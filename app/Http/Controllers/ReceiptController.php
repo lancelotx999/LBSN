@@ -142,7 +142,7 @@ class ReceiptController extends Controller
         // $cons[3] = "dad";
         $request = new class{};
 
-        $request->invoice_id = "5be439b2339b573fff297eb9";
+        $request->invoice_id = "5be449c2339b5708955603b3";
         $request->payment_method = "cash";
 
         $allReceipts = Receipt::all();

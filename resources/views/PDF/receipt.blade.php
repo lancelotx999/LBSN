@@ -137,6 +137,11 @@
           padding: 8px 0;
           text-align: center;
         }
+
+        .company{
+            float: right;
+            textAlign: right;
+        }
     </style>
     <head>
         <meta charset='utf-8'>
@@ -148,20 +153,19 @@
             <div id='logo'>
                 <img src='logo.png'>
             </div>
-            <h1>INVOICE 3-2-1</h1>
-                <div id='company' class='clearfix'>
+            <h1>Receipt</h1>
+            <div class='company' >
                 <div>LSBN</div>
-                <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-                <div>(602) 519-0450</div>
-                <div><a href='mailto:company@example.com'>company@example.com</a></div>
+                <div>420 Smoky Heights,<br /> CAL 85004, US</div>
+                <div>(602) 666-0420</div>
+                <div><a href='mailto:company@example.com'>LSBN@LSBN.com</a></div>
             </div>
             <div id='project'>
                 <div><span>PROJECT</span> Website development</div>
-                <div><span>CLIENT</span> John Doe</div>
+                <div><span>CLIENT</span> {{ $data->receiver->name }}</div>
                 <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
-                <div><span>EMAIL</span> <a href='mailto:john@example.com'>john@example.com</a></div>
-                <div><span>DATE</span> August 17, 2015</div>
-                <div><span>DUE DATE</span> September 17, 2015</div>
+                <div><span>EMAIL</span> <a href='mailto:{{ $data->receiver->email }}'>{{ $data->receiver->email }}</a></div>
+                <div><span>PAYMENT METHOD</span> {{ $data->payment_method }}</div>
             </div>
         </header>
         <main>
@@ -170,33 +174,31 @@
                     <tr>
                         <th class='service'>SERVICE</th>
                         <th class='desc'>DESCRIPTION</th>
+                        <th>ID</th>
                         <th>PRICE</th>
-                        <th>QTY</th>
-                        <th>TOTAL</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach ($contracts as $contract)
+                    @foreach ($data->contracts as $contract)
                     <tr>
                         <td class='service'>{{ $contract->type }}</td>
                         <td class='desc'>{{ $contract->description }}</td>
+                        <td class='id'>{{ $contract->_id }}</td>
                         <td class='unit'>{{ $contract->price }}</td>
-                        <td class='qty'>{{ $contract->type }}</td>
-                        <td class='total'>$1,040.00</td>
                     </tr>
 		            @endforeach
                     <tr>
-                        <td colspan='4'>SUBTOTAL</td>
-                        <td class='total'>$5,200.00</td>
+                        <td colspan='3'>SUBTOTAL</td>
+                        <td class='total'>RM{{ $data->invoice->total_price }}</td>
                     </tr>
                     <tr>
-                        <td colspan='4'>TAX 25%</td>
-                        <td class='total'>$1,300.00</td>
+                        <td colspan='3'>TAX 25%</td>
+                        <td id='total' class='total'>RM{{ $data->invoice->tax }}</td>
                     </tr>
                     <tr>
-                        <td colspan='4' class='grand total'>GRAND TOTAL</td>
-                        <td class='grand total'>$6,500.00</td>
+                        <td colspan='3' class='grand total'>GRAND TOTAL</td>
+                        <td id='grandTotal' class='grand total'>RM{{$data->invoice->grand_total}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -206,7 +208,7 @@
             </div>
         </main>
         <footer>
-        Invoice was created on a computer and is valid without the signature and seal.
+        Receipt was created on a computer and is valid without the signature and seal.
     </footer>
     </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Invoice;
 use App\Receipt;
 use App\Contract;
 use PDF;
@@ -31,40 +32,32 @@ class PDF_GeneratorController extends Controller
     }
 
 	public function invoiceGenerator(){
-		//provider_id & receiver_id is loaded from POST
-		$provider_id = "5be2c26f339b5754de60b392";
-		$receiver_id = "5be2e673339b57708e1ab802";
+		$data = Invoice::findOrFail('5be449c2339b5708955603b3');
 
-		$provider = User::findOrFail($provider_id);
-		$receiver = User::findOrFail($receiver_id);
+		$data->provider = User::findOrFail($data->provider_id);
+		$data->receiver = User::findOrFail($data->receiver_id);
+		$data->contracts = Contract::where('receiver_id','=', $data->receiver_id)->where('provider_id','=', $data->provider_id)->get();
 
-		$contracts = Contract::where('receiver_id','=', $receiver_id)->where('provider_id','=', $provider_id)->get();
-
-		$total = 0;
-
-		foreach ($contracts as $contract) {
-			$total = $total + $contract->price;
-		}
-
-		$taxed = $total*0.25;
-		$grandTotal = $taxed + $total;
-
-		$data = new class{};
-
-		$data->provider = $provider;
-		$data->receiver = $receiver;
-		$data->total = $total;
-		$data->taxed = $taxed;
-		$data->grandTotal = $grandTotal;
-		$data->contracts = $contracts;
-
-		// return view('PDF.invoice',  compact('data'));
-
+		// dd($data);
 		$pdf = PDF::loadView('PDF.invoice',  compact('data'));
 		$pdf->setPaper('A4', 'landscape');
 
-
 		return $pdf->download('invoice.pdf');
+	}
+
+	public function receiptGenerator(){
+		$data = Receipt::findOrFail('5be44aa1339b5708955603b4');
+
+		$data->provider = User::findOrFail($data->provider_id);
+		$data->receiver = User::findOrFail($data->receiver_id);
+		$data->invoice = Invoice::findOrFail($data->invoice_id);
+		$data->contracts = Contract::where('receiver_id','=', $data->receiver_id)->where('provider_id','=', $data->provider_id)->get();
+
+		// dd($data);
+		$pdf = PDF::loadView('PDF.receipt',  compact('data'));
+		$pdf->setPaper('A4', 'landscape');
+
+		return $pdf->download('receipt.pdf');
 	}
 
 
@@ -83,7 +76,4 @@ class PDF_GeneratorController extends Controller
 
 	}
 
-	public function receiptGenerator(){
-
-	}
 }

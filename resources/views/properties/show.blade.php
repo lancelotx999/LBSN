@@ -37,9 +37,6 @@
                         Status: {{ $property->status }}
                     </p>
                     <p>
-                        Rating: {{ $property->rating }}
-                    </p>
-                    <p>
                         Latitude: {{ $property->latitude }}
                     </p>
                     <p>

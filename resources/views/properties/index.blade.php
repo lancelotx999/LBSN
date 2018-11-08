@@ -22,6 +22,12 @@
                 <div class="card-body">
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
+                    @if ($properties->isEmpty())
+                        <br />
+                        <h1 class="display-4">Hello, it seems empty here!</h1>
+                        <p class="lead">Why don't you try to add some stuff?</p>
+                        <hr />
+                    @endif
                     @foreach ($properties as $property)
 	                    <div id="{{ $property->_id }}" class="media">
 			                <div class="media-body">

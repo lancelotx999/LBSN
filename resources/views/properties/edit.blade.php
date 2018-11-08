@@ -123,7 +123,7 @@
                             name="owner_id"
                             type="hidden"
                             class="form-control"
-                            value="{{ Auth::id() }}"
+                            value="{{ $property->owner_id }}"
                             placeholder="Enter owner ID."
                             required
                         />

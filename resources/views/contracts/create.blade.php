@@ -2,12 +2,23 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h6>
+                <a href="{{ url('/') }}">Home</a> 
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('contract.index') }}">Contracts</a>
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('contract.create') }}">Create New Contract</a>
+            </h6><hr />
+        </div>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Register Contract</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('propertyContract.store') }}">
+                    <form method="POST" action="{{ route('contract.store') }}">
                     	@csrf
                     	@method('POST')
 
@@ -17,7 +28,7 @@
                                     Provider:
                                     <input
                                         id="providerID"
-                                        name="providerID"
+                                        name="provider_id"
                                         type="text"
                                         class="form-control"
                                         placeholder="Enter provider ID."
@@ -30,7 +41,7 @@
                                     Receiver:
                                     <input
                                         id="receiverID"
-                                        name="receiverID"
+                                        name="receiver_id"
                                         type="text"
                                         class="form-control"
                                         placeholder="Enter receiver ID."
@@ -42,12 +53,11 @@
                                 <label>
                                     Property:
                                     <input
-                                        id="locationID"
-                                        name="locationID"
+                                        id="itemID"
+                                        name="item_id"
                                         type="text"
                                         class="form-control"
-                                        value="{{ $location->_id }}"
-                                        placeholder="Enter location ID."
+                                        placeholder="Enter item ID."
                                     />
                                 </label>
                             </p>
@@ -56,73 +66,35 @@
                                     Contract Type:
                                     <input
                                         id="contractType"
-                                        name="contractType"
+                                        name="type"
                                         type="text"
                                         class="form-control"
-                                        placeholder="Enter contract Type."
+                                        placeholder="Enter contract type."
                                     />
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    Contract Content:
-                                    <input
-                                        id="contractContent"
-                                        name="contractContent"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter contract content."
-                                    />
+                                    Description:
                                 </label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="contractContent" 
+                                    name="description"
+                                    rows="3"
+                                    placeholder="Enter description."
+                                    >    
+                                </textarea>
                             </p>
                             <p>
                                 <label>
-                                    Contract Value:
+                                    Property Price:
                                     <input
                                         id="contractValue"
-                                        name="contractValue"
+                                        name="price"
                                         type="number"
                                         class="form-control"
-                                        placeholder="Enter contract value."
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Contract Status:
-                                    <input
-                                        id="contractStatus"
-                                        name="contractStatus"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter contract value."
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Provider Signature:
-                                    <input
-                                        id="providerSignature"
-                                        name="providerSignature"
-                                        type="password"
-                                        class="form-control"
-                                        placeholder="Enter provider password."
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Receiver Signature:
-                                    <input
-                                        id="receiverSignature"
-                                        name="receiverSignature"
-                                        type="password"
-                                        class="form-control"
-                                        placeholder="Enter receiver password."
+                                        placeholder="Enter price value."
                                         required
                                     />
                                 </label>
@@ -133,61 +105,9 @@
                         </button>
                     </form>
                     <hr />
-                    @foreach ($contracts as $contract)
-	                    <div id="{{ $contract->_id }}" class="media">
-			                <div class="media-body">
-                                <h5>{{ $contract->contractContent }}</h5>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="{{ route('propertyContract.edit', $contract->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                Edit
-                                            </button>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-sm-8">
-        			                    <form method="POST" action="{{ route('propertyContract.destroy', $contract->_id) }}">
-        			                    	@csrf
-        									@method('DELETE')
-
-        				                    <button type="submit" class="btn btn-sm btn-danger float-right">
-        				                        DELETE
-        				                    </button>
-        			                	</form>
-                                    </div>
-                                </div>
-                                <hr />
-			                </div>
-			            </div>
-		            @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-
-
-    var read = "{{ $location }}";
-    var json = read.replace(/&quot;/g, '"');
-    var location = JSON.parse(json);
-
-    var read = "{{ $contracts }}";
-    var json = read.replace(/&quot;/g, '"');
-    var contracts = JSON.parse(json);
-
-
-    console.log("---------- location ----------");
-    console.log(location);
-    console.log("---------- location ----------");
-    console.log("---------- contracts ----------");
-    console.log(contracts);
-    console.log("---------- contracts ----------");
-
-
-
-</script>
-
 @endsection

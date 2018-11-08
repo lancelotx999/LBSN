@@ -118,7 +118,7 @@
                             name="owner_id"
                             type="hidden"
                             class="form-control"
-                            value="{{ $property->owner_id }}"
+                            value="{{ Auth::id() }}"
                             placeholder="Enter owner ID."
                             required
                         />
@@ -127,7 +127,6 @@
                         </button>
                     </form>
                     <hr />
-                    
                 </div>
             </div>
         </div>

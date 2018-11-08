@@ -59,10 +59,7 @@ class ContractController extends Controller
 
     public function create()
     {
-        $user_contracts = Contract::where('provider_id','=', $user_id)->get();
-        $contracts = $user_contracts->take(10)->get();
-
-        return view('contracts.create', compact('contracts'));
+        return view('contracts.create');
     }
 
     public function store(Request $request)
@@ -88,7 +85,7 @@ class ContractController extends Controller
         $contract->paid = false;
 
         $contract->save();
-        return redirect()->back();
+        return redirect()->route('contract.index');
     }
 
     public function show($id)
@@ -119,7 +116,7 @@ class ContractController extends Controller
 
         $contract->save();  
 
-        return redirect()->route('contracts.edit', ['contract' => $contract ]);
+        return redirect()->back();
     }
 
     public function destroy($id)

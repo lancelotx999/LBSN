@@ -53,10 +53,10 @@
                             <a class="nav-link" href="{{ route('property.index') }}">Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Register Location</a>
+                            <a class="nav-link" href="{{ route('contract.index') }}">Contracts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">See Invoice</a>
+                            <a class="nav-link" href="#">Businesses</a>
                         </li>
                     </ul>
 

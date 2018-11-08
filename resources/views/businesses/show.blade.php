@@ -7,34 +7,33 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.index') }}">Contracts</a>
+                <a href="{{ route('business.index') }}">Businesses</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.show', $contract->_id) }}">View Contract {{ $contract->item_id }}</a>
+                <a href="{{ route('business.show', $business->_id) }}">View {{ $business->name }}</a>
             </h6><hr />
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">View Contract</div>
+                <div class="card-header">View Business</div>
                 <div class="card-body">
                     <p>
-                        Provider: {{ $contract->provider_id }}
+                        Name: {{ $business->name }}
                     </p>
                     <p>
-                        Receiver: {{ $contract->receiver_id }}
+                        Description: {{ $business->description }}
                     </p>
                     <p>
-                        Property: {{ $contract->item_id }}
+                        Services:
+                        <ul>
+                        @foreach ($business->services as $service)
+                            <li>{{ $service }}</li>
+                        @endforeach
+                        </ul>
                     </p>
                     <p>
-                        Contract Type: {{ $contract->type }}
-                    </p>
-                    <p>
-                        Description: {{ $contract->description }}
-                    </p>
-                    <p>
-                        Property Price: {{ $contract->price }}
+                        Contact Number: {{ $business->contact_number }}
                     </p>
                     <hr />
                     <p><a href="{{ url()->previous() }}">Return to previous page</a></p>
@@ -46,7 +45,7 @@
 
 @php
 
-if (empty($contract)) { $contract = null; }
+if (empty($business)) { $business = null; }
 
 @endphp
 

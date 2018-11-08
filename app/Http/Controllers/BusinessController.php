@@ -54,10 +54,7 @@ class BusinessController extends Controller
 
     public function create()
     {
-        $user_businesses = Business::where('owner_id','=',Auth::user()->id)->get();
-        $businesses = $user_businesses->take(10)->get();
-
-        return view('businesses.create', compact('businesses'));
+        return view('businesses.create');
     }
 
 
@@ -79,13 +76,13 @@ class BusinessController extends Controller
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;
         $business->description = $request->description;
-        $business->services = $request->services;	// Need to implement string separation
+        $business->services = array_filter($request->services, function($var){return !is_null($var);} );
         $business->contact_number = $request->contact_number;
         $business->verified = false;
 
         $business->save();     
 
-        return redirect()->back();
+        return redirect()->route('business.index');
     }
 
     public function show($id)
@@ -109,13 +106,13 @@ class BusinessController extends Controller
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;
         $business->description = $request->description;
-        $business->services = $request->services;	// Need to implement string separation
+        $business->services = array_filter($request->services, function($var){return !is_null($var);} );
         $business->contact_number = $request->contact_number;
         $business->verified = $request->verified;
 
         $business->save();  
 
-        return redirect()->route('businesses.edit', ['business' => $business ]);
+        return redirect()->back();
     }
 
     public function destroy($id)

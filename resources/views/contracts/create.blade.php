@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Register Contract</div>
+                <div class="card-header">Create Contract</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('contract.store') }}">
                     	@csrf
@@ -83,8 +83,7 @@
                                     name="description"
                                     rows="3"
                                     placeholder="Enter description."
-                                    >    
-                                </textarea>
+                                    ></textarea>
                             </p>
                             <p>
                                 <label>

@@ -56,7 +56,7 @@
                             <a class="nav-link" href="{{ route('contract.index') }}">Contracts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Businesses</a>
+                            <a class="nav-link" href="{{ route('business.index') }}">Businesses</a>
                         </li>
                     </ul>
 

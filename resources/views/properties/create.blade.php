@@ -37,7 +37,7 @@
                                         name="name"
                                         type="text"
                                         class="form-control"
-                                        placeholder="Enter location name."
+                                        placeholder="Enter property name."
                                         required
                                     />
                                 </label>
@@ -50,7 +50,7 @@
                                         name="address"
                                         type="text"
                                         class="form-control"
-                                        placeholder="Enter location address."
+                                        placeholder="Enter property address."
                                         required
                                     />
                                 </label>
@@ -63,7 +63,7 @@
                                         name="description"
                                         type="text"
                                         class="form-control"
-                                        placeholder="Enter location description."
+                                        placeholder="Enter property description."
                                     />
                                 </label>
                             </p>

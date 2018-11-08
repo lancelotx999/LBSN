@@ -87,8 +87,7 @@
                                     name="description"
                                     rows="3"
                                     placeholder="Enter description."
-                                    >{{ $contract->description }}
-                                </textarea>
+                                    >{{ $contract->description }}</textarea>
                             </p>
                             <p>
                                 <label>

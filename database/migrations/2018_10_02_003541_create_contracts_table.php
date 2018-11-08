@@ -25,6 +25,7 @@ class CreateContractsTable extends Migration
             $table->string('description');
             $table->double('price');
             
+            $table->boolean('accepted');
             $table->boolean('paid');
             $table->boolean('fulfilled');
 
@@ -39,7 +40,7 @@ class CreateContractsTable extends Migration
             'type' => "Service",
             'description' => "Cleaning receiver's property",
             'price' => 100.5,
-
+            'accepted' => false,
             'paid' => false,
             'fulfilled' => false,
         ));
@@ -52,7 +53,7 @@ class CreateContractsTable extends Migration
             'type' => "Service",
             'description' => "Cleaning receiver's property AGAIN",
             'price' => 200.5,
-
+            'accepted' => true,
             'paid' => false,
             'fulfilled' => false,
         ));            

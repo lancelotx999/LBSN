@@ -61,7 +61,6 @@ class RatingController extends Controller
     public function create()
     {
         $user_ratings = Rating::where('rater_id','=',Auth::user()->id)->get();
-        $ratings = $user_ratings->take(10)->get();
 
         return view('ratings.create', compact('ratings'));
     }

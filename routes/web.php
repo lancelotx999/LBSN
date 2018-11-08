@@ -35,3 +35,4 @@ Route::get('/test4', 'RatingController@test');
 Route::get('/test5', 'ReceiptController@test');
 Route::get('/test6', 'ReviewController@test');
 Route::get('/test7', 'UserController@test');
+Route::get('/test8', 'InvoiceController@test');

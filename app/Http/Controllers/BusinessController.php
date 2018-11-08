@@ -55,7 +55,6 @@ class BusinessController extends Controller
     public function create()
     {
         $user_businesses = Business::where('owner_id','=',Auth::user()->id)->get();
-        $businesses = $user_businesses->take(10)->get();
 
         return view('businesses.create', compact('businesses'));
     }

@@ -27,16 +27,25 @@ class ReceiptController extends Controller
         }
         else
         {
-            $receipts = collect();
-            $contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+            $provided_receipts = collect();
+            $received_receipts = collect();
 
-            foreach ($contracts as $contract)
+            $provided_contracts = Contract::where('provider_id','=', Auth::user()->id)->get();
+            $received_contracts = Contract::where('receiver_id','=', Auth::user()->id)->get();
+
+            foreach ($provided_contracts as $p_contract)
             {
-                $receipt = Receipt::whereIn('contract_id',[$contract->id])->get()->first();
-                $receipts->push($receipt);
+                $p_receipt = Receipt::whereIn('contract_id',[$p_contract->id])->get()->first();
+                $provided_receipts->push($p_receipt);
             }
 
-            return view('receipts.index', compact('receipts'));
+            foreach ($received_contracts as $r_contract)
+            {
+                $receipt = Receipt::whereIn('contract_id',[$r_contract->id])->get()->first();
+                $received_receipts->push($r_receipt);
+            }
+
+            return view('receipts.index', compact('provided_receipts','received_receipts'));
         }          
     }
 
@@ -50,27 +59,65 @@ class ReceiptController extends Controller
     // Gets all the receipts associated with specified user
     public function showUserReceipts($user_id)
     {
-        $receipts = collect();
-        $contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
+        $provided_receipts = collect();
+        $received_receipts = collect();
 
-        foreach ($contracts as $contract)
+        $provided_contracts = Contract::where('provider_id','=', $user_id)->get();
+        $received_contracts = Contract::where('receiver_id','=', $user_id)->get();
+
+        foreach ($provided_contracts as $p_contract)
         {
-            $receipt = Receipt::whereIn('contract_id',[$contract->id])->get()->first();
-            $receipts->push($receipt);
+            $p_receipt = Receipt::whereIn('contract_id',[$p_contract->id])->get()->first();
+            $provided_receipts->push($p_receipt);
         }
 
-        return view('receipts.index', compact('receipts'));
+        foreach ($received_contracts as $r_contract)
+        {
+            $receipt = Receipt::whereIn('contract_id',[$r_contract->id])->get()->first();
+            $received_receipts->push($r_receipt);
+        }
+
+        return view('receipts.index', compact('provided_receipts','received_receipts'));
     }
 
     public function test()
     {
+        $cons[0] = "5be3e44384220c1da3213b27";
+        $cons[1] = "5be3e44384220c1da3213b28";
+        $cons[2] = "swag";
+        $cons[3] = "dad";
 
+        $allReceipts = Receipt::all();
+        $counter = 0;
+
+        foreach ($allReceipts as $receipts)
+        {
+            foreach ($cons as $con)
+            {
+                if (in_array($con, $receipts->contract_id))
+                {
+                    $counter++;
+                }
+            }
+        }
+
+        if ($counter == 0)
+        {
+            $receipt = new Receipt;
+            $receipt->contract_id = $cons;
+            $receipt->payment_method = "Cash";
+            $receipt->price = 500;
+
+            $receipt->save();  
+        }
+        else
+        {
+            dd("ERROR");
+        }
     }
 
     public function create()
     {
-        $receipts = Receipt::where('contract_id','=',Auth::user()->id)->get();
-
         return view('receipts.create', compact('receipts'));
     }
 
@@ -86,13 +133,34 @@ class ReceiptController extends Controller
         ]);
 
         // create a new Receipt based on input
-        $receipt = new Receipt;
+        $allReceipts = Receipt::all();
+        $cids = $request->contract_id;
+        $counter = 0;
 
-        $receipt->contract_id = $request->contract_id;
-        $receipt->payment_method = $request->payment_method;
-        $receipt->price = $request->price;
+        foreach ($allReceipts as $receipts)
+        {
+            foreach ($cids as $cid)
+            {
+                if (in_array($cid, $receipts->contract_id))
+                {
+                    $counter++;
+                }
+            }
+        }
 
-        $receipt->save();     
+        if ($counter == 0)
+        {
+            $receipt = new Receipt;
+            $receipt->contract_id = $request->contract_id;
+            $receipt->payment_method = $request->payment_method;
+            $receipt->price = $request->price;
+
+            $receipt->save();  
+        }
+        else
+        {
+            dd("ERROR");
+        }
 
         return redirect()->back();
     }

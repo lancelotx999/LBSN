@@ -39,3 +39,4 @@ Route::resource('/test2', 'PropertyController@test');
 Route::resource('/test3', 'ContractController@test');
 Route::get('/test4', 'PDF_GeneratorController@invoiceGenerator');
 Route::get('/test5', 'PDF_GeneratorController@receiptGenerator');
+Route::get('/test6', 'PDF_GeneratorController@test');

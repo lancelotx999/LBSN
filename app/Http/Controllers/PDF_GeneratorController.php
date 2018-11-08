@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Receipt;
 use App\Contract;
 use PDF;
 
@@ -64,5 +65,25 @@ class PDF_GeneratorController extends Controller
 
 
 		return $pdf->download('invoice.pdf');
+	}
+
+
+	public function test(){
+		$cons[0] = "5bdfec8f84220c106b2bb5a7";
+		$cons[1] = "5bdfec8f84220c106b2bb5a8";
+		$receipt = new Receipt;
+
+		$receipt->contract_id = $cons;
+		$receipt->payment_method = "Cash";
+		$receipt->price = 500;
+
+		$receipt->save();
+
+		dd($receipt);
+
+	}
+
+	public function receiptGenerator(){
+
 	}
 }

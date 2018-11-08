@@ -37,5 +37,5 @@ Route::resource('review', 'ReviewController');
 Route::resource('/test1', 'BusinessController@test');
 Route::resource('/test2', 'PropertyController@test');
 Route::resource('/test3', 'ContractController@test');
-Route::resource('/test4', 'ReceiptController@test');
-Route::get('/test4', 'PDF_GeneratorController@HTMLtoPDF');
+Route::get('/test4', 'PDF_GeneratorController@invoiceGenerator');
+Route::get('/test5', 'PDF_GeneratorController@receiptGenerator');

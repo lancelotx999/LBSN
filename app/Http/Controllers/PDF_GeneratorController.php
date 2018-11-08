@@ -29,7 +29,7 @@ class PDF_GeneratorController extends Controller
         return $html;
     }
 
-	public function HTMLtoPDF(){
+	public function invoiceGenerator(){
 		//provider_id & receiver_id is loaded from POST
 		$provider_id = "5be2c26f339b5754de60b392";
 		$receiver_id = "5be2e673339b57708e1ab802";

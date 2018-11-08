@@ -96,10 +96,10 @@ class InvoiceController extends Controller
 			array_push($rid,$contract->receiver_id);
 		}
 
-    		if ((count(array_unique($pid))) && (count(array_unique($rid))))
-    		{
+		if ((count(array_unique($pid))) && (count(array_unique($rid))))
+		{
 
-    		}
+		}
 
 	}
 
@@ -157,20 +157,23 @@ class InvoiceController extends Controller
 			dd($contract);
 			array_push($pid,$contract->provider_id);
 			array_push($rid,$contract->receiver_id);
+			unset($cid);
 		}
 
-    	if ((count(array_unique($pid))) && (count(array_unique($rid))))
-    	{
+		if ((count(array_unique($pid))) && (count(array_unique($rid))))
+		{
 			
-    	}
-    	else
-    	{
-    		$counter++;
-    	}
+		}
+		else
+		{
+			$counter++;
+		}
 
 		if ($counter == 0)
 		{
 			$invoice = new Invoice;
+			$invoice->provider_id = $pid[0];
+			$invoice->receiver_id = $rid[0];
 			$invoice->contract_id = $request->contract_id;
 			$invoice->tax = $request->tax;
 			$invoice->total_price = $request->total_price;
@@ -205,6 +208,8 @@ class InvoiceController extends Controller
 	{
 		$invoice = Invoice::findOrFail($id);
 
+		$invoice->provider_id = $request->provider_id;
+		$invoice->receiver_id = $request->receiver_id;		
 		$invoice->contract_id = $request->contract_id;
 		$invoice->tax = $request->tax;
 		$invoice->total_price = $request->total_price;

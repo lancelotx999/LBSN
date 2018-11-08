@@ -58,7 +58,9 @@ class PDF_GeneratorController extends Controller
 		$data->contracts = $contracts;
 
 		// return view('PDF.invoice',  compact('data'));
+
 		$pdf = PDF::loadView('PDF.invoice',  compact('data'));
+		$pdf->setPaper('A4', 'landscape');
 
 
 		return $pdf->download('invoice.pdf');

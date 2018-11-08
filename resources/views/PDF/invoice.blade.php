@@ -175,12 +175,12 @@
                 <tbody>
 
                     @foreach ($data->contracts as $contract)
-                        <tr>
-                            <td class='service'>{{ $contract->type }}</td>
-                            <td class='desc'>{{ $contract->description }}</td>
-                            <td class='id'>{{ $contract->_id }}</td>
-                            <td class='unit'>{{ $contract->price }}</td>
-                        </tr>
+                    <tr>
+                        <td class='service'>{{ $contract->type }}</td>
+                        <td class='desc'>{{ $contract->description }}</td>
+                        <td class='id'>{{ $contract->_id }}</td>
+                        <td class='unit'>{{ $contract->price }}</td>
+                    </tr>
 		            @endforeach
                     <tr>
                         <td colspan='3'>SUBTOTAL</td>

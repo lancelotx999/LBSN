@@ -137,6 +137,11 @@
           padding: 8px 0;
           text-align: center;
         }
+
+        .company{
+            float: right;
+            textAlign: right;
+        }
     </style>
     <head>
         <meta charset='utf-8'>
@@ -149,7 +154,7 @@
                 <img src='logo.png'>
             </div>
             <h1>INVOICE</h1>
-                <div id='company' class='clearfix'>
+            <div class='company' >
                 <div>LSBN</div>
                 <div>420 Smoky Heights,<br /> CAL 85004, US</div>
                 <div>(602) 666-0420</div>

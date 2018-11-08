@@ -51,8 +51,8 @@ class PDF_GeneratorController extends Controller
 
 		$data = new class{};
 
-		$data->receiver = $receiver;
 		$data->provider = $provider;
+		$data->receiver = $receiver;
 		$data->total = $total;
 		$data->taxed = $taxed;
 		$data->grandTotal = $grandTotal;

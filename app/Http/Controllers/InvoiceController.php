@@ -9,7 +9,7 @@ use App\Invoice;
 use App\Receipt;
 use App\Contract;
 
-class ReceiptController extends Controller
+class InvoiceController extends Controller
 {
   // Apply auth middleware so only authenticated users have access
 	public function __construct() 
@@ -45,6 +45,9 @@ class ReceiptController extends Controller
 				$invoice = Invoice::whereIn('contract_id',[$r_contract->id])->get()->first();
 				$received_invoices->push($r_invoice);
 			}
+
+			unset($r_contract);
+			unset($p_contract);
 
 			return view('invoices.index', compact('provided_invoices','received_invoices'));
 		}          
@@ -83,6 +86,20 @@ class ReceiptController extends Controller
 
 	public function test()
 	{
+		$cids[0] = "5be3fc5284220c351e62aa69";
+		$cids[1] = "5be3fc5284220c351e62aa6a";
+		$pid = array(); $rid = array();
+		foreach ($cids as $cid)
+		{
+			$contract = Contract::where('_id','=',$cid)->get()->first();
+			array_push($pid,$contract->provider_id);
+			array_push($rid,$contract->receiver_id);
+		}
+
+    		if ((count(array_unique($pid))) && (count(array_unique($rid))))
+    		{
+
+    		}
 
 	}
 
@@ -106,6 +123,8 @@ class ReceiptController extends Controller
         // Validation Logic
 		$this->validate($request, 
 			[
+				'provider_id' => 'required',
+				'receiver_id' => 'required',
 				'contract_id' => 'required',
 				'tax' => 'required',
 				'total_price' => 'required',
@@ -117,6 +136,7 @@ class ReceiptController extends Controller
 		$cids = $request->contract_id;
 		$counter = 0;
 
+		// Checking for existing invoices which hold the same contracts
 		foreach ($allInvoices as $invoices)
 		{
 			foreach ($cids as $cid)
@@ -124,9 +144,29 @@ class ReceiptController extends Controller
 				if (in_array($cid, $invoices->contract_id))
 				{
 					$counter++;
+					unset($cid);
 				}
 			}
 		}
+
+		// Ensuring all provider and receiver ids are consistent in contracts
+		$pid = array(); $rid = array();
+		foreach ($cids as $cid)
+		{
+			$contract = Contract::where('_id','=',$cid)->get()->first();
+			dd($contract);
+			array_push($pid,$contract->provider_id);
+			array_push($rid,$contract->receiver_id);
+		}
+
+    	if ((count(array_unique($pid))) && (count(array_unique($rid))))
+    	{
+			
+    	}
+    	else
+    	{
+    		$counter++;
+    	}
 
 		if ($counter == 0)
 		{
@@ -134,6 +174,7 @@ class ReceiptController extends Controller
 			$invoice->contract_id = $request->contract_id;
 			$invoice->tax = $request->tax;
 			$invoice->total_price = $request->total_price;
+			$invoice->paid = false;
 
 			$invoice->save();   
 		}
@@ -167,6 +208,7 @@ class ReceiptController extends Controller
 		$invoice->contract_id = $request->contract_id;
 		$invoice->tax = $request->tax;
 		$invoice->total_price = $request->total_price;
+		$invoice->paid = $request->paid;
 
 		$invoice->save();     
 

@@ -26,7 +26,6 @@ class CreateContractsTable extends Migration
             $table->double('price');
 
             $table->boolean('accepted');
-            $table->boolean('paid');
             $table->boolean('fulfilled');
 
             $table->timestamps();
@@ -42,7 +41,6 @@ class CreateContractsTable extends Migration
             'price' => 100.5,
 
             'accepted' => false,
-            'paid' => false,
             'fulfilled' => false,
         ));
 
@@ -57,7 +55,6 @@ class CreateContractsTable extends Migration
             'price' => 200.5,
 
             'accepted' => true,
-            'paid' => false,
             'fulfilled' => false,
         ));            
 

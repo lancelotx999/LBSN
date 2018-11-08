@@ -120,7 +120,6 @@ class ContractController extends Controller
         $contract->type = $request->type;
         $contract->description = $request->description;
         $contract->price = $request->price;
-        $contract->paid = false;
         $contract->accepted = false;
         $contract->fulfilled = false;
 
@@ -153,7 +152,6 @@ class ContractController extends Controller
         $contract->description = $request->description;
         $contract->price = $request->price;
         $contract->accepted = $request->accepted;
-        $contract->paid = $request->paid;
         $contract->fulfilled = $request->fulfilled;
 
         $contract->save();  

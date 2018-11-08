@@ -34,9 +34,9 @@ Route::resource('contract', 'ContractController');
 Route::resource('review', 'ReviewController');
 
 // Testing Routes
-Route::resource('/test1', 'BusinessController@test');
-Route::resource('/test2', 'PropertyController@test');
-Route::resource('/test3', 'ContractController@test');
+Route::get('/test1', 'ReceiptController@test');
+Route::get('/test2', 'InvoiceController@test');
+Route::get('/test3', 'ContractController@test');
 Route::get('/test4', 'PDF_GeneratorController@invoiceGenerator');
 Route::get('/test5', 'PDF_GeneratorController@receiptGenerator');
 Route::get('/test6', 'PDF_GeneratorController@test');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
+use App\Invoice;
 use App\Receipt;
 use App\Contract;
 
@@ -27,23 +28,9 @@ class ReceiptController extends Controller
         }
         else
         {
-            $provided_receipts = collect();
-            $received_receipts = collect();
 
-            $provided_contracts = Contract::where('provider_id','=', Auth::user()->id)->get();
-            $received_contracts = Contract::where('receiver_id','=', Auth::user()->id)->get();
 
-            foreach ($provided_contracts as $p_contract)
-            {
-                $p_receipt = Receipt::whereIn('contract_id',[$p_contract->id])->get()->first();
-                $provided_receipts->push($p_receipt);
-            }
 
-            foreach ($received_contracts as $r_contract)
-            {
-                $receipt = Receipt::whereIn('contract_id',[$r_contract->id])->get()->first();
-                $received_receipts->push($r_receipt);
-            }
 
             return view('receipts.index', compact('provided_receipts','received_receipts'));
         }          
@@ -56,64 +43,37 @@ class ReceiptController extends Controller
         return view('receipts.index', compact('receipts'));
     }
 
-    // Gets all the receipts associated with specified user
-    public function showUserReceipts($user_id)
+    // ShowUserReceipts
+    public function test()
     {
+        $user_id = "5bdfe2db84220c09e56acd44";
+        $user_id2 = "5bdfe2db84220c09e56acd43";
         $provided_receipts = collect();
         $received_receipts = collect();
+        $allInvoices = Invoice::all();
+
+        $provided_invoices = collect();
+        $received_invoices = collect();
 
         $provided_contracts = Contract::where('provider_id','=', $user_id)->get();
         $received_contracts = Contract::where('receiver_id','=', $user_id)->get();
 
         foreach ($provided_contracts as $p_contract)
         {
-            $p_receipt = Receipt::whereIn('contract_id',[$p_contract->id])->get()->first();
-            $provided_receipts->push($p_receipt);
+            $p_invoice = Invoice::whereIn('contract_id',[$p_contract->id])->get()->first();
+            $provided_invoices->push($p_invoice);
         }
 
         foreach ($received_contracts as $r_contract)
         {
-            $receipt = Receipt::whereIn('contract_id',[$r_contract->id])->get()->first();
-            $received_receipts->push($r_receipt);
+            $invoice = Invoice::whereIn('contract_id',[$r_contract->id])->get()->first();
+            $received_invoices->push($r_invoice);
         }
+
+        dd($provided_invoices);
+
 
         return view('receipts.index', compact('provided_receipts','received_receipts'));
-    }
-
-    public function test()
-    {
-        $cons[0] = "5be3e44384220c1da3213b27";
-        $cons[1] = "5be3e44384220c1da3213b28";
-        $cons[2] = "swag";
-        $cons[3] = "dad";
-
-        $allReceipts = Receipt::all();
-        $counter = 0;
-
-        foreach ($allReceipts as $receipts)
-        {
-            foreach ($cons as $con)
-            {
-                if (in_array($con, $receipts->contract_id))
-                {
-                    $counter++;
-                }
-            }
-        }
-
-        if ($counter == 0)
-        {
-            $receipt = new Receipt;
-            $receipt->contract_id = $cons;
-            $receipt->payment_method = "Cash";
-            $receipt->price = 500;
-
-            $receipt->save();  
-        }
-        else
-        {
-            dd("ERROR");
-        }
     }
 
     public function create()
@@ -126,34 +86,28 @@ class ReceiptController extends Controller
     {
         // Validation Logic
         $this->validate($request, 
-        [
-            'contract_id' => 'required',
-            'payment_method' => 'required',
-            'price' => 'required',
-        ]);
+            [
+                'invoice_id' => 'required',
+                'payment_method' => 'required',
+            ]);
 
         // create a new Receipt based on input
         $allReceipts = Receipt::all();
-        $cids = $request->contract_id;
         $counter = 0;
 
         foreach ($allReceipts as $receipts)
         {
-            foreach ($cids as $cid)
+            if (in_array($request->invoice_id, $receipts->invoice_id))
             {
-                if (in_array($cid, $receipts->contract_id))
-                {
-                    $counter++;
-                }
+                $counter++;
             }
         }
 
         if ($counter == 0)
         {
             $receipt = new Receipt;
-            $receipt->contract_id = $request->contract_id;
+            $receipt->invoice_id = $request->invoice_id;
             $receipt->payment_method = $request->payment_method;
-            $receipt->price = $request->price;
 
             $receipt->save();  
         }
@@ -184,9 +138,8 @@ class ReceiptController extends Controller
     {
         $receipt = Receipt::findOrFail($id);
 
-        $receipt->contract_id = $request->contract_id;
+        $receipt->invoice_id = $request->invoice_id;
         $receipt->payment_method = $request->payment_method;
-        $receipt->price = $request->price;
 
         $receipt->save();     
 

@@ -28,26 +28,8 @@ class InvoiceController extends Controller
 		}
 		else
 		{
-			$provided_invoices = collect();
-			$received_invoices = collect();
-
-			$provided_contracts = Contract::where('provider_id','=', Auth::user()->id)->get();
-			$received_contracts = Contract::where('receiver_id','=', Auth::user()->id)->get();
-
-			foreach ($provided_contracts as $p_contract)
-			{
-				$p_invoice = Invoice::whereIn('contract_id',[$p_contract->id])->get()->first();
-				$provided_invoices->push($p_invoice);
-			}
-
-			foreach ($received_contracts as $r_contract)
-			{
-				$invoice = Invoice::whereIn('contract_id',[$r_contract->id])->get()->first();
-				$received_invoices->push($r_invoice);
-			}
-
-			unset($r_contract);
-			unset($p_contract);
+			$provided_invoices = Invoice::where('provider_id','=', Auth::user()->id)->get();
+			$received_invoices = Invoice::where('receiver_id','=', Auth::user()->id)->get();
 
 			return view('invoices.index', compact('provided_invoices','received_invoices'));
 		}          
@@ -63,43 +45,19 @@ class InvoiceController extends Controller
     // Gets all the receipts associated with specified user
 	public function showUserInvoices($user_id)
 	{
-		$provided_invoices = collect();
-		$received_invoices = collect();
-
-		$provided_contracts = Contract::where('provider_id','=', $user_id)->get();
-		$received_contracts = Contract::where('receiver_id','=', $user_id)->get();
-
-		foreach ($provided_contracts as $p_contract)
-		{
-			$p_invoice = Invoice::whereIn('contract_id',[$p_contract->id])->get()->first();
-			$provided_invoices->push($p_invoice);
-		}
-
-		foreach ($received_contracts as $r_contract)
-		{
-			$invoice = Invoice::whereIn('contract_id',[$r_contract->id])->get()->first();
-			$received_invoices->push($r_invoice);
-		}
+		$provided_invoices = Invoice::where('provider_id','=', $user_id)->get();
+		$received_invoices = Invoice::where('receiver_id','=', $user_id)->get();
 
 		return view('invoices.index', compact('provided_invoices','received_invoices'));
 	}
 
+	public function showInvoiceReceipt($invoice_id)
+	{
+		$receipt = Receipt::where('invoice_id','=', $invoice_id)->get();
+	}
+
 	public function test()
 	{
-		$cids[0] = "5be3fc5284220c351e62aa69";
-		$cids[1] = "5be3fc5284220c351e62aa6a";
-		$pid = array(); $rid = array();
-		foreach ($cids as $cid)
-		{
-			$contract = Contract::where('_id','=',$cid)->get()->first();
-			array_push($pid,$contract->provider_id);
-			array_push($rid,$contract->receiver_id);
-		}
-
-		if ((count(array_unique($pid))) && (count(array_unique($rid))))
-		{
-
-		}
 
 	}
 
@@ -123,8 +81,6 @@ class InvoiceController extends Controller
         // Validation Logic
 		$this->validate($request, 
 			[
-				'provider_id' => 'required',
-				'receiver_id' => 'required',
 				'contract_id' => 'required',
 				'tax' => 'required',
 				'total_price' => 'required',

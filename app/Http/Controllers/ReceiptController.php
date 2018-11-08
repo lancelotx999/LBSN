@@ -28,9 +28,8 @@ class ReceiptController extends Controller
         }
         else
         {
-
-
-
+            $provided_receipts = Receipt::where('provider_id','=', Auth::user()->id)->get();
+            $received_receipts = Receipt::where('receiver_id','=', Auth::user()->id)->get();
 
             return view('receipts.index', compact('provided_receipts','received_receipts'));
         }          
@@ -44,34 +43,10 @@ class ReceiptController extends Controller
     }
 
     // ShowUserReceipts
-    public function test()
+    public function ShowUserReceipts($user_id)
     {
-        $user_id = "5bdfe2db84220c09e56acd44";
-        $user_id2 = "5bdfe2db84220c09e56acd43";
-        $provided_receipts = collect();
-        $received_receipts = collect();
-        $allInvoices = Invoice::all();
-
-        $provided_invoices = collect();
-        $received_invoices = collect();
-
-        $provided_contracts = Contract::where('provider_id','=', $user_id)->get();
-        $received_contracts = Contract::where('receiver_id','=', $user_id)->get();
-
-        foreach ($provided_contracts as $p_contract)
-        {
-            $p_invoice = Invoice::whereIn('contract_id',[$p_contract->id])->get()->first();
-            $provided_invoices->push($p_invoice);
-        }
-
-        foreach ($received_contracts as $r_contract)
-        {
-            $invoice = Invoice::whereIn('contract_id',[$r_contract->id])->get()->first();
-            $received_invoices->push($r_invoice);
-        }
-
-        dd($provided_invoices);
-
+        $provided_receipts = Receipt::where('provider_id','=', $user_id)->get();
+        $received_receipts = Receipt::where('receiver_id','=', $user_id)->get();
 
         return view('receipts.index', compact('provided_receipts','received_receipts'));
     }
@@ -105,7 +80,13 @@ class ReceiptController extends Controller
 
         if ($counter == 0)
         {
+            $invoice = Invoice::find($request->invoice_id);
+
             $receipt = new Receipt;
+
+            $receipt->provider_id = $invoice->provider_id;
+            $receipt->receiver_id = $invoice->receiver_id;
+
             $receipt->invoice_id = $request->invoice_id;
             $receipt->payment_method = $request->payment_method;
 
@@ -152,6 +133,11 @@ class ReceiptController extends Controller
         Receipt::findOrFail($id)->delete();
 
         return redirect()->back();
+    }
+
+    public function test()
+    {
+
     }
 
 }

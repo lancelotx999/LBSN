@@ -19,6 +19,7 @@ class SearchController extends Controller
 		{
 			$data->push($user);
 		}
+		return $data;
 	}
 
 	public function searchBusinesses(Request $request)

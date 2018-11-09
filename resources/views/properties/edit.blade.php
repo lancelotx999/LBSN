@@ -60,15 +60,14 @@
                             <p>
                                 <label>
                                     Description:
-                                    <input
-                                        id="description"
-                                        name="description"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter location description."
-                                        value="{{ $property->description }}"
-                                    />
                                 </label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="description" 
+                                    name="description"
+                                    rows="3"
+                                    placeholder="Enter property description."
+                                    >{{ $property->description }}</textarea>
                             </p>
                             <p>
                                 <label>
@@ -80,8 +79,8 @@
                                         required
                                     >
                                         <option selected>Select property status</option>
-                                        <option value="rent">Rent</option>
-                                        <option value="sell">Sell</option>
+                                        <option value="rent">For Rent</option>
+                                        <option value="sell">For Sale</option>
                                     </select>
                                 </label>
                             </p>

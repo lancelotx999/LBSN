@@ -8,18 +8,19 @@ use App\User;
 use App\Business;
 use App\Contract;
 use App\Property;
-use App\Receipt;
-use App\Rating;
-use App\Review;
-use App\Invoice;
-
 
 class SearchController extends Controller
 {
-	public function searchUser($word)
+	public function searchUsers($word)
 	{
-		$user = User::where('name', 'like', '%'.$keyword.'%')->get();
+        $data = collect();
+		$users = User::where('name', 'like', '%'.$word.'%')->get();
+        foreach ($users as $user)
+        {
+            $data->push($user);
+        }
 	}
+
     public function test()
     {
     	$data = collect();

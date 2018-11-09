@@ -82,6 +82,7 @@ class PropertyController extends Controller
                 'address' => 'required',
                 'description' => 'required',
                 'status' => 'required',
+                'tags' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
             ]);
@@ -94,6 +95,7 @@ class PropertyController extends Controller
         $property->address = $request->address;
         $property->description = $request->description;
         $property->status = $request->status;
+        $property->tags = $request->tags;
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
         $property->verified = false;
@@ -156,6 +158,7 @@ class PropertyController extends Controller
         $property->address = $request->address;
         $property->description = $request->description;
         $property->status = $request->status;
+        $property->tags = $request->tags;
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
         $property->verified = $request->verified;

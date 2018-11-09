@@ -16,14 +16,15 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('owner_id', 100); // ID of Owner
-            $table->string('name', 100);    // Name of Property
-            $table->string('address', 100); // Address of Property
-            $table->string('description', 255); // Description of Property
-            $table->string('status', 255); // eg : Rent or Sale
+            $table->string('owner_id'); // ID of Owner
+            $table->string('name');    // Name of Property
+            $table->string('address'); // Address of Property
+            $table->string('description'); // Description of Property
+            $table->string('status'); // eg : Rent or Sale
+            $table->string('tags'); // eg : Condo , single-storey
 
-            $table->double('latitude', 10, 7); // Location Data
-            $table->double('longitude', 10, 7); // Location Data
+            $table->double('latitude'); // Location Data
+            $table->double('longitude'); // Location Data
 
             $table->boolean('verified');
 
@@ -37,7 +38,7 @@ class CreatePropertiesTable extends Migration
             'address' => "123 Merdeka Hooha Lane",
             'description' => "Merdeka Palace Room",
             'status' => "Rent",
-
+            'tags' => ["hotel","high-rise"],
             'latitude' => 321,
             'longitude' => 123,
 

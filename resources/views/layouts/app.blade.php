@@ -66,6 +66,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('business.index') }}">Businesses</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('invoice.index') }}">Invoices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('transaction.index') }}">Transactions</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

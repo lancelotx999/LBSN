@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
 use App\Business;
+use App\Rating;
+use App\Review;
 
 class BusinessController extends Controller
 {

@@ -105,7 +105,6 @@ $(function() {
     //Once add button is clicked
     addButton.click(function(){
         //Check maximum number of input fields
-        console.log(x);
         if(x < maxField){ 
             x++; //Increment field counter
             wrapper.append(fieldHTML); //Add field html
@@ -117,7 +116,6 @@ $(function() {
         e.preventDefault();
         $(this).parent('div').parent('div').remove(); //Remove field html
         x--; //Decrement field counter
-        console.log(x);
     });
 });
 </script>

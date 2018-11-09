@@ -91,7 +91,7 @@
                                     <a  class="dropdown-item"
                                         href="{{ route('users.show', ['user' => Auth::id() ]) }}">My Profile</a>
                                     <a  class="dropdown-item"
-                                        href="{{ route('users.show', ['user' => Auth::id() ]) }}">Manage Property</a>
+                                        href="{{ route('property.index') }}">Manage Property</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

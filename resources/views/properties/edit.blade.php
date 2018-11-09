@@ -83,6 +83,25 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="tags">
+                                Tags:
+                            </label>
+                            @foreach ($property->tags as $tag)
+                            <div class="input-group mb-3">
+                                <input
+                                    id="tags" name="tags[]" type="text"
+                                    class="form-control"
+                                    placeholder="Enter an appropriate tag for your property."
+                                    value="{{ $tag }}"
+                                />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="addMore"><i class="fas fa-plus fa-fw"></i></button>
+                                </div>
+                            </div>
+                            @endforeach
+                            <span id="fieldList"></span>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="latitude">
@@ -133,6 +152,32 @@ if (empty($property)) { $property = null; }
 @endphp
 
 <script type="text/javascript">
+$(function() {
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('#addMore'); //Add button selector
+    var wrapper = $('#fieldList'); //Input field wrapper
+    var fieldHTML = '<div class="input-group mb-3"><input id="tags" name="tags[]" type="text" class="form-control" placeholder="Enter an appropriate tag for your property." /><div class="input-group-append"><button class="btn btn-outline-secondary remove_button" type="button"><i class="fas fa-times fa-fw"></i></button></div></div>'; // The new input
+    var x = 1; //Initial field counter is 1
+
+    //Once add button is clicked
+    addButton.click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            wrapper.append(fieldHTML); //Add field html
+        }
+    });
+
+    //Once remove button is clicked
+    wrapper.on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});        
+</script>
+
+<script type="text/javascript">
 	var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
         zoom: 16,
@@ -144,8 +189,8 @@ if (empty($property)) { $property = null; }
     });
 
 	function updateLatLng(state, e) {
-        document.getElementById('locationLatitude').value = e.latlng.lat;
-        document.getElementById('locationLongitude').value = e.latlng.lng;
+        document.getElementById('latitude').value = e.latlng.lat;
+        document.getElementById('longitude').value = e.latlng.lng;
     };
 
     map.on("click", updateLatLng.bind(null, this));

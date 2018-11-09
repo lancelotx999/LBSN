@@ -18,77 +18,108 @@
             <div class="card">
                 <div class="card-header">View Property</div>
                 <div class="card-body">
-                    <div id="map" style="width: 100%; height: 400px;"></div>
-                    <hr />
-                    <p>
-                        Name: {{ $property->name }}
-                    </p>
-                    <p>
-                        Address: {{ $property->address }}
-                    </p>
-                    <p>
-                        Description: {{ $property->description }}
-                    </p>
-                    <p>
-                        Status: {{ $property->status }}
-                    </p>
-                    <p>
-                        Rating:
-                        <select id="ratingModule">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </p>
-                    <p>
-                        Latitude: {{ $property->latitude }}
-                    </p>
-                    <p>
-                        Longitude: {{ $property->longitude }}
-                    </p>
-                    <hr />
-                    <form method="POST" action="{{ route('review.store') }}">
-                        @csrf
-                        @method('POST')
-
-                        <div class="form-group">
-                            <label for="content">Write A Review:</label>
-                            <textarea class="form-control" id="content" name="content" rows="5" placeholder="Please leave a review."></textarea>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="map" style="width: 100%;"></div>
                         </div>
-
-                        <input
-                            id="reviewer_id"
-                            name="reviewer_id"
-                            type="hidden"
-                            class="form-control"
-                            value="{{ Auth::id() }}"
-                            placeholder="Enter reviewer_id ID."
-                            required
-                        />
-                        <input
-                            id="reviewee_id"
-                            name="reviewee_id"
-                            type="hidden"
-                            class="form-control"
-                            value="{{ $property->_id }}"
-                            placeholder="Enter reviewee_id ID."
-                            required
-                        />
-                        <button type="submit" class="btn btn-primary">
-                            Review
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Name:</strong><br />
+                                    {{ $property->name }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Address:</strong><br />
+                                    {{ $property->address }}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Description:</strong><br />
+                                    {{ $property->description }}
+                                </li>
+                                <li class="list-group-item text-capitalize">
+                                    <strong>Status:</strong><br />
+                                    {{ $property->status }}
+                                </li>
+                                <li class="list-group-item">
+                                    <ul class="list-unstyled list-inline">
+                                        <li>
+                                        <strong>Tags:</strong>
+                                        </li>
+                                        @foreach ($property->tags as $tag)
+                                            <li class="list-inline-item">
+                                                <span class="border border-primary bg-primary text-light rounded">
+                                                    &nbsp;{{ $tag }}&nbsp;
+                                                </span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Rating:</strong>
+                                    <select id="ratingModule" class="custom-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="accordion" id="accordionExample">
+                        <button class="btn btn-link" type="button"
+                        onclick="zoomMarker({{ $property->latitude }}, {{ $property->longitude }})">
+                            <i class="fas fa-map-marker-alt fa-fw"></i> 
+                            Click here to show on map
                         </button>
-                    </form>
+                        <button class="btn btn-link" type="button" 
+                        data-toggle="collapse" data-target="#collapseOne" 
+                        aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fas fa-chevron-circle-down fa-fw"></i> 
+                            Click here to write a review
+                        </button>
+                        <br />
+                        <div 
+                            id="collapseOne" class="collapse" 
+                            aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <form method="POST" action="{{ route('review.store') }}">
+                                @csrf
+                                @method('POST')
 
+                                <div class="form-group">
+                                    <textarea class="form-control" id="content" name="content" rows="5" placeholder="Please leave a review."></textarea>
+                                </div>
+
+                                <input
+                                    id="reviewer_id" name="reviewer_id" type="hidden"
+                                    class="form-control"
+                                    value="{{ Auth::id() }}"
+                                    required
+                                />
+                                <input
+                                    id="reviewee_id" name="reviewee_id" type="hidden"
+                                    class="form-control"
+                                    value="{{ $property->_id }}"
+                                    required
+                                />
+                                <button type="submit" class="btn btn-primary">
+                                    Submit Review
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                     <hr />
-                    Reviews
+                    @if ($property->reviews->isEmpty())
+                    @else
+                    <h4><i class="far fa-comments fa-fw"></i> Reviews</h4>
                     <hr />
                     @foreach ($property->reviews as $review)
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
-                                </img>
+                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%" />
                             </div>
                             <div class="col-sm-9">
                                 <div class="row">
@@ -101,6 +132,7 @@
                         </div>
                         <hr />
 		            @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -167,6 +199,11 @@ if (empty($property)) { $property = null; }
             }),
         ]
     })
+
+    // Latitude, Longitude, Zoom
+    function zoomMarker(lat, long) {
+        map.setView([lat, long], 17)
+    }
 
     var pruneCluster = new PruneClusterForLeaflet();
 
@@ -336,15 +373,13 @@ if (empty($property)) { $property = null; }
         // console.log(d);
         // console.log("---------- d ----------");
 
-        var popupContent = "Property Name: " + d.locationName + "</br>" +
-                            "Property Address: " + d.locationAddress + "</br>" +
-                            "Property Description: " + d.locationDescription + "</br>" +
-                            "Property Rating: " + d.locationRating + "</br>" +
-                            "Property Status: " + d.locationStatus + "</br>" +
-                            "Property Owner Name: " + d.user.name + "</br>" +
-                            "Property Owner Email: " + d.user.email + "</br>";
+        var popupContent = "Property Name: " + d.name + "</br>" +
+                            "Property Address: " + d.address + "</br>" +
+                            "Property Description: " + d.description + "</br>" +
+                            "Property Rating: " + d.rate + "</br>" +
+                            "Property Status: " + d.status + "</br>";
 
-        var marker = new PruneCluster.Marker(d.locationLatitude, d.locationLongitude,{
+        var marker = new PruneCluster.Marker(d.latitude, d.longitude,{
             popup: popupContent
         });
 

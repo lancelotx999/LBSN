@@ -10,12 +10,12 @@ use App\Rating;
 class RatingController extends Controller
 {
    // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
-    // List all ratings if user is admin 
+    // List all ratings if user is admin
     // Shows only user ratings if user is a merchant / normal user
     public function index()
     {
@@ -29,7 +29,7 @@ class RatingController extends Controller
         	$sent_ratings = Rating::where('rater_id','=',Auth::user()->id)->get();
         	$received_ratings = Rating::where('ratee_id','=',Auth::user()->id)->get();
         	return view('ratings.index', compact('sent_ratings','received_ratings'));
-        }          
+        }
     }
 
     // Gets all ratings
@@ -61,7 +61,6 @@ class RatingController extends Controller
     public function create()
     {
         $user_ratings = Rating::where('rater_id','=',Auth::user()->id)->get();
-        $ratings = $user_ratings->take(10)->get();
 
         return view('ratings.create', compact('ratings'));
     }
@@ -70,7 +69,7 @@ class RatingController extends Controller
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
+        $this->validate($request,
         [
             'rater_id' => 'required',
             'ratee_id' => 'required',
@@ -84,7 +83,7 @@ class RatingController extends Controller
         $rating->ratee_id = $request->ratee_id;
         $rating->rate = $request->rate;
 
-        $rating->save();     
+        $rating->save();
 
         return redirect()->back();
     }
@@ -107,12 +106,12 @@ class RatingController extends Controller
     public function update(Request $request, $id)
     {
         $rating = Rating::findOrFail($id);
-        
+
         $rating->rater_id = $request->rater_id;
         $rating->ratee_id = $request->ratee_id;
         $rating->rate = $request->rate;
 
-        $rating->save();  
+        $rating->save();
 
         return redirect()->route('ratings.edit', ['rating' => $rating ]);
     }

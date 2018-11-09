@@ -2,9 +2,6 @@
 
 @section('content')
 
-<script src="{{ asset('js/leaflet.js') }}"></script>
-<script src="{{ asset('js/PruneCluster.js') }}"></script>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -23,67 +20,115 @@
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
                     @if ($properties->isEmpty())
-                        <br />
-                        <h1 class="display-4">Hello, it seems empty here!</h1>
-                        <p class="lead">Why don't you try to add some stuff?</p>
-                        <hr />
+                    <br />
+                    <h1 class="display-4">Hello, it seems empty here!</h1>
+                    <p class="lead">Why don't you try to add some stuff?</p>
+                    <hr />
                     @endif
                     @foreach ($properties as $property)
-	                    <div id="{{ $property->_id }}" class="media">
-			                <div class="media-body">
-			                    <h5>{{ $property->name }}</h5>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="{{ route('property.show', $property->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                View
-                                            </button>
-                                        </a>
-                                        <a href="{{ route('property.edit', $property->_id) }}">
-                                            <button class="btn btn-sm btn-success">
-                                                Edit
-                                            </button>
-                                        </a>
-                                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
+                        </img>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5>{{ $property->name }}</h5>
+                            </div>
+                            <div class="col-sm-6">
+                                <select id="ratingModule{{ $property->id }}" style="float: right;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p>{{ $property->address }}</p>
+                        </div>
+                        <div class="row">
+                            <p>{{ $property->description }}</p>
+                        </div>
+                        <div class="row">
+                            <p>Review(s): ({{ count($property->reviews) }})</p>
 
-                                    <div class="col-sm-8">
-                                        <form method="POST" action="{{ route('property.destroy', $property->_id) }}">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-sm btn-danger float-right">
-                                                DELETE
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <hr />
-			                </div>
-			            </div>
-		            @endforeach
-                    <a href="{{ route('property.create') }}">Create properties</a>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{ route('property.show', $property->_id) }}">
+                            <button class="btn btn-sm btn-success">
+                                View
+                            </button>
+                        </a>
+                        <a href="{{ route('property.edit', $property->_id) }}">
+                            <button class="btn btn-sm btn-success">
+                                Edit
+                            </button>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <form method="POST" action="{{ route('property.destroy', $property->_id) }}">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-sm btn-danger float-right">
+                                DELETE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <hr />
+                @endforeach
+                <a href="{{ route('property.create') }}">Create properties</a>
             </div>
         </div>
     </div>
 </div>
+</div>
 
 <script type="text/javascript">
+
+
+    var properties = {!! json_encode($properties->toArray()) !!};
+
+    console.log("---------- properties ----------");
+    console.log(properties);
+    console.log("---------- properties ----------");
+
+    properties.forEach(function(d){
+        console.log("---------- d ----------");
+        console.log(d);
+        console.log("---------- d ----------");
+        console.log('#ratingModule'+d._id);
+        $(function() {
+            $('#ratingModule'+d._id).barrating({
+                theme: 'css-stars',
+                initialRating: d.rate,
+                readonly: true
+            });
+        });
+    })
+
+
+
     var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
         zoom: 16,
         layers: [
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            }),
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }),
         ]
     })
 
-    var locations = {!! json_encode($properties->toArray()) !!};
 
-    console.log("---------- locations ----------");
-    console.log(locations);
-    console.log("---------- locations ----------");
 
     // var pruneCluster = new PruneClusterForLeaflet();
     //
@@ -248,7 +293,7 @@
     //     }
     // });
     //
-    // locations.forEach(function (d){
+    // properties.forEach(function (d){
     //     console.log("---------- d ----------");
     //     console.log(d);
     //     console.log("---------- d ----------");
@@ -278,21 +323,21 @@
     //
     // this.map.addLayer(pruneCluster);
 
-    locations.forEach(function(d){
+    properties.forEach(function(d){
         console.log("---------- d ----------");
         console.log(d);
         console.log("---------- d ----------");
 
         var popupContent = "Property Name: " + d.locationName + "</br>" +
-                                "Property Address: " + d.locationAddress + "</br>" +
-                                "Property Description: " + d.locationDescription + "</br>" +
-                                "Property Rating: " + d.locationRating + "</br>" +
-                                "Property Status: " + d.locationStatus + "</br>" +
-                                "Property Owner Name: " + d.user.name + "</br>" +
-                                "Property Owner Email: " + d.user.email + "</br>";
+        "Property Address: " + d.locationAddress + "</br>" +
+        "Property Description: " + d.locationDescription + "</br>" +
+        "Property Rating: " + d.locationRating + "</br>" +
+        "Property Status: " + d.locationStatus + "</br>" +
+        "Property Owner Name: " + d.user.name + "</br>" +
+        "Property Owner Email: " + d.user.email + "</br>";
 
         L.marker([d.locationLatitude, d.locationLongitude]).addTo(map)
-            .bindPopup(popupContent);
+        .bindPopup(popupContent);
     })
 </script>
 @endsection

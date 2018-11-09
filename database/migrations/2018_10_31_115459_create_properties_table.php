@@ -29,6 +29,20 @@ class CreatePropertiesTable extends Migration
 
             $table->timestamps();
         });
+
+        DB::table('properties')->insert(
+        array(
+            'owner_id' => "5bdfe2db84220c09e56acd43",
+            'name' => "Room E555 @ Merdeka Palace",
+            'address' => "123 Merdeka Hooha Lane",
+            'description' => "Merdeka Palace Room",
+            'status' => "Rent",
+
+            'latitude' => 321,
+            'longitude' => 123,
+
+            'verified' => true,
+        ));
     }
 
     /**

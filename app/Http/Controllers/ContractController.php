@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
 use App\Contract;
+use App\Receipt;
+use App\Invoice;
 
 class ContractController extends Controller
 {
@@ -45,6 +47,30 @@ class ContractController extends Controller
         return view('contracts.index', compact('user_contracts'));
     }
 
+    public function showAcceptedReceivedContracts($user_id)
+    {
+        $accepted_contracts = Contract::where('receiver_id','=', $user_id)->where('accepted', '=', true)->get();
+        return view('contracts.index', compact('accepted_contracts'));
+    }
+
+    public function showUnacceptedReceivedContracts($user_id)
+    {
+        $unaccepted_contracts = Contract::where('receiver_id','=', $user_id)->where('accepted', '=', false)->get();
+        return view('contracts.index', compact('unaccepted_contracts'));
+    }
+
+    public function showAcceptedProvidedContracts($user_id)
+    {
+        $accepted_contracts = Contract::where('provider_id','=', $user_id)->where('accepted', '=', true)->get();
+        return view('contracts.index', compact('accepted_contracts'));
+    }
+
+    public function showUnacceptedProvidedContracts($user_id)
+    {
+        $unaccepted_contracts = Contract::where('provider_id','=', $user_id)->where('accepted', '=', false)->get();
+        return view('contracts.index', compact('unaccepted_contracts'));
+    }
+
     public function showProviderContracts($user_id)
     {
         $contracts = Contract::where('provider_id','=', $user_id)->get();
@@ -55,6 +81,16 @@ class ContractController extends Controller
     {
         $contracts = Contract::where('receiver_id','=', $user_id)->get();
         return view('contracts.index', compact('contracts'));
+    }
+
+    public function showContractReceipt($contract_id)
+    {
+        $receipt = Receipt::whereIn('contract_id',[$contract_id])->get()->first();
+    }
+
+    public function showContractInvoice($contract_id)
+    {
+        $invoice = Invoice::whereIn('contract_id',[$contract_id])->get()->first();
     }
 
     public function create()
@@ -82,7 +118,8 @@ class ContractController extends Controller
         $contract->type = $request->type;
         $contract->description = $request->description;
         $contract->price = $request->price;
-        $contract->paid = false;
+        $contract->accepted = false;
+        $contract->fulfilled = false;
 
         $contract->save();
         return redirect()->route('contract.index');
@@ -112,11 +149,24 @@ class ContractController extends Controller
         $contract->type = $request->type;
         $contract->description = $request->description;
         $contract->price = $request->price;
-        $contract->paid = $request->paid;
+        $contract->accepted = $request->accepted;
+        $contract->fulfilled = $request->fulfilled;
 
         $contract->save();  
 
         return redirect()->back();
+    }
+
+    public function acceptContract($id)
+    {
+        $contract = Contract::findOrFail($id);
+        $contract->accepted = true;
+    }
+
+    public function fulfilledContract($id)
+    {
+        $contract = Contract::findOrFail($id);
+        $contract->fulfilled = true;
     }
 
     public function destroy($id)

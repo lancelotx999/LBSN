@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
+use App\Invoice;
 use App\Receipt;
 use App\Contract;
 
 class ReceiptController extends Controller
 {
   // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
-    // List all receipts if user is admin 
+    // List all receipts if user is admin
     // Shows only user receipts if user is a merchant / normal user
     public function index()
     {
@@ -27,11 +28,11 @@ class ReceiptController extends Controller
         }
         else
         {
-            $contracts = Contract::where('provider_id','=', Auth::user()->id)-> orWhere('receiver_id','=', Auth::user()->id)->get();
-            
-            $receipts = Receipt::where('contract_id','=',Auth::user()->id)->get();
-            return view('receipts.index', compact('receipts'));
-        }          
+            $provided_receipts = Receipt::where('provider_id','=', Auth::user()->id)->get();
+            $received_receipts = Receipt::where('receiver_id','=', Auth::user()->id)->get();
+
+            return view('receipts.index', compact('provided_receipts','received_receipts'));
+        }
     }
 
     // Gets all reviews
@@ -41,40 +42,59 @@ class ReceiptController extends Controller
         return view('receipts.index', compact('receipts'));
     }
 
-    // Gets all the receipts associated with specified user
-    public function showUserReceipts($user_id)
+    // ShowUserReceipts
+    public function ShowUserReceipts($user_id)
     {
-        $reviews = Review::where('reviewer_id','=', $user_id)-> orWhere('reviewee_id','=', $user_id)->get();
-        return view('reviews.index', compact('reviews'));
+        $provided_receipts = Receipt::where('provider_id','=', $user_id)->get();
+        $received_receipts = Receipt::where('receiver_id','=', $user_id)->get();
+
+        return view('receipts.index', compact('provided_receipts','received_receipts'));
     }
 
-    public function create(Request $request, Invoice $invoice)
+    public function create()
     {
-        $user_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
-        $reviews = $user_reviews->take(10)->get();
-
-        return view('reviews.create', compact('reviews'));
+        return view('receipts.create', compact('receipts'));
     }
 
 
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
-        [
-            'reviewer_id' => 'required',
-            'reviewee_id' => 'required',
-            'content' => 'required',
-        ]);
+        $this->validate($request,
+            [
+                'invoice_id' => 'required',
+                'payment_method' => 'required',
+            ]);
 
-        // create a new Review based on input
-        $review = new Review;
+        // create a new Receipt based on input
+        $allReceipts = Receipt::all();
+        $counter = 0;
 
-        $review->reviewer_id = $request->reviewer_id;
-        $review->reviewee_id = $request->reviewee_id;
-        $review->content = $request->content;
+        foreach ($allReceipts as $receipts)
+        {
+            if ($request->invoice_id == $receipts->invoice_id) {
+                $counter++;
+            }
+        }
 
-        $review->save();     
+        if ($counter == 0)
+        {
+            $invoice = Invoice::find($request->invoice_id);
+
+            $receipt = new Receipt;
+
+            $receipt->provider_id = $invoice->provider_id;
+            $receipt->receiver_id = $invoice->receiver_id;
+
+            $receipt->invoice_id = $request->invoice_id;
+            $receipt->payment_method = $request->payment_method;
+
+            $receipt->save();
+        }
+        else
+        {
+            dd("ERROR");
+        }
 
         return redirect()->back();
     }
@@ -82,36 +102,108 @@ class ReceiptController extends Controller
 
     public function show($id)
     {
-        $review = Review::findOrFail($id);
+        $receipt = Receipt::findOrFail($id);
 
-        return view('reviews.show', compact('review'));
+        return view('receipts.show', compact('receipt'));
     }
 
     public function edit($id)
     {
-        $review = Review::findOrFail($id);
+        $receipt = Receipt::findOrFail($id);
 
-        return view('reviews.edit', compact('review'));
+        return view('receipts.edit', compact('receipt'));
     }
 
     public function update(Request $request, $id)
     {
-        $review = Review::findOrFail($id);
-        
-        $review->reviewer_id = $request->reviewer_id;
-        $review->reviewee_id = $request->reviewee_id;
-        $review->content = $request->content;
+        $receipt = Receipt::findOrFail($id);
 
-        $review->save();  
+        $receipt->invoice_id = $request->invoice_id;
+        $receipt->payment_method = $request->payment_method;
 
-        return redirect()->route('reviews.edit', ['review' => $review ]);
+        $receipt->save();
+
+
+        return redirect()->route('receipts.edit', ['receipt' => $receipt ]);
     }
 
     public function destroy($id)
     {
-        Review::findOrFail($id)->delete();
+        Receipt::findOrFail($id)->delete();
 
         return redirect()->back();
+    }
+
+    public function test()
+    {
+        // $cons[0] = "5be3e44384220c1da3213b27";
+        // $cons[1] = "5be3e44384220c1da3213b28";
+        // $cons[2] = "swag";
+        // $cons[3] = "dad";
+        $request = new class{};
+
+        $request->invoice_id = "5be449c2339b5708955603b3";
+        $request->payment_method = "cash";
+
+        $allReceipts = Receipt::all();
+        $counter = 0;
+
+        // create a new Receipt based on input
+        $allReceipts = Receipt::all();
+        $counter = 0;
+
+        foreach ($allReceipts as $receipts)
+        {
+            // dd($receipts);
+            // if (in_array($request->invoice_id, $receipts->invoice_id))
+            // {
+            //     $counter++;
+            // }
+
+            if ($request->invoice_id == $receipts->invoice_id) {
+                $counter++;
+            }
+
+        }
+
+        // foreach ($allReceipts as $receipts)
+        // {
+        //     foreach ($cons as $con)
+        //     {
+        //         if (in_array($con, $receipts->contract_id))
+        //         {
+        //             $counter++;
+        //         }
+        //     }
+        // }
+        // dd($counter);
+
+        if ($counter == 0)
+        {
+            $invoice = Invoice::find($request->invoice_id);
+
+            $receipt = new Receipt;
+
+            $receipt->provider_id = $invoice->provider_id;
+            $receipt->receiver_id = $invoice->receiver_id;
+
+            $receipt->invoice_id = $request->invoice_id;
+            $receipt->payment_method = $request->payment_method;
+
+            // $receipt = new Receipt;
+            // $receipt->contract_id = $cons;
+            // $receipt->payment_method = "Cash";
+            // $receipt->price = 500;
+            // $receipt->save();
+
+            $receipt->save();
+        }
+        else
+        {
+            dd("ERROR");
+        }
+
+        dd($receipt);
     }
 
 }

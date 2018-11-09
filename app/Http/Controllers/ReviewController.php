@@ -61,7 +61,6 @@ class ReviewController extends Controller
     public function create()
     {
         $user_reviews = Review::where('reviewer_id','=',Auth::user()->id)->get();
-        $reviews = $user_reviews->take(10)->get();
 
         return view('reviews.create', compact('reviews'));
     }

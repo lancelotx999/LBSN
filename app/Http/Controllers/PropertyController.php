@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
 use App\Property;
-Use App\User;
+use App\Rating;
+use App\Review;
+use App\User;
 
 class PropertyController extends Controller
 {
    // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -20,6 +22,7 @@ class PropertyController extends Controller
     // Shows only user properties if user is a merchant
     public function index()
     {
+
         if (Auth::user()->role === 'admin')
         {
             $properties = Property::all();
@@ -35,7 +38,7 @@ class PropertyController extends Controller
         {
         	$properties = Property::all();
         }
-        
+
         return view('properties.index', compact('properties'));
     }
 
@@ -43,6 +46,35 @@ class PropertyController extends Controller
     public function showAll()
     {
     	$properties = Property::all();
+
+        foreach ($properties as $property) {
+            $ratings = Rating::where('ratee_id','=', $property->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0) {
+                foreach ($ratings as $rating) {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $property->rate = $totalRates/$totalUsers;
+
+            }
+            else {
+                $property->rate = 0;
+            }
+
+            $reviews = Review::where('reviewee_id','=', $property->id)->get();
+
+            foreach ($reviews as $review) {
+                $user = User::findOrFail($review->reviewer_id);
+                $review->user = $user;
+            }
+
+            $property->reviews = $reviews;
+        }
+
     	return view('properties.index', compact('properties'));
     }
 
@@ -55,14 +87,16 @@ class PropertyController extends Controller
 
     public function create()
     {
-        return view('properties.create');
+        $user_properties = Property::where('owner_id','=',Auth::user()->id)->get();
+
+        return view('properties.create', compact('user_properties'));
     }
 
 
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
+        $this->validate($request,
         [
             'owner_id' => 'required',
             'name' => 'required',
@@ -85,7 +119,7 @@ class PropertyController extends Controller
         $property->longitude = $request->longitude;
         $property->verified = false;
 
-        $property->save();     
+        $property->save();
 
         return redirect()->route('property.index');
     }
@@ -96,7 +130,33 @@ class PropertyController extends Controller
         $property = Property::findOrFail($id);
         $users = User::all();
 
-        return view('properties.show', compact('property', 'users'));
+        $ratings = Rating::where('ratee_id','=', $id)->get();
+
+        $totalRates = 0;
+        $totalUsers = count($ratings);
+
+        if ($totalUsers > 0) {
+            foreach ($ratings as $rating) {
+                $totalRates = $totalRates + $rating->rate;
+            }
+
+            $property->rate = $totalRates/$totalUsers;
+
+        }
+        else {
+            $property->rate = 0;
+        }
+
+        $reviews = Review::where('reviewee_id','=', $id)->get();
+
+        foreach ($reviews as $review) {
+            $user = User::findOrFail($review->reviewer_id);
+            $review->user = $user;
+        }
+
+        $property->reviews = $reviews;
+
+        return view('properties.show', compact('property'));
     }
 
     public function edit($id)
@@ -109,7 +169,7 @@ class PropertyController extends Controller
     public function update(Request $request, $id)
     {
         $property = Property::findOrFail($id);
-        
+
         $property->owner_id = $request->owner_id;
         $property->name = $request->name;
         $property->address = $request->address;
@@ -119,7 +179,7 @@ class PropertyController extends Controller
         $property->longitude = $request->longitude;
         $property->verified = $request->verified;
 
-        $property->save();  
+        $property->save();
 
         return redirect()->back();
     }

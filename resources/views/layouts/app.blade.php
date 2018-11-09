@@ -16,12 +16,20 @@
     <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pruneCluster.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet-draw/leaflet.draw.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('css/jquery.rateit/rateit.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/fontawesome-stars.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/fontawesome-stars-o.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/css-stars.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/jquery.barrating/themes/bootstrap-stars.css') }}" rel="stylesheet"></link>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/fontawesome/all.min.js') }}" ></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="{{ asset('js/PruneCluster.js') }}"></script>
     <script src="{{ asset('js/leaflet-draw/leaflet.draw.js') }}"></script>
+    <script src="{{ asset('js/jquery.rateit/jquery.rateit.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.barrating/jquery.barrating.min.js') }}"></script>
     <script type="text/javascript">
         // rename myToken as you like
         window.myToken =  <?php echo json_encode([
@@ -53,7 +61,7 @@
                             <a class="nav-link" href="{{ route('property.index') }}">Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contract.index') }}">Contracts</a>
+                            <a class="nav-link" href="/property/listing">Property Listing</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('business.index') }}">Businesses</a>
@@ -77,7 +85,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a  class="dropdown-item" 
+                                    <a  class="dropdown-item"
                                         href="{{ route('users.show', ['user' => Auth::id() ]) }}">My Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

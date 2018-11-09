@@ -34,6 +34,26 @@ class CreateUsersTable extends Migration
             'role' => "admin",
             'verified' => true,
         ));
+
+        DB::table('users')->insert(
+        array(
+            'name' => "Test_1",
+            'email' => "test_1@LBSN.com",
+            'password' => bcrypt("123"),
+            'role' => "user",
+            'verified' => false,
+        ));
+
+        DB::table('users')->insert(
+        array(
+            'name' => "Test_2",
+            'email' => "test_2@LBSN.com",
+            'password' => bcrypt("123"),
+            'role' => "merchant",
+            'verified' => false,
+        ));
+
+
     }
 
     /**

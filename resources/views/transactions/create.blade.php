@@ -70,14 +70,14 @@
                                 <label>
                                     Payment Method:
                                     <select
-                                        id="status"
-                                        name="status"
+                                        id="payment_method"
+                                        name="payment_method"
                                         class="form-control custom-select"
                                         required
                                     >
                                         <option selected>Select Payment Method</option>
-                                        <option value="rent">Cash</option>
-                                        <option value="sell">Card</option>
+                                        <option value="cash">Cash</option>
+                                        <option value="card">Card</option>
                                     </select>
                                 </label>
                             </p>
@@ -101,7 +101,7 @@
                                     <input
                                         id="provider_acknowledgement"
                                         name="provider_acknowledgement"
-                                        type="text"
+                                        type="password"
                                         class="form-control"
                                         placeholder="Enter Provider Password."
                                         required
@@ -114,7 +114,7 @@
                                     <input
                                         id="receiver_acknowledgement"
                                         name="receiver_acknowledgement"
-                                        type="text"
+                                        type="password"
                                         class="form-control"
                                         placeholder="Enter Receiver Password."
                                         required
@@ -122,7 +122,33 @@
                                 </label>
                             </p>
                         </div>
-
+                        <input
+                            id="receiver_id"
+                            name="receiver_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ $invoice->receiver_id }}"
+                            placeholder="Enter receiver_id."
+                            required
+                        />
+                        <input
+                            id="provider_id"
+                            name="provider_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ $invoice->provider_id }}"
+                            placeholder="Enter provider_id."
+                            required
+                        />
+                        <input
+                            id="invoice_id"
+                            name="invoice_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ $invoice->_id }}"
+                            placeholder="Enter invoice_id."
+                            required
+                        />
                         <button type="submit" class="btn btn-primary">
                             Submit
                         </button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
+use Illuminate\Support\Facades\Hash;
 
 use App\Invoice;
 use App\Transaction;
@@ -76,46 +77,71 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+
         // Validation Logic
         $this->validate($request,
             [
+                'provider_id' => 'required',
+                'receiver_id' => 'required',
                 'invoice_id' => 'required',
+
                 'amount_paid' => 'required',
                 'payment_method' => 'required',
+
                 'provider_acknowledgement' => 'required',
                 'receiver_acknowledgement' => 'required',
-                'acknowledged' => 'required',
             ]);
 
-        // create a new Transaction based on input
-        $allTransactions = Transaction::all();
-        $counter = 0;
 
-        foreach ($allTransactions as $transactions)
-        {
-            if ($request->invoice_id == $transactions->invoice_id) {
-                $counter++;
-            }
+        $invoice = Invoice::findOrFail($request->invoice_id);
+
+        if ($request->amount_paid > $invoice->outstanding_payment) {
+
+            dd("Error: Too Much Paid!");
+            //too much paid. return to enter valid amount
+            return redirect()->back();
         }
 
-        if ($counter == 0)
-        {
-            $invoice = Invoice::find($request->invoice_id);
+        $provider = User::findOrFail($request->provider_id);
+        $receiver = User::findOrFail($request->receiver_id);
 
-            $transaction = new Transaction;
-
-            $transaction->provider_id = $invoice->provider_id;
-            $transaction->receiver_id = $invoice->receiver_id;
-
-            $transaction->invoice_id = $request->invoice_id;
-            $transaction->payment_method = $request->payment_method;
-
-            $transaction->save();
+        if (((Hash::check($request->receiver_acknowledgement, $receiver->password))&&(Hash::check($request->provider_acknowledgement, $provider->password))) == true) {
+            $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
         }
-        else
-        {
-            dd("ERROR");
+        elseif ($request->acknowledged == true) {
+            $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
         }
+
+        $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
+
+        if ($invoice->outstanding_payment == 0) {
+
+            dd("Success: Outstanding Payment Clear!");
+            //direct to receipt generation
+            return redirect()->back();
+        }
+
+        $transaction = new Transaction;
+
+        $transaction->provider_id = $request->provider_id;
+        $transaction->receiver_id = $request->receiver_id;
+        $transaction->invoice_id = $request->invoice_id;
+
+        $transaction->payment_method = $request->payment_method;
+        $transaction->amount_paid = $request->amount_paid;
+
+        $transaction->provider_acknowledgement = $request->provider_acknowledgement;
+        $transaction->receiver_acknowledgement = $request->receiver_acknowledgement;
+
+        $transaction->acknowledged = false;
+
+        // dd($invoice);
+        // dd($transaction);
+        // dd($request);
+
+        $invoice->save();
+        $transaction->save();
 
         return redirect()->back();
     }

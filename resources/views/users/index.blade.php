@@ -2,154 +2,133 @@
 
 @section('content')
 
-<script src="{{ asset('js/leaflet.js') }}"></script>
-<script src="{{ asset('js/PruneCluster.js') }}"></script>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h6>
                 <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.index') }}">Properties</a>
-                <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.create') }}">Create New Property</a>
+                <a href="{{ route('users.index') }}">Properties</a>
             </h6><hr />
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Property</div>
+                <div class="card-header">All Properties</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('property.store') }}">
-                    	@csrf
-                    	@method('POST')
-
-                        <div id="map" style="width: 100%; height: 400px;"></div>
-                        <hr />
-                        <div class="form-group">
-                            <p>
-                                <label>
-                                    Name:
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter property name."
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Address:
-                                    <input
-                                        id="address"
-                                        name="address"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter property address."
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Description:
-                                </label>
-                                <textarea
-                                    class="form-control"
-                                    id="description"
-                                    name="description"
-                                    rows="3"
-                                    placeholder="Enter property description."
-                                    ></textarea>
-                            </p>
-                            <p>
-                                <label>
-                                    Status:
-                                    <select
-                                        id="status"
-                                        name="status"
-                                        class="form-control custom-select"
-                                        required
-                                    >
-                                        <option selected>Select property status</option>
-                                        <option value="rent">For Rent</option>
-                                        <option value="sell">For Sale</option>
-                                    </select>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Latitude:
-                                    <input
-                                        id="locationLatitude"
-                                        name="latitude"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Click on map to set latitude."
-                                        step="0.0"
-                                        required
-                                        readOnly
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Longitude:
-                                    <input
-                                        id="locationLongitude"
-                                        name="longitude"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Click on map to set longitude."
-                                        step="0.0"
-                                        required
-                                        readOnly
-                                    />
-                                </label>
-                            </p>
-                        </div>
-                        <input
-                            id="owner_id"
-                            name="owner_id"
-                            type="hidden"
-                            class="form-control"
-                            value="{{ Auth::id() }}"
-                            placeholder="Enter owner ID."
-                            required
-                        />
-                        <button type="submit" class="btn btn-primary">
-                            Create Location
-                        </button>
-                    </form>
+                    <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
-                </div>
+                    @if ($users->isEmpty())
+                        <br />
+                        <h1 class="display-4">Hello, it seems empty here!</h1>
+                        <p class="lead">Why don't you try to add some stuff?</p>
+                        <hr />
+                    @endif
+                    @foreach ($users as $user)
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
+                                </img>
+                            </div>
+                            <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>{{ $user->name }}</h5>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select id="ratingModule{{ $user->id }}" style="float: right;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>{{ $user->address }}</p>
+                            </div>
+                            <div class="row">
+                                <p>{{ $user->description }}</p>
+                            </div>
+                            <div class="row">
+                                <p>Review(s): ({{ count($user->reviews) }})</p>
+
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="{{ route('users.show', $user->_id) }}">
+                                    <button class="btn btn-sm btn-success">
+                                        View
+                                    </button>
+                                </a>
+                                <a href="{{ route('users.edit', $user->_id) }}">
+                                    <button class="btn btn-sm btn-success">
+                                        Edit
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <form method="POST" action="{{ route('users.destroy', $user->_id) }}">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-sm btn-danger float-right">
+                                        DELETE
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                    @endforeach
+                <a href="{{ route('users.create') }}">Create users</a>
             </div>
         </div>
     </div>
 </div>
+</div>
 
 <script type="text/javascript">
-	var map = L.map('map', {
+
+
+    var users = {!! json_encode($users->toArray()) !!};
+
+    console.log("---------- users ----------");
+    console.log(users);
+    console.log("---------- users ----------");
+
+    users.forEach(function(d){
+        console.log("---------- d ----------");
+        console.log(d);
+        console.log("---------- d ----------");
+        console.log('#ratingModule'+d._id);
+        $(function() {
+            $('#ratingModule'+d._id).barrating({
+                theme: 'css-stars',
+                initialRating: d.rate,
+                readonly: true
+            });
+        });
+    })
+
+
+
+    var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
         zoom: 16,
         layers: [
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            }),
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }),
         ]
-    });
+    })
 
-	function updateLatLng(state, e) {
-        document.getElementById('locationLatitude').value = e.latlng.lat;
-        document.getElementById('locationLongitude').value = e.latlng.lng;
-    };
 
-    map.on("click", updateLatLng.bind(null, this));
 
     // var pruneCluster = new PruneClusterForLeaflet();
     //
@@ -314,7 +293,7 @@
     //     }
     // });
     //
-    // locations.forEach(function (d){
+    // users.forEach(function (d){
     //     console.log("---------- d ----------");
     //     console.log(d);
     //     console.log("---------- d ----------");
@@ -344,21 +323,21 @@
     //
     // this.map.addLayer(pruneCluster);
 
-    // locations.forEach(function(d){
-    //     console.log("---------- d ----------");
-    //     console.log(d);
-    //     console.log("---------- d ----------");
-    //
-    //     var popupContent = "Property Name: " + d.locationName + "</br>" +
-    //                             "Property Address: " + d.locationAddress + "</br>" +
-    //                             "Property Description: " + d.locationDescription + "</br>" +
-    //                             "Property Rating: " + d.locationRating + "</br>" +
-    //                             "Property Status: " + d.locationStatus + "</br>" +
-    //                             "Property Owner Name: " + d.user.name + "</br>" +
-    //                             "Property Owner Email: " + d.user.email + "</br>";
-    //
-    //     L.marker([d.locationLatitude, d.locationLongitude]).addTo(map)
-    //         .bindPopup(popupContent);
-    // })
+    users.forEach(function(d){
+        console.log("---------- d ----------");
+        console.log(d);
+        console.log("---------- d ----------");
+
+        var popupContent = "Property Name: " + d.locationName + "</br>" +
+        "Property Address: " + d.locationAddress + "</br>" +
+        "Property Description: " + d.locationDescription + "</br>" +
+        "Property Rating: " + d.locationRating + "</br>" +
+        "Property Status: " + d.locationStatus + "</br>" +
+        "Property Owner Name: " + d.user.name + "</br>" +
+        "Property Owner Email: " + d.user.email + "</br>";
+
+        L.marker([d.locationLatitude, d.locationLongitude]).addTo(map)
+        .bindPopup(popupContent);
+    })
 </script>
 @endsection

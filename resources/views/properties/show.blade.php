@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.index') }}">Properties</a>
                 <i class="fas fa-angle-right"></i>
@@ -178,8 +178,6 @@ if (empty($property)) { $property = null; }
         ]
     })
 
-<<<<<<< HEAD
-=======
     // var location = {!! json_encode($property->toArray()) !!};
     //
     // console.log("---------- read ----------");
@@ -197,7 +195,6 @@ if (empty($property)) { $property = null; }
 
 
 
->>>>>>> frontend-Listing
     var pruneCluster = new PruneClusterForLeaflet();
 
     PruneCluster.Cluster.ENABLE_MARKERS_LIST = true;

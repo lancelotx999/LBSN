@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('business.index') }}">Businesses</a>
             </h6><hr />
@@ -26,6 +26,15 @@
 	                    <div id="{{ $business->_id }}" class="media">
 			                <div class="media-body">
 			                    <h5>{{ $business->name }}</h5>
+                                <div class="col-sm-6">
+                                    <select id="ratingModule{{ $business->id }}" style="float: right;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <a href="{{ route('business.show', $business->_id) }}">
@@ -61,4 +70,27 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var businesses = {!! json_encode($businesses->toArray()) !!};
+
+    console.log("---------- businesses ----------");
+    console.log(businesses);
+    console.log("---------- businesses ----------");
+
+    businesses.forEach(function(d){
+        console.log("---------- d ----------");
+        console.log(d);
+        console.log("---------- d ----------");
+        console.log('#ratingModule'+d._id);
+        $(function() {
+            $('#ratingModule'+d._id).barrating({
+                theme: 'css-stars',
+                initialRating: d.rate,
+                readonly: true
+            });
+        });
+    })
+
+
+</script>
 @endsection

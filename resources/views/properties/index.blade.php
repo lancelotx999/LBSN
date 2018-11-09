@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.index') }}">Properties</a>
             </h6><hr />
@@ -20,72 +20,72 @@
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
                     @if ($properties->isEmpty())
-                    <br />
-                    <h1 class="display-4">Hello, it seems empty here!</h1>
-                    <p class="lead">Why don't you try to add some stuff?</p>
-                    <hr />
+                        <br />
+                        <h1 class="display-4">Hello, it seems empty here!</h1>
+                        <p class="lead">Why don't you try to add some stuff?</p>
+                        <hr />
                     @endif
                     @foreach ($properties as $property)
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
-                        </img>
-                    </div>
-                    <div class="col-sm-9">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <h5>{{ $property->name }}</h5>
+                            <div class="col-sm-3">
+                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
+                                </img>
                             </div>
-                            <div class="col-sm-6">
-                                <select id="ratingModule{{ $property->id }}" style="float: right;">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                            <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>{{ $property->name }}</h5>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select id="ratingModule{{ $property->id }}" style="float: right;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>{{ $property->address }}</p>
+                            </div>
+                            <div class="row">
+                                <p>{{ $property->description }}</p>
+                            </div>
+                            <div class="row">
+                                <p>Review(s): ({{ count($property->reviews) }})</p>
+
                             </div>
                         </div>
-                        <div class="row">
-                            <p>{{ $property->address }}</p>
                         </div>
+
                         <div class="row">
-                            <p>{{ $property->description }}</p>
+                            <div class="col-sm-4">
+                                <a href="{{ route('property.show', $property->_id) }}">
+                                    <button class="btn btn-sm btn-success">
+                                        View
+                                    </button>
+                                </a>
+                                <a href="{{ route('property.edit', $property->_id) }}">
+                                    <button class="btn btn-sm btn-success">
+                                        Edit
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <form method="POST" action="{{ route('property.destroy', $property->_id) }}">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-sm btn-danger float-right">
+                                        DELETE
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="row">
-                            <p>Review(s): ({{ count($property->reviews) }})</p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <a href="{{ route('property.show', $property->_id) }}">
-                            <button class="btn btn-sm btn-success">
-                                View
-                            </button>
-                        </a>
-                        <a href="{{ route('property.edit', $property->_id) }}">
-                            <button class="btn btn-sm btn-success">
-                                Edit
-                            </button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-8">
-                        <form method="POST" action="{{ route('property.destroy', $property->_id) }}">
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-sm btn-danger float-right">
-                                DELETE
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <hr />
-                @endforeach
+                        <hr />
+                    @endforeach
                 <a href="{{ route('property.create') }}">Create properties</a>
             </div>
         </div>

@@ -64,6 +64,12 @@
                             <a class="nav-link" href="/property/listing">Property Listing</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/business/listing">Business Listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/listing">User Listing</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('business.index') }}">Businesses</a>
                         </li>
                     </ul>

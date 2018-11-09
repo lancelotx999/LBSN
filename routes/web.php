@@ -24,6 +24,8 @@ Route::resource('users', 'UserController');
 Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.contract');
 
 Route::get('/property/listing', 'PropertyController@showAll');
+Route::get('/business/listing', 'BusinessController@showAll');
+Route::get('/user/listing', 'UserController@showAll');
 Route::post('/rating/store', 'RatingController@store');
 Route::post('/review/store', 'ReviewController@store');
 
@@ -41,3 +43,4 @@ Route::get('/test4', 'PDF_GeneratorController@invoiceGenerator');
 Route::get('/test5', 'PDF_GeneratorController@receiptGenerator');
 Route::get('/test6', 'PDF_GeneratorController@test');
 Route::get('/test7', 'SearchController@test');
+Route::get('/test8', 'UserController@test');

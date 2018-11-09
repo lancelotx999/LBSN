@@ -15,12 +15,12 @@ use App\Review;
 class UserController extends Controller
 {
   // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
-    // List all Users if user is admin 
+    // List all Users if user is admin
     // Shows only self if user is a merchant / normal user
     public function index()
     {
@@ -30,27 +30,61 @@ class UserController extends Controller
             return view('users.index', compact('users'));
         }
         else
-        {   
+        {
             $users = Auth::user();
             return view('users.index', compact('users'));
-        }          
+        }
     }
 
     // Gets all reviews
     public function showAll()
     {
         $users = User::all();
+
+        foreach ($users as $user)
+        {
+
+            $ratings = Rating::where('ratee_id','=', $user->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0)
+            {
+                foreach ($ratings as $rating)
+                {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $user->rate = $totalRates/$totalUsers;
+
+            }
+            else
+            {
+                $user->rate = 0;
+            }
+            $reviews = Review::where('reviewee_id','=', $user->id)->get();
+
+            foreach ($reviews as $review)
+            {
+                $reviewer = User::findOrFail($review->reviewer_id);
+                $review->user = $reviewer;
+            }
+
+            $user->reviews = $reviews;
+
+        }
         return view('users.index', compact('users'));
     }
 
     public function create()
     {
-  
+
     }
 
     public function store(Request $request)
     {
-      
+
     }
 
     public function getContract($id)
@@ -65,6 +99,36 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $users = User::all();
         $properties = Property::all();
+
+        $ratings = Rating::where('ratee_id','=', $id)->get();
+
+        $totalRates = 0;
+        $totalUsers = count($ratings);
+
+        if ($totalUsers > 0)
+        {
+            foreach ($ratings as $rating)
+            {
+                $totalRates = $totalRates + $rating->rate;
+            }
+
+            $user->rate = $totalRates/$totalUsers;
+
+        }
+        else
+        {
+            $user->rate = 0;
+        }
+
+        $reviews = Review::where('reviewee_id','=', $id)->get();
+
+        foreach ($reviews as $review)
+        {
+            $user = User::findOrFail($review->reviewer_id);
+            $review->user = $user;
+        }
+
+        $user->reviews = $reviews;
 
         return view('users.show', compact('user', 'users', 'properties'));
     }
@@ -103,7 +167,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-         $this->validate($request(), 
+         $this->validate($request(),
         [
             'name' => 'required',
             'email' => 'required|string|email|max:255',
@@ -131,5 +195,23 @@ class UserController extends Controller
 
         return redirect()->back();
     }
-    
+
+    public function test(){
+        $id = "5be59efc339b574ea07c0ea2";
+        $user = User::findOrFail($id);
+
+        $reviews = Review::where('reviewee_id','=', $id)->get();
+
+        foreach ($reviews as $review)
+        {
+            $user = User::findOrFail($review->reviewer_id);
+            $review->user = $user;
+        }
+
+        $user->reviews = $reviews;
+
+        dd($user);
+
+    }
+
 }

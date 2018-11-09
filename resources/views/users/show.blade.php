@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h6>
-				<a href="{{ url('/') }}">Home</a> 
+				<a href="{{ url('/') }}">Home</a>
 				<i class="fas fa-angle-right"></i>
 				<a href="{{ route('users.show', ['user' => Auth::id() ]) }}">Member</a>
 			</h6><hr />
@@ -56,6 +56,64 @@
 					<hr/>
 					<h4>{{ $user->email }}</h4>
 					<h6>Email</h6>
+					<p>
+                        Rating:
+                        <select id="ratingModule">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </p>
+					<form method="POST" action="{{ route('review.store') }}">
+                        @csrf
+                        @method('POST')
+
+                        <textarea id="content" name="content" rows="5" cols="50" placeholder="Please leave a review."></textarea>
+                        <input
+                            id="reviewer_id"
+                            name="reviewer_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ Auth::id() }}"
+                            placeholder="Enter reviewer_id ID."
+                            required
+                        />
+                        <input
+                            id="reviewee_id"
+                            name="reviewee_id"
+                            type="hidden"
+                            class="form-control"
+                            value="{{ $user->_id }}"
+                            placeholder="Enter reviewee_id ID."
+                            required
+                        />
+                        <button type="submit" class="btn btn-primary">
+                            Review
+                        </button>
+                    </form>
+
+                    <hr />
+                    Reviews
+                    <hr />
+                    @foreach ($user->reviews as $review)
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
+                                </img>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <h5><a href="/user/{{ $review->reviewer_id }}">{{ $review->user->name }}</a></h5>
+                                </div>
+                                <div class="row">
+                                    <p>{{ $review->content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+		            @endforeach
 				</div>
 			</div>
 			<br />
@@ -196,7 +254,46 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+	var read = "{{ $user }}";
+	var json = read.replace(/&quot;/g, '"');
+	var data = JSON.parse(json);
 
+	$(function() {
+		$('#ratingModule').barrating({
+			theme: 'css-stars',
+			initialRating: data.rate,
+			onSelect: function(value, text, event) {
+				if (typeof(event) !== 'undefined') {
+					// rating was selected by a user
+					// console.log("---------- data ----------");
+					// console.log(data);
+					// console.log("---------- data ----------");
+
+					data.rater_id = '{{ Auth::user()->id }}';
+					data.ratee_id = data._id;
+					data.rate = $(event.target).data("rating-value");
+
+					// console.log("---------- data ----------");
+					// console.log(data);
+					// console.log("---------- data ----------");
+					$.ajax({
+						headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						type: "POST",
+						url: '/rating/store',
+						data: data,
+						success: function() {
+							// console.log(this);
+							// console.log("Valueadded");
+						}
+					})
+				}
+			}
+		});
+	});
+</script>
 @if($user->role == 'admin')
 	@foreach($users as $all)
 	<!-- Edit Modal -->
@@ -329,7 +426,7 @@
 
 	<script type="text/javascript">
 		function myFunction() {
-	  		// Declare variables 
+	  		// Declare variables
 	  		var input, filter, table, tr, td, i;
 	  		input = document.getElementById("myInput");
 	  		filter = input.value.toUpperCase();
@@ -345,7 +442,7 @@
 	      			} else {
 	        			tr[i].style.display = "none";
 	      			}
-	    		} 
+	    		}
 	  		}
 		}
 	</script>

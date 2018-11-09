@@ -50,7 +50,8 @@ class SearchController extends Controller
 	public function searchProperties(Request $request)
 	{
 		$filters->name = $request->name;
-		$filters->services = $request->services;
+		$filters->status = $request->status;
+		$filters->tags = $request->tags;
 		$filters->verified = $request->verified;
 
 		$query = Property::query();

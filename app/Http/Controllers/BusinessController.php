@@ -19,38 +19,51 @@ class BusinessController extends Controller
     // Returns both all businesses and the owned businesses if merchant
     public function index()
     {
-        if (Auth::user()->role === 'admin')
-        {
-            $businesses = Business::all();
-            return view('businesses.index', compact('businesses'));
-        }
-        else if (Auth::user()->role === 'merchant')
-        {
-            $user_businesses = Business::where('owner_id','=',Auth::user()->id)->get();
-            $businesses = Business::all();
-
-            return view('businesses.index', compact('user_businesses','businesses'));
-        }
-        else
-        {
-        	$businesses = Business::all();
-            return view('businesses.index', compact('businesses'));
-        }       
+       return $this->showUserBusinesses(Auth::user()->id);       
     }
 
     // Gets all bussinesses
     public function showAll()
     {
     	$businesses = Business::all();
-    	return view('businesses.index', compact('businesses'));
+
+        foreach ($businesses as $business) 
+        {
+            $ratings = Rating::where('ratee_id','=', $business->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0) 
+            {
+                foreach ($ratings as $rating) 
+                {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $business->rate = $totalRates/$totalUsers;
+
+            }
+            else 
+            {
+                $business->rate = 0;
+            }
+
+            $reviews = Review::where('reviewee_id','=', $business->id)->get();
+
+            foreach ($reviews as $review) 
+            {
+                $user = User::findOrFail($review->reviewer_id);
+                $review->user = $user;
+            }
+
+            $business->reviews = $reviews;
+        }
+
+        return view('businesses.index', compact('businesses'));
     }
 
     // Gets all the bussinesses associated with specified user
-    public function showUserBusinesses($owner_id)
-    {
-    	$user_businesses = Business::where('owner_id','=', $owner_id)->get();
-    	return view('businesses.index', compact('user_businesses'));
-    }
 
     public function create()
     {
@@ -62,13 +75,13 @@ class BusinessController extends Controller
     {
         // Validation Logic
         $this->validate($request, 
-        [
-            'owner_id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'services' => 'required',
-            'contact_number' => 'required',
-        ]);
+            [
+                'owner_id' => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'services' => 'required',
+                'contact_number' => 'required',
+            ]);
 
         // create a new Business based on input
         $business = new Business;
@@ -88,6 +101,35 @@ class BusinessController extends Controller
     public function show($id)
     {
         $business = Business::findOrFail($id);
+        $ratings = Rating::where('ratee_id','=', $id)->get();
+
+        $totalRates = 0;
+        $totalUsers = count($ratings);
+
+        if ($totalUsers > 0) 
+        {
+            foreach ($ratings as $rating) 
+            {
+                $totalRates = $totalRates + $rating->rate;
+            }
+
+            $business->rate = $totalRates/$totalUsers;
+
+        }
+        else 
+        {
+            $business->rate = 0;
+        }
+
+        $reviews = Review::where('reviewee_id','=', $id)->get();
+
+        foreach ($reviews as $review) 
+        {
+            $user = User::findOrFail($review->reviewer_id);
+            $review->user = $user;
+        }
+
+        $business->reviews = $reviews;
 
         return view('businesses.show', compact('business'));
     }
@@ -120,6 +162,46 @@ class BusinessController extends Controller
         Business::findOrFail($id)->delete();
 
         return redirect()->back();
+    }
+
+    public function showUserBusinesses($owner_id)
+    {
+        $businesses = Business::where('owner_id','=',$owner_id)->get();
+
+        foreach ($businesses as $business) 
+        {
+            $ratings = Rating::where('ratee_id','=', $business->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0) 
+            {
+                foreach ($ratings as $rating) 
+                {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $business->rate = $totalRates/$totalUsers;
+
+            }
+            else 
+            {
+                $business->rate = 0;
+            }
+
+            $reviews = Review::where('reviewee_id','=', $business->id)->get();
+
+            foreach ($reviews as $review) 
+            {
+                $user = User::findOrFail($review->reviewer_id);
+                $review->user = $user;
+            }
+
+            $business->reviews = $reviews;
+        }
+
+        return view('businesses.index', compact('businesses'));
     }
 
 }

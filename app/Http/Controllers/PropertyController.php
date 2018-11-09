@@ -22,24 +22,7 @@ class PropertyController extends Controller
     // Shows only user properties if user is a merchant
     public function index()
     {
-
-        if (Auth::user()->role === 'admin')
-        {
-            $properties = Property::all();
-        }
-        else if (Auth::user()->role === 'merchant')
-        {
-            $user_properties = Property::where('owner_id','=',Auth::user()->id)->get();
-            $properties = Property::all();
-
-            return view('properties.index', compact('user_properties','properties'));
-        }
-        else
-        {
-        	$properties = Property::all();
-        }
-
-        return view('properties.index', compact('properties'));
+        return $this->showUserProperties(Auth::user()->id);
     }
 
     // Gets all properties
@@ -47,27 +30,32 @@ class PropertyController extends Controller
     {
     	$properties = Property::all();
 
-        foreach ($properties as $property) {
+        foreach ($properties as $property) 
+        {
             $ratings = Rating::where('ratee_id','=', $property->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) {
-                foreach ($ratings as $rating) {
+            if ($totalUsers > 0) 
+            {
+                foreach ($ratings as $rating) 
+                {
                     $totalRates = $totalRates + $rating->rate;
                 }
 
                 $property->rate = $totalRates/$totalUsers;
 
             }
-            else {
+            else 
+            {
                 $property->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $property->id)->get();
 
-            foreach ($reviews as $review) {
+            foreach ($reviews as $review) 
+            {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;
             }
@@ -75,20 +63,11 @@ class PropertyController extends Controller
             $property->reviews = $reviews;
         }
 
-    	return view('properties.index', compact('properties'));
-    }
-
-    // Gets all the properties associated with specified user
-    public function showUserProperties($owner_id)
-    {
-    	$user_properties = Property::where('owner_id','=', $owner_id)->get();
-    	return view('properties.index', compact('user_properties'));
+        return view('properties.index', compact('properties'));
     }
 
     public function create()
     {
-        $user_properties = Property::where('owner_id','=',Auth::user()->id)->get();
-
         return view('properties.create', compact('user_properties'));
     }
 
@@ -97,15 +76,15 @@ class PropertyController extends Controller
     {
         // Validation Logic
         $this->validate($request,
-        [
-            'owner_id' => 'required',
-            'name' => 'required',
-            'address' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-        ]);
+            [
+                'owner_id' => 'required',
+                'name' => 'required',
+                'address' => 'required',
+                'description' => 'required',
+                'status' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required',
+            ]);
 
         // create a new Property based on input
         $property = new Property;
@@ -128,28 +107,30 @@ class PropertyController extends Controller
     public function show($id)
     {
         $property = Property::findOrFail($id);
-        $users = User::all();
-
         $ratings = Rating::where('ratee_id','=', $id)->get();
 
         $totalRates = 0;
         $totalUsers = count($ratings);
 
-        if ($totalUsers > 0) {
-            foreach ($ratings as $rating) {
+        if ($totalUsers > 0) 
+        {
+            foreach ($ratings as $rating) 
+            {
                 $totalRates = $totalRates + $rating->rate;
             }
 
             $property->rate = $totalRates/$totalUsers;
 
         }
-        else {
+        else 
+        {
             $property->rate = 0;
         }
 
         $reviews = Review::where('reviewee_id','=', $id)->get();
 
-        foreach ($reviews as $review) {
+        foreach ($reviews as $review) 
+        {
             $user = User::findOrFail($review->reviewer_id);
             $review->user = $user;
         }
@@ -189,6 +170,47 @@ class PropertyController extends Controller
         Property::findOrFail($id)->delete();
 
         return redirect()->back();
+    }
+
+    // Gets all the properties associated with specified user
+    public function showUserProperties($owner_id)
+    {
+        $properties = Property::where('owner_id','=',$owner_id)->get();
+
+        foreach ($properties as $property) 
+        {
+            $ratings = Rating::where('ratee_id','=', $property->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0) 
+            {
+                foreach ($ratings as $rating) 
+                {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $property->rate = $totalRates/$totalUsers;
+
+            }
+            else 
+            {
+                $property->rate = 0;
+            }
+
+            $reviews = Review::where('reviewee_id','=', $property->id)->get();
+
+            foreach ($reviews as $review) 
+            {
+                $user = User::findOrFail($review->reviewer_id);
+                $review->user = $user;
+            }
+
+            $property->reviews = $reviews;
+        }
+
+        return view('properties.index', compact('properties'));
     }
 
 }

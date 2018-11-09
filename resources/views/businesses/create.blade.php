@@ -23,69 +23,56 @@
                     	@method('POST')
 
                         <div class="form-group">
-                            <p>
-                                <label>
-                                    Name:
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter business name."
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Description:
-                                </label>
-                                <textarea 
-                                    class="form-control" 
-                                    id="description" 
-                                    name="description"
-                                    rows="3"
-                                    placeholder="Enter business description."
-                                    ></textarea>
-                            </p>
-                            <p>
-                                <label>
-                                    Services:
-                                    <div class="input-group mb-3">
-                                        <input
-                                            id="services"
-                                            name="services[]"
-                                            type="text"
-                                            class="form-control"
-                                            placeholder="Enter business service."
-                                        />
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button" id="addMore"><i class="fas fa-plus fa-fw"></i></button>
-                                        </div>
-                                    </div>
-                                    <span id="fieldList"></span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Contact Number:
-                                    <input
-                                        id="contact_number"
-                                        name="contact_number"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter contact number."
-                                    />
-                                </label>
-                            </p>
+                            <label for="name">
+                                Name:
+                            </label>
+                            <input
+                                id="name" name="name" type="text"
+                                class="form-control"
+                                placeholder="Enter business name."
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">
+                                Description:
+                            </label>
+                            <textarea 
+                                id="description" name="description"
+                                class="form-control" rows="3"
+                                placeholder="Enter business description."
+                                ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="services">
+                                Services:
+                            </label>
+                            <div class="input-group mb-3">
+                                <input
+                                    id="services" name="services[]" type="text"
+                                    class="form-control"
+                                    placeholder="Enter business service."
+                                />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="addMore"><i class="fas fa-plus fa-fw"></i></button>
+                                </div>
+                            </div>
+                            <span id="fieldList"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_number">
+                                Contact Number:
+                            </label>
+                            <input
+                                id="contact_number" name="contact_number" type="text"
+                                class="form-control"
+                                placeholder="Enter contact number."
+                            />
                         </div>
                         <input
-                            id="owner_id"
-                            name="owner_id"
-                            type="hidden"
+                            id="owner_id" name="owner_id" type="hidden"
                             class="form-control"
                             value="{{ Auth::id() }}"
-                            placeholder="Enter owner ID."
                             required
                         />
                         <button type="submit" class="btn btn-primary">

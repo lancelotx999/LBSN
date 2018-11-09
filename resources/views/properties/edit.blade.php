@@ -29,101 +29,90 @@
                         <div id="map" style="width: 100%; height: 400px;"></div>
                         <hr />
                         <div class="form-group">
-                            <p>
-                                <label>
-                                    Name:
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter location name."
-                                        value="{{ $property->name }}"
-                                        required
-                                    />
+                            <label for="name">
+                                Name:
+                            </label>
+                            <input
+                                id="name" name="name" type="text"
+                                class="form-control"
+                                placeholder="Enter property name."
+                                value="{{ $property->name }}"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="address">
+                                Address:
+                            </label>                                    
+                            <input
+                                id="address" name="address" type="text"
+                                class="form-control"
+                                placeholder="Enter property address."
+                                value="{{ $property->address }}"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">
+                                Description:
+                            </label>
+                            <textarea 
+                                id="description" name="description"
+                                class="form-control" rows="3"
+                                placeholder="Enter property description."
+                                >{{ $property->description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            Status:
+                            <div class="form-check">
+                                <input 
+                                    id="forrent" name="status" type="radio"
+                                    class="form-check-input" value="rent" 
+                                    checked />
+                                <label class="form-check-label" for="forrent">
+                                    For Rent
                                 </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Address:
-                                    <input
-                                        id="address"
-                                        name="address"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter location address."
-                                        value="{{ $property->address }}"
-                                        required
-                                    />
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                    id="forsale" name="status" type="radio"
+                                    class="form-check-input" value="sell" 
+                                />
+                                <label class="form-check-label" for="forsale">
+                                    For Sale
                                 </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Description:
-                                </label>
-                                <textarea 
-                                    class="form-control" 
-                                    id="description" 
-                                    name="description"
-                                    rows="3"
-                                    placeholder="Enter property description."
-                                    >{{ $property->description }}</textarea>
-                            </p>
-                            <p>
-                                <label>
-                                    Status:
-                                    <select
-                                        id="status"
-                                        name="status"
-                                        class="form-control custom-select"
-                                        required
-                                    >
-                                        <option selected>Select property status</option>
-                                        <option value="rent">For Rent</option>
-                                        <option value="sell">For Sale</option>
-                                    </select>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="latitude">
                                     Latitude:
-                                    <input
-                                        id="locationLatitude"
-                                        name="latitude"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Click on map to set latitude."
-                                        step="0.0"
-                                        value="{{ $property->latitude }}"
-                                        required
-                                        readOnly
-                                    />
                                 </label>
-                            </p>
-                            <p>
-                                <label>
+                                <input
+                                    id="latitude" name="latitude" type="text"
+                                    class="form-control"
+                                    placeholder="Click on map to set latitude."
+                                    value="{{ $property->latitude }}"
+                                    step="0.0" required readOnly
+                                />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="longitude">
                                     Longitude:
-                                    <input
-                                        id="locationLongitude"
-                                        name="longitude"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Click on map to set longitude."
-                                        step="0.0"
-                                        value="{{ $property->longitude }}"
-                                        required
-                                        readOnly
-                                    />
                                 </label>
-                            </p>
+                                <input
+                                    id="longitude" name="longitude" type="text"
+                                    class="form-control"
+                                    placeholder="Click on map to set longitude."
+                                    value="{{ $property->longitude }}"
+                                    step="0.0" required readOnly
+                                />
+                            </div>
                         </div>
                         <input
-                            id="owner_id"
-                            name="owner_id"
-                            type="hidden"
+                            id="owner_id" name="owner_id" type="hidden"
                             class="form-control"
                             value="{{ $property->owner_id }}"
-                            placeholder="Enter owner ID."
                             required
                         />
                         <button type="submit" class="btn btn-primary">

@@ -23,86 +23,78 @@
                     	@method('PATCH')
 
                         <div class="form-group">
-                            <p>
-                                <label>
-                                    Provider:
-                                    <input
-                                        id="providerID"
-                                        name="provider_id"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter provider ID."
-                                        value="{{ $contract->provider_id }}"
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Receiver:
-                                    <input
-                                        id="receiverID"
-                                        name="receiver_id"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter receiver ID."
-                                        value="{{ $contract->receiver_id }}"
-                                        required
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Property:
-                                    <input
-                                        id="itemID"
-                                        name="item_id"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter item ID."
-                                        value="{{ $contract->item_id }}"
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Contract Type:
-                                    <input
-                                        id="contractType"
-                                        name="type"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Enter contract type."
-                                        value="{{ $contract->type }}"
-                                    />
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    Description:
-                                </label>
-                                <textarea 
+                            <label for="provider_id">
+                                Provider:
+                            </label>
+                            <input
+                                id="provider_id" name="provider_id" type="text"
+                                class="form-control"
+                                placeholder="Enter provider ID."
+                                value="{{ $contract->provider_id }}" 
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver_id">
+                                Receiver:
+                            </label>
+                            <input
+                                id="receiver_id" name="receiver_id" type="text"
+                                class="form-control"
+                                placeholder="Enter receiver ID."
+                                value="{{ $contract->receiver_id }}" 
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="item_id">
+                                Property:
+                            </label>
+                            <input
+                                id="item_id" name="item_id" type="text"
+                                class="form-control"
+                                placeholder="Enter item ID."
+                                value="{{ $contract->item_id }}" 
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="type">
+                                Contract Type:
+                            </label>
+                            <input
+                                id="type" name="type" type="text"
+                                class="form-control"
+                                placeholder="Enter contract type."
+                                value="{{ $contract->type }}" 
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">
+                                Description:
+                            </label>
+                            <textarea 
+                                id="description" name="description"
+                                class="form-control" rows="3"
+                                placeholder="Enter description."
+                                >{{ $contract->description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">
+                                Property Price:
+                            </label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">MYR</span>
+                                </div>
+                                <input 
+                                    id="price" name="price" type="text" 
                                     class="form-control" 
-                                    id="contractContent" 
-                                    name="description"
-                                    rows="3"
-                                    placeholder="Enter description."
-                                    >{{ $contract->description }}</textarea>
-                            </p>
-                            <p>
-                                <label>
-                                    Property Price:
-                                    <input
-                                        id="contractValue"
-                                        name="price"
-                                        type="number"
-                                        class="form-control"
-                                        placeholder="Enter price value."
-                                        value="{{ $contract->price }}"
-                                        required
-                                    />
-                                </label>
-                            </p>
+                                    placeholder="Enter price value."
+                                    value="{{ $contract->price }}" 
+                                    required
+                                />
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">
                             Edit Contract

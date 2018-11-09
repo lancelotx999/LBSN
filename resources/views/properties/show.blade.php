@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -52,22 +48,16 @@
                     <p>
                         Longitude: {{ $property->longitude }}
                     </p>
-                    <p>
-                        <a href="{{ route('property.show', ['id' => $property->id]) }}">
-                            Create Property Contract
-            	        </a>
-                    <p />
-                    <p>
-                        <a href="{{ route('property.show', ['id' => $property->id]) }}">
-                            Create Service Contract
-                        </a>
-                    <p />
                     <hr />
                     <form method="POST" action="{{ route('review.store') }}">
                         @csrf
                         @method('POST')
 
-                        <textarea id="content" name="content" rows="5" cols="50" placeholder="Please leave a review."></textarea>
+                        <div class="form-group">
+                            <label for="content">Write A Review:</label>
+                            <textarea class="form-control" id="content" name="content" rows="5" placeholder="Please leave a review."></textarea>
+                        </div>
+
                         <input
                             id="reviewer_id"
                             name="reviewer_id"
@@ -178,26 +168,6 @@ if (empty($property)) { $property = null; }
         ]
     })
 
-<<<<<<< HEAD
-=======
-    // var location = {!! json_encode($property->toArray()) !!};
-    //
-    // console.log("---------- read ----------");
-    // console.log(read);
-    // console.log("---------- read ----------");
-    // console.log("---------- json ----------");
-    // console.log(json);
-    // console.log("---------- json ----------");
-    // console.log("---------- data ----------");
-    // console.log(data);
-    // console.log("---------- data ----------");
-    // console.log("---------- locations ----------");
-    // console.log(location);
-    // console.log("---------- locations ----------");
-
-
-
->>>>>>> frontend-Listing
     var pruneCluster = new PruneClusterForLeaflet();
 
     PruneCluster.Cluster.ENABLE_MARKERS_LIST = true;

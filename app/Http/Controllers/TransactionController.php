@@ -34,6 +34,22 @@ class TransactionController extends Controller
             //user receives item and pays
             $received_transactions = Transaction::where('receiver_id','=', Auth::user()->id)->get();
 
+            foreach ($received_transactions as $transaction) {
+                $transaction->invoice = Invoice::find($transaction->invoice_id);
+
+                $transaction->provider = User::findOrFail($transaction->provider_id);
+                $transaction->receiver = User::findOrFail($transaction->receiver_id);
+            }
+
+            foreach ($provided_transactions as $transaction) {
+                $transaction->invoice = Invoice::find($transaction->invoice_id);
+
+                $transaction->provider = User::findOrFail($transaction->provider_id);
+                $transaction->receiver = User::findOrFail($transaction->receiver_id);
+            }
+
+            // dd($received_transactions);
+
             return view('transactions.index', compact('provided_transactions','received_transactions'));
         }
     }
@@ -95,6 +111,7 @@ class TransactionController extends Controller
 
 
         $invoice = Invoice::findOrFail($request->invoice_id);
+        $transaction = new Transaction;
 
         if ($request->amount_paid > $invoice->outstanding_payment) {
 
@@ -108,21 +125,39 @@ class TransactionController extends Controller
 
         if (((Hash::check($request->receiver_acknowledgement, $receiver->password))&&(Hash::check($request->provider_acknowledgement, $provider->password))) == true) {
             $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
+            $transaction->acknowledged = true;
         }
         elseif ($request->acknowledged == true) {
             $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
+            $transaction->acknowledged = true;
         }
 
-        $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
+        // $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
 
-        if ($invoice->outstanding_payment == 0) {
+        if (($invoice->outstanding_payment == 0) && ($transaction->acknowledged == true)) {
 
-            dd("Success: Outstanding Payment Clear!");
+            // dd("Success: Outstanding Payment Clear!");
+            $transaction->provider_id = $request->provider_id;
+            $transaction->receiver_id = $request->receiver_id;
+            $transaction->invoice_id = $request->invoice_id;
+
+            $transaction->payment_method = $request->payment_method;
+            $transaction->amount_paid = $request->amount_paid;
+
+            $transaction->provider_acknowledgement = $request->provider_acknowledgement;
+            $transaction->receiver_acknowledgement = $request->receiver_acknowledgement;
+
+            $invoice->paid = true;
+
+            dd($invoice);
+
+            $invoice->save();
+            $transaction->save();
+
             //direct to receipt generation
             return redirect()->back();
         }
 
-        $transaction = new Transaction;
 
         $transaction->provider_id = $request->provider_id;
         $transaction->receiver_id = $request->receiver_id;
@@ -134,7 +169,6 @@ class TransactionController extends Controller
         $transaction->provider_acknowledgement = $request->provider_acknowledgement;
         $transaction->receiver_acknowledgement = $request->receiver_acknowledgement;
 
-        $transaction->acknowledged = false;
 
         // dd($invoice);
         // dd($transaction);
@@ -156,6 +190,13 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::findOrFail($id);
 
+        $transaction->invoice = Invoice::find($transaction->invoice_id);
+
+        $transaction->provider = User::findOrFail($transaction->provider_id);
+
+        $transaction->receiver = User::findOrFail($transaction->receiver_id);
+
+
         return view('transactions.show', compact('transaction'));
     }
 
@@ -167,9 +208,16 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        $transaction = Receipt::findOrFail($id);
+        $transaction = Transaction::findOrFail($id);
 
-        return view('receipts.edit', compact('receipt'));
+        $transaction->invoice = Invoice::find($transaction->invoice_id);
+
+        $transaction->provider = User::findOrFail($transaction->provider_id);
+
+        $transaction->receiver = User::findOrFail($transaction->receiver_id);
+
+        // dd($transaction);
+        return view('transactions.edit', compact('transaction'));
     }
 
     /**
@@ -183,13 +231,70 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::findOrFail($id);
 
-        $transaction->invoice_id = $request->invoice_id;
-        $transaction->payment_method = $request->payment_method;
+        $invoice = Invoice::findOrFail($transaction->invoice_id);
 
+        if ($request->amount_paid > $invoice->outstanding_payment) {
+
+            dd("Error: Too Much Paid!");
+            //too much paid. return to enter valid amount
+            return redirect()->back();
+        }
+
+        $provider = User::findOrFail($transaction->provider_id);
+        $receiver = User::findOrFail($transaction->receiver_id);
+
+        if (((Hash::check($request->receiver_acknowledgement, $receiver->password))&&(Hash::check($request->provider_acknowledgement, $provider->password))) == true) {
+            $invoice->outstanding_payment = $invoice->outstanding_payment - $transaction->amount_paid;
+            $transaction->acknowledged = true;
+        }
+        elseif ($request->acknowledged == true) {
+            $invoice->outstanding_payment = $invoice->outstanding_payment - $transaction->amount_paid;
+            $transaction->acknowledged = true;
+        }
+
+        // $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
+
+        if (($invoice->outstanding_payment == 0) && ($transaction->acknowledged == true)) {
+
+            // dd("Success: Outstanding Payment Clear!");
+
+            $transaction->provider_acknowledgement = $request->provider_acknowledgement;
+            $transaction->receiver_acknowledgement = $request->receiver_acknowledgement;
+
+            $invoice->paid = true;
+
+            // dd($invoice);
+
+            $invoice->save();
+            $transaction->save();
+
+            //direct to receipt generation
+            return redirect()->back();
+        }
+
+
+        $transaction->receiver_acknowledgement = $request->receiver_acknowledgement;
+        $transaction->provider_acknowledgement = $request->provider_acknowledgement;
+
+        // dd($invoice);
+        // dd($transaction);
+        // dd($request);
+
+        $invoice->save();
         $transaction->save();
 
-
-        return redirect()->route('transactions.edit', ['transaction' => $transaction ]);
+        // $transaction = Transaction::findOrFail($id);
+        //
+        // $transaction->invoice_id = $request->invoice_id;
+        // $transaction->payment_method = $request->payment_method;
+        //
+        // dd($transaction);
+        // $transaction->save();
+        //
+        //
+        //
+        //
+        // return redirect()->route('transactions.edit', ['transaction' => $transaction ]);
     }
 
     /**
@@ -200,7 +305,7 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        Receipt::findOrFail($id)->delete();
+        Transaction::findOrFail($id)->delete();
 
         return redirect()->back();
     }

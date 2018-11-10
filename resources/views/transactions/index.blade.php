@@ -24,38 +24,33 @@
                         <hr />
                     @endif
                     @foreach ($received_transactions as $transaction)
-                        123
-                        <!-- <div class="row">
-                            <div class="col-sm-3">
-                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
-                                </img>
-                            </div>
+                        <div class="row">
                             <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5>{{ $transaction->name }}</h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>ID: {{ $transaction->_id }}</h5>
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <select id="ratingModule{{ $transaction->id }}" style="float: right;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
+                                <div class="row">
+                                    <p>Provider: {{ $transaction->provider->name }}</p>
+                                </div>
+                                <div class="row">
+                                    <p>Receiver: {{ $transaction->receiver->name }}</p>
+                                </div>
+                                <div class="row">
+                                    <p>Payment Method: {{ $transaction->payment_method }}</p>
+                                </div>
+                                <div class="row">
+                                    <p>Amount Paid: {{ $transaction->amount_paid }}</p>
+                                </div>
+                                <div class="row">
+                                    @if ($transaction->acknowledged == true)
+                                        <p>Status: Verified</p>
+                                    @elseif ($transaction->acknowledged == false)
+                                        <p>Status: Unverified</p>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="row">
-                                <p>{{ $transaction->address }}</p>
-                            </div>
-                            <div class="row">
-                                <p>{{ $transaction->description }}</p>
-                            </div>
-                            <div class="row">
-                                <p>Review(s): ({{ count($transaction->reviews) }})</p>
-
-                            </div>
-                        </div>
                         </div>
 
                         <div class="row">
@@ -83,7 +78,7 @@
                                 </form>
                             </div>
                         </div>
-                        <hr /> -->
+                        <hr />
                     @endforeach
                 <a href="{{ route('transaction.create') }}">Create Transactions</a>
             </div>
@@ -95,11 +90,17 @@
 <script type="text/javascript">
 
 
-    // var received_transactions = {!! json_encode($received_transactions->toArray()) !!};
-    //
-    // console.log("---------- received_transactions ----------");
-    // console.log(received_transactions);
-    // console.log("---------- received_transactions ----------");
+    var received_transactions = {!! json_encode($received_transactions->toArray()) !!};
+
+    console.log("---------- received_transactions ----------");
+    console.log(received_transactions);
+    console.log("---------- received_transactions ----------");
+
+    var provided_transactions = {!! json_encode($provided_transactions->toArray()) !!};
+
+    console.log("---------- provided_transactions ----------");
+    console.log(provided_transactions);
+    console.log("---------- provided_transactions ----------");
 
 
 </script>

@@ -90,6 +90,8 @@
                                         type="number"
                                         class="form-control"
                                         placeholder="Enter Amount Paid."
+                                        step="0.01"
+                                        min=0
                                         required
                                     />
                                 </label>

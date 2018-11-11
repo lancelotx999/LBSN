@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Auth;
 use Moloquent;
@@ -202,6 +203,14 @@ class BusinessController extends Controller
         }
 
         return view('businesses.index', compact('businesses'));
+    }
+
+    public function test()
+    {
+        Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');
+
+        // Storage::put('file.jpg', $contents);
+
     }
 
 }

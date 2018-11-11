@@ -64,6 +64,18 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'businesses' => [
+            'driver' => 's3',
+            'key' => env('MINIO_KEY'),
+            'secret' => env('MINIO_SECRET'),
+            'endpoint' => env('MINIO_ENDPOINT'),
+            'region' => env('MINIO_DEFAULT_REGION'),
+            'bucket' => env('MINIO_BUCKET_BUSINESSES'),
+            'use_path_style_endpoint' => true,
+            'options' => [
+                'override_visibility_on_copy' => 'private',
+            ]
+        ]
     ],
 
 ];

@@ -27,13 +27,17 @@ class SearchController extends Controller
 
 	public function searchBusinesses(Request $request)
 	{
-		$filters = collect();
+		$filters = array();
 		$name = $request->name;
-		$filters->services = $request->services;
-		$filters->verified = $request->verified;
+		$filters['services'] = array_filter($request->services, function($var){return !is_null($var);} );
+		$filters['verified'] = $request->verified;
 
 		$query = Business::query();
-		$query->where('name', 'like', '%'.$name.'%');
+		
+		if (isset($name))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
 
 		foreach ($filters as $filter => $value)
 		{

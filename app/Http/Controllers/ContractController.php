@@ -108,9 +108,7 @@ class ContractController extends Controller
             $item = Business::findOrFail($item_id);
         }
 
-        $owner_id = $item->owner_id;
-
-        return view('contracts.create', compact('item_id', 'owner_id'));
+        return view('contracts.create', compact('item_id', 'item'));
     }
 
     public function store(Request $request)
@@ -127,6 +125,7 @@ class ContractController extends Controller
 
         $contract = new Contract;
 
+        $contract->name = $request->name;
         $contract->provider_id = $request->provider_id;
         $contract->receiver_id = $request->receiver_id;
         $contract->item_id = $request->item_id;
@@ -158,6 +157,7 @@ class ContractController extends Controller
     {
         $contract = Contract::findOrFail($id);
         
+        $contract->name = $request->name;
         $contract->provider_id = $request->provider_id;
         $contract->receiver_id = $request->receiver_id;
         $contract->item_id = $request->item_id;

@@ -55,16 +55,10 @@
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/map">Map</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/property/listing">Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contract.index') }}">Contracts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('business.index') }}">Businesses</a>
+                            <a class="nav-link" href="/business/listing">Businesses</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('invoice.index') }}">Invoices</a>

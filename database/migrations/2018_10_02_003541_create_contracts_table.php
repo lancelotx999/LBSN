@@ -16,6 +16,7 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->string('name');
             $table->string('provider_id');
             $table->string('receiver_id');
 
@@ -33,6 +34,7 @@ class CreateContractsTable extends Migration
 
             DB::table('contracts')->insert(
         array(
+            'name' => "Cleaing 4K Pro",
             'provider_id' => "5bdfe2db84220c09e56acd44",
             'receiver_id' => "5bdfe2db84220c09e56acd43",
             'item_id' => "5bdfeb6884220c0f7f0d803b",
@@ -47,6 +49,7 @@ class CreateContractsTable extends Migration
 
             DB::table('contracts')->insert(
         array(
+            'name' => "Cleaing 8K Pro",
             'provider_id' => "5bdfe2db84220c09e56acd44",
             'receiver_id' => "5bdfe2db84220c09e56acd43",
             'item_id' => "5bdfeb6884220c0f7f0d803b",

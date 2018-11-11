@@ -7,7 +7,7 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.index') }}">Contracts</a>
+                <a href="{{ url()->previous() }}">Contracts</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('contract.create') }}">Create New Contract</a>
             </h6><hr />
@@ -16,56 +16,52 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Contract</div>
+                <div class="card-header">Contract For:</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('contract.store') }}">
                     	@csrf
                     	@method('POST')
 
+                        <h4>{{ $item->name }}</h4>
                         <div class="form-group">
-                            <label for="provider_id">
-                                Provider:
+                            <label for="name">
+                                Contract Title:
                             </label>
-                            <input
-                                id="provider_id" name="provider_id" type="text"
-                                class="form-control"
-                                placeholder="Enter provider ID."
-                                value="{{ Auth::id() }}"
-                                required
-                            />
+                            <input type="text" name="name" id="name"
+                            class="form-control" placeholder="{{ $item->name }}.." />
                         </div>
                         <div class="form-group">
-                            <label for="receiver_id">
-                                Receiver:
-                            </label>
-                            <input
-                                id="receiver_id" name="receiver_id" type="text"
-                                class="form-control"
-                                placeholder="Enter receiver ID."
-                                value={{ $owner_id }}
-                                required
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="item_id">
-                                Item:
-                            </label>
-                            <input
-                                id="item_id" name="item_id" type="text"
-                                class="form-control"
-                                value={{ $item_id }}
-                                placeholder="Enter item ID."
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="type">
+                            <label>
                                 Contract Type:
                             </label>
-                            <input
-                                id="type" name="type" type="text"
-                                class="form-control"
-                                placeholder="Enter contract type."
-                            />
+                            <div class="form-check">
+                                <input 
+                                    id="forrent" name="type" type="radio"
+                                    class="form-check-input" value="rent" 
+                                    checked 
+                                />
+                                <label class="form-check-label" for="forrent">
+                                    Rent
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                    id="forsale" name="type" type="radio"
+                                    class="form-check-input" value="sell" 
+                                />
+                                <label class="form-check-label" for="forsale">
+                                    Sale
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                    id="forservice" name="type" type="radio"
+                                    class="form-check-input" value="service" 
+                                />
+                                <label class="form-check-label" for="forservice">
+                                    Service
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="description">
@@ -79,7 +75,7 @@
                         </div>
                         <div class="form-group">
                             <label for="price">
-                                Property Price:
+                                Price:
                             </label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -94,8 +90,28 @@
                                 />
                             </div>
                         </div>
+                        <input
+                            id="provider_id" name="provider_id" type="hidden"
+                            class="form-control"
+                            placeholder="Enter provider ID."
+                            value="{{ Auth::id() }}"
+                            required
+                        />
+                        <input
+                            id="receiver_id" name="receiver_id" type="hidden"
+                            class="form-control"
+                            placeholder="Enter receiver ID."
+                            value={{ $item->owner_id }}
+                            required
+                        />
+                        <input
+                            id="item_id" name="item_id" type="hidden"
+                            class="form-control"
+                            value={{ $item_id }}
+                            placeholder="Enter item ID."
+                        />
                         <button type="submit" class="btn btn-primary">
-                            Create Contract
+                            Send Contract
                         </button>
                     </form>
                     <hr />

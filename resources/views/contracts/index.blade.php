@@ -25,7 +25,7 @@
                     @foreach ($sent_contracts as $contract)
 	                    <div id="{{ $contract->_id }}" class="media">
 			                <div class="media-body">
-			                    <h5>{{ $contract->item_id }}</h5>
+			                    <h5>{{ $contract->name }}</h5>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <a href="{{ route('contract.show', $contract->_id) }}">
@@ -55,7 +55,6 @@
 			                </div>
 			            </div>
 		            @endforeach
-                    <a href="{{ route('contract.create') }}">Create contracts</a>
                 </div>
             </div>
         </div>

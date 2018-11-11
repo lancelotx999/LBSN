@@ -24,6 +24,7 @@ Route::resource('user', 'UserController');
 Route::get('/user/{user}/contract', 'UserController@getContract')->name('users.contract');
 
 Route::get('/property/listing', 'PropertyController@showAll');
+Route::get('/business/listing', 'BusinessController@showAll');
 Route::post('/rating/store', 'RatingController@store');
 Route::post('/review/store', 'ReviewController@store');
 Route::get('/transaction/create/{id}',

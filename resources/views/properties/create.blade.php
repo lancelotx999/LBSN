@@ -68,7 +68,7 @@
                                         ></textarea>
                                 </div>
                                 <div class="form-group">
-                                    Status:
+                                    <label>Status:</label>
                                     <div class="form-check">
                                         <input 
                                             id="forrent" name="status" type="radio"

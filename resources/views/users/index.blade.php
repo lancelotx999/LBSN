@@ -16,11 +16,11 @@
 			<div class="list-group">
 				<a href="{{ route('user.index') }}" 
 				class="list-group-item list-group-item-action active">
-					My Dashboard
+					My Profile
 				</a>
 				<a href="{{ route('user.edit', Auth::id()) }}" 
 				class="list-group-item list-group-item-action">
-					My Profile
+					Edit Profile
 				</a>
 			</div>
 		</div>

@@ -10,7 +10,7 @@ class Contract extends Moloquent
 
     protected $guarded = 
     [
-        'provider_id', 'receiver_id', 'item_id', 'type', 'description', 'price', 'paid',
+        'name', 'provider_id', 'receiver_id', 'item_id', 'type', 'description', 'price', 'paid',
     ];
 
 

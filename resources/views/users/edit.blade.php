@@ -7,7 +7,7 @@
 			<h6>
 				<a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('user.edit', Auth::id()) }}">My Profile</a>
+                <a href="{{ route('user.edit', Auth::id()) }}">Edit Profile</a>
 			</h6><hr />
 		</div>
 	</div>
@@ -17,11 +17,11 @@
 				<div class="list-group">
                 <a href="{{ route('user.index') }}" 
                 class="list-group-item list-group-item-action">
-                    My Dashboard
+                    My Profile
                 </a>
                 <a href="{{ route('user.edit', Auth::id()) }}" 
                 class="list-group-item list-group-item-action active">
-                    My Profile
+                    Edit Profile
                 </a>
             </div>
 			</div>

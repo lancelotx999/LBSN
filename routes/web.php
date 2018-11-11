@@ -27,6 +27,9 @@ Route::get('/property/listing', 'PropertyController@showAll');
 Route::post('/rating/store', 'RatingController@store');
 Route::post('/review/store', 'ReviewController@store');
 
+// Search Routes
+Route::post('/property/search', 'SearchController@searchProperties')->name('property.search');
+
 // Resource Routes
 Route::resource('business', 'BusinessController');
 Route::resource('property', 'PropertyController');

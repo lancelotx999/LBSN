@@ -49,10 +49,12 @@ class SearchController extends Controller
 
 	public function searchProperties(Request $request)
 	{
+		// dd($request->name);
+		$filters = array();
 		$filters->name = $request->name;
-		$filters->status = $request->status;
-		$filters->tags = $request->tags;
-		$filters->verified = $request->verified;
+		// $filters->status = $request->status;
+		// $filters->tags = $request->tags;
+		// $filters->verified = $request->verified;
 
 		$query = Property::query();
 		$query->where('name', 'like', '%'.$filters->name.'%');
@@ -70,7 +72,9 @@ class SearchController extends Controller
 			}
 		}
 
-		return ($query->get());
+		$properties = $query->get();
+
+		return view('properties.index', compact('properties'));
 	}
 
 

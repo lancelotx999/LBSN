@@ -8,14 +8,26 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.index') }}">Properties</a>
+                @if (url()->previous() == route('property.index'))
+                    <a href="{{ route('property.index') }}">Properties</a>
+                @else
+                    <a href="{{ url('/property/listing') }}">Properties</a>
+                @endif
             </h6><hr />
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">All Properties</div>
+                <div class="card-header">
+                    <form method="POST" action="{{ route('property.search') }}">
+                        @csrf
+                        @method('POST')
+
+                        <input class="form-control" name="name" type="input" placeholder="Search..">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
                 <div class="card-body">
                     @if ($properties->isEmpty())
                     <br />

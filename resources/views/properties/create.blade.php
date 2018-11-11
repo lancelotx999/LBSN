@@ -11,7 +11,11 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.index') }}">Properties</a>
+                @if (url()->previous() == route('property.index'))
+                    <a href="{{ route('property.index') }}">Properties</a>
+                @else
+                    <a href="{{ url('/property/listing') }}">Properties</a>
+                @endif
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.create') }}">Create New Property</a>
             </h6><hr />

@@ -28,11 +28,15 @@
                                 <h1>Title: {{ $conversation->title }}</h1>
                                 <p>To: {{ $conversation->receiver->name }}</p>
                                 <p>Latest Message: {{last($conversation->messages)['content']}}</p>
-                                @if ($conversation->read)
-                                    Message Read
-                                @elseif ($conversation->read == false)
-                                    Message Unread
+                                @if ($conversation->receiver_read)
+                                    <p>{{$conversation->receiver->name}} has read the message.</p>
+                                @elseif ($conversation->receiver_read == false)
+                                    <p>{{$conversation->receiver->name}} has not read the message.</p>
                                 @endif
+                                @if ($conversation->sender_read == false)
+                                    <p>You have unread messages.</p>
+                                @endif
+
                             </a>
                         </li>
                     @endforeach
@@ -60,10 +64,13 @@
                             <h1>Title: {{ $conversation->title }}</h1>
                             <p>From: {{ $conversation->sender->name }}</p>
                             <p>Latest Message: {{last($conversation->messages)['content']}}</p>
-                            @if ($conversation->read)
-                                Message Read
-                            @elseif ($conversation->read == false)
-                                Message Unread
+                            @if ($conversation->sender_read)
+                                <p>{{$conversation->sender->name}} has read the message.</p>
+                            @elseif ($conversation->sender_read == false)
+                                <p>{{$conversation->sender->name}} has not read the message.</p>
+                            @endif
+                            @if ($conversation->receiver_read == false)
+                                <p>You have unread messages.</p>
                             @endif
                         </a>
                     </li>

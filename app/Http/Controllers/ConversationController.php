@@ -83,7 +83,8 @@ class ConversationController extends Controller
         $conversation->receiver_id = $receiver->_id;
         $conversation->title = $request->title;
         $conversation->messages = $messages;
-        $conversation->read = false;
+        $conversation->receiver_read = false;
+        $conversation->sender_read = false;
 
         $conversation->save();
 
@@ -115,6 +116,14 @@ class ConversationController extends Controller
     public function show($id)
     {
         $conversation = Conversation::findOrFail($id);
+        if (Auth::user()->_id == $conversation->sender_id) {
+            $conversation->sender_read = true;
+        }
+        elseif (Auth::user()->_id == $conversation->receiver_id) {
+            $conversation->receiver_read = true;
+        }
+        $conversation->save();
+
         $conversation->sender = User::where('_id','=', $conversation->sender_id)->firstOrFail();
         $conversation->receiver = User::where('_id','=', $conversation->receiver_id)->firstOrFail();
 
@@ -133,6 +142,7 @@ class ConversationController extends Controller
             array_push($holder,$message);
         }
 
+        // dd($conversation);
         $conversation->messages = $holder;
 
         // dd($conversation);
@@ -182,6 +192,8 @@ class ConversationController extends Controller
         array_push($holder,$message);
 
         $conversation->messages = $holder;
+        $conversation->receiver_read = false;
+        $conversation->sender_read = false;
 
         // dd($conversation);
         $conversation->save();

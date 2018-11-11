@@ -8,6 +8,7 @@ use Moloquent;
 use App\Invoice;
 use App\Receipt;
 use App\Contract;
+use App\User;
 
 class InvoiceController extends Controller
 {
@@ -28,9 +29,21 @@ class InvoiceController extends Controller
 		}
 		else
 		{
+			//user provides item and gets paid
 			$provided_invoices = Invoice::where('provider_id','=', Auth::user()->id)->get();
+
+            //user receives item and pays
 			$received_invoices = Invoice::where('receiver_id','=', Auth::user()->id)->get();
 
+			foreach ($received_invoices as $invoice){
+				$provider = User::findOrFail($invoice->provider_id);
+				$receiver = User::findOrFail($invoice->receiver_id);
+
+				$invoice->provider = $provider;
+				$invoice->receiver = $receiver;
+			}
+
+			// dd($received_invoices);
 			return view('invoices.index', compact('provided_invoices','received_invoices'));
 		}
 	}
@@ -58,7 +71,7 @@ class InvoiceController extends Controller
 
 	public function test()
 	{
-		$cids = ['5be42147339b57201c0ce5f9', '5be42147339b57201c0ce5fa'];
+		$cids = ['5be59efe339b574ea07c0ea9', '5be59efe339b574ea07c0eaa'];
 		$pid = array(); $rid = array();
 		$total = 0;
 
@@ -82,6 +95,7 @@ class InvoiceController extends Controller
 		$invoice->total_price = $total;
 		$invoice->tax = $taxed;
 		$invoice->grand_total = $grandTotal;
+		$invoice->outstanding_payment = $grandTotal;
 		$invoice->paid = false;
 
 		$invoice->save();
@@ -165,6 +179,7 @@ class InvoiceController extends Controller
 			$invoice->total_price = $total;
 			$invoice->tax = $taxed;
 			$invoice->grand_total = $grandTotal;
+			$invoice->outstanding_payment = $grandTotal;
 			$invoice->paid = false;
 
 			$invoice->save();
@@ -222,6 +237,7 @@ class InvoiceController extends Controller
 		$invoice->total_price = $total;
 		$invoice->tax = $taxed;
 		$invoice->grand_total = $grandTotal;
+		$invoice->outstanding_payment = $grandTotal;
 
 		$invoice->paid = $request->paid;
 

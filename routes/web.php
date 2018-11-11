@@ -26,6 +26,12 @@ Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.
 Route::get('/property/listing', 'PropertyController@showAll');
 Route::post('/rating/store', 'RatingController@store');
 Route::post('/review/store', 'ReviewController@store');
+Route::get('/transaction/create/{id}',
+    [
+        'middleware' => 'auth',
+        'as' => 'transaction.create',
+        'uses' => 'TransactionController@create'
+    ]);
 
 // Search Routes
 Route::post('/property/search', 'SearchController@searchProperties')->name('property.search');
@@ -35,6 +41,8 @@ Route::resource('business', 'BusinessController');
 Route::resource('property', 'PropertyController');
 Route::resource('contract', 'ContractController');
 Route::resource('review', 'ReviewController');
+Route::resource('transaction', 'TransactionController');
+Route::resource('invoice', 'InvoiceController');
 
 // Testing Routes
 Route::get('/test1', 'ReceiptController@test');

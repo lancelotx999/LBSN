@@ -10,7 +10,7 @@ class Invoice extends Moloquent
 
     protected $guarded =
     [
-       'provider_id','receiver_id','contract_id', 'tax','total_price', 'grand_total', 'paid',
+       'provider_id','receiver_id','contract_id', 'tax','total_price', 'grand_total', 'paid', 'outstanding_payment'
     ];
 
 }

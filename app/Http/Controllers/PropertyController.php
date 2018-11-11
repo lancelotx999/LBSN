@@ -30,16 +30,16 @@ class PropertyController extends Controller
     {
     	$properties = Property::all();
 
-        foreach ($properties as $property) 
+        foreach ($properties as $property)
         {
             $ratings = Rating::where('ratee_id','=', $property->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
+            if ($totalUsers > 0)
             {
-                foreach ($ratings as $rating) 
+                foreach ($ratings as $rating)
                 {
                     $totalRates = $totalRates + $rating->rate;
                 }
@@ -47,14 +47,14 @@ class PropertyController extends Controller
                 $property->rate = $totalRates/$totalUsers;
 
             }
-            else 
+            else
             {
                 $property->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $property->id)->get();
 
-            foreach ($reviews as $review) 
+            foreach ($reviews as $review)
             {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;
@@ -114,9 +114,9 @@ class PropertyController extends Controller
         $totalRates = 0;
         $totalUsers = count($ratings);
 
-        if ($totalUsers > 0) 
+        if ($totalUsers > 0)
         {
-            foreach ($ratings as $rating) 
+            foreach ($ratings as $rating)
             {
                 $totalRates = $totalRates + $rating->rate;
             }
@@ -124,14 +124,14 @@ class PropertyController extends Controller
             $property->rate = $totalRates/$totalUsers;
 
         }
-        else 
+        else
         {
             $property->rate = 0;
         }
 
         $reviews = Review::where('reviewee_id','=', $id)->get();
 
-        foreach ($reviews as $review) 
+        foreach ($reviews as $review)
         {
             $user = User::findOrFail($review->reviewer_id);
             $review->user = $user;
@@ -180,16 +180,16 @@ class PropertyController extends Controller
     {
         $properties = Property::where('owner_id','=',$owner_id)->get();
 
-        foreach ($properties as $property) 
+        foreach ($properties as $property)
         {
             $ratings = Rating::where('ratee_id','=', $property->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
+            if ($totalUsers > 0)
             {
-                foreach ($ratings as $rating) 
+                foreach ($ratings as $rating)
                 {
                     $totalRates = $totalRates + $rating->rate;
                 }
@@ -197,14 +197,14 @@ class PropertyController extends Controller
                 $property->rate = $totalRates/$totalUsers;
 
             }
-            else 
+            else
             {
                 $property->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $property->id)->get();
 
-            foreach ($reviews as $review) 
+            foreach ($reviews as $review)
             {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;

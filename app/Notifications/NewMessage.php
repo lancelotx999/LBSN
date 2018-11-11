@@ -49,7 +49,7 @@ class NewMessage extends Notification
             return (new MailMessage)
                         ->subject('You have a new message.')
                         ->line('You have new unread messages from '.$receiver->name.'.')
-                        ->action('Notification Action', url('/conversations/'.$this->data->conversation->id))
+                        ->action('Read', url('/conversations/'.$this->data->conversation->id))
                         ->line('The is a Computer Generated Email.')
                         ->line('Please do not reply.')
                         ->line('But click the link.')

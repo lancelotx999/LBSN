@@ -37,7 +37,7 @@ class CreatePropertiesTable extends Migration
             'name' => "Room E555 @ Merdeka Palace",
             'address' => "123 Merdeka Hooha Lane",
             'description' => "Merdeka Palace Room",
-            'status' => "Rent",
+            'status' => "rent",
             'tags' => ["hotel","high-rise"],
             'latitude' => 321,
             'longitude' => 123,

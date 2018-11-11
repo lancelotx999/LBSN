@@ -60,12 +60,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/business/listing">Businesses</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('invoice.index') }}">Invoices</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('transaction.index') }}">Transactions</a>
-                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -89,6 +83,14 @@
                                         href="{{ route('user.index') }}">My Profile</a>
                                     <a  class="dropdown-item"
                                         href="{{ route('property.index') }}">My Properties</a>
+                                    <a  class="dropdown-item"
+                                        href="{{ route('business.index') }}">My Businesses</a>
+                                    <a  class="dropdown-item"
+                                        href="{{ route('contract.index') }}">My Contracts</a>
+                                    <a  class="dropdown-item"
+                                        href="{{ route('invoice.index') }}">My Invoices</a>    
+                                    <a  class="dropdown-item"
+                                        href="{{ route('transaction.index') }}">My Transactions</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

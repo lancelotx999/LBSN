@@ -7,6 +7,8 @@
 			<h6>
 				<a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
+                <a href="{{ route('user.index') }}">My Profile</a>
+                <i class="fas fa-angle-right"></i>
                 <a href="{{ route('user.edit', Auth::id()) }}">Edit Profile</a>
 			</h6><hr />
 		</div>
@@ -16,12 +18,28 @@
 			<div class="card">
 				<div class="list-group">
                 <a href="{{ route('user.index') }}" 
-                class="list-group-item list-group-item-action">
+                class="list-group-item list-group-item-action active">
                     My Profile
                 </a>
-                <a href="{{ route('user.edit', Auth::id()) }}" 
-                class="list-group-item list-group-item-action active">
-                    Edit Profile
+                <a href="{{ route('property.index') }}" 
+                class="list-group-item list-group-item-action">
+                    My Properties
+                </a>
+                <a href="{{ route('business.index') }}" 
+                class="list-group-item list-group-item-action">
+                    My Businesses
+                </a>
+                <a href="{{ route('contract.index') }}" 
+                class="list-group-item list-group-item-action">
+                    My Contracts
+                </a>
+                <a href="{{ route('invoice.index') }}" 
+                class="list-group-item list-group-item-action">
+                    My Invoices
+                </a>
+                <a href="{{ route('transaction.index') }}" 
+                class="list-group-item list-group-item-action">
+                    My Transactions
                 </a>
             </div>
 			</div>

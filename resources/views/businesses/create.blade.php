@@ -7,7 +7,11 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('business.index') }}">Businesses</a>
+                @if (url()->previous() == route('business.index'))
+                    <a href="{{ route('business.index') }}">My Businesses</a>
+                @else
+                    <a href="{{ url('/business/listing') }}">Businesses</a>
+                @endif
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('business.create') }}">Create New Business</a>
             </h6><hr />

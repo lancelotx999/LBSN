@@ -8,16 +8,16 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.index') }}">Properties</a>
+                <a href="{{ route('property.index') }}">My Transactions</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.create') }}">Create New Property</a>
+                <a href="{{ route('property.create') }}">Create New Transaction</a>
             </h6><hr />
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Property</div>
+                <div class="card-header">Create Transaction</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('transaction.store') }}">
                     	@csrf

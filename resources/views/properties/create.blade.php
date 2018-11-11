@@ -12,7 +12,7 @@
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
                 @if (url()->previous() == route('property.index'))
-                    <a href="{{ route('property.index') }}">Properties</a>
+                    <a href="{{ route('property.index') }}">My Properties</a>
                 @else
                     <a href="{{ url('/property/listing') }}">Properties</a>
                 @endif

@@ -122,7 +122,7 @@ class UserController extends Controller
 
         $user->save();
         // redirect
-        return redirect()->route('users.show', ['user' => $user ])->with('status', 'Profile successfully updated');
+        return redirect()->route('user.index');
     }
 
     public function destroy($id)

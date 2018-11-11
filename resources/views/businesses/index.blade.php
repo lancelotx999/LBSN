@@ -7,15 +7,59 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('business.index') }}">Businesses</a>
+                @if (url()->current() == route('business.index'))
+                    <a href="{{ route('business.index') }}">My Businesses</a>
+                @else
+                    <a href="{{ url('/business/listing') }}">Businesses</a>
+                @endif
             </h6><hr />
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        @if (url()->current() == route('business.index'))
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="list-group">
+                        <a href="{{ route('user.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Profile
+                        </a>
+                        <a href="{{ route('property.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Properties
+                        </a>
+                        <a href="{{ route('business.index') }}" 
+                        class="list-group-item list-group-item-action active">
+                            My Businesses
+                        </a>
+                        <a href="{{ route('contract.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Contracts
+                        </a>
+                        <a href="{{ route('invoice.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Invoices
+                        </a>
+                        <a href="{{ route('transaction.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Transactions
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+        @else
+            <div class="col-md-12">
+        @endif
             <div class="card">
                 <div class="card-header">
-                    <h5>Businesses</h5><hr />
+                    Businesses
+                    <small>
+                        <a href="{{ route('business.create') }}">
+                            <i class="fas fa-plus-circle fa-fw"></i> Create a new business
+                        </a>
+                    </small>
+                    <hr />
                     <form method="POST" action="{{ route('business.search') }}">
                         @csrf
                         @method('POST')
@@ -124,12 +168,42 @@
         </div>
         <hr />
         @endforeach
-        <a href="{{ route('business.create') }}">Create businesses</a>
     </div>
 </div>
 </div>
 </div>
 </div>
+
+<!-- Modal -->
+@foreach ($businesses as $business)
+<div class="modal fade" id="deleteModal{{ $business->_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Deletion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <form method="POST" class="form-inline" 
+            action="{{ route('business.destroy', $business->_id) }}">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-danger">
+                Delete Now
+            </button>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+@endforeach
 
 <script type="text/javascript">
     $(function() {

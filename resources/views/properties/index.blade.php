@@ -8,8 +8,8 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                @if (url()->previous() == route('property.index'))
-                    <a href="{{ route('property.index') }}">Properties</a>
+                @if (url()->current() == route('property.index'))
+                    <a href="{{ route('property.index') }}">My Properties</a>
                 @else
                     <a href="{{ url('/property/listing') }}">Properties</a>
                 @endif
@@ -17,10 +17,50 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        @if (url()->current() == route('property.index'))
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="list-group">
+                        <a href="{{ route('user.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Profile
+                        </a>
+                        <a href="{{ route('property.index') }}" 
+                        class="list-group-item list-group-item-action active">
+                            My Properties
+                        </a>
+                        <a href="{{ route('business.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Businesses
+                        </a>
+                        <a href="{{ route('contract.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Contracts
+                        </a>
+                        <a href="{{ route('invoice.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Invoices
+                        </a>
+                        <a href="{{ route('transaction.index') }}" 
+                        class="list-group-item list-group-item-action">
+                            My Transactions
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+        @else
+            <div class="col-md-12">
+        @endif
             <div class="card">
                 <div class="card-header">
-                    <h5>Properties</h5><hr />
+                    Properties
+                    <small>
+                        <a href="{{ route('property.create') }}">
+                            <i class="fas fa-plus-circle fa-fw"></i> Create a new property
+                        </a>
+                    </small>
+                    <hr />
                     <form method="POST" action="{{ route('property.search') }}">
                         @csrf
                         @method('POST')
@@ -173,7 +213,6 @@
                 </div>
                 <hr />
                 @endforeach
-                <a href="{{ route('property.create') }}">Create properties</a>
             </div>
         </div>
     </div>

@@ -205,6 +205,14 @@ class BusinessController extends Controller
         return view('businesses.index', compact('businesses'));
     }
 
+    public function uploadImage($id , Request $request)
+    {
+        Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');
+
+        // Storage::put('file.jpg', $contents);
+
+    }
+
     public function test()
     {
         Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');

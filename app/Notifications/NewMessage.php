@@ -44,11 +44,14 @@ class NewMessage extends Notification
     public function toMail($notifiable)
     {
         if (property_exists($this->data, 'conversation')) {
-            $receiver = User::findOrFail(last($this->data->conversation->messages)->sender_id);
+            $sender = User::findOrFail(last($this->data->conversation->messages)->sender_id);
+            $receiver = User::findOrFail(last($this->data->conversation->messages)->receiver_id);
 
             return (new MailMessage)
+                        ->from('4308131@gmail.com', 'Local Business Service Network')
+                        ->greeting('You have a new message.')
                         ->subject('You have a new message.')
-                        ->line('You have new unread messages from '.$receiver->name.'.')
+                        ->line('You have new unread messages from '.$sender->name.'.')
                         ->action('Read', url('/conversations/'.$this->data->conversation->id))
                         ->line('The is a Computer Generated Email.')
                         ->line('Please do not reply.')

@@ -25,8 +25,6 @@
                     <p>
                         Title: {{ $conversation->title }}
                     </p>
-
-
                     <hr />
                     Messages
                     <hr />
@@ -51,24 +49,45 @@
                         @csrf
                         @method('PATCH')
                         <textarea id="message" name="content" rows="5" cols="50" placeholder="Please leave a reply."></textarea>
-                        <input
-                            id="sender_id"
-                            name="sender_id"
-                            type="hidden"
-                            class="form-control"
-                            value="{{ Auth::user()->id }}"
-                            placeholder="Enter sender_id ID."
-                            required
-                        />
-                        <input
-                            id="receiver_id"
-                            name="receiver_id"
-                            type="hidden"
-                            class="form-control"
-                            value="{{ $conversation->receiver->_id }}"
-                            placeholder="Enter receiver_id ID."
-                            required
-                        />
+                        @if(Auth::user()->id == $conversation->sender->_id)
+                            <input
+                                id="sender_id"
+                                name="sender_id"
+                                type="hidden"
+                                class="form-control"
+                                value="{{ Auth::user()->id }}"
+                                placeholder="Enter sender_id ID."
+                                required
+                            />
+                            <input
+                                id="receiver_id"
+                                name="receiver_id"
+                                type="hidden"
+                                class="form-control"
+                                value="{{ $conversation->receiver->_id }}"
+                                placeholder="Enter receiver_id ID."
+                                required
+                            />
+                        @elseif(Auth::user()->id == $conversation->receiver->_id)
+                            <input
+                                id="sender_id"
+                                name="sender_id"
+                                type="hidden"
+                                class="form-control"
+                                value="{{ Auth::user()->id }}"
+                                placeholder="Enter receiver_id ID."
+                                required
+                            />
+                            <input
+                                id="receiver_id"
+                                name="receiver_id"
+                                type="hidden"
+                                class="form-control"
+                                value="{{ $conversation->sender->_id }}"
+                                placeholder="Enter sender_id ID."
+                                required
+                            />
+                        @endif
                         <button type="submit" class="btn btn-primary">
                             Reply
                         </button>

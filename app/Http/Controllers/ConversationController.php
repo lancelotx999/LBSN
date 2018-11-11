@@ -91,22 +91,17 @@ class ConversationController extends Controller
 
         $conversation->save();
 
-        // // user 2 sends a message to user 1
-        // $message = new Message;
-        // $message->setAttribute('from', 2);
-        // $message->setAttribute('to', 1);
-        // $message->setAttribute('message', 'Demo message from user 2 to user 1.');
-        // $message->save();
-        // $sender = User::where('_id','=', Auth::user()->_id)->firstOrFail();
-        // $receiver = User::where('email','=', $request->email)->firstOrFail();
-        // $fromUser = User::find(2);
-        // $toUser = User::find(1);
+        $sender = User::findOrFail(last($conversation->messages)->sender_id);
 
-        // send notification using the "user" model, when the user receives new message
+        $receiver = User::findOrFail(last($conversation->messages)->receiver_id);
+
+        $data = new \stdClass();
+
+        $data->sender = $sender;
+        $data->receiver = $receiver;
+        $data->conversation = $conversation;
+
         $receiver->notify(new NewMessage($data));
-
-        // send notification using the "Notification" facade
-        Notification::send($receiver, new NewMessage($sender));
 
         //Store code ends here
 
@@ -148,6 +143,8 @@ class ConversationController extends Controller
         $conversation->receiver = User::where('_id','=', $conversation->receiver_id)->firstOrFail();
 
         $holder = array();
+
+        // dd($conversation);
 
         foreach ($conversation->messages as $key) {
             $message = new \stdClass();
@@ -191,10 +188,14 @@ class ConversationController extends Controller
     public function update(Request $request, $id)
     {
         $conversation = Conversation::findOrFail($id);
-
         $holder = array();
 
+
         foreach ($conversation->messages as $key) {
+
+        // dd($conversation);
+
+        // dd($conversation);
             $message = new \stdClass();
             $message->sender_id = $key['sender_id'];
             $message->receiver_id = $key['receiver_id'];
@@ -216,11 +217,13 @@ class ConversationController extends Controller
         $conversation->sender_read = false;
 
         // dd($conversation);
-        // $conversation->save();
+        $conversation->save();
 
-        $sender = User::where('email','=', "admin@LBSN.com")->firstOrFail();
+        // dd(last($conversation->messages));
 
-        $receiver = User::where('email','=', '4308131@students.swinburne.edu.my')->firstOrFail();
+        $sender = User::findOrFail(last($conversation->messages)->sender_id);
+
+        $receiver = User::findOrFail(last($conversation->messages)->receiver_id);
 
         $data = new \stdClass();
 
@@ -229,11 +232,11 @@ class ConversationController extends Controller
         $data->conversation = $conversation;
 
         $receiver->notify(new NewMessage($data));
+        // Notification::send($receiver, new NewMessage($data));
 
-        dd("Customize email! ur getting loads of spam work fast.");
-        Notification::send($receiver, new NewMessage($sender));
+        // dd("Customize email! ur getting loads of spam work fast.");
 
-        dd('check email');
+        // dd('check email');
 
         return redirect()->back();
     }

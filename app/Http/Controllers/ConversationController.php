@@ -7,6 +7,9 @@ use App\User;
 use App\Conversation;
 use Auth;
 
+use App\Notifications\NewMessage;
+use Illuminate\Support\Facades\Notification;
+
 class ConversationController extends Controller
 {
     public function __construct()
@@ -87,6 +90,23 @@ class ConversationController extends Controller
         $conversation->sender_read = false;
 
         $conversation->save();
+
+        // // user 2 sends a message to user 1
+        // $message = new Message;
+        // $message->setAttribute('from', 2);
+        // $message->setAttribute('to', 1);
+        // $message->setAttribute('message', 'Demo message from user 2 to user 1.');
+        // $message->save();
+        // $sender = User::where('_id','=', Auth::user()->_id)->firstOrFail();
+        // $receiver = User::where('email','=', $request->email)->firstOrFail();
+        // $fromUser = User::find(2);
+        // $toUser = User::find(1);
+
+        // send notification using the "user" model, when the user receives new message
+        $receiver->notify(new NewMessage($sender));
+
+        // send notification using the "Notification" facade
+        Notification::send($receiver, new NewMessage($sender));
 
         //Store code ends here
 
@@ -210,5 +230,27 @@ class ConversationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function notificationTest(){
+        $sender = User::where('email','=', "admin@LBSN.com")->firstOrFail();
+
+        $receiver = User::where('email','=', '4308131@students.swinburne.edu.my')->firstOrFail();
+
+        $data = new \stdClass();
+
+        $data->sender = $sender;
+        $data->receiver = $receiver;
+        $data->sender = $sender;
+
+        // dd("1");
+        $receiver->notify(new NewMessage("kjsahjkdhaskjhakjshdjkahsdkjahsdjkhaskjhdakjshdkjhalfjhvaboiuguivenhgudyb gvuknhdbuyfguy ovunguygrvtbounsnyubtgvuh"));
+
+
+        dd("2");
+        Notification::send($receiver, new NewMessage($sender));
+
+        dd('check email');
+
     }
 }

@@ -33,6 +33,13 @@ Route::get('/transaction/create/{id}',
         'uses' => 'TransactionController@create'
     ]);
 
+Route::get('/contract/create/{id}',
+    [
+        'middleware' => 'auth',
+        'as' => 'contract.create',
+        'uses' => 'ContractController@create'
+    ]);
+
 // Search Routes
 Route::post('/property/search', 'SearchController@searchProperties')->name('property.search');
 

@@ -89,8 +89,10 @@ class SearchController extends Controller
 		$filters = collect();
 		$name = $request->name;
 		$filters->status = $request->status;
-		$filters->tags = $request->tags;
+		$filters->tags = array_filter($request->tags, function($var){return !is_null($var);} );
 		$filters->verified = $request->verified;
+
+		dd($filters->tags);
 
 		$query = Property::query();
 		$query->where('name', 'like', '%'.$name.'%');

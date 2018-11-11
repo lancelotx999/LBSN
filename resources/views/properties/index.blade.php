@@ -20,12 +20,76 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
+                    <h5>Properties</h5><hr />
                     <form method="POST" action="{{ route('property.search') }}">
                         @csrf
                         @method('POST')
 
-                        <input class="form-control" name="name" type="input" placeholder="Search..">
-                        <button type="submit">Search</button>
+                        <div class="form-row">
+                            <div class="input-group col-md-12 mb-3">
+                                <input
+                                    id="name" name="name" type="text"
+                                    class="form-control"
+                                    placeholder="Search.."
+                                />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="fas fa-search fa-fw"></i> Search
+                                    </button>
+                                </div>
+                                <div class="accordion" id="accordionExample">
+                                    <button class="btn btn-link" type="button" 
+                                    data-toggle="collapse" data-target="#collapseOne" 
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="fas fa-filter fa-fw"></i> Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div 
+                            id="collapseOne" class="collapse" 
+                            aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="form-row">
+                            <div class="col-md-2 mb-3">
+                                <label>Status:</label>
+                                <div class="form-check">
+                                    <input 
+                                        id="forrent" name="status" type="checkbox"
+                                        class="form-check-input" value="rent"  
+                                    />
+                                    <label class="form-check-label" for="forrent">
+                                        For Rent
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input 
+                                        id="forsale" name="status" type="checkbox"
+                                        class="form-check-input" value="sell" 
+                                    />
+                                    <label class="form-check-label" for="forsale">
+                                        For Sale
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-9 mb-3">
+                                <label for="tags">
+                                    Tags:
+                                </label>
+                                <div class="input-group mb-3">
+                                    <input
+                                        id="tags" name="tags[]" type="text"
+                                        class="form-control"
+                                        placeholder="Enter an appropriate tag for your property."
+                                    />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="addMore"><i class="fas fa-plus fa-fw"></i></button>
+                                    </div>
+                                </div>
+                                <span id="fieldList"></span>
+                            </div>
+                        </div>
+                        </div>
+
                     </form>
                 </div>
                 <div class="card-body">
@@ -157,8 +221,34 @@ if (empty($property)) { $property = null; }
 @endphp
 
 <script type="text/javascript">
+$(function() {
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('#addMore'); //Add button selector
+    var wrapper = $('#fieldList'); //Input field wrapper
+    var fieldHTML = '<div class="input-group mb-3"><input id="tags" name="tags[]" type="text" class="form-control" placeholder="Enter an appropriate tag for your property." /><div class="input-group-append"><button class="btn btn-outline-secondary remove_button" type="button"><i class="fas fa-times fa-fw"></i></button></div></div>'; // The new input
+    var x = 1; //Initial field counter is 1
 
-    var read = "{{ $property }}";
+    //Once add button is clicked
+    addButton.click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            wrapper.append(fieldHTML); //Add field html
+        }
+    });
+
+    //Once remove button is clicked
+    wrapper.on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});        
+</script>
+
+<script type="text/javascript">
+
+    var read = "{{ $properties }}";
     var json = read.replace(/&quot;/g, '"');
     var properties = JSON.parse(json);
 
@@ -166,7 +256,7 @@ if (empty($property)) { $property = null; }
     console.log(properties);
     console.log("---------- properties ----------");
 
-    [properties].forEach(function(d){
+    properties.forEach(function(d){
         console.log("---------- d ----------");
         console.log(d);
         console.log("---------- d ----------");
@@ -368,7 +458,7 @@ if (empty($property)) { $property = null; }
         }
     });
     
-    [properties].forEach(function (d){
+    properties.forEach(function (d){
         // console.log("---------- d ----------");
         // console.log(d);
         // console.log("---------- d ----------");

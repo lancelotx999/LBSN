@@ -47,10 +47,10 @@
                         </li>
                     </ul>
                     <br />
-                    <a href="{{ url()->previous() }}">
+                    <a href="/contract/create/{{ $business->_id }}">
                         <button class="btn btn-link" type="button">
-                            <i class="fas fa-arrow-alt-circle-left fa-fw"></i>
-                            Return to previous page
+                            <i class="fas fa-file-signature fa-fw"></i>
+                            Create contract page
                         </button>
                     </a>
                 </div>

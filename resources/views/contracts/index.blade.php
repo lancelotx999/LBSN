@@ -16,13 +16,13 @@
             <div class="card">
                 <div class="card-header">All Contracts</div>
                 <div class="card-body">
-                    @if ($contracts->isEmpty())
+                    @if ($sent_contracts->isEmpty())
                         <br />
                         <h1 class="display-4">Hello, it seems empty here!</h1>
                         <p class="lead">Why don't you try to add some stuff?</p>
                         <hr />
                     @endif
-                    @foreach ($contracts as $contract)
+                    @foreach ($sent_contracts as $contract)
 	                    <div id="{{ $contract->_id }}" class="media">
 			                <div class="media-body">
 			                    <h5>{{ $contract->item_id }}</h5>

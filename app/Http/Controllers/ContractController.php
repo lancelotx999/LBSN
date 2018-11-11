@@ -8,6 +8,8 @@ use Moloquent;
 use App\Contract;
 use App\Receipt;
 use App\Invoice;
+use App\Property;
+use App\Business;
 
 class ContractController extends Controller
 {
@@ -93,9 +95,22 @@ class ContractController extends Controller
         $invoice = Invoice::whereIn('contract_id',[$contract_id])->get()->first();
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('contracts.create');
+        $item_id = $id;
+
+        if (Property::find($item_id))
+        {
+            $item = Property::find($item_id);
+        } 
+        else
+        {
+            $item = Business::findOrFail($item_id);
+        }
+
+        $owner_id = $item->owner_id;
+
+        return view('contracts.create', compact('item_id', 'owner_id'));
     }
 
     public function store(Request $request)

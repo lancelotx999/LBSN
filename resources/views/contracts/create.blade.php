@@ -30,6 +30,7 @@
                                 id="provider_id" name="provider_id" type="text"
                                 class="form-control"
                                 placeholder="Enter provider ID."
+                                value="{{ Auth::id() }}"
                                 required
                             />
                         </div>
@@ -41,16 +42,18 @@
                                 id="receiver_id" name="receiver_id" type="text"
                                 class="form-control"
                                 placeholder="Enter receiver ID."
+                                value={{ $owner_id }}
                                 required
                             />
                         </div>
                         <div class="form-group">
                             <label for="item_id">
-                                Property:
+                                Item:
                             </label>
                             <input
                                 id="item_id" name="item_id" type="text"
                                 class="form-control"
+                                value={{ $item_id }}
                                 placeholder="Enter item ID."
                             />
                         </div>

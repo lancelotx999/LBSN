@@ -74,6 +74,12 @@
                     </div>
                     <br />
                     <div class="accordion" id="accordionExample">
+                        <a href="/contract/create/{{ $property->_id }}">
+                        <button class="btn btn-link" type="button">
+                            <i class="fas fa-file-signature fa-fw"></i>
+                            Create contract page
+                        </button>
+                        </a>
                         <button class="btn btn-link" type="button" 
                         data-toggle="collapse" data-target="#collapseOne" 
                         aria-expanded="true" aria-controls="collapseOne">
@@ -85,12 +91,6 @@
                             <i class="fas fa-map-marker-alt fa-fw"></i> 
                             Click here to show on map
                         </button>
-                        <a href="{{ url()->previous() }}">
-                        <button class="btn btn-link" type="button">
-                            <i class="fas fa-arrow-alt-circle-left fa-fw"></i>
-                            Return to previous page
-                        </button>
-                        </a>
                         <br />
                         <div 
                             id="collapseOne" class="collapse" 

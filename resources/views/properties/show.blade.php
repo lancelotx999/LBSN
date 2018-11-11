@@ -7,7 +7,11 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('property.index') }}">Properties</a>
+                @if (url()->previous() == route('property.index'))
+                    <a href="{{ route('property.index') }}">Properties</a>
+                @else
+                    <a href="{{ url('/property/listing') }}">Properties</a>
+                @endif
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.show', $property->_id) }}">View {{ $property->name }}</a>
             </h6><hr />
@@ -70,17 +74,23 @@
                     </div>
                     <br />
                     <div class="accordion" id="accordionExample">
-                        <button class="btn btn-link" type="button"
-                        onclick="zoomMarker({{ $property->latitude }}, {{ $property->longitude }})">
-                            <i class="fas fa-map-marker-alt fa-fw"></i> 
-                            Click here to show on map
-                        </button>
                         <button class="btn btn-link" type="button" 
                         data-toggle="collapse" data-target="#collapseOne" 
                         aria-expanded="true" aria-controls="collapseOne">
                             <i class="fas fa-chevron-circle-down fa-fw"></i> 
                             Click here to write a review
                         </button>
+                        <button class="btn btn-link" type="button"
+                        onclick="zoomMarker({{ $property->latitude }}, {{ $property->longitude }})">
+                            <i class="fas fa-map-marker-alt fa-fw"></i> 
+                            Click here to show on map
+                        </button>
+                        <a href="{{ url()->previous() }}">
+                        <button class="btn btn-link" type="button">
+                            <i class="fas fa-arrow-alt-circle-left fa-fw"></i>
+                            Return to previous page
+                        </button>
+                        </a>
                         <br />
                         <div 
                             id="collapseOne" class="collapse" 

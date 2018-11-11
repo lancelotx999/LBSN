@@ -58,10 +58,7 @@
                             <a class="nav-link" href="/map">Map</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('property.index') }}">Properties</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/property/listing">Property Listing</a>
+                            <a class="nav-link" href="/property/listing">Properties</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contract.index') }}">Contracts</a>
@@ -91,7 +88,7 @@
                                     <a  class="dropdown-item"
                                         href="{{ route('users.show', ['user' => Auth::id() ]) }}">My Profile</a>
                                     <a  class="dropdown-item"
-                                        href="{{ route('property.index') }}">Manage Property</a>
+                                        href="{{ route('property.index') }}">My Properties</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

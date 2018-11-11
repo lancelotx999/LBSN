@@ -154,16 +154,6 @@ if (empty($property)) { $property = null; }
     console.log(properties);
     console.log("---------- properties ----------");
 
-    function preloadImage(url)
-    {
-        var img = new Image();
-        img.src = url;
-    }
-
-    $( document ).ready(function() {
-        preloadImage
-    });
-
     [properties].forEach(function(d){
         console.log("---------- d ----------");
         console.log(d);
@@ -180,7 +170,7 @@ if (empty($property)) { $property = null; }
 
     var map = L.map('map', {
         center: [1.5510714615890955, 110.34356832504274],
-        zoom: 17,
+        zoom: 16,
         layers: [
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -196,6 +186,12 @@ if (empty($property)) { $property = null; }
     function zoomMarker(lat, long) {
         map.setView([lat, long], 17)
     }
+
+    $('#markerModal').on('show.bs.modal', function(e){
+        setTimeout(function() {
+            map.invalidateSize();
+        }, 400);
+    });
 
     var pruneCluster = new PruneClusterForLeaflet();
     
@@ -366,10 +362,10 @@ if (empty($property)) { $property = null; }
         // console.log("---------- d ----------");
 
         var popupContent = "Property Name: " + d.name + "</br>" +
-        "Property Address: " + d.address + "</br>" +
-        "Property Description: " + d.description + "</br>" +
-        "Property Rating: " + d.rate + "</br>" +
-        "Property Status: " + d.status + "</br>";
+                           "Property Address: " + d.address + "</br>" +
+                           "Property Description: " + d.description + "</br>" +
+                           "Property Rating: " + d.rate + "</br>" +
+                           "Property Status: " + d.status + "</br>";
 
         var marker = new PruneCluster.Marker(d.latitude, d.longitude,{
             popup: popupContent

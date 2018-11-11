@@ -18,25 +18,41 @@
             <div class="card">
                 <div class="card-header">View Business</div>
                 <div class="card-body">
-                    <p>
-                        Name: {{ $business->name }}
-                    </p>
-                    <p>
-                        Description: {{ $business->description }}
-                    </p>
-                    <p>
-                        Services:
-                        <ul>
-                        @foreach ($business->services as $service)
-                            <li>{{ $service }}</li>
-                        @endforeach
-                        </ul>
-                    </p>
-                    <p>
-                        Contact Number: {{ $business->contact_number }}
-                    </p>
-                    <hr />
-                    <p><a href="{{ url()->previous() }}">Return to previous page</a></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Name:</strong><br />
+                            {{ $business->name }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Description:</strong><br />
+                            {{ $business->description }}
+                        </li>
+                        <li class="list-group-item">
+                            <ul class="list-unstyled list-inline">
+                                <li>
+                                <strong>Services:</strong>
+                                </li>
+                                @foreach ($business->services as $service)
+                                    <li class="list-inline-item">
+                                        <span class="border border-warning bg-warning text-dark rounded">
+                                            &nbsp;{{ $service }}&nbsp;
+                                        </span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Contact Number:</strong><br />
+                            {{ $business->contact_number }}
+                        </li>
+                    </ul>
+                    <br />
+                    <a href="{{ url()->previous() }}">
+                        <button class="btn btn-link" type="button">
+                            <i class="fas fa-arrow-alt-circle-left fa-fw"></i>
+                            Return to previous page
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

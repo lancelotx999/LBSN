@@ -18,26 +18,39 @@
             <div class="card">
                 <div class="card-header">View Contract</div>
                 <div class="card-body">
-                    <p>
-                        Provider: {{ $contract->provider_id }}
-                    </p>
-                    <p>
-                        Receiver: {{ $contract->receiver_id }}
-                    </p>
-                    <p>
-                        Property: {{ $contract->item_id }}
-                    </p>
-                    <p>
-                        Contract Type: {{ $contract->type }}
-                    </p>
-                    <p>
-                        Description: {{ $contract->description }}
-                    </p>
-                    <p>
-                        Property Price: {{ $contract->price }}
-                    </p>
-                    <hr />
-                    <p><a href="{{ url()->previous() }}">Return to previous page</a></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Provider:</strong><br />
+                            {{ $contract->provider_id }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Receiver:</strong><br />
+                            {{ $contract->receiver_id }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Property:</strong><br />
+                            {{ $contract->item_id }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Contract Type:</strong><br />
+                            {{ $contract->type }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Description:</strong><br />
+                            {{ $contract->description }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Property Price:</strong><br />
+                            {{ $contract->price }} MYR
+                        </li>
+                    </ul>
+                    <br />
+                    <a href="{{ url()->previous() }}">
+                        <button class="btn btn-link" type="button">
+                            <i class="fas fa-arrow-alt-circle-left fa-fw"></i>
+                            Return to previous page
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

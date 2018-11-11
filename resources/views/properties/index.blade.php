@@ -50,7 +50,7 @@
                             id="collapseOne" class="collapse" 
                             aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="form-row">
-                            <div class="col-md-2 mb-3">
+                            <div class="col-md-1 mb-3">
                                 <label>Status:</label>
                                 <div class="form-check">
                                     <input 
@@ -68,6 +68,18 @@
                                     />
                                     <label class="form-check-label" for="forsale">
                                         For Sale
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-1 mb-3">
+                                <label>Verified:</label>
+                                <div class="form-check">
+                                    <input 
+                                        id="verified" name="verified" type="checkbox"
+                                        class="form-check-input" value="true"  
+                                    />
+                                    <label class="form-check-label" for="verified">
+                                        Yes
                                     </label>
                                 </div>
                             </div>
@@ -89,7 +101,6 @@
                             </div>
                         </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="card-body">
@@ -102,7 +113,7 @@
                     @foreach ($properties as $property)
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%" />
+                            <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" class="img-fluid" alt="Property logo" />
                         </div>
                         <div class="col-sm-9">
                             <div class="row">

@@ -6,34 +6,24 @@
 		<div class="col-md-12">
 			<h6>
 				<a href="{{ url('/') }}">Home</a> 
-				<i class="fas fa-angle-right"></i>
-				<a href="{{ route('users.show', ['user' => Auth::id() ]) }}">Member</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('users.edit', ['user' => Auth::id() ]) }}">Profile</a>
+                <a href="{{ route('user.edit', Auth::id()) }}">My Profile</a>
 			</h6><hr />
 		</div>
 	</div>
     <div class="row justify-content-center">
     	<div class="col-md-2">
 			<div class="card">
-				<div class="card-header">Account</div>
-				<div class="card-body">
-					<a class="btn btn-default" href="{{ route('users.show', ['user' => Auth::id() ]) }}">
-						My Dashboard
-					</a>
-
-					<hr />
-					
-					<a class="btn btn-default" href="{{ route('users.edit', ['user' => Auth::id() ]) }}">
-						My Profile
-					</a>
-
-                    <hr />
-
-                    <a class="btn btn-default" href="{{ route('users.contract', ['user' => Auth::id() ]) }}">
-                        My Contract
-                    </a>
-				</div>
+				<div class="list-group">
+                <a href="{{ route('user.index') }}" 
+                class="list-group-item list-group-item-action">
+                    My Dashboard
+                </a>
+                <a href="{{ route('user.edit', Auth::id()) }}" 
+                class="list-group-item list-group-item-action active">
+                    My Profile
+                </a>
+            </div>
 			</div>
 		</div>
         <div class="col-md-10">
@@ -41,7 +31,7 @@
                 <div class="card-header">Edit Profile</div>
 
                 <div class="card-body">                	
-					<form method="POST" action="{{ route('users.update', $user) }}" aria-label="Edit Profile">
+					<form method="POST" action="{{ route('user.update', $user) }}" aria-label="Edit Profile">
 					    @csrf
 					    @method('PATCH')
 
@@ -106,7 +96,7 @@
 					    <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                             	<input type="hidden" name="role" value="{{ $user->role }}">
-					    		<button type="submit" class="btn btn-primary">Update</button>
+					    		<button type="submit" class="btn btn-primary">Update Profile</button>
 					    	</div>
 					    </div>
 					</form>

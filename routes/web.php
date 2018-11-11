@@ -20,8 +20,8 @@ Route::view('/welcome', 'welcome');
 Auth::routes();
 
 // User profile
-Route::resource('users', 'UserController');
-Route::get('/users/{user}/contract', 'UserController@getContract')->name('users.contract');
+Route::resource('user', 'UserController');
+Route::get('/user/{user}/contract', 'UserController@getContract')->name('users.contract');
 
 Route::get('/property/listing', 'PropertyController@showAll');
 Route::post('/rating/store', 'RatingController@store');
@@ -42,6 +42,7 @@ Route::get('/contract/create/{id}',
 
 // Search Routes
 Route::post('/property/search', 'SearchController@searchProperties')->name('property.search');
+Route::post('/business/search', 'SearchController@searchBusinesses')->name('business.search');
 
 // Resource Routes
 Route::resource('business', 'BusinessController');

@@ -92,7 +92,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a  class="dropdown-item"
-                                        href="{{ route('users.show', ['user' => Auth::id() ]) }}">My Profile</a>
+                                        href="{{ route('user.index') }}">My Profile</a>
                                     <a  class="dropdown-item"
                                         href="{{ route('property.index') }}">My Properties</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

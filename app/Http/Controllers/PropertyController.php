@@ -22,7 +22,16 @@ class PropertyController extends Controller
     // Shows only user properties if user is a merchant
     public function index()
     {
-        return $this->showUserProperties(Auth::user()->id);
+        if (Auth::user()->role === 'admin')
+        {
+            $properties = Property::all();
+            return view('properties.index', compact('properties'));
+        }
+        else
+        {   
+            return $this->showUserProperties(Auth::user()->id);
+        }   
+        
     }
 
     // Gets all properties

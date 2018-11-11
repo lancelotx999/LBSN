@@ -21,7 +21,16 @@ class BusinessController extends Controller
     // Returns both all businesses and the owned businesses if merchant
     public function index()
     {
-       return $this->showUserBusinesses(Auth::user()->id);       
+        if (Auth::user()->role === 'admin')
+        {
+            $businesses = Business::all();
+            return view('businesses.index', compact('businesses'));
+        }
+        else
+        {   
+            return $this->showUserBusinesses(Auth::user()->id); 
+        }  
+
     }
 
     // Gets all bussinesses

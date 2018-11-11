@@ -15,12 +15,6 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-            'invoice_id'
-             'payment_method'
-              'amount_paid'
-               'provider_acknowledgement'
-               'receiver_acknowledgement'
-                'acknowledged'
 
             $table->string('provider_id');
             $table->string('receiver_id');

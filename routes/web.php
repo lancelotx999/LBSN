@@ -40,6 +40,7 @@ Route::resource('contract', 'ContractController');
 Route::resource('review', 'ReviewController');
 Route::resource('transaction', 'TransactionController');
 Route::resource('invoice', 'InvoiceController');
+Route::resource('conversations', 'ConversationController');
 
 // Testing Routes
 Route::get('/test1', 'ReceiptController@test');

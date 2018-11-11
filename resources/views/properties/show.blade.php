@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.index') }}">Properties</a>
                 <i class="fas fa-angle-right"></i>
@@ -102,7 +102,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <div class="row">
-                                    <h5><a href="/user/{{ $review->reviewer_id }}">{{ $review->user->name }}</a></h5>
+                                    <h5><a href="/users/{{ $review->reviewer_id }}">{{ $review->user->name }}</a></h5>
                                 </div>
                                 <div class="row">
                                     <p>{{ $review->content }}</p>

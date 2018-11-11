@@ -103,7 +103,7 @@ class ConversationController extends Controller
         // $toUser = User::find(1);
 
         // send notification using the "user" model, when the user receives new message
-        $receiver->notify(new NewMessage($sender));
+        $receiver->notify(new NewMessage($data));
 
         // send notification using the "Notification" facade
         Notification::send($receiver, new NewMessage($sender));
@@ -216,7 +216,24 @@ class ConversationController extends Controller
         $conversation->sender_read = false;
 
         // dd($conversation);
-        $conversation->save();
+        // $conversation->save();
+
+        $sender = User::where('email','=', "admin@LBSN.com")->firstOrFail();
+
+        $receiver = User::where('email','=', '4308131@students.swinburne.edu.my')->firstOrFail();
+
+        $data = new \stdClass();
+
+        $data->sender = $sender;
+        $data->receiver = $receiver;
+        $data->conversation = $conversation;
+
+        $receiver->notify(new NewMessage($data));
+
+        dd("Customize email! ur getting loads of spam work fast.");
+        Notification::send($receiver, new NewMessage($sender));
+
+        dd('check email');
 
         return redirect()->back();
     }
@@ -244,7 +261,7 @@ class ConversationController extends Controller
         $data->sender = $sender;
 
         // dd("1");
-        $receiver->notify(new NewMessage("kjsahjkdhaskjhakjshdjkahsdkjahsdjkhaskjhdakjshdkjhalfjhvaboiuguivenhgudyb gvuknhdbuyfguy ovunguygrvtbounsnyubtgvuh"));
+        $receiver->notify(new NewMessage($data));
 
 
         dd("2");

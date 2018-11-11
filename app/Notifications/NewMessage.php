@@ -7,6 +7,8 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+use App\User;
+
 class NewMessage extends Notification
 {
     use Queueable;
@@ -18,7 +20,7 @@ class NewMessage extends Notification
      */
     public function __construct($data)
     {
-        dd($data);
+        $this->data = $data;
         // $this->fromUser = $user;
     }
 
@@ -41,7 +43,18 @@ class NewMessage extends Notification
      */
     public function toMail($notifiable)
     {
-        dd($this);
+        if (property_exists($this->data, 'conversation')) {
+            $receiver = User::findOrFail(last($this->data->conversation->messages)->sender_id);
+
+            return (new MailMessage)
+                        ->subject('You have a new message.')
+                        ->line('You have new unread messages from '.$receiver->name.'.')
+                        ->action('Notification Action', url('/conversations/'.$this->data->conversation->id))
+                        ->line('The is a Computer Generated Email.')
+                        ->line('Please do not reply.')
+                        ->line('But click the link.')
+                        ->line('Thank you for using our application!');
+        }
         return (new MailMessage)
                     ->subject('Welcome to the the Portal')
                     ->line('The is a computer Generated Email.')

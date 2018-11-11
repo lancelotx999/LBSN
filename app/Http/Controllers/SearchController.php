@@ -13,33 +13,89 @@ class SearchController extends Controller
 {
 	public function searchUsers($word)
 	{
-        $data = collect();
+		$data = collect();
 		$users = User::where('name', 'like', '%'.$word.'%')->get();
-        foreach ($users as $user)
-        {
-            $data->push($user);
-        }
+		foreach ($users as $user)
+		{
+			$data->push($user);
+		}
+		return $data;
 	}
 
-    public function test()
-    {
-    	$data = collect();
-    	$keyword = "test";
-    	$keyword2 = "service";
+	public function searchBusinesses(Request $request)
+	{
+		$filters->name = $request->name;
+		$filters->services = $request->services;
+		$filters->verified = $request->verified;
 
-    	$users = User::where('name', 'like', '%'.$keyword.'%')->get();
-    	$contracts = Contract::where('type', 'like', '%'.$keyword2.'%')->get();
+		$query = Business::query();
+		$query->where('name', 'like', '%'.$filters->name.'%');
+		unset($filters->name);
 
-    	foreach ($users as $user)
-    	{
-    		$data->push($user);
-    	}
+		foreach ($filters as $filter => $value)
+		{
+			if (is_array($value))
+			{
+				$query->whereIn($filter, $value);
+			}
+			else
+			{
+				$query->where($filter,$value);
+			}
+		}
 
-    	foreach ($contracts as $contract)
-    	{
-    		$data->push($contract);
-    	}
-    	dd($data);
+		return ($query->get());
+	}
 
-    }
+	public function searchProperties(Request $request)
+	{
+		$filters->name = $request->name;
+		$filters->status = $request->status;
+		$filters->tags = $request->tags;
+		$filters->verified = $request->verified;
+
+		$query = Property::query();
+		$query->where('name', 'like', '%'.$filters->name.'%');
+		unset($filters->name);
+
+		foreach ($filters as $filter => $value)
+		{
+			if (is_array($value))
+			{
+				$query->whereIn($filter, $value);
+			}
+			else
+			{
+				$query->where($filter,$value);
+			}
+		}
+
+		return ($query->get());
+	}
+
+
+	public function test()
+	{
+		$filters['name'] = "Clean";
+		$filters['verified'] = true;
+		$filters['services'] = ["Cleaning"];
+
+		$query = Business::query();
+		$query->where('name', 'like', '%'.$filters['name'].'%');
+		unset($filters['name']);
+
+		foreach ($filters as $filter => $value)
+		{
+			if (is_array($value))
+			{
+				$query->whereIn($filter, $value);
+			}
+			else
+			{
+				$query->where($filter,$value);
+			}
+		}
+
+		dd($query->get());
+	}
 }

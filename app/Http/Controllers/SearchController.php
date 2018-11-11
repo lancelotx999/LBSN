@@ -37,76 +37,87 @@ class SearchController extends Controller
 
 		foreach ($filters as $filter => $value)
 		{
-			if (is_array($value))
-			{
-				$query->whereIn($filter, $value);
-			}
-			else
-			{
-				$query->where($filter,$value);
-			}
+			if (isset($value) && (empty($value) == FALSE))
+			{ 	
+				if (is_array($value))
+				{
+					$query->whereIn($filter, $value);
+				}
+				else
+				{
+					$query->where($filter,$value);
+
+				}
+			}			
 		}
+
 		$businesses = $query->get();
 
-        foreach ($businesses as $business) 
-        {
-            $ratings = Rating::where('ratee_id','=', $business->id)->get();
+		foreach ($businesses as $business) 
+		{
+			$ratings = Rating::where('ratee_id','=', $business->id)->get();
 
-            $totalRates = 0;
-            $totalUsers = count($ratings);
+			$totalRates = 0;
+			$totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
-            {
-                foreach ($ratings as $rating) 
-                {
-                    $totalRates = $totalRates + $rating->rate;
-                }
+			if ($totalUsers > 0) 
+			{
+				foreach ($ratings as $rating) 
+				{
+					$totalRates = $totalRates + $rating->rate;
+				}
 
-                $business->rate = $totalRates/$totalUsers;
+				$business->rate = $totalRates/$totalUsers;
 
-            }
-            else 
-            {
-                $business->rate = 0;
-            }
+			}
+			else 
+			{
+				$business->rate = 0;
+			}
 
-            $reviews = Review::where('reviewee_id','=', $business->id)->get();
+			$reviews = Review::where('reviewee_id','=', $business->id)->get();
 
-            foreach ($reviews as $review) 
-            {
-                $user = User::findOrFail($review->reviewer_id);
-                $review->user = $user;
-            }
+			foreach ($reviews as $review) 
+			{
+				$user = User::findOrFail($review->reviewer_id);
+				$review->user = $user;
+			}
 
-            $business->reviews = $reviews;
-        }
+			$business->reviews = $reviews;
+		}
 
-        return view('businesses.index', compact('businesses'));
+		return view('businesses.index', compact('businesses'));
 	}
 
 	public function searchProperties(Request $request)
 	{
-		$filters = collect();
+		$filters = array();
 		$name = $request->name;
-		$filters->status = $request->status;
-		$filters->tags = array_filter($request->tags, function($var){return !is_null($var);} );
-		$filters->verified = $request->verified;
-
-		dd($filters->tags);
+		$filters['status'] = $request->status;
+		$filters['tags'] = array_filter($request->tags, function($var){return !is_null($var);} );
+		$filters['verified'] = $request->verified;
 
 		$query = Property::query();
-		$query->where('name', 'like', '%'.$name.'%');
+
+		if (isset($name))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
 
 		foreach ($filters as $filter => $value)
 		{
-			if (is_array($value))
-			{
-				$query->whereIn($filter, $value);
-			}
-			else
-			{
-				$query->where($filter,$value);
-			}
+			if (isset($value) && (empty($value) == FALSE))
+			{ 	
+				if (is_array($value))
+				{
+					$query->whereIn($filter, $value);
+				}
+				else
+				{
+					$query->where($filter,$value);
+
+				}
+			}			
 		}
 
 		$properties = $query->get();
@@ -150,13 +161,16 @@ class SearchController extends Controller
 
 	public function test()
 	{
-		$filters['name'] = "Clean";
-		$filters['verified'] = true;
-		$filters['services'] = ["Cleaning"];
+		// $name = "Merdeka";
+		$filters['status'] = "rent";
+		// $filters['verified'] = true;
+		$filters['tags'] = ["hotel"];
 
-		$query = Business::query();
-		$query->where('name', 'like', '%'.$filters['name'].'%');
-		unset($filters['name']);
+		$query = Property::query();
+		if (isset($name))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
 
 		foreach ($filters as $filter => $value)
 		{

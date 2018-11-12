@@ -43,12 +43,14 @@
         <div class="col-md-10">
         	<div class="card">
 				<div class="card-header">
-					Profile Information
-					<small><a href="{{ route('user.edit', Auth::id()) }}">Edit</a></small>
+					Profile Information&nbsp;&#8212;
+					<a href="{{ route('user.edit', Auth::id()) }}">
+						<i class="fas fa-user-edit fa-fw"></i> Edit my profile
+					</a>
 				</div>
 				<div class="card-body">
 					
-					<h4>{{ $users->name }}, {{ $users->role }}</h4>
+					<h4>{{ $users->name }} <small class="text-muted">{{ $users->role }}</small></h4>
 					<h6>Name</h6>
 					<hr/>
 					<h4>{{ $users->email }}</h4>

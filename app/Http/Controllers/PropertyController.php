@@ -174,7 +174,7 @@ class PropertyController extends Controller
 
         $property->save();
 
-        return redirect()->back();
+        return redirect()->route('property.index');
     }
 
     public function destroy($id)

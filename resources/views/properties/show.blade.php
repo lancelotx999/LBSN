@@ -51,7 +51,7 @@
                                         </li>
                                         @foreach ($property->tags as $tag)
                                             <li class="list-inline-item">
-                                                <span class="border border-primary bg-primary text-light rounded">
+                                                <span class="border border-info bg-info text-light rounded">
                                                     &nbsp;{{ $tag }}&nbsp;
                                                 </span>
                                             </li>
@@ -68,18 +68,27 @@
                                         <option value="5">5</option>
                                     </select>
                                 </li>
+                                <li class="list-group-item">
+                                    @if (!($property->owner_id == Auth::id()))
+                                    <a href="/contract/create/{{ $property->_id }}">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-file-signature fa-fw"></i>
+                                            Create a contract
+                                        </button>
+                                    </a>
+                                    @endif
+                                    <a href="{{ url()->previous() }}">
+                                        <button class="btn btn-outline-secondary" type="button">
+                                            <i class="fas fa-arrow-circle-left fa-fw"></i> 
+                                            Previous page
+                                        </button>
+                                    </a>
+                                </li>
                             </ul>
-                            <br />
                         </div>
                     </div>
                     <br />
                     <div class="accordion" id="accordionExample">
-                        <a href="/contract/create/{{ $property->_id }}">
-                        <button class="btn btn-link" type="button">
-                            <i class="fas fa-file-signature fa-fw"></i>
-                            Create contract page
-                        </button>
-                        </a>
                         <button class="btn btn-link" type="button" 
                         data-toggle="collapse" data-target="#collapseOne" 
                         aria-expanded="true" aria-controls="collapseOne">

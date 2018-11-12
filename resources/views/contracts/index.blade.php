@@ -81,10 +81,10 @@
                             </ul>
                             <a href="{{ route('contract.show', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-hand-point-right fa-fw"></i> View
+                                    <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->owner_id == Auth::id())
+                            @if ($contract->provider_id == Auth::id())
                             <a href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="far fa-edit fa-fw"></i> Edit
@@ -97,6 +97,7 @@
                             @endif
                         </div>
                     </div>
+                    <hr />
                     @endforeach
                     </div>
                     <div class="tab-pane fade" id="received" 
@@ -115,10 +116,10 @@
                             </ul>
                             <a href="{{ route('contract.show', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-hand-point-right fa-fw"></i> View
+                                    <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->owner_id == Auth::id())
+                            @if ($contract->receiver_id == Auth::id())
                             <a href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="far fa-edit fa-fw"></i> Edit
@@ -131,6 +132,7 @@
                             @endif
                         </div>
                     </div>
+                    <hr />
                     @endforeach
                     </div>
                 </div>
@@ -171,7 +173,7 @@
 </div>
 @endforeach
 
-@foreach ($received_contracts as $business)
+@foreach ($received_contracts as $contract)
 <div class="modal fade" id="deleteModal{{ $contract->_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

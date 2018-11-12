@@ -34,6 +34,13 @@ Route::get('/transaction/create/{id}',
         'uses' => 'TransactionController@create'
     ]);
 
+Route::get('/invoice/create/{id}',
+    [
+        'middleware' => 'auth',
+        'as' => 'invoice.create',
+        'uses' => 'InvoiceController@create'
+    ]);
+
 Route::get('/contract/create/{id}',
     [
         'middleware' => 'auth',

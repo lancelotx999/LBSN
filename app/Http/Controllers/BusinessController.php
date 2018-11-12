@@ -165,7 +165,7 @@ class BusinessController extends Controller
 
         $business->save();  
 
-        return redirect()->back();
+        return redirect()->route('business.index');
     }
 
     public function destroy($id)

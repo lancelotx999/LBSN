@@ -7,48 +7,24 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.index') }}">Contracts</a>
+                <a href="{{ route('contract.index') }}">My Contracts</a>
+                @if (strpos(url()->previous(), 'contract'))
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.edit', $contract->_id) }}">Edit Contract: {{ $contract->name }}</a>
+                <a href="{{ route('contract.show', $contract->_id) }}">View {{ $contract->name }}</a>
+                @endif
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ url()->current() }}">Create New Invoice</a>
             </h6><hr />
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-2">
-            <div class="list-group">
-                <a href="{{ route('user.index') }}" 
-                class="list-group-item list-group-item-action">
-                    My Profile
-                </a>
-                <a href="{{ route('property.index') }}" 
-                class="list-group-item list-group-item-action">
-                    My Properties
-                </a>
-                <a href="{{ route('business.index') }}" 
-                class="list-group-item list-group-item-action">
-                    My Businesses
-                </a>
-                <a href="{{ route('contract.index') }}" 
-                class="list-group-item list-group-item-action active">
-                    My Contracts
-                </a>
-                <a href="{{ route('invoice.index') }}" 
-                class="list-group-item list-group-item-action">
-                    My Invoices
-                </a>
-                <a href="{{ route('transaction.index') }}" 
-                class="list-group-item list-group-item-action">
-                    My Transactions
-                </a>
-            </div>
-        </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Edit Contract</div>
+                <div class="card-header">Invoice For:</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('contract.update', $contract) }}">
+                    <form method="POST" action="{{ route('contract.store') }}">
                     	@csrf
-                    	@method('PATCH')
+                    	@method('POST')
 
                         <h4>{{ $contract->name }}</h4>
                         <div class="form-group">
@@ -56,8 +32,7 @@
                                 Contract Title:
                             </label>
                             <input type="text" name="name" id="name"
-                            class="form-control" placeholder="{{ $contract->name }}.."
-                            value="{{ $contract->name }}" />
+                            class="form-control" placeholder="{{ $contract->name }}.." />
                         </div>
                         <div class="form-group">
                             <label>
@@ -100,7 +75,7 @@
                                 id="description" name="description"
                                 class="form-control" rows="3"
                                 placeholder="Enter description."
-                                >{{ $contract->description }}</textarea>
+                                ></textarea>
                         </div>
                         <div class="form-group">
                             <label for="price">
@@ -115,7 +90,6 @@
                                     id="price" name="price" type="text" 
                                     class="form-control" 
                                     placeholder="Enter price value."
-                                    value="{{ $contract->price }}" 
                                     required
                                 />
                             </div>
@@ -124,24 +98,11 @@
                             id="provider_id" name="provider_id" type="hidden"
                             class="form-control"
                             placeholder="Enter provider ID."
-                            value="{{ $contract->provider_id }}"
+                            value="{{ Auth::id() }}"
                             required
-                        />
-                        <input
-                            id="receiver_id" name="receiver_id" type="hidden"
-                            class="form-control"
-                            placeholder="Enter receiver ID."
-                            value="{{ $contract->receiver_id }}"
-                            required
-                        />
-                        <input
-                            id="item_id" name="item_id" type="hidden"
-                            class="form-control"
-                            value="{{ $contract->item_id }}"
-                            placeholder="Enter item ID."
                         />
                         <button type="submit" class="btn btn-primary">
-                            Edit Contract
+                            Send Invoice
                         </button>
                     </form>
                     <hr />

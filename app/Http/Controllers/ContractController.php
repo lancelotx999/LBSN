@@ -169,7 +169,7 @@ class ContractController extends Controller
 
         $contract->save();  
 
-        return redirect()->back();
+        return redirect()->route('contract.index');
     }
 
     public function acceptContract($id)

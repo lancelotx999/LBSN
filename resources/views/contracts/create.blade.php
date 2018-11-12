@@ -7,9 +7,17 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ url()->previous() }}">Contracts</a>
+                @if (strpos(url()->previous(), 'property'))
+                <a href="{{ url('/property/listing') }}">Properties</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.create') }}">Create New Contract</a>
+                <a href="{{ route('property.show', $item->_id) }}">View {{ $item->name }}</a>
+                @elseif (strpos(url()->previous(), 'business'))
+                <a href="{{ url('/business/listing') }}">Businesses</a>
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ route('business.show', $item->_id) }}">View {{ $item->name }}</a>
+                @endif
+                <i class="fas fa-angle-right"></i>
+                <a href="{{ url()->current() }}">Create New Contract</a>
             </h6><hr />
         </div>
     </div>
@@ -101,13 +109,13 @@
                             id="receiver_id" name="receiver_id" type="hidden"
                             class="form-control"
                             placeholder="Enter receiver ID."
-                            value={{ $item->owner_id }}
+                            value="{{ $item->owner_id }}"
                             required
                         />
                         <input
                             id="item_id" name="item_id" type="hidden"
                             class="form-control"
-                            value={{ $item_id }}
+                            value="{{ $item_id }}"
                             placeholder="Enter item ID."
                         />
                         <button type="submit" class="btn btn-primary">

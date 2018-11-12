@@ -53,12 +53,10 @@
         @endif
             <div class="card">
                 <div class="card-header">
-                    Businesses
-                    <small>
-                        <a href="{{ route('business.create') }}">
-                            <i class="fas fa-plus-circle fa-fw"></i> Create a new business
-                        </a>
-                    </small>
+                    Businesses&nbsp;&#8212;
+                    <a href="{{ route('business.create') }}">
+                        <i class="fas fa-plus-circle fa-fw"></i> Create a new business
+                    </a>
                     <hr />
                     <form method="POST" action="{{ route('business.search') }}">
                         @csrf
@@ -148,7 +146,7 @@
                             </ul>
                             <a href="{{ route('business.show', $business->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-hand-point-right fa-fw"></i> View
+                                    <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
                             @if ($business->owner_id == Auth::id())

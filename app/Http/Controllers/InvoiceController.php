@@ -101,18 +101,11 @@ class InvoiceController extends Controller
 		$invoice->save();
 	}
 
-	public function create()
+	public function create($id)
 	{
-		$provided_invoices = collect();
-		$provided_contracts = Contract::where('provider_id','=', $user_id)->get();
+		$contract = Contract::findOrFail($id);
 
-		foreach ($provided_contracts as $p_contract)
-		{
-			$p_invoice = Invoice::whereIn('contract_id',[$p_contract->id])->get()->first();
-			$provided_invoices->push($p_invoice);
-		}
-
-		return view('invoices.create', compact('provided_invoices'));
+		return view('invoices.create', compact('contract'));
 	}
 
 
@@ -190,7 +183,7 @@ class InvoiceController extends Controller
 		}
 
 		// dd($invoice);
-		return redirect()->back();
+		return redirect()->route('invoice.index');
 	}
 
 
@@ -243,7 +236,7 @@ class InvoiceController extends Controller
 
 		$invoice->save();
 
-		return redirect()->route('invoices.edit', ['invoice' => $invoice ]);
+		return redirect()->route('invoice.index');
 	}
 
 	public function destroy($id)

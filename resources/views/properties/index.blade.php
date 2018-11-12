@@ -54,12 +54,10 @@
         @endif
             <div class="card">
                 <div class="card-header">
-                    Properties
-                    <small>
-                        <a href="{{ route('property.create') }}">
-                            <i class="fas fa-plus-circle fa-fw"></i> Create a new property
-                        </a>
-                    </small>
+                    Properties&nbsp;&#8212;
+                    <a href="{{ route('property.create') }}">
+                        <i class="fas fa-plus-circle fa-fw"></i> Create a new property
+                    </a>
                     <hr />
                     <form method="POST" action="{{ route('property.search') }}">
                         @csrf
@@ -193,7 +191,7 @@
                                     </ul>
                                     <a href="{{ route('property.show', $property->_id) }}">
                                         <button class="btn btn-sm btn-success">
-                                            <i class="far fa-hand-point-right fa-fw"></i> View
+                                            <i class="fas fa-list fa-fw"></i> View
                                         </button>
                                     </a>
                                     @if ($property->owner_id == Auth::id())

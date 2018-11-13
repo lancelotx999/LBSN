@@ -44,12 +44,6 @@
             <div class="card">
                 <div class="card-header">Contracts</div>
                 <div class="card-body">
-                @if ($sent_contracts->isEmpty())
-                <br />
-                <h1 class="display-4">Hello, it seems empty here!</h1>
-                <p class="lead">Why don't you try to add some stuff?</p>
-                <hr />
-                @endif
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="sent-tab" data-toggle="tab" href="#sent" 
@@ -67,6 +61,11 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="sent" 
                     role="tabpanel" aria-labelledby="home-tab"><br />
+                    @if ($sent_contracts->isEmpty())
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No contracts have been sent yet.</p>
+                        <hr />
+                    @endif
                     @foreach ($sent_contracts as $contract)
                     <div class="row">
                         <div class="col-sm-12">
@@ -102,6 +101,11 @@
                     </div>
                     <div class="tab-pane fade" id="received" 
                     role="tabpanel" aria-labelledby="profile-tab"><br />
+                    @if ($received_contracts->isEmpty())
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No contracts have been received yet.</p>
+                        <hr />
+                    @endif
                     @foreach ($received_contracts as $contract)
                         <div class="row">
                         <div class="col-sm-12">
@@ -202,5 +206,4 @@
 </div>
 </div>
 @endforeach
-
 @endsection

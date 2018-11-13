@@ -7,9 +7,9 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a> 
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.index') }}">My Contracts</a>
+                <a href="{{ route('invoice.index') }}">My Invoices</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.show', $contract->_id) }}">View Contract: {{ $contract->name }}</a>
+                <a href="{{ route('invoice.show', $invoice->_id) }}">View Invoice: </a>
             </h6><hr />
         </div>
     </div>
@@ -29,11 +29,11 @@
                     My Businesses
                 </a>
                 <a href="{{ route('contract.index') }}" 
-                class="list-group-item list-group-item-action active">
+                class="list-group-item list-group-item-action">
                     My Contracts
                 </a>
                 <a href="{{ route('invoice.index') }}" 
-                class="list-group-item list-group-item-action">
+                class="list-group-item list-group-item-action active">
                     My Invoices
                 </a>
                 <a href="{{ route('transaction.index') }}" 
@@ -44,24 +44,36 @@
         </div>
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">View Contract</div>
+                <div class="card-header">View Invoice</div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <strong>Name:</strong><br />
-                            {{ $contract->name }}
-                        </li>
-                        <li class="list-group-item text-capitalize">
-                            <strong>Contract Type:</strong><br />
-                            {{ $contract->type }}
+                            {{ $invoice }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Description:</strong><br />
-                            {{ $contract->description }}
+                            <strong>Total Price:</strong><br />
+                            {{ $invoice->total_price }} MYR
                         </li>
                         <li class="list-group-item">
-                            <strong>Price:</strong><br />
-                            {{ $contract->price }} MYR
+                            <strong>Tax Price:</strong><br />
+                            {{ $invoice->tax }} MYR
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Grand Total:</strong><br />
+                            {{ $invoice->grand_total }} MYR
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Outstanding Payment:</strong><br />
+                            {{ $invoice->outstanding_payment }} MYR
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Payment Status:</strong><br />
+                            @if ($invoice->paid)
+                                Has already paid
+                            @else
+                                Not yet to be paid
+                            @endif
                         </li>
                         <li class="list-group-item">
                             <a href="{{ url()->previous() }}">

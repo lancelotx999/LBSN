@@ -62,10 +62,9 @@
                     <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="provided" 
                     role="tabpanel" aria-labelledby="home-tab"><br />
-                    @if ($received_invoices->isEmpty())
-                        <br />
-                        <h1 class="display-4">Hello, it seems empty here!</h1>
-                        <p class="lead">Why don't you try to add some stuff?</p>
+                    @if ($provided_invoices->isEmpty())
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No invoices have been provided yet.</p>
                         <hr />
                     @endif
                     @foreach ($provided_invoices as $invoice)
@@ -76,11 +75,11 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <strong>Provider:</strong> 
-                                    {{ $invoice->provider->name }}
+                                    {{ $invoice }}
                                 </li>
                                 <li>
                                     <strong>Receiver:</strong> 
-                                    {{ $invoice->receiver->name }}
+                                    {{ $invoice->receiver }}
                                 </li>
                                 <li>
                                     <strong>Grand Total:</strong> 
@@ -96,7 +95,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->owner_id == Auth::id())
+                            @if ($invoice == Auth::id())
                             <a href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="far fa-edit fa-fw"></i> Edit
@@ -115,15 +114,14 @@
                     <div class="tab-pane fade" id="received" 
                     role="tabpanel" aria-labelledby="profile-tab"><br />
                     @if ($received_invoices->isEmpty())
-                        <br />
-                        <h1 class="display-4">Hello, it seems empty here!</h1>
-                        <p class="lead">Why don't you try to add some stuff?</p>
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No invoices have been received yet.</p>
                         <hr />
                     @endif
                     @foreach ($received_invoices as $invoice)
                         <div class="row">
                         <div class="col-sm-12">
-                            <h4>{{ $invoice->id }}</h4>
+                            <h4>{{ $invoice->provider->name }}'s Invoice</h4>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
@@ -148,7 +146,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->owner_id == Auth::id())
+                            @if ($invoice->receiver->_id == Auth::id())
                             <a href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="far fa-edit fa-fw"></i> Edit
@@ -231,5 +229,4 @@
 </div>
 </div>
 @endforeach
-
 @endsection

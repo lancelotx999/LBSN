@@ -22,64 +22,14 @@
             <div class="card">
                 <div class="card-header">Invoice For:</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('contract.store') }}">
+                    <form method="POST" action="{{ route('invoice.store') }}">
                     	@csrf
                     	@method('POST')
 
                         <h4>{{ $contract->name }}</h4>
                         <div class="form-group">
-                            <label for="name">
-                                Contract Title:
-                            </label>
-                            <input type="text" name="name" id="name"
-                            class="form-control" placeholder="{{ $contract->name }}.." />
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                Contract Type:
-                            </label>
-                            <div class="form-check">
-                                <input 
-                                    id="forrent" name="type" type="radio"
-                                    class="form-check-input" value="rent" 
-                                    checked 
-                                />
-                                <label class="form-check-label" for="forrent">
-                                    Rent
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input 
-                                    id="forsale" name="type" type="radio"
-                                    class="form-check-input" value="sell" 
-                                />
-                                <label class="form-check-label" for="forsale">
-                                    Sale
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input 
-                                    id="forservice" name="type" type="radio"
-                                    class="form-check-input" value="service" 
-                                />
-                                <label class="form-check-label" for="forservice">
-                                    Service
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">
-                                Description:
-                            </label>
-                            <textarea 
-                                id="description" name="description"
-                                class="form-control" rows="3"
-                                placeholder="Enter description."
-                                ></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="price">
-                                Price:
+                            <label for="tax">
+                                Tax:
                             </label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -87,20 +37,32 @@
                                     <span class="input-group-text">MYR</span>
                                 </div>
                                 <input 
-                                    id="price" name="price" type="text" 
+                                    id="tax" name="tax" type="number" 
                                     class="form-control" 
-                                    placeholder="Enter price value."
+                                    placeholder="Enter tax value."
                                     required
                                 />
                             </div>
                         </div>
-                        <input
-                            id="provider_id" name="provider_id" type="hidden"
-                            class="form-control"
-                            placeholder="Enter provider ID."
-                            value="{{ Auth::id() }}"
-                            required
-                        />
+                        <div class="form-group">
+                            <label for="total_price">
+                                Total Price:
+                            </label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">MYR</span>
+                                </div>
+                                <input 
+                                    id="total_price" name="total_price" type="number" 
+                                    class="form-control" 
+                                    placeholder="Enter total price value."
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <input type="hidden" name="contract_id[]" id="contract_id"
+                        class="form-control" value="{{ $contract->_id }}" required />
                         <button type="submit" class="btn btn-primary">
                             Send Invoice
                         </button>

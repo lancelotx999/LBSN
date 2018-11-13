@@ -91,7 +91,7 @@
                                     <span class="input-group-text">MYR</span>
                                 </div>
                                 <input 
-                                    id="price" name="price" type="text" 
+                                    id="price" name="price" type="number" 
                                     class="form-control" 
                                     placeholder="Enter price value."
                                     required

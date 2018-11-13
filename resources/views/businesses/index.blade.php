@@ -123,7 +123,7 @@
         <div class="card-body">
             @if ($businesses->isEmpty())
             <br />
-            <h1 class="display-4">Hello, it seems empty here!</h1>
+            <h3 class="display-4">Hello, it seems empty here!</h3>
             <p class="lead">Why don't you try to add some stuff?</p>
             <hr />
             @endif

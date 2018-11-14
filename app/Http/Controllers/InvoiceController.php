@@ -30,18 +30,10 @@ class InvoiceController extends Controller
 		else
 		{
 			//user provides item and gets paid
-			$provided_invoices = Invoice::where('provider_id','=', Auth::user()->id)->get();
+			$provided_invoices = Invoice::where('receiver_id','=', Auth::user()->id)->get();
 
             //user receives item and pays
-			$received_invoices = Invoice::where('receiver_id','=', Auth::user()->id)->get();
-
-			foreach ($received_invoices as $invoice){
-				$provider = User::findOrFail($invoice->provider_id);
-				$receiver = User::findOrFail($invoice->receiver_id);
-
-				$invoice->provider = $provider;
-				$invoice->receiver = $receiver;
-			}
+			$received_invoices = Invoice::where('provider_id','=', Auth::user()->id)->get();
 
 			// dd($received_invoices);
 			return view('invoices.index', compact('provided_invoices','received_invoices'));
@@ -58,8 +50,8 @@ class InvoiceController extends Controller
     // Gets all the receipts associated with specified user
 	public function showUserInvoices($user_id)
 	{
-		$provided_invoices = Invoice::where('provider_id','=', $user_id)->get();
-		$received_invoices = Invoice::where('receiver_id','=', $user_id)->get();
+		$provided_invoices = Invoice::where('receiver_id','=', $user_id)->get();
+		$received_invoices = Invoice::where('provider_id','=', $user_id)->get();
 
 		return view('invoices.index', compact('provided_invoices','received_invoices'));
 	}
@@ -208,6 +200,8 @@ class InvoiceController extends Controller
 		$invoice->provider_id = $request->provider_id;
 		$invoice->receiver_id = $request->receiver_id;
 		$invoice->contract_id = $request->contract_id;
+
+		$request->paid = $request->paid == 'true' ? true : false;
 
 		$cids = $request->contract_id;
 

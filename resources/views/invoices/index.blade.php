@@ -70,16 +70,12 @@
                     @foreach ($provided_invoices as $invoice)
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4>{{ $invoice->id }}</h4>
+                            <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
-                                    <strong>Provider:</strong> 
-                                    {{ $invoice }}
-                                </li>
-                                <li>
-                                    <strong>Receiver:</strong> 
-                                    {{ $invoice->receiver }}
+                                    <strong>Sent To:</strong> 
+                                    {{ App\User::find($invoice->provider_id)->name }}
                                 </li>
                                 <li>
                                     <strong>Grand Total:</strong> 
@@ -95,7 +91,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($invoice == Auth::id())
+                            @if ($invoice->receiver_id == Auth::id())
                             <a href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="far fa-edit fa-fw"></i> Edit
@@ -121,16 +117,12 @@
                     @foreach ($received_invoices as $invoice)
                         <div class="row">
                         <div class="col-sm-12">
-                            <h4>{{ $invoice->provider->name }}'s Invoice</h4>
+                            <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
-                                    <strong>Provider:</strong> 
-                                    {{ $invoice->provider->name }}
-                                </li>
-                                <li>
-                                    <strong>Receiver:</strong> 
-                                    {{ $invoice->receiver->name }}
+                                    <strong>Sent By:</strong> 
+                                    {{ App\User::find($invoice->receiver_id)->name }}
                                 </li>
                                 <li>
                                     <strong>Grand Total:</strong> 
@@ -146,7 +138,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($invoice->receiver->_id == Auth::id())
+                            @if ($invoice->provider_id == Auth::id())
                             <a href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="far fa-edit fa-fw"></i> Edit

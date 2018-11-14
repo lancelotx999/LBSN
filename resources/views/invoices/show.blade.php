@@ -9,7 +9,9 @@
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('invoice.index') }}">My Invoices</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('invoice.show', $invoice->_id) }}">View Invoice: </a>
+                <a href="{{ route('invoice.show', $invoice->_id) }}">
+                    View Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}
+                </a>
             </h6><hr />
         </div>
     </div>
@@ -48,8 +50,8 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <strong>Name:</strong><br />
-                            {{ $invoice }}
+                            <strong>Contract Name:</strong><br />
+                            {{ App\Contract::find($invoice->contract_id)[0]->name }}
                         </li>
                         <li class="list-group-item">
                             <strong>Total Price:</strong><br />
@@ -69,11 +71,13 @@
                         </li>
                         <li class="list-group-item">
                             <strong>Payment Status:</strong><br />
+                            <span class="text-uppercase">
                             @if ($invoice->paid)
-                                Has already paid
+                                Already paid
                             @else
-                                Not yet to be paid
+                                Not yet paid
                             @endif
+                            </span>
                         </li>
                         <li class="list-group-item">
                             <a href="{{ url()->previous() }}">
@@ -92,7 +96,7 @@
 
 @php
 
-if (empty($contract)) { $contract = null; }
+if (empty($invoice)) { $invoice = null; }
 
 @endphp
 

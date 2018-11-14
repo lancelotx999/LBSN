@@ -29,7 +29,7 @@
                         <h4>{{ $contract->name }}</h4>
                         <div class="form-group">
                             <label for="tax">
-                                Tax:
+                                Tax Price:
                             </label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

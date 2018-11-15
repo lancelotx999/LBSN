@@ -18,13 +18,13 @@ class CreateContractsTable extends Migration
 
             $table->string('provider_id');
             $table->string('receiver_id');
-
             $table->string('item_id');
 
             $table->string('type');
             $table->string('description');
             $table->double('price');
 
+            $table->string('images');
             $table->boolean('accepted');
             $table->boolean('fulfilled');
 

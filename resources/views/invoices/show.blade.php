@@ -55,19 +55,19 @@
                         </li>
                         <li class="list-group-item">
                             <strong>Total Price:</strong><br />
-                            {{ $invoice->total_price }} MYR
+                            RM {{ $invoice->total_price }}
                         </li>
                         <li class="list-group-item">
                             <strong>Tax Price:</strong><br />
-                            {{ $invoice->tax }} MYR
+                            RM {{ $invoice->tax }}
                         </li>
                         <li class="list-group-item">
                             <strong>Grand Total:</strong><br />
-                            {{ $invoice->grand_total }} MYR
+                            RM {{ $invoice->grand_total }}
                         </li>
                         <li class="list-group-item">
                             <strong>Outstanding Payment:</strong><br />
-                            {{ $invoice->outstanding_payment }} MYR
+                            RM {{ $invoice->outstanding_payment }}
                         </li>
                         <li class="list-group-item">
                             <strong>Payment Status:</strong><br />
@@ -80,6 +80,14 @@
                             </span>
                         </li>
                         <li class="list-group-item">
+                            @if ($invoice->provider_id == Auth::id())
+                            <a href="/transaction/create/{{ $invoice->_id }}">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-file-signature fa-fw"></i>
+                                    Create a new transaction
+                                </button>
+                            </a>
+                            @endif
                             <a href="{{ url()->previous() }}">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-arrow-circle-left fa-fw"></i> 

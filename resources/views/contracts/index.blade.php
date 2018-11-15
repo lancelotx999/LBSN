@@ -75,7 +75,7 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <strong>Price:</strong> 
-                                    {{ $contract->price }} MYR
+                                    RM {{ $contract->price }}
                                 </li>
                             </ul>
                             <a href="{{ route('contract.show', $contract->_id) }}">
@@ -115,7 +115,7 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <strong>Price:</strong> 
-                                    {{ $contract->price }} MYR
+                                    RM {{ $contract->price }}
                                 </li>
                             </ul>
                             <a href="{{ route('contract.show', $contract->_id) }}">

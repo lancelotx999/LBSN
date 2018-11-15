@@ -61,7 +61,7 @@
                         </li>
                         <li class="list-group-item">
                             <strong>Price:</strong><br />
-                            {{ $contract->price }} MYR
+                            RM {{ $contract->price }}
                         </li>
                         <li class="list-group-item">
                             @if (($contract->receiver_id == Auth::id()))

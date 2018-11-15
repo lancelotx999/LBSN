@@ -149,13 +149,13 @@ class TransactionController extends Controller
 
             $invoice->paid = true;
 
-            dd($invoice);
+            // dd($invoice);
 
             $invoice->save();
             $transaction->save();
 
             //direct to receipt generation
-            return redirect()->back();
+            return redirect()->route('transaction.index');
         }
 
 
@@ -177,7 +177,7 @@ class TransactionController extends Controller
         $invoice->save();
         $transaction->save();
 
-        return redirect()->back();
+        return redirect()->route('transaction.index');
     }
 
     /**
@@ -237,7 +237,7 @@ class TransactionController extends Controller
 
             dd("Error: Too Much Paid!");
             //too much paid. return to enter valid amount
-            return redirect()->back();
+            return redirect()->route('transaction.index');
         }
 
         $provider = User::findOrFail($transaction->provider_id);
@@ -269,7 +269,7 @@ class TransactionController extends Controller
             $transaction->save();
 
             //direct to receipt generation
-            return redirect()->back();
+            return redirect()->route('transaction.index');
         }
 
 

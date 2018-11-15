@@ -71,6 +71,16 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
+                            <p>
+                                <strong>Payment Status:</strong>
+                                <span class="text-uppercase">
+                                @if ($invoice->paid)
+                                    Already paid
+                                @else
+                                    Not yet paid
+                                @endif
+                                </span>
+                            </p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
@@ -79,11 +89,11 @@
                                 </li>
                                 <li>
                                     <strong>Grand Total:</strong> 
-                                    {{ $invoice->grand_total }} MYR
+                                    RM {{ $invoice->grand_total }}
                                 </li>
                                 <li>
                                     <strong>Outstanding Payment:</strong> 
-                                    {{ $invoice->outstanding_payment }} MYR
+                                    RM {{ $invoice->outstanding_payment }}
                                 </li>
                             </ul>
                             <a href="{{ route('invoice.show', $invoice->_id) }}">
@@ -118,6 +128,16 @@
                         <div class="row">
                         <div class="col-sm-12">
                             <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
+                            <p>
+                                <strong>Payment Status:</strong>
+                                <span class="text-uppercase">
+                                @if ($invoice->paid)
+                                    Already paid
+                                @else
+                                    Not yet paid
+                                @endif
+                                </span>
+                            </p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
@@ -126,11 +146,11 @@
                                 </li>
                                 <li>
                                     <strong>Grand Total:</strong> 
-                                    {{ $invoice->grand_total }} MYR
+                                    RM {{ $invoice->grand_total }}
                                 </li>
                                 <li>
                                     <strong>Outstanding Payment:</strong> 
-                                    {{ $invoice->outstanding_payment }} MYR
+                                    RM {{ $invoice->outstanding_payment }}
                                 </li>
                             </ul>
                             <a href="{{ route('invoice.show', $invoice->_id) }}">

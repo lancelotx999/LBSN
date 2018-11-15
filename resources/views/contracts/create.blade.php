@@ -88,13 +88,13 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
-                                    <span class="input-group-text">MYR</span>
+                                    <span class="input-group-text">RM</span>
                                 </div>
                                 <input 
                                     id="price" name="price" type="number" 
                                     class="form-control" 
                                     placeholder="Enter price value."
-                                    required
+                                    step="0.01" min="0" required
                                 />
                             </div>
                         </div>

@@ -13,7 +13,10 @@
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('transaction.index') }}">My Transactions</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('transaction.show', $transaction->_id) }}">View {{ $transaction->name }}</a>
+                <a href="{{ route('transaction.show', $transaction->_id) }}">
+                    View Transaction: 
+                    {{ App\Contract::find($transaction->invoice->contract_id)[0]->name }}
+                </a>
             </h6><hr />
         </div>
     </div>
@@ -48,32 +51,44 @@
         </div>
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">View Property</div>
+                <div class="card-header">View Transaction</div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h5>ID: {{ $transaction->_id }}</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p>Provider: {{ $transaction->provider->name }}</p>
-                    </div>
-                    <div class="row">
-                        <p>Receiver: {{ $transaction->receiver->name }}</p>
-                    </div>
-                    <div class="row">
-                        <p>Payment Method: {{ $transaction->payment_method }}</p>
-                    </div>
-                    <div class="row">
-                        <p>Amount Paid: {{ $transaction->amount_paid }}</p>
-                    </div>
-                    <div class="row">
-                        @if ($transaction->acknowledged == true)
-                            <p>Status: Verified</p>
-                        @elseif ($transaction->acknowledged == false)
-                            <p>Status: Unverified</p>
-                        @endif
-                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Provider:</strong><br />
+                            {{ $transaction->provider->name }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Receiver:</strong><br />
+                            {{ $transaction->receiver->name }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Payment Method:</strong><br />
+                            <span class="text-capitalize">
+                                {{ $transaction->payment_method }}
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Amount Paid:</strong><br />
+                            {{ $transaction->amount_paid }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Status:</strong><br />
+                            @if ($transaction->acknowledged)
+                                Verified
+                            @else
+                                Unverified
+                            @endif
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ url()->previous() }}">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fas fa-arrow-circle-left fa-fw"></i> 
+                                    Previous page
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

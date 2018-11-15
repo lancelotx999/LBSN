@@ -8,11 +8,12 @@ use Illuminate\Http\File;
 use Auth;
 use Moloquent;
 use App\Business;
+use App\User;
 
 class BusinessController extends Controller
 {
    // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -21,7 +22,7 @@ class BusinessController extends Controller
     // Returns both all businesses and the owned businesses if merchant
     public function index()
     {
-       return $this->showUserBusinesses(Auth::user()->id);       
+       return $this->showUserBusinesses(Auth::user()->id);
     }
 
     // Gets all bussinesses
@@ -29,16 +30,16 @@ class BusinessController extends Controller
     {
     	$businesses = Business::all();
 
-        foreach ($businesses as $business) 
+        foreach ($businesses as $business)
         {
             $ratings = Rating::where('ratee_id','=', $business->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
+            if ($totalUsers > 0)
             {
-                foreach ($ratings as $rating) 
+                foreach ($ratings as $rating)
                 {
                     $totalRates = $totalRates + $rating->rate;
                 }
@@ -46,14 +47,14 @@ class BusinessController extends Controller
                 $business->rate = $totalRates/$totalUsers;
 
             }
-            else 
+            else
             {
                 $business->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $business->id)->get();
 
-            foreach ($reviews as $review) 
+            foreach ($reviews as $review)
             {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;
@@ -76,7 +77,7 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
+        $this->validate($request,
             [
                 'owner_id' => 'required',
                 'name' => 'required',
@@ -95,7 +96,7 @@ class BusinessController extends Controller
         $business->contact_number = $request->contact_number;
         $business->verified = false;
 
-        $business->save();     
+        $business->save();
 
         return redirect()->route('business.index');
     }
@@ -108,9 +109,9 @@ class BusinessController extends Controller
         $totalRates = 0;
         $totalUsers = count($ratings);
 
-        if ($totalUsers > 0) 
+        if ($totalUsers > 0)
         {
-            foreach ($ratings as $rating) 
+            foreach ($ratings as $rating)
             {
                 $totalRates = $totalRates + $rating->rate;
             }
@@ -118,14 +119,14 @@ class BusinessController extends Controller
             $business->rate = $totalRates/$totalUsers;
 
         }
-        else 
+        else
         {
             $business->rate = 0;
         }
 
         $reviews = Review::where('reviewee_id','=', $id)->get();
 
-        foreach ($reviews as $review) 
+        foreach ($reviews as $review)
         {
             $user = User::findOrFail($review->reviewer_id);
             $review->user = $user;
@@ -146,7 +147,7 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         $business = Business::findOrFail($id);
-        
+
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;
         $business->description = $request->description;
@@ -154,7 +155,7 @@ class BusinessController extends Controller
         $business->contact_number = $request->contact_number;
         $business->verified = $request->verified;
 
-        $business->save();  
+        $business->save();
 
         return redirect()->back();
     }
@@ -170,16 +171,16 @@ class BusinessController extends Controller
     {
         $businesses = Business::where('owner_id','=',$owner_id)->get();
 
-        foreach ($businesses as $business) 
+        foreach ($businesses as $business)
         {
             $ratings = Rating::where('ratee_id','=', $business->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
+            if ($totalUsers > 0)
             {
-                foreach ($ratings as $rating) 
+                foreach ($ratings as $rating)
                 {
                     $totalRates = $totalRates + $rating->rate;
                 }
@@ -187,14 +188,14 @@ class BusinessController extends Controller
                 $business->rate = $totalRates/$totalUsers;
 
             }
-            else 
+            else
             {
                 $business->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $business->id)->get();
 
-            foreach ($reviews as $review) 
+            foreach ($reviews as $review)
             {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;
@@ -216,12 +217,51 @@ class BusinessController extends Controller
 
     public function test()
     {
-        $hello = "helloworld";
+        // $hello = "helloworld";
+        //
+        // Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');
+        // $path = Storage::disk('businesses')->url('hello.json');
 
-        Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');
-        $path = Storage::disk('businesses')->url('hello.json');
+        // $b64image = base64_encode(file_get_contents('http://www.onzehost.com.br/images/test-img.jpg'));
+        //
+        // $b64image = base64_decode($b64image);
+        //
 
-        dd($path);
+
+        $img_url = 'https://securitywatch.ie/media/catalog/product/t/e/test-logo-circle-black-transparent.png';
+        $b64_url = 'php://filter/read=convert.base64-encode/resource='.$img_url;
+        $b64_img = file_get_contents($b64_url);
+        // echo $b64_img;
+
+        $imageData = base64_decode($b64_img);
+        $source = imagecreatefromstring($imageData);
+        $angle = 90;
+        $rotate = imagerotate($source, $angle, 0); // if want to rotate the image
+        $imageName = "hello1.png";
+        $imageSave = imagejpeg($rotate,$imageName,100);
+        imagedestroy($source);
+
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $user->profile_image = $b64_img;
+            // dd($user);
+        }
+
+        foreach ($users as $user) {
+            base64_decode($user->profile_image);
+            echo '<img src="data:image/png;base64,' . $user->profile_image . '" />';
+            // dd($user);
+        }
+
+
+
+
+
+        // echo $imageSave;
+
+
+        // dd($imageSave);
     }
 
 }

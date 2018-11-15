@@ -79,7 +79,7 @@ return [
                 'override_visibility_on_copy' => 'private',
             ]
 
-        ]
+        ],
 
         'properties' => 
         [
@@ -95,7 +95,7 @@ return [
                 'override_visibility_on_copy' => 'private',
             ]
 
-        ]
+        ],
 
         'users' => 
         [
@@ -111,7 +111,7 @@ return [
                 'override_visibility_on_copy' => 'private',
             ]
 
-        ]
+        ],
 
     ],
 

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78628a3dc517fa8dce58d8ec85bf55f9",
+    "content-hash": "7ce17af5cc869eda9d99a0a95ab86c6b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.71.2",
+            "version": "3.72.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d9d44345e478146560ab67fee26e56a7a828da5b"
+                "reference": "5e36d7d70917133a244f62ff81d38871669951b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d9d44345e478146560ab67fee26e56a7a828da5b",
-                "reference": "d9d44345e478146560ab67fee26e56a7a828da5b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5e36d7d70917133a244f62ff81d38871669951b5",
+                "reference": "5e36d7d70917133a244f62ff81d38871669951b5",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-11-08T23:12:09+00:00"
+            "time": "2018-11-16T21:17:38+00:00"
         },
         {
             "name": "barryvdh/laravel-dompdf",
@@ -144,6 +144,53 @@
                 "pdf"
             ],
             "time": "2018-08-31T13:25:44+00:00"
+        },
+        {
+            "name": "braintree/braintree_php",
+            "version": "3.36.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/braintree/braintree_php.git",
+                "reference": "a864c9c4a3ed08f384e278f7e9723bd9c5d984d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/braintree/braintree_php/zipball/a864c9c4a3ed08f384e278f7e9723bd9c5d984d0",
+                "reference": "a864c9c4a3ed08f384e278f7e9723bd9c5d984d0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "ext-hash": "*",
+                "ext-openssl": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Braintree": "lib/"
+                },
+                "psr-4": {
+                    "Braintree\\": "lib/Braintree"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Braintree",
+                    "homepage": "https://www.braintreepayments.com"
+                }
+            ],
+            "description": "Braintree PHP Client Library",
+            "time": "2018-10-10T20:59:28+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1558,16 +1605,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.34.1",
+            "version": "1.35.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9"
+                "reference": "5c05a2be472b22f63291d192410df9f0e0de3b19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9",
-                "reference": "19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5c05a2be472b22f63291d192410df9f0e0de3b19",
+                "reference": "5c05a2be472b22f63291d192410df9f0e0de3b19",
                 "shasum": ""
             },
             "require": {
@@ -1575,8 +1622,11 @@
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
+            },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
+                "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
             },
             "type": "library",
             "extra": {
@@ -1609,7 +1659,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-11-08T13:33:47+00:00"
+            "time": "2018-11-14T21:55:58+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4519,16 +4569,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.4.3",
+            "version": "7.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c151651fb6ed264038d486ea262e243af72e5e64"
+                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c151651fb6ed264038d486ea262e243af72e5e64",
-                "reference": "c151651fb6ed264038d486ea262e243af72e5e64",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
+                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
                 "shasum": ""
             },
             "require": {
@@ -4599,7 +4649,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-10-23T05:57:41+00:00"
+            "time": "2018-11-14T16:52:02+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

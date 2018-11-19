@@ -67,4 +67,7 @@ Route::get('/test3', 'ContractController@test');
 Route::get('/test4', 'PDF_GeneratorController@invoiceGenerator');
 Route::get('/test5', 'PDF_GeneratorController@receiptGenerator');
 Route::get('/test6', 'PDF_GeneratorController@test');
-Route::get('/test7', 'SearchController@test');
+
+Route::view('/payment', 'ePayment/payment');
+Route::get('/test7', 'ePaymentController@process')->name('payment.process');
+

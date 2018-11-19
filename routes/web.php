@@ -59,6 +59,7 @@ Route::resource('contract', 'ContractController');
 Route::resource('review', 'ReviewController');
 Route::resource('transaction', 'TransactionController');
 Route::resource('invoice', 'InvoiceController');
+Route::resource('conversations', 'ConversationController');
 
 // Testing Routes
 Route::get('/test1', 'ReceiptController@test');
@@ -71,3 +72,5 @@ Route::get('/test6', 'PDF_GeneratorController@test');
 Route::view('/payment', 'ePayment/payment');
 Route::get('/test7', 'ePaymentController@process')->name('payment.process');
 
+Route::get('/test7', 'SearchController@test');
+Route::get('/test8', 'ConversationController@notificationTest');

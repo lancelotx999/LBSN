@@ -8,7 +8,7 @@ use Moloquent;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
+use App\Notifications\NewMessage;
 class User extends Moloquent implements
     AuthenticatableContract,
     AuthorizableContract,
@@ -41,7 +41,7 @@ class User extends Moloquent implements
      */
     public function getRouteKeyName()
     {
-        return 'name'; //this will return user name as route 
+        return 'name'; //this will return user name as route
     }
 
 }

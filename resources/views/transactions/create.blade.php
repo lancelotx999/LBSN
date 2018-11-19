@@ -110,7 +110,7 @@
                                         class="form-check-input" value="card" 
                                     />
                                     <label class="form-check-label" for="forsale">
-                                        Card
+                                        ePayment
                                     </label>
                                 </div>
                             </div>

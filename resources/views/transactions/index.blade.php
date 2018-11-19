@@ -107,7 +107,7 @@
                             @if ($transaction->provider_id == Auth::id())
                             <a href="{{ route('transaction.edit', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-edit fa-fw"></i> Edit
+                                    <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
@@ -167,7 +167,7 @@
                             @if ($transaction->receiver_id == Auth::id())
                             <a href="{{ route('transaction.edit', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-edit fa-fw"></i> Edit
+                                    <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 

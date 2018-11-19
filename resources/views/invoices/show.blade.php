@@ -70,14 +70,12 @@
                             RM {{ $invoice->outstanding_payment }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Payment Status:</strong><br />
-                            <span class="text-uppercase">
+                            <strong>Status:</strong><br />
                             @if ($invoice->paid)
                                 Already paid
                             @else
                                 Not yet paid
                             @endif
-                            </span>
                         </li>
                         <li class="list-group-item">
                             @if ($invoice->provider_id == Auth::id())

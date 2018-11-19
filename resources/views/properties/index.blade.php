@@ -197,7 +197,7 @@
                                     @if ($property->owner_id == Auth::id())
                                     <a href="{{ route('property.edit', $property->_id) }}">
                                         <button class="btn btn-sm btn-success">
-                                            <i class="far fa-edit fa-fw"></i> Edit
+                                            <i class="fas fa-edit fa-fw"></i> Edit
                                         </button>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 

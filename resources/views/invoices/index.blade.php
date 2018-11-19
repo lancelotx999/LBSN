@@ -72,14 +72,12 @@
                         <div class="col-sm-12">
                             <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
                             <p>
-                                <strong>Payment Status:</strong>
-                                <span class="text-uppercase">
+                                <strong>Status:</strong>
                                 @if ($invoice->paid)
                                     Already paid
                                 @else
                                     Not yet paid
                                 @endif
-                                </span>
                             </p>
                             <hr />
                             <ul class="list-unstyled">
@@ -104,7 +102,7 @@
                             @if ($invoice->receiver_id == Auth::id())
                             <a href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-edit fa-fw"></i> Edit
+                                    <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
@@ -129,14 +127,12 @@
                         <div class="col-sm-12">
                             <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
                             <p>
-                                <strong>Payment Status:</strong>
-                                <span class="text-uppercase">
+                                <strong>Status:</strong>
                                 @if ($invoice->paid)
                                     Already paid
                                 @else
                                     Not yet paid
                                 @endif
-                                </span>
                             </p>
                             <hr />
                             <ul class="list-unstyled">
@@ -161,7 +157,7 @@
                             @if ($invoice->provider_id == Auth::id())
                             <a href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="far fa-edit fa-fw"></i> Edit
+                                    <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 

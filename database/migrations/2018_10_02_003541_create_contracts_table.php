@@ -17,49 +17,24 @@ class CreateContractsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('provider_id');
-            $table->string('receiver_id');
+            $table->string('merchant_id');
+            $table->string('customer_id');
 
             $table->string('item_id');
+            $table->string('invoice_id');
 
             $table->string('type');
             $table->string('description');
             $table->double('price');
 
-            $table->boolean('accepted');
+            $table->boolean('merchant_accepted');
+            $table->boolean('customer_accepted');
+
+            $table->boolean('paid_fully');
             $table->boolean('fulfilled');
 
             $table->timestamps();
         });
-
-            DB::table('contracts')->insert(
-        array(
-            'name' => "Cleaing 4K Pro",
-            'provider_id' => "5bdfe2db84220c09e56acd44",
-            'receiver_id' => "5bdfe2db84220c09e56acd43",
-            'item_id' => "5bdfeb6884220c0f7f0d803b",
-            'type' => "Service",
-            'description' => "Cleaning receiver's property",
-            'price' => 100.5,
-
-            'accepted' => false,
-            'fulfilled' => false,
-        ));
-
-
-            DB::table('contracts')->insert(
-        array(
-            'name' => "Cleaing 8K Pro",
-            'provider_id' => "5bdfe2db84220c09e56acd44",
-            'receiver_id' => "5bdfe2db84220c09e56acd43",
-            'item_id' => "5bdfeb6884220c0f7f0d803b",
-            'type' => "Service",
-            'description' => "Cleaning receiver's property AGAIN",
-            'price' => 200.5,
-
-            'accepted' => true,
-            'fulfilled' => false,
-        ));            
 
     }
 

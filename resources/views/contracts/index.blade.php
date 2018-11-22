@@ -96,7 +96,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->provider_id == Auth::id())
+                            @if ($contract->customer_id == Auth::id())
                             @if ($contract->fulfilled)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
                                     <i class="fas fa-edit fa-fw"></i> Edit
@@ -154,7 +154,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->receiver_id == Auth::id())
+                            @if ($contract->merchant_id == Auth::id())
                             @if ($contract->accepted)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
                                     <i class="fas fa-edit fa-fw"></i> Edit

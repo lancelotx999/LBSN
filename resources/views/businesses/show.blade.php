@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('business.index') }}">Businesses</a>
                 <i class="fas fa-angle-right"></i>
@@ -18,6 +18,11 @@
             <div class="card">
                 <div class="card-header">View Business</div>
                 <div class="card-body">
+                    @foreach ($business->images as $image)
+                        {{$image->name}}
+                        {{$image->description}}
+                        <img src = '{{ $image->data }}' />';
+                    @endforeach
                     <p>
                         Name: {{ $business->name }}
                     </p>

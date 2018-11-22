@@ -22,7 +22,7 @@ class User extends Moloquent implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'contact_number', 'role','verified',
+        'name', 'email', 'password', 'contact_number', 'role','verified', 'profileImage'
     ];
 
     /**
@@ -41,7 +41,7 @@ class User extends Moloquent implements
      */
     public function getRouteKeyName()
     {
-        return 'name'; //this will return user name as route 
+        return 'id'; //this will return user name as route
     }
 
 }

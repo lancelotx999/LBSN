@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.index') }}">Properties</a>
                 <i class="fas fa-angle-right"></i>
@@ -24,6 +24,11 @@
                 <div class="card-body">
                     <div id="map" style="width: 100%; height: 400px;"></div>
                     <hr />
+                    @foreach ($property->images as $image)
+                        {{$image->name}}
+                        {{$image->description}}
+                        <img src = '{{ $image->data }}' />';
+                    @endforeach
                     <p>
                         Name: {{ $property->name }}
                     </p>

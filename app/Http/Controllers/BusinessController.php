@@ -9,6 +9,8 @@ use Auth;
 use Moloquent;
 use App\Business;
 use App\User;
+use App\Rating;
+use App\Review;
 
 class BusinessController extends Controller
 {
@@ -89,12 +91,39 @@ class BusinessController extends Controller
         // create a new Business based on input
         $business = new Business;
 
+        $images = [];
+
+        if ($request->hasFile('imageData')) {
+            $file = $request->file('imageData');
+            $imageData = base64_encode(file_get_contents($request->file('imageData')));
+
+            if ($file->getMimeType() == "image/png") {
+                $imageData = "data:image/png;base64," . $imageData;
+            }
+            else if ($file->getMimeType() == "image/jpeg") {
+                $imageData = "data:image/jpeg;base64," . $imageData;
+            }
+
+            $image = new \stdClass();
+
+            $image->name = $request->imageName;
+            $image->description = $request->imageDescription;
+            $image->data = $imageData;
+
+            array_push($images, $image);
+        }
+
+
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;
         $business->description = $request->description;
         $business->services = array_filter($request->services, function($var){return !is_null($var);} );
         $business->contact_number = $request->contact_number;
         $business->verified = false;
+        $business->images = $images;
+
+        // dd($business);
+
 
         $business->save();
 
@@ -134,6 +163,20 @@ class BusinessController extends Controller
 
         $business->reviews = $reviews;
 
+        $holder = array();
+        // dd($business->images);
+        // dd($business);
+        foreach ($business->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+        $business->images = $holder;
+
         return view('businesses.show', compact('business'));
     }
 
@@ -141,12 +184,64 @@ class BusinessController extends Controller
     {
         $business = Business::findOrFail($id);
 
+        $holder = array();
+        // dd($business->images);
+        // dd($business);
+        foreach ($business->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+        $business->images = $holder;
+
         return view('businesses.edit', compact('business'));
     }
 
     public function update(Request $request, $id)
     {
         $business = Business::findOrFail($id);
+
+        $holder = array();
+        // dd($business->images);
+        // dd($business);
+        foreach ($business->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+
+        // dd($business);
+
+        if ($request->hasFile('imageData')) {
+            $file = $request->file('imageData');
+            $imageData = base64_encode(file_get_contents($request->file('imageData')));
+
+            if ($file->getMimeType() == "image/png") {
+                $imageData = "data:image/png;base64," . $imageData;
+            }
+            else if ($file->getMimeType() == "image/jpeg") {
+                $imageData = "data:image/jpeg;base64," . $imageData;
+            }
+
+            $image = new \stdClass();
+
+            $image->name = $request->imageName;
+            $image->description = $request->imageDescription;
+            $image->data = $imageData;
+
+
+            array_push($holder, $image);
+        }
+
+        $business->images = $holder;
 
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;

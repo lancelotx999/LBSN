@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('property.index') }}">Properties</a>
                 <i class="fas fa-angle-right"></i>
@@ -22,13 +22,43 @@
             <div class="card">
                 <div class="card-header">Create Property</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('property.store') }}">
+                    <form method="POST" action="{{ route('property.store') }}" enctype="multipart/form-data">
                     	@csrf
                     	@method('POST')
 
                         <div id="map" style="width: 100%; height: 400px;"></div>
                         <hr />
                         <div class="form-group">
+                            <p class="form-group row">
+    							<label for="imageData">Choose a profile picture:</label>
+    							<input type="file" id="imageData" name="imageData" accept="image/png, image/jpeg">
+    					    </p>
+                            <p>
+                                <label>
+                                    Name:
+                                    <input
+                                        id="imageName"
+                                        name="imageName"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Enter image name."
+                                        required
+                                    />
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    Description:
+                                    <input
+                                        id="imageDescription"
+                                        name="imageDescription"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Enter image description."
+                                        required
+                                    />
+                                </label>
+                            </p>
                             <p>
                                 <label>
                                     Name:
@@ -59,9 +89,9 @@
                                 <label>
                                     Description:
                                 </label>
-                                <textarea 
-                                    class="form-control" 
-                                    id="description" 
+                                <textarea
+                                    class="form-control"
+                                    id="description"
                                     name="description"
                                     rows="3"
                                     placeholder="Enter property description."

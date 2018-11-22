@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h6>
-				<a href="{{ url('/') }}">Home</a> 
+				<a href="{{ url('/') }}">Home</a>
 				<i class="fas fa-angle-right"></i>
 				<a href="{{ route('users.show', ['user' => Auth::id() ]) }}">Member</a>
                 <i class="fas fa-angle-right"></i>
@@ -23,7 +23,7 @@
 					</a>
 
 					<hr />
-					
+
 					<a class="btn btn-default" href="{{ route('users.edit', ['user' => Auth::id() ]) }}">
 						My Profile
 					</a>
@@ -40,10 +40,11 @@
             <div class="card">
                 <div class="card-header">Edit Profile</div>
 
-                <div class="card-body">                	
-					<form method="POST" action="{{ route('users.update', $user) }}" aria-label="Edit Profile">
+                <div class="card-body">
+					<form method="POST" action="{{ route('users.update', $user) }}" aria-label="Edit Profile" enctype="multipart/form-data">
 					    @csrf
 					    @method('PATCH')
+						<img src = '{{ $user->profileImage }}' />';
 
 					    <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-md-right">Change My Name</label>
@@ -102,10 +103,17 @@
                                 @endif
 					    	</div>
 					    </div>
+						<div class="form-group row">
+							<label for="profileImage">Choose a profile picture:</label>
+							<input type="file" id="profileImage" name="profileImage" accept="image/png, image/jpeg">
+					    </div>
+
+
 
 					    <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                            	<input type="hidden" name="role" value="{{ $user->role }}">
+							<div class="col-md-8 offset-md-4">
+								<input type="hidden" name="role" value="{{ $user->role }}">
+                            	<input type="hidden" name="id" value="{{ $user->id }}">
 					    		<button type="submit" class="btn btn-primary">Update</button>
 					    	</div>
 					    </div>

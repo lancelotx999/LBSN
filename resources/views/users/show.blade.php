@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h6>
-				<a href="{{ url('/') }}">Home</a> 
+				<a href="{{ url('/') }}">Home</a>
 				<i class="fas fa-angle-right"></i>
 				<a href="{{ route('users.show', ['user' => Auth::id() ]) }}">Member</a>
 			</h6><hr />
@@ -51,6 +51,7 @@
         	<div class="card">
 				<div class="card-header">Profile Information</div>
 				<div class="card-body">
+					<img src = '{{ $user->profileImage }}' />';
 					<h4>{{ $user->name }}, {{ $user->role }}</h4>
 					<h6>Name</h6>
 					<hr/>
@@ -329,7 +330,7 @@
 
 	<script type="text/javascript">
 		function myFunction() {
-	  		// Declare variables 
+	  		// Declare variables
 	  		var input, filter, table, tr, td, i;
 	  		input = document.getElementById("myInput");
 	  		filter = input.value.toUpperCase();
@@ -345,7 +346,7 @@
 	      			} else {
 	        			tr[i].style.display = "none";
 	      			}
-	    		} 
+	    		}
 	  		}
 		}
 	</script>

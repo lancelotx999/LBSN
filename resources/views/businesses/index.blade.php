@@ -18,34 +18,33 @@
     <div class="row justify-content-center">
         @if (url()->current() == route('business.index'))
             <div class="col-md-2">
-                <div class="card">
-                    <div class="list-group">
-                        <a href="{{ route('user.index') }}" 
-                        class="list-group-item list-group-item-action">
-                            My Profile
-                        </a>
-                        <a href="{{ route('property.index') }}" 
-                        class="list-group-item list-group-item-action">
-                            My Properties
-                        </a>
-                        <a href="{{ route('business.index') }}" 
-                        class="list-group-item list-group-item-action active">
-                            My Businesses
-                        </a>
-                        <a href="{{ route('contract.index') }}" 
-                        class="list-group-item list-group-item-action">
-                            My Contracts
-                        </a>
-                        <a href="{{ route('invoice.index') }}" 
-                        class="list-group-item list-group-item-action">
-                            My Invoices
-                        </a>
-                        <a href="{{ route('transaction.index') }}" 
-                        class="list-group-item list-group-item-action">
-                            My Transactions
-                        </a>
-                    </div>
+                <div class="list-group">
+                    <a href="{{ route('user.index') }}" 
+                    class="list-group-item list-group-item-action">
+                        My Profile
+                    </a>
+                    <a href="{{ route('property.index') }}" 
+                    class="list-group-item list-group-item-action">
+                        My Properties
+                    </a>
+                    <a href="{{ route('business.index') }}" 
+                    class="list-group-item list-group-item-action active">
+                        My Businesses
+                    </a>
+                    <a href="{{ route('contract.index') }}" 
+                    class="list-group-item list-group-item-action">
+                        My Contracts
+                    </a>
+                    <a href="{{ route('invoice.index') }}" 
+                    class="list-group-item list-group-item-action">
+                        My Invoices
+                    </a>
+                    <a href="{{ route('transaction.index') }}" 
+                    class="list-group-item list-group-item-action">
+                        My Transactions
+                    </a>
                 </div>
+                <span class="d-none d-sm-block d-md-none"><hr /></span>
             </div>
             <div class="col-md-10">
         @else

@@ -7,7 +7,7 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('contract.index') }}">Contracts</a>
+                <a href="{{ route('conversation.index') }}">Messages</a>
             </h6><hr />
         </div>
     </div>
@@ -41,7 +41,7 @@
                         </li>
                     @endforeach
                     </br>
-                    <p><a href="{{ route('conversations.create') }}">Start New Conversation</a></p>
+                    <p><a href="{{ route('conversation.create') }}">Start New Conversation</a></p>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                     </li>
                     @endforeach
                     </br>
-                    <p><a href="{{ route('conversations.create') }}">Start New Conversation</a></p>
+                    <p><a href="{{ route('conversation.create') }}">Start New Conversation</a></p>
                 </div>
             </div>
         </div>

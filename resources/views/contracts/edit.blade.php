@@ -41,6 +41,7 @@
                     My Transactions
                 </a>
             </div>
+            <span class="d-none d-sm-block d-md-none"><hr /></span>
         </div>
         <div class="col-md-10">
             <div class="card">

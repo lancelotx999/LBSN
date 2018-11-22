@@ -39,6 +39,7 @@
                     My Transactions
                 </a>
             </div>
+            <span class="d-none d-sm-block d-md-none"><hr /></span>
         </div>
         <div class="col-md-10">
             <div class="card">
@@ -74,6 +75,18 @@
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
+                                    <strong>Fulfilled:</strong> 
+                                    @if ($contract->fulfilled)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
                                     <strong>Price:</strong> 
                                     RM {{ $contract->price }}
                                 </li>
@@ -84,11 +97,17 @@
                                 </button>
                             </a>
                             @if ($contract->provider_id == Auth::id())
+                            @if ($contract->fulfilled)
+                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
+                                    <i class="fas fa-edit fa-fw"></i> Edit
+                                </button>
+                            @else
                             <a href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
+                            @endif
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
                             data-target="#deleteModal{{ $contract->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete
@@ -114,6 +133,18 @@
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
+                                    <strong>Accepted:</strong> 
+                                    @if ($contract->accepted)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
                                     <strong>Price:</strong> 
                                     RM {{ $contract->price }}
                                 </li>
@@ -124,11 +155,17 @@
                                 </button>
                             </a>
                             @if ($contract->receiver_id == Auth::id())
+                            @if ($contract->accepted)
+                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
+                                    <i class="fas fa-edit fa-fw"></i> Edit
+                                </button>
+                            @else
                             <a href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
+                            @endif
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
                             data-target="#deleteModal{{ $contract->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete

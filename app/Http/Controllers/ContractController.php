@@ -32,6 +32,8 @@ class ContractController extends Controller
         {
             $sent_contracts = Contract::where('provider_id','=',Auth::user()->id)->get();
             $received_contracts = Contract::where('receiver_id','=',Auth::user()->id)->get();
+            $accepted_contracts = Contract::where('receiver_id','=', $user_id)->where('accepted', '=', true)->get();
+            $unaccepted_contracts = Contract::where('provider_id','=', $user_id)->where('accepted', '=', false)->get();
             return view('contracts.index', compact('sent_contracts','received_contracts'));
         }    
     }

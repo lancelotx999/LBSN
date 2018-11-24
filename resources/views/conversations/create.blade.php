@@ -8,7 +8,7 @@
                     <div class="panel-heading">Start a New Conversation</div>
 
                     <div class="panel-body">
-                        <form method="POST" action="{{ route('conversations.store') }}">
+                        <form method="POST" action="{{ route('conversation.store') }}">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <p>

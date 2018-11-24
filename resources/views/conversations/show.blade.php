@@ -11,9 +11,9 @@
             <h6>
                 <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('conversations.index') }}">Properties</a>
+                <a href="{{ route('conversation.index') }}">Properties</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('conversations.show', $conversation->_id) }}">View {{ $conversation->name }}</a>
+                <a href="{{ route('conversation.show', $conversation->_id) }}">View {{ $conversation->name }}</a>
             </h6><hr />
         </div>
     </div>

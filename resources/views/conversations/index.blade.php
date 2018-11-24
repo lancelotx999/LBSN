@@ -14,12 +14,33 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Sent Messages</div>
+                <div class="card-header">
+                    Messages&nbsp;&#8212;
+                    <a href="{{ route('conversation.create') }}">
+                        <i class="fas fa-plus-circle fa-fw"></i> Start a new conversation
+                    </a>
+                </div>
                 <div class="card-body">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="sent-tab" data-toggle="tab" href="#sent" 
+                        role="tab" aria-controls="sent" aria-selected="true">
+                            Messages Sent
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="received-tab" data-toggle="tab" href="#received" 
+                        role="tab" aria-controls="received" aria-selected="false">
+                            Messages Received
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="sent" 
+                    role="tabpanel" aria-labelledby="home-tab"><br />
                     @if ($sent_conversations->isEmpty())
-                        <br />
-                        <h1 class="display-4">Hello, it seems empty here!</h1>
-                        <p class="lead">Why don't you try to add some stuff?</p>
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No messages have been sent yet.</p>
                         <hr />
                     @endif
                     @foreach ($sent_conversations as $conversation)
@@ -40,22 +61,12 @@
                             </a>
                         </li>
                     @endforeach
-                    </br>
-                    <p><a href="{{ route('conversation.create') }}">Start New Conversation</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </br>
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Received Messages</div>
-                <div class="card-body">
+                    </div>
+                    <div class="tab-pane fade" id="received" 
+                    role="tabpanel" aria-labelledby="profile-tab"><br />
                     @if ($received_conversations->isEmpty())
-                        <br />
-                        <h1 class="display-4">Hello, it seems empty here!</h1>
-                        <p class="lead">Why don't you try to add some stuff?</p>
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No messages have been received yet.</p>
                         <hr />
                     @endif
                     @foreach ($received_conversations as $conversation)
@@ -75,26 +86,11 @@
                         </a>
                     </li>
                     @endforeach
-                    </br>
-                    <p><a href="{{ route('conversation.create') }}">Start New Conversation</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-<script type="text/javascript">
-
-    var properties = {!! json_encode($sent_conversations->toArray()) !!};
-    var read = "{{ $sent_conversations }}";
-    var json = read.replace(/&quot;/g, '"');
-    var data = JSON.parse(json);
-
-    console.log("---------- data ----------");
-    console.log(data);
-    console.log("---------- data ----------");
-
-
-
-</script>
+</div>
 @endsection

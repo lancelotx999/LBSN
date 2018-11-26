@@ -231,10 +231,11 @@ class ContractController extends Controller
 	public function test()
 	{
 		$filters = array();
-		// $name = "mop";
-		// $invoice = true;
-		$price_min = "5";
-		// $price_max = "50";
+
+		$name = "wan";
+		$invoice = false;
+		$price_min = 9;
+		// $price_max = 500;
 		
 		// $filters['type'] = $request->type;
 		
@@ -260,36 +261,36 @@ class ContractController extends Controller
 
 		if (	(isset($price_min))		&&		(isset($price_max))		)
 		{
-			// dd(1);
+
 			$swag = $query->whereBetween('price', [$price_min, $price_max]);
 		}
 		else if (isset($price_min))
 		{
-			// dd(2);
+
 			$query->where('price', '>=', $price_min);
 		}
 		else if (isset($price_max))
 		{
-			// dd(3);
+
 			$query->where('price', '<=', $price_max);
 		}
 
 
-		// foreach ($filters as $filter => $value)
-		// {
-		// 	if (isset($value) && (empty($value) == FALSE))
-		// 	{   
-		// 		if (is_array($value))
-		// 		{
-		// 			$query->whereIn($filter, $value);
-		// 		}
-		// 		else
-		// 		{
-		// 			$query->where($filter,$value);
+		foreach ($filters as $filter => $value)
+		{
+			if (isset($value) && (empty($value) == FALSE))
+			{   
+				if (is_array($value))
+				{
+					$query->whereIn($filter, $value);
+				}
+				else
+				{
+					$query->where($filter,$value);
 
-		// 		}
-		// 	}           
-		// }
+				}
+			}           
+		}
 
 		$contracts = $query->get();
 		dd($contracts);

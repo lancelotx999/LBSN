@@ -233,8 +233,8 @@ class ContractController extends Controller
 		$filters = array();
 		// $name = "mop";
 		// $invoice = true;
-		$price_min = "1";
-		$price_max = "100";
+		$price_min = "5";
+		// $price_max = "50";
 		
 		// $filters['type'] = $request->type;
 		
@@ -252,11 +252,7 @@ class ContractController extends Controller
 
 		if (isset($invoice))
 		{
-			if ($invoice == true)
-			{
-
-			}
-			else if ($invoice == false)
+			if ($invoice == false)
 			{
 				$query->whereNull('invoice_id');
 			}			
@@ -265,35 +261,35 @@ class ContractController extends Controller
 		if (	(isset($price_min))		&&		(isset($price_max))		)
 		{
 			// dd(1);
-			$query->whereBetween('price', [$price_min, $price_max]);
+			$swag = $query->whereBetween('price', [$price_min, $price_max]);
 		}
 		else if (isset($price_min))
 		{
 			// dd(2);
-			$query->where('price', '>', $price_min);
+			$query->where('price', '>=', $price_min);
 		}
 		else if (isset($price_max))
 		{
 			// dd(3);
-			$query->where('price', '<', $price_max);
+			$query->where('price', '<=', $price_max);
 		}
 
 
-		foreach ($filters as $filter => $value)
-		{
-			if (isset($value) && (empty($value) == FALSE))
-			{   
-				if (is_array($value))
-				{
-					$query->whereIn($filter, $value);
-				}
-				else
-				{
-					$query->where($filter,$value);
+		// foreach ($filters as $filter => $value)
+		// {
+		// 	if (isset($value) && (empty($value) == FALSE))
+		// 	{   
+		// 		if (is_array($value))
+		// 		{
+		// 			$query->whereIn($filter, $value);
+		// 		}
+		// 		else
+		// 		{
+		// 			$query->where($filter,$value);
 
-				}
-			}           
-		}
+		// 		}
+		// 	}           
+		// }
 
 		$contracts = $query->get();
 		dd($contracts);

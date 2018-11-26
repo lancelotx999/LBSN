@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 @if (url()->previous() == route('business.index'))
                     <a href="{{ route('business.index') }}">My Businesses</a>
@@ -50,24 +50,29 @@
                             {{ $business->contact_number }}
                         </li>
                         <li class="list-group-item">
-                            @if (!($business->owner_id == Auth::id()))
-                            <a class="nounderline" 
-                            href="/contract/create/{{ $business->_id }}">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-file-signature fa-fw"></i>
-                                    Create a new contract
-                                </button>
-                            </a>
-                            @endif
-                            <a class="nounderline" 
-                            href="{{ url()->previous() }}">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-arrow-circle-left fa-fw"></i> 
-                                    Previous page
-                                </button>
-                            </a>
+                            @foreach ($business->images as $image)
+                            <img src="{{ $image->data }}" class="img-fluid rounded" 
+                            alt="{{ $image->name }}" style="max-height: 128px" />
+                            @endforeach
                         </li>
                     </ul>
+                    <br />
+                    @if (!($business->owner_id == Auth::id()))
+                    <a class="nounderline" 
+                    href="/contract/create/{{ $business->_id }}">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-file-signature fa-fw"></i>
+                            Create a new contract
+                        </button>
+                    </a>
+                    @endif
+                    <a class="nounderline" 
+                    href="{{ url()->previous() }}">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-arrow-circle-left fa-fw"></i> 
+                            Previous page
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

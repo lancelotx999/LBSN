@@ -83,6 +83,7 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         // Validation Logic
         $this->validate($request,
             [
@@ -98,6 +99,29 @@ class PropertyController extends Controller
 
         // create a new Property based on input
         $property = new Property;
+        $images = [];
+
+        if ($request->hasFile('imageData')) {
+            $file = $request->file('imageData');
+            $imageData = base64_encode(file_get_contents($request->file('imageData')));
+
+            if ($file->getMimeType() == "image/png") {
+                $imageData = "data:image/png;base64," . $imageData;
+            }
+            else if ($file->getMimeType() == "image/jpeg") {
+                $imageData = "data:image/jpeg;base64," . $imageData;
+            }
+
+            $image = new \stdClass();
+
+            $image->name = $request->imageName;
+            $image->description = $request->imageDescription;
+            $image->data = $imageData;
+
+            array_push($images, $image);
+        }
+
+        // dd($images);
 
         $property->owner_id = $request->owner_id;
         $property->name = $request->name;
@@ -105,10 +129,12 @@ class PropertyController extends Controller
         $property->description = $request->description;
         $property->status = $request->status;
         $property->tags = array_filter($request->tags, function($var){return !is_null($var);} );
+        $property->images = $images;
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
         $property->verified = false;
 
+        // dd($property);
         $property->save();
 
         return redirect()->route('property.index');
@@ -148,6 +174,21 @@ class PropertyController extends Controller
 
         $property->reviews = $reviews;
 
+        $holder = array();
+        // dd($property->images);
+        // dd($property);
+    
+        foreach ($property->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+        $property->images = $holder;
+
         return view('properties.show', compact('property'));
     }
 
@@ -155,12 +196,67 @@ class PropertyController extends Controller
     {
         $property = Property::findOrFail($id);
 
+        $holder = array();
+        // dd($property->images);
+        // dd($property);
+        foreach ($property->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+        $property->images = $holder;
+
+        // dd($property);
         return view('properties.edit', compact('property'));
     }
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $property = Property::findOrFail($id);
+
+        $holder = array();
+        // dd($property->images);
+        // dd($property);
+        // foreach ($property->images as $key) {
+        //     $image = new \stdClass();
+
+        //     $image->name = $key['name'];
+        //     $image->description = $key['description'];
+        //     $image->data = $key['data'];
+
+        //     array_push($holder,$image);
+        // }
+
+        // dd($property);
+
+        if ($request->hasFile('imageData')) {
+            $file = $request->file('imageData');
+            $imageData = base64_encode(file_get_contents($request->file('imageData')));
+
+            if ($file->getMimeType() == "image/png") {
+                $imageData = "data:image/png;base64," . $imageData;
+            }
+            else if ($file->getMimeType() == "image/jpeg") {
+                $imageData = "data:image/jpeg;base64," . $imageData;
+            }
+
+            $image = new \stdClass();
+
+            $image->name = $request->imageName;
+            $image->description = $request->imageDescription;
+            $image->data = $imageData;
+
+
+            array_push($holder, $image);
+        }
+
+        $property->images = $holder;
+
 
         $property->owner_id = $request->owner_id;
         $property->name = $request->name;
@@ -172,6 +268,7 @@ class PropertyController extends Controller
         $property->longitude = $request->longitude;
         $property->verified = $request->verified;
 
+        // dd($property);
         $property->save();
 
         return redirect()->route('property.index');

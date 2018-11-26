@@ -1,17 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h6>
                 <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('conversation.index') }}">Properties</a>
+                <a href="{{ route('conversation.index') }}">Messages</a>
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('conversation.show', $conversation->_id) }}">View {{ $conversation->name }}</a>
             </h6><hr />
@@ -20,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">View Property</div>
+                <div class="card-header">View Message</div>
                 <div class="card-body">
                     <p>
                         Title: {{ $conversation->title }}

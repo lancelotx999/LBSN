@@ -69,24 +69,29 @@
                                     </select>
                                 </li>
                                 <li class="list-group-item">
-                                    @if (!($property->owner_id == Auth::id()))
-                                    <a class="nounderline" 
-                                    href="/contract/create/{{ $property->_id }}">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-file-signature fa-fw"></i>
-                                            Create a contract
-                                        </button>
-                                    </a>
-                                    @endif
-                                    <a class="nounderline" 
-                                    href="{{ url()->previous() }}">
-                                        <button class="btn btn-outline-secondary" type="button">
-                                            <i class="fas fa-arrow-circle-left fa-fw"></i> 
-                                            Previous page
-                                        </button>
-                                    </a>
+                                    @foreach ($property->images as $image)
+                                    <img src="{{ $image->data }}" class="img-fluid rounded" 
+                                    alt="{{ $image->name }}" style="max-height: 128px" />
+                                    @endforeach
                                 </li>
                             </ul>
+                            <br />
+                            @if (!($property->owner_id == Auth::id()))
+                            <a class="nounderline" 
+                            href="/contract/create/{{ $property->_id }}">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-file-signature fa-fw"></i>
+                                    Create a contract
+                                </button>
+                            </a>
+                            @endif
+                            <a class="nounderline" 
+                            href="{{ url()->previous() }}">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fas fa-arrow-circle-left fa-fw"></i> 
+                                    Previous page
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <br />

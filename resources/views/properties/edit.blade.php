@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 @if (url()->previous() == route('property.index'))
                     <a href="{{ route('property.index') }}">Properties</a>
@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-header">Edit Property</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('property.update', $property) }}">
+                    <form method="POST" action="{{ route('property.update', $property) }}" enctype="multipart/form-data">
                     	@csrf
                     	@method('PATCH')
 
@@ -135,6 +135,41 @@
                                         />
                                     </div>
                                 </div>
+                                <hr />                                
+                                @foreach ($property->images as $image)
+                                    
+                                <img src="{{ $image->data }}" class="img-fluid rounded" 
+                                alt="Property image" style="max-height: 128px" />
+
+                                <div class="form-group">
+                                    <br /><label for="imageData">Upload Property Image:</label><br />
+                                    <input type="file" id="imageData" name="imageData" accept="image/png, image/jpeg">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Property Image Name:
+                                    </label>
+                                    <input
+                                        id="imageName"
+                                        name="imageName"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Enter image name."
+                                        value="{{$image->name}}"
+                                        required
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Property Image Description:
+                                    </label>
+                                    <textarea 
+                                    id="imageDescription" name="imageDescription"
+                                    class="form-control" rows="3" required
+                                    placeholder="Enter property description."
+                                    >{{$image->description}}</textarea>
+                                </div>
+                                @endforeach
                                 <input
                                     id="owner_id" name="owner_id" type="hidden"
                                     class="form-control"

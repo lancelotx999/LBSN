@@ -42,16 +42,23 @@
                     My Transactions
                 </a>
             </div>
+
 			</div>
 		</div>
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Edit Profile</div>
-
                 <div class="card-body">                	
-					<form method="POST" action="{{ route('user.update', $user) }}" aria-label="Edit Profile">
+					<form method="POST" action="{{ route('user.update', $user) }}" aria-label="Edit Profile" enctype="multipart/form-data">
 					    @csrf
 					    @method('PATCH')
+
+                        <div class="form-group">
+                            <div class="col-md-6 offset-md-4">
+                                <img class="img-fluid img-rounded" alt="Profile Picture"
+                                src="{{ $user->profileImage }}" style="max-height: 128px" />
+                            </div>
+                        </div>
 
 					    <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label text-md-right">Change My Name</label>
@@ -111,9 +118,21 @@
 					    	</div>
 					    </div>
 
+						<div class="form-group row">
+							<label for="profileImage" class="col-md-4 col-form-label text-md-right">
+                                Change Profile Picture:
+                            </label>
+
+                            <div class="col-md-6">
+							    <input type="file" id="profileImage" name="profileImage" 
+                                accept="image/png, image/jpeg" required>
+                            </div>
+					    </div>
+
 					    <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                            	<input type="hidden" name="role" value="{{ $user->role }}">
+							<div class="col-md-8 offset-md-4">
+								<input type="hidden" name="role" value="{{ $user->role }}">
+                            	<input type="hidden" name="id" value="{{ $user->id }}">
 					    		<button type="submit" class="btn btn-primary">Update Profile</button>
 					    	</div>
 					    </div>

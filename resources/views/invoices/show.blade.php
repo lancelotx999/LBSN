@@ -78,25 +78,24 @@
                                 Not yet paid
                             @endif
                         </li>
-                        <li class="list-group-item">
-                            @if ($invoice->provider_id == Auth::id())
-                            <a class="nounderline" 
-                            href="/transaction/create/{{ $invoice->_id }}">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-file-signature fa-fw"></i>
-                                    Create a new transaction
-                                </button>
-                            </a>
-                            @endif
-                            <a class="nounderline" 
-                            href="{{ url()->previous() }}">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-arrow-circle-left fa-fw"></i> 
-                                    Previous page
-                                </button>
-                            </a>
-                        </li>
                     </ul>
+                    <br />
+                    @if ($invoice->provider_id == Auth::id())
+                    <a class="nounderline" 
+                    href="/transaction/create/{{ $invoice->_id }}">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-file-signature fa-fw"></i>
+                            Create a new transaction
+                        </button>
+                    </a>
+                    @endif
+                    <a class="nounderline" 
+                    href="{{ url()->previous() }}">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-arrow-circle-left fa-fw"></i> 
+                            Previous page
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

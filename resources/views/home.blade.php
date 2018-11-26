@@ -6,18 +6,26 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Laravel Blade</div>
-
+                <div class="card-header">Home</div>
                 <div class="card-body">
-                    <p>I'm an example blade!</p>
-                    <p>Hello Leslie, all of this HTML is written on <strong>resources/assets/js/components/Example.js</strong></p>
-                    <p>And the page render is done as one written line on <strong>resources/views/home.blade.php</strong></p>
-                    <p>Take a look at both and you should understand how basic React.js works!</p>
-                    <p>
-                        Oh and everytime you make changes to the JS file,
-                        you need to compile the assets to see the changes cause laravel assets ya'know and
-                        we'll get the skeleton done today!
-                    </p>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-2 my-auto text-center">
+                            <img src="{{ $users->profileImage }}" alt="Profile image" 
+                            class="img-fluid rounded" style="max-height: 128px" />      
+                        </div>
+                        <div class="col-sm-9 col-md-10">
+                            <h4>
+                                {{ $users->name }} 
+                                <small class="text-muted">
+                                    {{ $users->role }}
+                                </small>
+                            </h4>
+                            <h6>Name</h6>
+                            <hr/>
+                            <h4>{{ $users->email }}</h4>
+                            <h6>Email</h6>
+                        </div>
+                    </div>  
                 </div>
             </div>
         </div>

@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -81,16 +77,15 @@
                                 Unverified
                             @endif
                         </li>
-                        <li class="list-group-item">
-                            <a class="nounderline" 
-                            href="{{ url()->previous() }}">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-arrow-circle-left fa-fw"></i> 
-                                    Previous page
-                                </button>
-                            </a>
-                        </li>
                     </ul>
+                    <br />
+                    <a class="nounderline" 
+                    href="{{ url()->previous() }}">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-arrow-circle-left fa-fw"></i> 
+                            Previous page
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

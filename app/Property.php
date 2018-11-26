@@ -8,8 +8,8 @@ class Property extends Moloquent
 {
     protected $table = 'properties';
 
-    protected $guarded = 
+    protected $guarded =
     [
-    	'owner_id','name','address','description','status', 'latitude', 'longitude', 'verified' , 'tags' ,
+    	'owner_id','name','address','description','status', 'latitude', 'longitude', 'verified' , 'tags' , 'images'
     ];
 }

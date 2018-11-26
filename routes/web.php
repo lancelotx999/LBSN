@@ -11,7 +11,16 @@
 |
 */
 
-Route::view('/', 'home');
+Route::group(['prefix' => '/'], function()
+{
+    if ( Auth::check() ) // use Auth::check instead of Auth::user
+    {
+        Route::get('/', 'UserController@home');
+    } else{
+        Route::view('/', 'welcome');
+    }
+
+});
 
 Route::view('/map', 'map');
 
@@ -71,6 +80,9 @@ Route::get('/test6', 'PDF_GeneratorController@test');
 
 Route::view('/payment', 'ePayment/payment');
 Route::get('/test7', 'ePaymentController@process')->name('payment.process');
-
 Route::get('/test7', 'SearchController@test');
 Route::get('/test8', 'ConversationController@notificationTest');
+Route::get('/test1', 'BusinessController@test');
+Route::get('/test2', 'UserController@test');
+Route::get('/test3', 'PropertyController@test');
+

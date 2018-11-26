@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
 use Auth;
 use Moloquent;
 use App\Business;
+use App\User;
 use App\Rating;
 use App\Review;
 
 class BusinessController extends Controller
 {
    // Apply auth middleware so only authenticated users have access
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -21,16 +24,7 @@ class BusinessController extends Controller
     // Returns both all businesses and the owned businesses if merchant
     public function index()
     {
-        if (Auth::user()->role === 'admin')
-        {
-            $businesses = Business::all();
-            return view('businesses.index', compact('businesses'));
-        }
-        else
-        {   
-            return $this->showUserBusinesses(Auth::user()->id); 
-        }  
-
+       return $this->showUserBusinesses(Auth::user()->id);
     }
 
     // Gets all bussinesses
@@ -38,16 +32,16 @@ class BusinessController extends Controller
     {
     	$businesses = Business::all();
 
-        foreach ($businesses as $business) 
+        foreach ($businesses as $business)
         {
             $ratings = Rating::where('ratee_id','=', $business->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
+            if ($totalUsers > 0)
             {
-                foreach ($ratings as $rating) 
+                foreach ($ratings as $rating)
                 {
                     $totalRates = $totalRates + $rating->rate;
                 }
@@ -55,14 +49,14 @@ class BusinessController extends Controller
                 $business->rate = $totalRates/$totalUsers;
 
             }
-            else 
+            else
             {
                 $business->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $business->id)->get();
 
-            foreach ($reviews as $review) 
+            foreach ($reviews as $review)
             {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;
@@ -85,7 +79,7 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         // Validation Logic
-        $this->validate($request, 
+        $this->validate($request,
             [
                 'owner_id' => 'required',
                 'name' => 'required',
@@ -97,14 +91,41 @@ class BusinessController extends Controller
         // create a new Business based on input
         $business = new Business;
 
+        $images = [];
+
+        if ($request->hasFile('imageData')) {
+            $file = $request->file('imageData');
+            $imageData = base64_encode(file_get_contents($request->file('imageData')));
+
+            if ($file->getMimeType() == "image/png") {
+                $imageData = "data:image/png;base64," . $imageData;
+            }
+            else if ($file->getMimeType() == "image/jpeg") {
+                $imageData = "data:image/jpeg;base64," . $imageData;
+            }
+
+            $image = new \stdClass();
+
+            $image->name = $request->imageName;
+            $image->description = $request->imageDescription;
+            $image->data = $imageData;
+
+            array_push($images, $image);
+        }
+
+
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;
         $business->description = $request->description;
         $business->services = array_filter($request->services, function($var){return !is_null($var);} );
         $business->contact_number = $request->contact_number;
         $business->verified = false;
+        $business->images = $images;
 
-        $business->save();     
+        // dd($business);
+
+
+        $business->save();
 
         return redirect()->route('business.index');
     }
@@ -117,9 +138,9 @@ class BusinessController extends Controller
         $totalRates = 0;
         $totalUsers = count($ratings);
 
-        if ($totalUsers > 0) 
+        if ($totalUsers > 0)
         {
-            foreach ($ratings as $rating) 
+            foreach ($ratings as $rating)
             {
                 $totalRates = $totalRates + $rating->rate;
             }
@@ -127,20 +148,34 @@ class BusinessController extends Controller
             $business->rate = $totalRates/$totalUsers;
 
         }
-        else 
+        else
         {
             $business->rate = 0;
         }
 
         $reviews = Review::where('reviewee_id','=', $id)->get();
 
-        foreach ($reviews as $review) 
+        foreach ($reviews as $review)
         {
             $user = User::findOrFail($review->reviewer_id);
             $review->user = $user;
         }
 
         $business->reviews = $reviews;
+
+        $holder = array();
+        // dd($business->images);
+        // dd($business);
+        foreach ($business->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+        $business->images = $holder;
 
         return view('businesses.show', compact('business'));
     }
@@ -149,13 +184,65 @@ class BusinessController extends Controller
     {
         $business = Business::findOrFail($id);
 
+        $holder = array();
+        // dd($business->images);
+        // dd($business);
+        foreach ($business->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+        $business->images = $holder;
+
         return view('businesses.edit', compact('business'));
     }
 
     public function update(Request $request, $id)
     {
         $business = Business::findOrFail($id);
-        
+
+        $holder = array();
+        // dd($business->images);
+        // dd($business);
+        foreach ($business->images as $key) {
+            $image = new \stdClass();
+
+            $image->name = $key['name'];
+            $image->description = $key['description'];
+            $image->data = $key['data'];
+
+            array_push($holder,$image);
+        }
+
+        // dd($business);
+
+        if ($request->hasFile('imageData')) {
+            $file = $request->file('imageData');
+            $imageData = base64_encode(file_get_contents($request->file('imageData')));
+
+            if ($file->getMimeType() == "image/png") {
+                $imageData = "data:image/png;base64," . $imageData;
+            }
+            else if ($file->getMimeType() == "image/jpeg") {
+                $imageData = "data:image/jpeg;base64," . $imageData;
+            }
+
+            $image = new \stdClass();
+
+            $image->name = $request->imageName;
+            $image->description = $request->imageDescription;
+            $image->data = $imageData;
+
+
+            array_push($holder, $image);
+        }
+
+        $business->images = $holder;
+
         $business->owner_id = $request->owner_id;
         $business->name = $request->name;
         $business->description = $request->description;
@@ -163,7 +250,7 @@ class BusinessController extends Controller
         $business->contact_number = $request->contact_number;
         $business->verified = $request->verified;
 
-        $business->save();  
+        $business->save();
 
         return redirect()->route('business.index');
     }
@@ -179,16 +266,16 @@ class BusinessController extends Controller
     {
         $businesses = Business::where('owner_id','=',$owner_id)->get();
 
-        foreach ($businesses as $business) 
+        foreach ($businesses as $business)
         {
             $ratings = Rating::where('ratee_id','=', $business->id)->get();
 
             $totalRates = 0;
             $totalUsers = count($ratings);
 
-            if ($totalUsers > 0) 
+            if ($totalUsers > 0)
             {
-                foreach ($ratings as $rating) 
+                foreach ($ratings as $rating)
                 {
                     $totalRates = $totalRates + $rating->rate;
                 }
@@ -196,14 +283,14 @@ class BusinessController extends Controller
                 $business->rate = $totalRates/$totalUsers;
 
             }
-            else 
+            else
             {
                 $business->rate = 0;
             }
 
             $reviews = Review::where('reviewee_id','=', $business->id)->get();
 
-            foreach ($reviews as $review) 
+            foreach ($reviews as $review)
             {
                 $user = User::findOrFail($review->reviewer_id);
                 $review->user = $user;
@@ -213,6 +300,63 @@ class BusinessController extends Controller
         }
 
         return view('businesses.index', compact('businesses'));
+    }
+
+    public function uploadImage($id , Request $request)
+    {
+        Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');
+
+        // Storage::put('file.jpg', $contents);
+
+    }
+
+    public function test()
+    {
+        // $hello = "helloworld";
+        //
+        // Storage::disk('businesses')->put('hello.json', '{"hello": "world"}');
+        // $path = Storage::disk('businesses')->url('hello.json');
+
+        // $b64image = base64_encode(file_get_contents('http://www.onzehost.com.br/images/test-img.jpg'));
+        //
+        // $b64image = base64_decode($b64image);
+        //
+
+
+        $img_url = 'https://securitywatch.ie/media/catalog/product/t/e/test-logo-circle-black-transparent.png';
+        $b64_url = 'php://filter/read=convert.base64-encode/resource='.$img_url;
+        $b64_img = file_get_contents($b64_url);
+        // echo $b64_img;
+
+        $imageData = base64_decode($b64_img);
+        $source = imagecreatefromstring($imageData);
+        $angle = 90;
+        $rotate = imagerotate($source, $angle, 0); // if want to rotate the image
+        $imageName = "hello1.png";
+        $imageSave = imagejpeg($rotate,$imageName,100);
+        imagedestroy($source);
+
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $user->profile_image = $b64_img;
+            // dd($user);
+        }
+
+        foreach ($users as $user) {
+            base64_decode($user->profile_image);
+            echo '<img src="data:image/png;base64,' . $user->profile_image . '" />';
+            // dd($user);
+        }
+
+
+
+
+
+        // echo $imageSave;
+
+
+        // dd($imageSave);
     }
 
 }

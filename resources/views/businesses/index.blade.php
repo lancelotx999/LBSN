@@ -127,8 +127,9 @@
             @endif
             @foreach ($businesses as $business)
             <div class="row">
-                <div class="col-sm-3">
-                    <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" class="img-fluid" alt="Business logo" />
+                <div class="col-sm-3 my-auto text-center">
+                    <img src="{{ $business->images[0]["data"] }}" class="img-fluid rounded" 
+                    alt="Business image" style="max-height: 200px" />
                 </div>
                 <div class="col-sm-9">
                     <div class="row">
@@ -137,6 +138,10 @@
                             <p>{{ $business->description }}</p>
                             <hr />
                             <ul class="list-unstyled">
+                                <li>
+                                    <strong>Owner:</strong> 
+                                    {{ App\User::find($business->owner_id)->name }}
+                                </li>
                                 <li>
                                     <strong>Contact Number:</strong> 
                                     {{ $business->contact_number }}

@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Location Business Service Network
                 </div>
 
                 <div class="links">

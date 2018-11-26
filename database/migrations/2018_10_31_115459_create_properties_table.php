@@ -22,7 +22,7 @@ class CreatePropertiesTable extends Migration
             $table->string('description'); // Description of Property
             $table->string('status'); // eg : Rent or Sale
             $table->string('tags'); // eg : Condo , single-storey
-
+            $table->string('images');
             $table->double('latitude'); // Location Data
             $table->double('longitude'); // Location Data
 

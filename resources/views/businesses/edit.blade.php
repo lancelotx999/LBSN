@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 @if (url()->previous() == route('business.index'))
                     <a href="{{ route('business.index') }}">My Businesses</a>
@@ -22,10 +22,10 @@
             <div class="card">
                 <div class="card-header">Edit Business</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('business.update', $business) }}">
+                    <form method="POST" action="{{ route('business.update', $business) }}" enctype="multipart/form-data">
                     	@csrf
                     	@method('PATCH')
-
+                        
                         <div class="form-group">
                             <label for="name">
                                 Name:
@@ -78,6 +78,41 @@
                                 value="{{ $business->contact_number }}"
                             />
                         </div>
+                        <hr />                                
+                        @foreach ($business->images as $image)
+                            
+                        <img src="{{ $image->data }}" class="img-fluid rounded" 
+                        alt="Business image" style="max-height: 128px" />
+
+                        <div class="form-group">
+                            <br /><label for="imageData">Upload Business Image:</label><br />
+                            <input type="file" id="imageData" name="imageData" accept="image/png, image/jpeg">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Business Image Name:
+                            </label>
+                            <input
+                                id="imageName"
+                                name="imageName"
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter image name."
+                                value="{{$image->name}}"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Business Image Description:
+                            </label>
+                            <textarea 
+                            id="imageDescription" name="imageDescription"
+                            class="form-control" rows="3" required
+                            placeholder="Enter property description."
+                            >{{$image->description}}</textarea>
+                        </div>
+                        @endforeach
                         <input
                             id="owner_id"
                             name="owner_id"
@@ -109,7 +144,12 @@ $(function() {
     //Once add button is clicked
     addButton.click(function(){
         //Check maximum number of input fields
+<<<<<<< HEAD
         if(x < maxField){ 
+=======
+        console.log(x);
+        if(x < maxField){
+>>>>>>> Backend-Images
             x++; //Increment field counter
             wrapper.append(fieldHTML); //Add field html
         }

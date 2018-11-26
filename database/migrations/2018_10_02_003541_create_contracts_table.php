@@ -19,7 +19,6 @@ class CreateContractsTable extends Migration
             $table->string('name');
             $table->string('merchant_id');
             $table->string('customer_id');
-
             $table->string('item_id');
             $table->string('invoice_id');
 
@@ -29,8 +28,9 @@ class CreateContractsTable extends Migration
 
             $table->boolean('merchant_accepted');
             $table->boolean('customer_accepted');
-
             $table->boolean('paid_fully');
+
+            $table->string('images');
             $table->boolean('fulfilled');
 
             $table->timestamps();

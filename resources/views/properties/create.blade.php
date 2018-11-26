@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <h6>
-                <a href="{{ url('/') }}">Home</a> 
+                <a href="{{ url('/') }}">Home</a>
                 <i class="fas fa-angle-right"></i>
                 @if (url()->previous() == route('property.index'))
                     <a href="{{ route('property.index') }}">My Properties</a>
@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-header">Create Property</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('property.store') }}">
+                    <form method="POST" action="{{ route('property.store') }}" enctype="multipart/form-data">
                     	@csrf
                     	@method('POST')
 
@@ -63,7 +63,7 @@
                                     </label>
                                     <textarea 
                                         id="description" name="description"
-                                        class="form-control" rows="3"
+                                        class="form-control" rows="3" required
                                         placeholder="Enter property description."
                                         ></textarea>
                                 </div>
@@ -96,7 +96,7 @@
                                     <div class="input-group mb-3">
                                         <input
                                             id="tags" name="tags[]" type="text"
-                                            class="form-control"
+                                            class="form-control" required
                                             placeholder="Enter an appropriate tag for your property."
                                         />
                                         <div class="input-group-append">
@@ -129,6 +129,34 @@
                                         />
                                     </div>
                                 </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label for="imageData">Upload Property Image:</label><br />
+                                    <input type="file" id="imageData" name="imageData" accept="image/png, image/jpeg">
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Property Image Name:
+                                    </label>
+                                    <input
+                                        id="imageName"
+                                        name="imageName"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Enter image name."
+                                        required
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Property Image Description:
+                                    </label>
+                                    <textarea 
+                                    id="imageDescription" name="imageDescription"
+                                    class="form-control" rows="3" required
+                                    placeholder="Enter property description."
+                                    ></textarea>
+                                </div>
                                 <input
                                     id="owner_id" name="owner_id" type="hidden"
                                     class="form-control"
@@ -138,6 +166,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Create Location
                                 </button>
+
                             </div>
                         </div>
                     </form>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -148,8 +147,9 @@
                     @endif
                     @foreach ($properties as $property)
                     <div class="row">
-                        <div class="col-sm-3">
-                            <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" class="img-fluid" alt="Property logo" />
+                        <div class="col-sm-3 my-auto text-center">
+                            <img src="{{ $property->images[0]["data"] }}" class="img-fluid rounded" 
+                            alt="Property image" style="max-height: 200px" />
                         </div>
                         <div class="col-sm-9">
                             <div class="row">
@@ -169,6 +169,10 @@
                                     <p>{{ $property->description }}</p>
                                     <hr />
                                     <ul class="list-unstyled">
+                                        <li>
+                                            <strong>Owner:</strong> 
+                                            {{ App\User::find($property->owner_id)->name }}
+                                        </li>
                                         <li>
                                             <strong>Address:</strong> 
                                             {{ $property->address }}

@@ -51,14 +51,16 @@
                         </li>
                         <li class="list-group-item">
                             @if (!($business->owner_id == Auth::id()))
-                            <a href="/contract/create/{{ $business->_id }}">
+                            <a class="nounderline" 
+                            href="/contract/create/{{ $business->_id }}">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-file-signature fa-fw"></i>
                                     Create a new contract
                                 </button>
                             </a>
                             @endif
-                            <a href="{{ url()->previous() }}">
+                            <a class="nounderline" 
+                            href="{{ url()->previous() }}">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-arrow-circle-left fa-fw"></i> 
                                     Previous page

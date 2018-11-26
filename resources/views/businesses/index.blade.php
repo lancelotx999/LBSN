@@ -121,9 +121,8 @@
         </div>
         <div class="card-body">
             @if ($businesses->isEmpty())
-            <br />
-            <h3 class="display-4">Hello, it seems empty here!</h3>
-            <p class="lead">Why don't you try to add some stuff?</p>
+            <h3 class="display-4">Empty!</h3>
+            <p class="lead">No businesses have been added yet.</p>
             <hr />
             @endif
             @foreach ($businesses as $business)
@@ -143,13 +142,15 @@
                                     {{ $business->contact_number }}
                                 </li>
                             </ul>
-                            <a href="{{ route('business.show', $business->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('business.show', $business->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
                             @if ($business->owner_id == Auth::id())
-                            <a href="{{ route('business.edit', $business->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('business.edit', $business->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>

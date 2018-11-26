@@ -91,18 +91,20 @@
                                     RM {{ $contract->price }}
                                 </li>
                             </ul>
-                            <a href="{{ route('contract.show', $contract->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('contract.show', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->provider_id == Auth::id())
+                            @if ($contract->customer_id == Auth::id())
                             @if ($contract->fulfilled)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             @else
-                            <a href="{{ route('contract.edit', $contract->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
@@ -149,18 +151,20 @@
                                     RM {{ $contract->price }}
                                 </li>
                             </ul>
-                            <a href="{{ route('contract.show', $contract->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('contract.show', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($contract->receiver_id == Auth::id())
+                            @if ($contract->merchant_id == Auth::id())
                             @if ($contract->accepted)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             @else
-                            <a href="{{ route('contract.edit', $contract->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>

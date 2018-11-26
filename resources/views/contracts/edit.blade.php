@@ -122,17 +122,17 @@
                             </div>
                         </div>
                         <input
-                            id="provider_id" name="provider_id" type="hidden"
+                            id="customer_id" name="customer_id" type="hidden"
                             class="form-control"
-                            placeholder="Enter provider ID."
-                            value="{{ $contract->provider_id }}"
+                            placeholder="Enter Customer ID."
+                            value="{{ $contract->customer_id }}"
                             required
                         />
                         <input
-                            id="receiver_id" name="receiver_id" type="hidden"
+                            id="merchant_id" name="merchant_id" type="hidden"
                             class="form-control"
-                            placeholder="Enter receiver ID."
-                            value="{{ $contract->receiver_id }}"
+                            placeholder="Enter Merchant ID."
+                            value="{{ $contract->merchant_id }}"
                             required
                         />
                         <input

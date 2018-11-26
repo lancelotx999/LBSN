@@ -82,7 +82,8 @@
                             @endif
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ url()->previous() }}">
+                            <a class="nounderline" 
+                            href="{{ url()->previous() }}">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-arrow-circle-left fa-fw"></i> 
                                     Previous page

@@ -95,13 +95,15 @@
                                     RM {{ $invoice->outstanding_payment }}
                                 </li>
                             </ul>
-                            <a href="{{ route('invoice.show', $invoice->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('invoice.show', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
                             @if ($invoice->receiver_id == Auth::id())
-                            <a href="{{ route('invoice.edit', $invoice->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
@@ -150,13 +152,15 @@
                                     RM {{ $invoice->outstanding_payment }}
                                 </li>
                             </ul>
-                            <a href="{{ route('invoice.show', $invoice->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('invoice.show', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
                             @if ($invoice->provider_id == Auth::id())
-                            <a href="{{ route('invoice.edit', $invoice->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('invoice.edit', $invoice->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>

@@ -16,18 +16,17 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('provider_id');
-            $table->string('receiver_id');
+            $table->string('merchant_id');
+            $table->string('customer_id');
             $table->string('invoice_id');
 
             $table->string('payment_method');
             $table->double('amount_paid');
             $table->double('grand_total');
 
-            $table->boolean('provider_acknowledgement');
-            $table->boolean('receiver_acknowledgement');
-            $table->boolean('acknowledged');
-            $table->timestamps();
+            $table->boolean('merchant_acknowledgement');
+            $table->boolean('customer_acknowledgement');
+
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
                     <hr />
                     Messages
                     <hr />
-                    @foreach ($conversation->messages as $message)
+                    @foreach (array_reverse($conversation->messages) as $message)
                         <div class="row">
                             <div class="col-sm-3">
                                 <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
@@ -45,7 +45,7 @@
                         </div>
                         <hr />
 		            @endforeach
-                    <form method="POST" action="{{ route('conversations.update', $conversation) }}">
+                    <form method="POST" action="{{ route('conversation.update', $conversation) }}">
                         @csrf
                         @method('PATCH')
                         <textarea id="message" name="content" rows="5" cols="50" placeholder="Please leave a reply."></textarea>

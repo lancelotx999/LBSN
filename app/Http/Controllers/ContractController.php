@@ -13,181 +13,289 @@ use App\Business;
 
 class ContractController extends Controller
 {
-    // Apply auth middleware so only authenticated users have access
+	// Apply auth middleware so only authenticated users have access
 	public function __construct() 
-    {
+	{
 		$this->middleware('auth');
 	}
 
-    // List all contracts if user is admin 
-    // Shows only user contracts if user is a user/merchant
-    public function index()
-    {
-        if (Auth::user()->role === 'admin')
-        {
-            $contracts = Contract::all();
-            return view('contracts.index', compact('contracts'));
-        }
-        else
-        {
-            $sent_contracts = Contract::where('provider_id','=',Auth::user()->id)->get();
-            $received_contracts = Contract::where('receiver_id','=',Auth::user()->id)->get();
-            return view('contracts.index', compact('sent_contracts','received_contracts'));
-        }    
-    }
+	// List all contracts if user is admin 
+	// Shows only user contracts if user is a user/merchant
+	public function index()
+	{
+		if (Auth::user()->role === 'admin')
+		{
+			$contracts = Contract::all();
 
-    public function showAll()
-    {
-        $contracts = Contract::all();
-        return view('contracts.index', compact('contracts'));
-    }
+			return view('contracts.index', compact('contracts'));
+		}
+		else
+		{
+			$sent_contracts = Contract::where('customer_id','=',Auth::user()->id)->get();
+			$received_contracts = Contract::where('merchant_id','=',Auth::user()->id)->get();
 
-    // Gets all the Contracts associated with specified user
-    public function showAllUserContracts($user_id)
-    {
-        $user_contracts = Contract::where('provider_id','=', $user_id)-> orWhere('receiver_id','=', $user_id)->get();
-        return view('contracts.index', compact('user_contracts'));
-    }
+			return view('contracts.index', compact('sent_contracts','received_contracts'));
+		}    
+	}
 
-    public function showAcceptedReceivedContracts($user_id)
-    {
-        $accepted_contracts = Contract::where('receiver_id','=', $user_id)->where('accepted', '=', true)->get();
-        return view('contracts.index', compact('accepted_contracts'));
-    }
+	public function showAll()
+	{
+		$contracts = Contract::all();
+		return view('contracts.index', compact('contracts'));
+	}
 
-    public function showUnacceptedReceivedContracts($user_id)
-    {
-        $unaccepted_contracts = Contract::where('receiver_id','=', $user_id)->where('accepted', '=', false)->get();
-        return view('contracts.index', compact('unaccepted_contracts'));
-    }
+	// Gets all the Contracts associated with specified user
+	public function showAllUserContracts($user_id)
+	{
+		$contracts = Contract::where('customer_id','=', $user_id)-> orWhere('merchant_id','=', $user_id)->get();
+		return $contracts;
+	}
 
-    public function showAcceptedProvidedContracts($user_id)
-    {
-        $accepted_contracts = Contract::where('provider_id','=', $user_id)->where('accepted', '=', true)->get();
-        return view('contracts.index', compact('accepted_contracts'));
-    }
+	public function showSentContracts($user_id)
+	{
+		$query = Contract::query();
+		$query->where('customer_id',$user_id);
+		$contracts = $query->get();
 
-    public function showUnacceptedProvidedContracts($user_id)
-    {
-        $unaccepted_contracts = Contract::where('provider_id','=', $user_id)->where('accepted', '=', false)->get();
-        return view('contracts.index', compact('unaccepted_contracts'));
-    }
+		return $contracts;
+	}
 
-    public function showProviderContracts($user_id)
-    {
-        $contracts = Contract::where('provider_id','=', $user_id)->get();
-        return view('contracts.index', compact('contracts'));
-    }
+	public function showReceivedContracts($user_id)
+	{
+		$query = Contract::query();
+		$query->where('merchant_id',$user_id);
+		$contracts = $query->get();
+		
+		return $contracts;
+	}
 
-    public function showReceiverContracts($user_id)
-    {
-        $contracts = Contract::where('receiver_id','=', $user_id)->get();
-        return view('contracts.index', compact('contracts'));
-    }
+	public function showContractInvoice($contract_id)
+	{
+		$invoice = Invoice::whereIn('contract_id',[$contract_id])->get()->first();
+		return $invoice;
+	}
 
-    public function showContractReceipt($contract_id)
-    {
-        $receipt = Receipt::whereIn('contract_id',[$contract_id])->get()->first();
-    }
+	public function searchContracts(Request $request)
+	{
+		$filters = array();
+		$name = $request->name;
+		$invoice = $request->invoice_id;
 
-    public function showContractInvoice($contract_id)
-    {
-        $invoice = Invoice::whereIn('contract_id',[$contract_id])->get()->first();
-    }
+		$filters['type'] = $request->type;
+		$filters['price'] = $request->price;
+		$filters['merchant_accepted'] = $request->merchant_accepted;
+		$filters['customer_accepted'] = $request->customer_accepted;
+		$filters['paid_fully'] = $request->paid_fully;
+		$filters['fulfilled'] = $request->fulfilled;
 
-    public function create($id)
-    {
-        $item_id = $id;
+		$query = Contract::query();
 
-        if (Property::find($item_id))
-        {
-            $item = Property::find($item_id);
-        } 
-        else
-        {
-            $item = Business::findOrFail($item_id);
-        }
+		if (isset($name))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
 
-        return view('contracts.create', compact('item_id', 'item'));
-    }
+		if (isset($invoice))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
 
-    public function store(Request $request)
-    {
-        // Validation Logic
- 		$this->validate($request, [
-            'provider_id' => 'required',
-			'receiver_id' => 'required',
-            'item_id' => 'required',
+
+		foreach ($filters as $filter => $value)
+		{
+			if (isset($value) && (empty($value) == FALSE))
+			{   
+				if (is_array($value))
+				{
+					$query->whereIn($filter, $value);
+				}
+				else
+				{
+					$query->where($filter,$value);
+
+				}
+			}           
+		}
+
+		$contracts = $query->get();
+	}
+
+	public function create($id)
+	{
+		$item_id = $id;
+
+		if (Property::find($item_id))
+		{
+			$item = Property::find($item_id);
+		} 
+		else
+		{
+			$item = Business::findOrFail($item_id);
+		}
+
+		return view('contracts.create', compact('item_id', 'item'));
+	}
+
+	public function store(Request $request)
+	{
+		// Validation Logic
+		$this->validate($request, [
+			'customer_id' => 'required',
+			'merchant_id' => 'required',
+			'item_id' => 'required',
 			'type' => 'required',
-            'description' => 'required',
-            'price' => 'required',
- 		]);
+			'description' => 'required',
+			'price' => 'required',
+		]);
 
-        $contract = new Contract;
+		$contract = new Contract;
 
-        $contract->name = $request->name;
-        $contract->provider_id = $request->provider_id;
-        $contract->receiver_id = $request->receiver_id;
-        $contract->item_id = $request->item_id;
-        $contract->type = $request->type;
-        $contract->description = $request->description;
-        $contract->price = $request->price;
-        $contract->accepted = false;
-        $contract->fulfilled = false;
+		$contract->name = $request->name;
+		$contract->customer_id = $request->customer_id;
+		$contract->merchant_id = $request->merchant_id;
 
-        $contract->save();
-        return redirect()->route('contract.index');
-    }
+		$contract->item_id = $request->item_id;
+		$contract->invoice_id = null;
 
-    public function show($id)
-    {
-        $contract = Contract::findOrFail($id);
+		$contract->type = $request->type;
+		$contract->description = $request->description;
+		$contract->price = $request->price;
 
-        return view('contracts.show', compact('contract'));
-    }
+		$contract->merchant_accepted = false;
+		$contract->customer_accepted = true;
+		$contract->paid_fully = false;
+		$contract->fulfilled = false;
 
-    public function edit($id)
-    {
-        $contract = Contract::findOrFail($id);
+		$contract->save();
+		return redirect()->route('contract.index');
+	}
 
-        return view('contracts.edit', compact('contract'));
-    }
+	public function show($id)
+	{
+		$contract = Contract::findOrFail($id);
 
-    public function update(Request $request, $id)
-    {
-        $contract = Contract::findOrFail($id);
-        
-        $contract->name = $request->name;
-        $contract->provider_id = $request->provider_id;
-        $contract->receiver_id = $request->receiver_id;
-        $contract->item_id = $request->item_id;
-        $contract->type = $request->type;
-        $contract->description = $request->description;
-        $contract->price = $request->price;
-        $contract->accepted = $request->accepted;
-        $contract->fulfilled = $request->fulfilled;
+		return view('contracts.show', compact('contract'));
+	}
 
-        $contract->save();  
+	public function edit($id)
+	{
+		$contract = Contract::findOrFail($id);
 
-        return redirect()->route('contract.index');
-    }
+		return view('contracts.edit', compact('contract'));
+	}
 
-    public function acceptContract($id)
-    {
-        $contract = Contract::findOrFail($id);
-        $contract->accepted = true;
-    }
+	public function update(Request $request, $id)
+	{
+		$contract = Contract::findOrFail($id);
 
-    public function fulfilledContract($id)
-    {
-        $contract = Contract::findOrFail($id);
-        $contract->fulfilled = true;
-    }
+		$contract->name = $request->name;
+		$contract->customer_id = $request->customer_id;
+		$contract->merchant_id = $request->merchant_id;
 
-    public function destroy($id)
-    {
-        Contract::findOrFail($id)->delete();
+		$contract->item_id = $request->item_id;
+		$contract->invoice_id = $request->invoice_id;
 
-        return redirect()->back();
-    }
+		$contract->type = $request->type;
+		$contract->description = $request->description;
+		$contract->price = $request->price;
+
+		$contract->merchant_accepted = $request->merchant_accepted;
+		$contract->customer_accepted = $request->customer_accepted;
+		$contract->paid_fully = $request->paid_fully;
+		$contract->fulfilled = $request->fulfilled;
+
+		$contract->save();  
+
+		return redirect()->route('contract.index');
+	}
+
+	public function acceptContract($id)
+	{
+		$contract = Contract::findOrFail($id);
+		$contract->accepted = true;
+	}
+
+	public function fulfilledContract($id)
+	{
+		$contract = Contract::findOrFail($id);
+		$contract->fulfilled = true;
+	}
+
+	public function destroy($id)
+	{
+		Contract::findOrFail($id)->delete();
+
+		return redirect()->back();
+	}
+
+	public function test()
+	{
+		$filters = array();
+		// $name = "mop";
+		// $invoice = true;
+		$price_min = "1";
+		$price_max = "100";
+		
+		// $filters['type'] = $request->type;
+		
+		// $filters['merchant_accepted'] = $request->merchant_accepted;
+		// $filters['customer_accepted'] = $request->customer_accepted;
+		// $filters['paid_fully'] = $request->paid_fully;
+		// $filters['fulfilled'] = $request->fulfilled;
+
+		$query = Contract::query();
+
+		if (isset($name))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
+
+		if (isset($invoice))
+		{
+			if ($invoice == true)
+			{
+
+			}
+			else if ($invoice == false)
+			{
+				$query->whereNull('invoice_id');
+			}			
+		}
+
+		if (	(isset($price_min))		&&		(isset($price_max))		)
+		{
+			// dd(1);
+			$query->whereBetween('price', [$price_min, $price_max]);
+		}
+		else if (isset($price_min))
+		{
+			// dd(2);
+			$query->where('price', '>', $price_min);
+		}
+		else if (isset($price_max))
+		{
+			// dd(3);
+			$query->where('price', '<', $price_max);
+		}
+
+
+		foreach ($filters as $filter => $value)
+		{
+			if (isset($value) && (empty($value) == FALSE))
+			{   
+				if (is_array($value))
+				{
+					$query->whereIn($filter, $value);
+				}
+				else
+				{
+					$query->where($filter,$value);
+
+				}
+			}           
+		}
+
+		$contracts = $query->get();
+		dd($contracts);
+	}
 }

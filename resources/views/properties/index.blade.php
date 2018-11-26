@@ -142,9 +142,8 @@
                 </div>
                 <div class="card-body">
                     @if ($properties->isEmpty())
-                    <br />
-                    <h3 class="display-4">Hello, it seems empty here!</h3>
-                    <p class="lead">Why don't you try to add some stuff?</p>
+                    <h3 class="display-4">Empty!</h3>
+                    <p class="lead">No properties have been added yet.</p>
                     <hr />
                     @endif
                     @foreach ($properties as $property)
@@ -188,13 +187,15 @@
                                             </select>
                                         </li>
                                     </ul>
-                                    <a href="{{ route('property.show', $property->_id) }}">
+                                    <a class="nounderline" 
+                                    href="{{ route('property.show', $property->_id) }}">
                                         <button class="btn btn-sm btn-success">
                                             <i class="fas fa-list fa-fw"></i> View
                                         </button>
                                     </a>
                                     @if ($property->owner_id == Auth::id())
-                                    <a href="{{ route('property.edit', $property->_id) }}">
+                                    <a class="nounderline" 
+                                    href="{{ route('property.edit', $property->_id) }}">
                                         <button class="btn btn-sm btn-success">
                                             <i class="fas fa-edit fa-fw"></i> Edit
                                         </button>

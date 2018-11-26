@@ -65,15 +65,17 @@
                             RM {{ $contract->price }}
                         </li>
                         <li class="list-group-item">
-                            @if (($contract->receiver_id == Auth::id()))
-                            <a href="/invoice/create/{{ $contract->_id }}">
+                            @if (($contract->merchant_id == Auth::id()))
+                            <a class="nounderline" 
+                            href="/invoice/create/{{ $contract->_id }}">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-file-signature fa-fw"></i>
                                     Create a new invoice
                                 </button>
                             </a>
                             @endif
-                            <a href="{{ url()->previous() }}">
+                            <a class="nounderline" 
+                            href="{{ url()->previous() }}">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fas fa-arrow-circle-left fa-fw"></i> 
                                     Previous page

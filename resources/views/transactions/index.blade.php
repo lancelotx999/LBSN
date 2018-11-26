@@ -100,13 +100,15 @@
                                     {{ $transaction->amount_paid }}
                                 </li>
                             </ul>
-                            <a href="{{ route('transaction.show', $transaction->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('transaction.show', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
                             @if ($transaction->provider_id == Auth::id())
-                            <a href="{{ route('transaction.edit', $transaction->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('transaction.edit', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
@@ -160,13 +162,15 @@
                                     {{ $transaction->amount_paid }}
                                 </li>
                             </ul>
-                            <a href="{{ route('transaction.show', $transaction->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('transaction.show', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
                             @if ($transaction->receiver_id == Auth::id())
-                            <a href="{{ route('transaction.edit', $transaction->_id) }}">
+                            <a class="nounderline" 
+                            href="{{ route('transaction.edit', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>

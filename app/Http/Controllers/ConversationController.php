@@ -31,12 +31,16 @@ class ConversationController extends Controller
             $conversation->receiver = User::where('_id','=', $conversation->receiver_id)->firstOrFail();
         }
 
+        $sent_conversations = $sent_conversations->reverse();
+
         $received_conversations = Conversation::where('receiver_id','=', Auth::user()->id)->get();
 
         foreach ($received_conversations as $conversation) {
             $conversation->sender = User::where('_id','=', $conversation->sender_id)->firstOrFail();
             $conversation->receiver = User::where('_id','=', $conversation->receiver_id)->firstOrFail();
         }
+
+        $received_conversations = $received_conversations->reverse();
 
         return view('conversations.index', compact('sent_conversations', 'received_conversations'));
 
@@ -119,7 +123,7 @@ class ConversationController extends Controller
             $conversation->receiver = User::where('_id','=', $conversation->receiver_id)->firstOrFail();
         }
 
-        return view('conversations.index', compact('sent_conversations', 'received_conversations'));
+        return redirect()->route('conversation.index');
     }
 
     /**
@@ -238,7 +242,7 @@ class ConversationController extends Controller
 
         // dd('check email');
 
-        return redirect()->back();
+        return redirect()->route('conversation.index');
     }
 
     /**

@@ -13,6 +13,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.nounderline {
+  text-decoration: none !important
+}
+
 #map {
   height: calc(100vh - 50px - 32px);
   position: relative;
@@ -28,8 +32,4 @@
   height: calc(100vh - 50px - 32px);
   background: #ffffff;
   overflow: auto;
-}
-
-.badge{
-  margin-left:10px;
 }

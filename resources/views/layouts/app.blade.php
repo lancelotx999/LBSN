@@ -37,6 +37,17 @@
         ]); ?>;
     </script>
 </head>
+@php
+$sent = 0; $received = 0;
+
+foreach (App\Conversation::all() as $conversation) {
+    if ($conversation->sender_id == Auth::id())
+        if (!$conversation->sender_read) $sent++;
+
+    if ($conversation->receiver_id == Auth::id())
+        if (!$conversation->receiver_read) $received++;
+}
+@endphp
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -81,7 +92,12 @@
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('conversation.index') }}">
-                                    <i class="fas fa-envelope-open fa-fw"></i> Messages
+                                    @if ($sent > 0 || $received > 0)
+                                    <span class="badge badge-primary">
+                                        {{ $received + $sent }}
+                                    </span>
+                                    @endif
+                                    <i class="fas fa-envelope-open fa-fw"></i>&nbsp;Messages
                                 </a>
                             </li>
                             <li class="nav-item dropdown">

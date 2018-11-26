@@ -99,16 +99,16 @@
                             </div>
                         </div>
                         <input
-                            id="provider_id" name="provider_id" type="hidden"
+                            id="customer_id" name="customer_id" type="hidden"
                             class="form-control"
-                            placeholder="Enter provider ID."
+                            placeholder="Enter Customer ID."
                             value="{{ Auth::id() }}"
                             required
                         />
                         <input
-                            id="receiver_id" name="receiver_id" type="hidden"
+                            id="merchant_id" name="merchant_id" type="hidden"
                             class="form-control"
-                            placeholder="Enter receiver ID."
+                            placeholder="Enter Merchant ID."
                             value="{{ $item->owner_id }}"
                             required
                         />

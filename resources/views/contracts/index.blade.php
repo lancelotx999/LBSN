@@ -133,8 +133,20 @@
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
-                                    <strong>Accepted:</strong> 
-                                    @if ($contract->accepted)
+                                    <strong>Customer Accepted:</strong> 
+                                    @if ($contract->customer_accepted)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
+                                    <strong>Merchant Accepted:</strong> 
+                                    @if ($contract->merchant_accepted)
                                         <span class="text-success">
                                             <i class="fas fa-check-circle fa-fw"></i>
                                         </span> Yes

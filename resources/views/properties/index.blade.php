@@ -148,7 +148,7 @@
                     @foreach ($properties as $property)
                     <div class="row">
                         <div class="col-sm-3 my-auto text-center">
-                            @if ($property->images[0]["data"])
+                            @if ($property->images)
                             <img src="{{ $property->images[0]["data"] }}" class="img-fluid rounded" 
                             alt="Property image" style="max-height: 200px" />
                             @else

@@ -22,10 +22,8 @@ class CreateTransactionsTable extends Migration
 
             $table->string('payment_method');
             $table->double('amount_paid');
-            $table->double('grand_total');
 
             $table->boolean('merchant_acknowledgement');
-            $table->boolean('customer_acknowledgement');
 
             $table->timestamps();
         });

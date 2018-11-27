@@ -128,8 +128,12 @@
             @foreach ($businesses as $business)
             <div class="row">
                 <div class="col-sm-3 my-auto text-center">
+                    @if ($business->images)
                     <img src="{{ $business->images[0]["data"] }}" class="img-fluid rounded" 
                     alt="Business image" style="max-height: 200px" />
+                    @else
+                    <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" class="img-fluid" alt="Property logo" />
+                    @endif
                 </div>
                 <div class="col-sm-9">
                     <div class="row">

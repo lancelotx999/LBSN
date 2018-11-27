@@ -33,6 +33,37 @@ class UserController extends Controller
         else
         {
             $users = Auth::user();
+
+            $ratings = Rating::where('ratee_id','=', $users->id)->get();
+
+            $totalRates = 0;
+            $totalUsers = count($ratings);
+
+            if ($totalUsers > 0)
+            {
+                foreach ($ratings as $rating)
+                {
+                    $totalRates = $totalRates + $rating->rate;
+                }
+
+                $users->rate = $totalRates/$totalUsers;
+
+            }
+            else
+            {
+                $users->rate = 0;
+            }
+
+            $reviews = Review::where('reviewee_id','=', $users->id)->get();
+
+            foreach ($reviews as $review)
+            {
+                $user = User::findOrFail($review->reviewer_id);
+                $review->user = $user;
+            }
+
+            $users->reviews = $reviews;
+            
             return view('users.index', compact('users'));
         }
     }

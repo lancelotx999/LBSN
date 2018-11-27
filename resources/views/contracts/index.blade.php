@@ -220,6 +220,20 @@
                                         </span> No
                                     @endif
                                 </li>
+
+                                <li>
+                                    <strong>Paid in full:</strong> 
+                                    @if ($contract->paid_fully)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                
                                 <li>
                                     <strong>Price:</strong> 
                                     RM {{ $contract->price }}

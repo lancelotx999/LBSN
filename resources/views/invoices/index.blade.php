@@ -164,6 +164,13 @@
                                     <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
+                            <a class="nounderline" 
+                            href="/transaction/create/{{ $invoice->_id }}">
+                                <button class="btn btn-sm btn-primary" type="button">
+                                    <i class="fas fa-file-signature fa-fw"></i>
+                                    Create a new transaction
+                                </button>
+                            </a>
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
                             data-target="#deleteModal{{ $invoice->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete

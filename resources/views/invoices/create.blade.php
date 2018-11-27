@@ -29,20 +29,14 @@
                         <h4>{{ $contract->name }}</h4>
                         <div class="form-group">
                             <label for="tax">
-                                Tax Price:
+                                Tax Multiplier:
                             </label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-                                    <span class="input-group-text">RM</span>
-                                </div>
-                                <input 
-                                    id="tax" name="tax" type="number" 
-                                    class="form-control" 
-                                    placeholder="Enter tax value."
-                                    required
-                                />
-                            </div>
+                            <input 
+                                id="tax" name="tax" type="number" 
+                                class="form-control" 
+                                placeholder="Enter tax value."
+                                required
+                            />
                         </div>
                         <input type="hidden" name="contract_id[]" id="contract_id"
                         class="form-control" value="{{ $contract->_id }}" required />

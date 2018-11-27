@@ -111,18 +111,17 @@ class InvoiceController extends Controller
 			]);
 
 		$contract_id = $request->contract_id;
+		$contract = Contract::findOrFail($contract_id)->first();
 		$tax = $request->tax;
 
-		$grandTotal = $total + $taxed;
-
 		$invoice = new Invoice;
-		$invoice->customer_id = $contract_id->customer_id;
-		$invoice->merchant_id = $contract_id->merchant_id;
+		$invoice->customer_id = $contract->customer_id;
+		$invoice->merchant_id = $contract->merchant_id;
 		$invoice->contract_id = $contract_id;
-		$invoice->total_price = $contract_id->price;
-		$invoice->grand_total = $contract_id->price * $tax;
+		$invoice->total_price = $contract->price;
+		$invoice->grand_total = $contract->price * $tax;
 
-		$invoice->outstanding_payment = $contract_id->price * $tax;
+		$invoice->outstanding_payment = $contract->price * $tax;
 		$invoice->paid = false;
 
 		$invoice->save();

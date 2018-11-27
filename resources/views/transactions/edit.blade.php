@@ -57,11 +57,11 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <strong>Provider:</strong><br />
-                            {{ $transaction->provider->name }}
+                            {{ $transaction->customer->name }}
                         </li>
                         <li class="list-group-item">
                             <strong>Receiver:</strong><br />
-                            {{ $transaction->receiver->name }}
+                            {{ $transaction->merchant->name }}
                         </li>
                         <li class="list-group-item">
                             <strong>Payment Method:</strong><br />
@@ -87,57 +87,30 @@
                     	@csrf
                     	@method('PATCH')
 
-                        @if (Auth::user()->id == $transaction->provider_id)
-                            <div class="form-group">
-                                <label for="provider_acknowledgement">
-                                    Provider Acknowledment:
-                                </label>
-                                <input
-                                    id="provider_acknowledgement" name="provider_acknowledgement"
-                                    type="password" class="form-control"
-                                    placeholder="Enter Provider Password"
-                                    value="{{ $transaction->provider_acknowledgement }}"
-                                    required
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="receiver_acknowledgement">
-                                    Receiver Acknowledment:
-                                </label>
-                                <input
-                                    id="receiver_acknowledgement" name="receiver_acknowledgement"
-                                    type="password" class="form-control"
-                                    placeholder="Enter Receiver Password"
-                                    value="{{ $transaction->receiver_acknowledgement }}"
-                                    required readOnly
-                                />
-                            </div>
-                        @elseif (Auth::user()->id == $transaction->receiver_id)
                         <div class="form-group">
-                            <label for="provider_acknowledgement">
-                                Provider Acknowledment:
+                            <label>
+                                Payment Acknowledged:
                             </label>
-                            <input
-                                id="provider_acknowledgement" name="provider_acknowledgement"
-                                type="password" class="form-control"
-                                placeholder="Enter Provider Password"
-                                value="{{ $transaction->provider_acknowledgement }}"
-                                required readOnly
-                            />
+                            <div class="form-check">
+                                <input 
+                                    id="forrent" name="acknowledged" type="radio"
+                                    class="form-check-input" value="false" 
+                                    checked 
+                                />
+                                <label class="form-check-label" for="forrent">
+                                    No
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                    id="forsale" name="acknowledged" type="radio"
+                                    class="form-check-input" value="true" 
+                                />
+                                <label class="form-check-label" for="forsale">
+                                    Yes
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="receiver_acknowledgement">
-                                Receiver Acknowledment:
-                            </label>
-                            <input
-                                id="receiver_acknowledgement" name="receiver_acknowledgement"
-                                type="password" class="form-control"
-                                placeholder="Enter Receiver Password"
-                                value="{{ $transaction->receiver_acknowledgement }}"
-                                required
-                            />
-                        </div>
-                        @endif
                         <button type="submit" class="btn btn-primary">
                             Edit Transaction
                         </button>

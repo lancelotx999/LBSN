@@ -9,7 +9,7 @@
                 <i class="fas fa-angle-right"></i>
                 <a href="{{ route('conversation.index') }}">Messages</a>
                 <i class="fas fa-angle-right"></i>
-                <a href="{{ route('conversation.show', $conversation->_id) }}">View {{ $conversation->name }}</a>
+                <a href="{{ route('conversation.show', $conversation->_id) }}">View: {{ $conversation->title }}</a>
             </h6><hr />
         </div>
     </div>
@@ -22,15 +22,13 @@
                         Title: {{ $conversation->title }}
                     </p>
                     <hr />
-                    Messages
-                    <hr />
                     @foreach (array_reverse($conversation->messages) as $message)
                         <div class="row">
-                            <div class="col-sm-3">
-                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%">
-                                </img>
+                            <div class="col-sm-3 col-md-2 my-auto text-center">
+                                <img src="{{ $message->sender->profileImage }}" alt="Profile image"
+                                class="img-fluid rounded" style="max-height: 128px" />
                             </div>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 col-md-10">
                                 <div class="row">
                                     <h5><a href="/users/{{ $message->sender->_id }}">{{ $message->sender->name }}</a></h5>
                                 </div>
@@ -44,8 +42,14 @@
                     <form method="POST" action="{{ route('conversation.update', $conversation) }}">
                         @csrf
                         @method('PATCH')
-                        <textarea id="message" name="content" rows="5" cols="50" placeholder="Please leave a reply."></textarea>
+
+                        <div class="form-group">
+                        <textarea id="message" name="content" rows="5"
+                        placeholder="Please leave a reply." class="form-control"></textarea>
+                        </div>
+
                         @if(Auth::user()->id == $conversation->sender->_id)
+
                             <input
                                 id="sender_id"
                                 name="sender_id"
@@ -64,7 +68,7 @@
                                 placeholder="Enter receiver_id ID."
                                 required
                             />
-                        @elseif(Auth::user()->id == $conversation->receiver->_id)
+                        @elseif (Auth::user()->id == $conversation->receiver->_id)
                             <input
                                 id="sender_id"
                                 name="sender_id"

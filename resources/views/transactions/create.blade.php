@@ -30,7 +30,7 @@
 
                         <h4>Invoice: {{ App\Contract::find($invoice->contract_id)[0]->name }}</h4>
                         <hr />
-                        <p class="lead">Receiver is {{ $invoice->receiver->name }}.</p>
+                        <p class="lead">merchant is {{ $invoice->merchant->name }}.</p>
                         <div class="form-group">
                             <table class="table table-bordered table-dark table-sm">
                                 <thead class="thead-dark">
@@ -60,14 +60,6 @@
                                         </th>
                                         <td class="bg-light text-dark">
                                             RM {{ $invoice->total_price }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2" class="text-uppercase">
-                                            Tax 25%
-                                        </th>
-                                        <td class="bg-light text-dark">
-                                            RM {{ $invoice->tax }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -130,43 +122,23 @@
                                     />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="provider_acknowledgement">
-                                    Provider Acknowledment:
-                                </label>
-                                <input
-                                    id="provider_acknowledgement" name="provider_acknowledgement"
-                                    type="password" class="form-control"
-                                    placeholder="Enter Provider Password." required
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="receiver_acknowledgement">
-                                    Receiver Acknowledment:
-                                </label>
-                                <input
-                                    id="receiver_acknowledgement" name="receiver_acknowledgement"
-                                    type="password" class="form-control"
-                                    placeholder="Enter Receiver Password." required
-                                />
-                            </div>
                         </div>
                         <input
-                            id="receiver_id"
-                            name="receiver_id"
+                            id="merchant_id"
+                            name="merchant_id"
                             type="hidden"
                             class="form-control"
-                            value="{{ $invoice->receiver_id }}"
-                            placeholder="Enter receiver_id."
+                            value="{{ $invoice->merchant_id }}"
+                            placeholder="Enter merchant_id."
                             required
                         />
                         <input
-                            id="provider_id"
-                            name="provider_id"
+                            id="customer_id"
+                            name="customer_id"
                             type="hidden"
                             class="form-control"
-                            value="{{ $invoice->provider_id }}"
-                            placeholder="Enter provider_id."
+                            value="{{ $invoice->customer_id }}"
+                            placeholder="Enter customer_id."
                             required
                         />
                         <input

@@ -53,11 +53,11 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <strong>Provider:</strong><br />
-                            {{ $transaction->provider->name }}
+                            {{ $transaction->customer->name }}
                         </li>
                         <li class="list-group-item">
                             <strong>Receiver:</strong><br />
-                            {{ $transaction->receiver->name }}
+                            {{ $transaction->merchant->name }}
                         </li>
                         <li class="list-group-item">
                             <strong>Payment Method:</strong><br />

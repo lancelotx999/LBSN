@@ -72,7 +72,7 @@
                         <div class="col-sm-12">
                             <h4>
                                 Transaction: 
-                                {{ App\Contract::find($transaction->invoice->contract_id)[0]->name }}
+                                {{ App\Contract::find($transaction->invoice->contract_id)->first()->name }}
                             </h4>
                             <p>
                                 <strong>Status:</strong>
@@ -86,7 +86,7 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <strong>Receiver:</strong> 
-                                    {{ $transaction->receiver->name }}
+                                    {{ $transaction->merchant->name }}
                                 </li>
                                 <li>
                                     <strong>Payment Method:</strong> 
@@ -103,13 +103,6 @@
                             href="{{ route('transaction.show', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">
                                     <i class="fas fa-list fa-fw"></i> View
-                                </button>
-                            </a>
-                            @if ($transaction->provider_id == Auth::id())
-                            <a class="nounderline" 
-                            href="{{ route('transaction.edit', $transaction->_id) }}">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-edit fa-fw"></i> Edit
                                 </button>
                             </a>
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
@@ -134,7 +127,7 @@
                         <div class="col-sm-12">
                             <h4>
                                 Transaction: 
-                                {{ App\Contract::find($transaction->invoice->contract_id)[0]->name }}
+                                {{ App\Contract::find($transaction->invoice->contract_id)->first()->name }}
                             </h4>
                             <p>
                                 <strong>Status:</strong>
@@ -148,7 +141,7 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <strong>Provider:</strong> 
-                                    {{ $transaction->provider->name }}
+                                    {{ $transaction->customer->name }}
                                 </li>
                                 <li>
                                     <strong>Payment Method:</strong> 
@@ -167,7 +160,7 @@
                                     <i class="fas fa-list fa-fw"></i> View
                                 </button>
                             </a>
-                            @if ($transaction->receiver_id == Auth::id())
+                            @if ($transaction->merchant_id == Auth::id())
                             <a class="nounderline" 
                             href="{{ route('transaction.edit', $transaction->_id) }}">
                                 <button class="btn btn-sm btn-success">

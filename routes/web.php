@@ -11,20 +11,7 @@
 |
 */
 
-Route::group(['prefix' => '/'], function()
-{
-    if ( Auth::check() ) // use Auth::check instead of Auth::user
-    {
-        Route::get('/', 'UserController@home');
-    } else{
-        Route::view('/', 'welcome');
-    }
-
-});
-
-Route::view('/map', 'map');
-
-Route::view('/welcome', 'welcome');
+Route::get('/', 'UserController@home')->name('home');
 
 Auth::routes();
 

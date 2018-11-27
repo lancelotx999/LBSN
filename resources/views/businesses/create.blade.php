@@ -88,7 +88,6 @@
                                 type="text"
                                 class="form-control"
                                 placeholder="Enter image name."
-                                required
                             />
                         </div>
                         <div class="form-group">
@@ -97,7 +96,7 @@
                             </label>
                             <textarea 
                             id="imageDescription" name="imageDescription"
-                            class="form-control" rows="3" required
+                            class="form-control" rows="3"
                             placeholder="Enter property description."
                             ></textarea>
                         </div>

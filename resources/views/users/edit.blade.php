@@ -125,7 +125,7 @@
 
                             <div class="col-md-6">
 							    <input type="file" id="profileImage" name="profileImage" 
-                                accept="image/png, image/jpeg" required>
+                                accept="image/png, image/jpeg">
                             </div>
 					    </div>
 

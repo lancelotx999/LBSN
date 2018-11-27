@@ -151,12 +151,24 @@
 
                             @if ($contract->customer_accepted)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
-                                    <i class="fas fa-edit fa-fw"></i> Accept
+                                    <i class="fas fa-check fa-fw"></i> Accept
                                 </button>
                             @else
                             <a href="{{ ContractController::acceptContract($contract->id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-edit fa-fw"></i> Accept
+                                    <i class="fas fa-check fa-fw"></i> Accept
+                                </button>
+                            </a>
+                            @endif
+
+                            @if ($contract->fulfilled)
+                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
+                                    <i class="fas fa-check fa-fw"></i> Fulfill
+                                </button>
+                            @else
+                            <a href="{{ ContractController::fulfillContract($contract->id) }}">
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fas fa-check fa-fw"></i> Fulfill
                                 </button>
                             </a>
                             @endif
@@ -181,9 +193,9 @@
                     @foreach ($received_contracts as $contract)
                         <div class="row">
                         <div class="col-sm-12">
-                            <h4>Name : {{ $contract->name }}</h4>
-                            <h4>Sent to : {{ $contract->customer_name }}</h4>
-                            <p>Description : {{ $contract->description }}</p>
+                            <h4>Name: {{ $contract->name }}</h4>
+                            <h4>From: {{ $contract->customer_name }}</h4>
+                            <p>Description: {{ $contract->description }}</p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
@@ -248,10 +260,17 @@
                                 </button>
                             </a>
                             @if ($contract->merchant_id == Auth::id())
-                            @if ($contract->accepted)
+                            @if ($contract->merchant_accepted)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
                                     <i class="fas fa-edit fa-fw"></i> Negotiate
                                 </button>
+                                <a class="nounderline" 
+                                href="/invoice/create/{{ $contract->_id }}">
+                                    <button class="btn btn-sm btn-primary" type="button">
+                                        <i class="fas fa-file-signature fa-fw"></i>
+                                        Create a new invoice
+                                    </button>
+                                </a>
                             @else
                             <a class="nounderline" 
                             href="{{ route('contract.edit', $contract->_id) }}">
@@ -260,18 +279,6 @@
                                 </button>
                             </a>
                             @endif
-                            @if ($contract->merchant_accepted)
-                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
-                                    <i class="fas fa-edit fa-fw"></i> Accept
-                                </button>
-                            @else
-                             <a href="{{ ContractController::acceptContract($contract->id) }}">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-edit fa-fw"></i> Accept
-                                </button>
-                            </a>
-                            @endif
-
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
                             data-target="#deleteModal{{ $contract->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete

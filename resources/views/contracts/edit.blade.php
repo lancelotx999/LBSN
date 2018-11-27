@@ -53,6 +53,41 @@
 
                         <h4>{{ $contract->name }}</h4>
                         <div class="form-group">
+                            <label>
+                                Accept Contract:
+                            </label>
+                            <div class="form-check">
+                                <input 
+                                    id="forrent" name="type" type="radio"
+                                    class="form-check-input" value="false" 
+                                    checked 
+                                />
+                                <label class="form-check-label" for="forrent">
+                                    No
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                    id="forsale" name="type" type="radio"
+                                    class="form-check-input" value="true" 
+                                />
+                                <label class="form-check-label" for="forsale">
+                                    Yes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                        <button class="btn btn-link" type="button" 
+                        data-toggle="collapse" data-target="#collapseOne" 
+                        aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fas fa-chevron-circle-down fa-fw"></i> 
+                            Click here to write a review
+                        </button>
+                        <div 
+                            id="collapseOne" class="collapse" 
+                            aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="form-group">
+                            <hr />
                             <label for="name">
                                 Contract Title:
                             </label>
@@ -141,6 +176,8 @@
                             value="{{ $contract->item_id }}"
                             placeholder="Enter item ID."
                         />
+                    </div>
+                </div>
                         <button type="submit" class="btn btn-primary">
                             Edit Contract
                         </button>

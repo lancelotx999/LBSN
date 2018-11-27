@@ -109,7 +109,6 @@
                             data-target="#deleteModal{{ $transaction->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete
                             </button>
-                            @endif
                         </div>
                     </div>
                     <hr />

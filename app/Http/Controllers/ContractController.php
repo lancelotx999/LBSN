@@ -197,13 +197,7 @@ class ContractController extends Controller
 		$contract = Contract::findOrFail($id);
 
 		$contract->name = $request->name;
-		// $contract->customer_id = $request->customer_id;
-		// $contract->merchant_id = $request->merchant_id;
-
-		// $contract->item_id = $request->item_id;
 		$contract->invoice_id = $request->invoice_id;
-
-		// $contract->type = $request->type;
 		$contract->description = $request->description;
 		$contract->price = $request->price;
 		$contract->accepted = $request->accepted == 'true' ? true : false;
@@ -212,15 +206,11 @@ class ContractController extends Controller
 		if (Auth::user()->id == $contract->merchant_id)
 		{
 			if ($contract->accepted) $contract->merchant_accepted = true;
-
 		}
 		else if (Auth::user()->id == $contract->customer_id)
 		{
 			if ($contract->accepted) $contract->customer_accepted = true;
 		}
-
-		$contract->paid_fully = $request->paid_fully;
-		// $contract->fulfilled = $request->fulfilled;
 
 		$contract->save();  
 
@@ -239,11 +229,6 @@ class ContractController extends Controller
 		{
 			$contract->customer_accepted = true;
 			$contract->save(); 
-		}
-
-		if (($contract->customer_accepted = true) && ($contract->merchant_accepted = true))
-		{
-			
 		}
 	}
 

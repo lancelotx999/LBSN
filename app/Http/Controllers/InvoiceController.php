@@ -30,10 +30,10 @@ class InvoiceController extends Controller
 		else
 		{
 			//user provides item and gets paid
-			$provided_invoices = Invoice::where('receiver_id','=', Auth::user()->id)->get();
+			$provided_invoices = Invoice::where('merchant_id','=', Auth::user()->id)->get();
 
             //user receives item and pays
-			$received_invoices = Invoice::where('provider_id','=', Auth::user()->id)->get();
+			$received_invoices = Invoice::where('customer_id','=', Auth::user()->id)->get();
 
 			// dd($received_invoices);
 			return view('invoices.index', compact('provided_invoices','received_invoices'));
@@ -50,8 +50,8 @@ class InvoiceController extends Controller
     // Gets all the receipts associated with specified user
 	public function showUserInvoices($user_id)
 	{
-		$provided_invoices = Invoice::where('receiver_id','=', $user_id)->get();
-		$received_invoices = Invoice::where('provider_id','=', $user_id)->get();
+		$provided_invoices = Invoice::where('merchant_id','=', $user_id)->get();
+		$received_invoices = Invoice::where('customer_id','=', $user_id)->get();
 
 		return view('invoices.index', compact('provided_invoices','received_invoices'));
 	}
@@ -72,8 +72,8 @@ class InvoiceController extends Controller
 			$contract = Contract::where('_id','=',$cid)->get()->first();
 			$total = $total + $contract->price;
 			// dd($contract);
-			array_push($pid,$contract->provider_id);
-			array_push($rid,$contract->receiver_id);
+			array_push($pid,$contract->customer_id);
+			array_push($rid,$contract->merchant_id);
 			unset($cid);
 		}
 
@@ -81,8 +81,8 @@ class InvoiceController extends Controller
 		$grandTotal = $total + $taxed;
 
 		$invoice = new Invoice;
-		$invoice->provider_id = $pid[0];
-		$invoice->receiver_id = $rid[0];
+		$invoice->customer_id = $pid[0];
+		$invoice->merchant_id = $rid[0];
 		$invoice->contract_id = $cids;
 		$invoice->total_price = $total;
 		$invoice->tax = $taxed;
@@ -108,73 +108,25 @@ class InvoiceController extends Controller
 			[
 				'contract_id' => 'required',
 				'tax' => 'required',
-				'total_price' => 'required',
 			]);
 
-        // create a new Receipt based on input
+		$contract_id = $request->contract_id;
+		$tax = $request->tax;
 
-		$allInvoices = Invoice::all();
-		$cids = $request->contract_id;
-		$counter = 0;
+		$grandTotal = $total + $taxed;
 
-		// Checking for existing invoices which hold the same contracts
-		foreach ($allInvoices as $invoices)
-		{
-			foreach ($cids as $cid)
-			{
-				if (in_array($cid, $invoices->contract_id))
-				{
-					$counter++;
-					unset($cid);
-				}
-			}
-		}
+		$invoice = new Invoice;
+		$invoice->customer_id = $contract_id->customer_id;
+		$invoice->merchant_id = $contract_id->merchant_id;
+		$invoice->contract_id = $contract_id;
+		$invoice->total_price = $contract_id->price;
+		$invoice->grand_total = $contract_id->price * $tax;
 
-		// Ensuring all provider and receiver ids are consistent in contracts
-		$pid = array(); $rid = array();
-		$total = 0;
-		foreach ($cids as $cid)
-		{
-			$contract = Contract::where('_id','=',$cid)->get()->first();
-			$total = $total + $contract->price;
-			// dd($contract);
-			array_push($pid,$contract->provider_id);
-			array_push($rid,$contract->receiver_id);
-			unset($cid);
-		}
+		$invoice->outstanding_payment = $contract_id->price * $tax;
+		$invoice->paid = false;
 
-		// if ((count(array_unique($pid))) && (count(array_unique($rid))))
-		// {
-        //
-		// }
-		// else
-		// {
-		// 	$counter++;
-		// }
-		// if ($counter == 0)
-		if((count(array_unique($pid)) && count(array_unique($rid)))==1)
-		{
-			$taxed = $total * 0.25;
-			$grandTotal = $total + $taxed;
+		$invoice->save();
 
-			$invoice = new Invoice;
-			$invoice->provider_id = $pid[0];
-			$invoice->receiver_id = $rid[0];
-			$invoice->contract_id = $cids;
-			$invoice->total_price = $total;
-			$invoice->tax = $taxed;
-			$invoice->grand_total = $grandTotal;
-			$invoice->outstanding_payment = $grandTotal;
-			$invoice->paid = false;
-
-			$invoice->save();
-		}
-		else
-		{
-			dd("ERROR");
-		}
-
-		// dd($invoice);
 		return redirect()->route('invoice.index');
 	}
 
@@ -197,35 +149,7 @@ class InvoiceController extends Controller
 	{
 		$invoice = Invoice::findOrFail($id);
 
-		$invoice->provider_id = $request->provider_id;
-		$invoice->receiver_id = $request->receiver_id;
-		$invoice->contract_id = $request->contract_id;
-
-		$request->paid = $request->paid == 'true' ? true : false;
-
-		$cids = $request->contract_id;
-
-		$pid = array(); $rid = array();
-		$total = 0;
-
-		foreach ($cids as $cid)
-		{
-			$contract = Contract::where('_id','=',$cid)->get()->first();
-			$total = $total + $contract->price;
-			// dd($contract);
-			array_push($pid,$contract->provider_id);
-			array_push($rid,$contract->receiver_id);
-			unset($cid);
-		}
-
-		$taxed = $total * 0.25;
-		$grandTotal = $total + $taxed;
-
-		$invoice->total_price = $total;
-		$invoice->tax = $taxed;
-		$invoice->grand_total = $grandTotal;
-		$invoice->outstanding_payment = $grandTotal;
-
+		$invoice->outstanding_payment = $request->outstanding_payment;
 		$invoice->paid = $request->paid;
 
 		$invoice->save();

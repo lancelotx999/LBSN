@@ -107,7 +107,6 @@
                             <i class="fas fa-map-marker-alt fa-fw"></i> 
                             Click here to show on map
                         </button>
-                        <br />
                         <div 
                             id="collapseOne" class="collapse" 
                             aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -116,7 +115,7 @@
                                 @method('POST')
 
                                 <div class="form-group">
-                                    <textarea class="form-control" id="content" name="content" rows="5" placeholder="Please leave a review."></textarea>
+                                    <br /><textarea class="form-control" id="content" name="content" rows="5" placeholder="Please leave a review."></textarea>
                                 </div>
 
                                 <input
@@ -144,12 +143,15 @@
                     <hr />
                     @foreach ($property->reviews as $review)
                         <div class="row">
-                            <div class="col-sm-3">
-                                <img src="https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552" style="width: 100%" />
+                            <div class="col-sm-3 col-md-2 my-auto text-center">
+                                <img src="{{ $review->user->profileImage }}" alt="Profile image" 
+                                class="img-fluid rounded" style="max-height: 128px" />
                             </div>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9 col-md-10">
                                 <div class="row">
-                                    <h5><a href="/users/{{ $review->reviewer_id }}">{{ $review->user->name }}</a></h5>
+                                    <h5><a href="/users/{{ $review->reviewer_id }}">
+                                        {{ $review->user->name }}
+                                    </a></h5>
                                 </div>
                                 <div class="row">
                                     <p>{{ $review->content }}</p>

@@ -146,6 +146,19 @@
                                     <strong>Contact Number:</strong> 
                                     {{ $business->contact_number }}
                                 </li>
+                                <li>
+                                    <strong>Review(s):</strong> 
+                                    {{ count($business->reviews) }}
+                                </li>
+                                <li>
+                                    <select id="ratingModule{{ $business->id }}">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </li>
                             </ul>
                             <a class="nounderline" 
                             href="{{ route('business.show', $business->_id) }}">
@@ -232,5 +245,30 @@
         x--; //Decrement field counter
     });
 });
+</script>
+
+<script type="text/javascript">
+
+    var read = "{{ $businesses }}";
+    var json = read.replace(/&quot;/g, '"');
+    var businesses = JSON.parse(json);
+
+    console.log("---------- businesses ----------");
+    console.log(businesses);
+    console.log("---------- businesses ----------");
+
+    businesses.forEach(function(d){
+        console.log("---------- d ----------");
+        console.log(d);
+        console.log("---------- d ----------");
+        console.log('#ratingModule'+d._id);
+        $(function() {
+            $('#ratingModule'+d._id).barrating({
+                theme: 'css-stars',
+                initialRating: d.rate,
+                readonly: true
+            });
+        });
+    })
 </script>
 @endsection

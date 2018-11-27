@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div id="map" style="width: 100%;"></div>
+                            <div id="map" style="width: 100%; min-height: 400px"></div>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-group list-group-flush">

@@ -76,6 +76,7 @@
                                 Create a new contract
                             </button>
                         </a>
+                        <span class="d-none d-sm-block d-md-none"><br /></span>
                         @endif
                         <a class="nounderline" 
                         href="{{ url()->previous() }}">

@@ -32,7 +32,7 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div id="map" style="width: 100%;"></div><br />
+                                <div id="map" style="width: 100%; min-height: 400px"></div><br />
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">

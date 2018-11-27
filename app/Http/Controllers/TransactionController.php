@@ -188,7 +188,7 @@ class TransactionController extends Controller
 
         $invoice = Invoice::findOrFail($transaction->invoice_id);
 
-        if ($request->amount_paid > $invoice->outstanding_payment) {
+        if ($transaction->amount_paid > $invoice->outstanding_payment) {
 
             dd("Error: Too Much Paid!");
             //too much paid. return to enter valid amount
@@ -199,7 +199,7 @@ class TransactionController extends Controller
 
         if ($transaction->merchant_acknowledgement == true)
         {
-            $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
+            $invoice->outstanding_payment = $invoice->outstanding_payment - $transaction->amount_paid;
 
             if ($invoice->outstanding_payment == 0 )
             {

@@ -1,4 +1,3 @@
-<?php use \App\Http\Controllers\ContractController; ?>
 @extends('layouts.app')
 
 @section('content')
@@ -148,31 +147,6 @@
                                 </button>
                             </a>
                             @endif
-
-                            @if ($contract->customer_accepted)
-                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
-                                    <i class="fas fa-check fa-fw"></i> Accept
-                                </button>
-                            @else
-                            <a href="{{ ContractController::acceptContract($contract->id) }}">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-check fa-fw"></i> Accept
-                                </button>
-                            </a>
-                            @endif
-
-                            @if ($contract->fulfilled)
-                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
-                                    <i class="fas fa-check fa-fw"></i> Fulfill
-                                </button>
-                            @else
-                            <a href="{{ ContractController::fulfillContract($contract->id) }}">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-check fa-fw"></i> Fulfill
-                                </button>
-                            </a>
-                            @endif
-
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
                             data-target="#deleteModal{{ $contract->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete

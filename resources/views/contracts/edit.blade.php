@@ -51,14 +51,17 @@
                     	@csrf
                     	@method('PATCH')
 
-                        <h4>{{ $contract->name }}</h4>
+                        <h4>{{ $contract->name }}</h4>                    
+                        @if ($contract->customer_accepted 
+                            && $contract->merchant_accepted
+                            && Auth::id() == $contract->customer_id)
                         <div class="form-group">
                             <label>
-                                Accept Contract:
+                                Contract Fulfilled:
                             </label>
                             <div class="form-check">
                                 <input 
-                                    id="forrent" name="type" type="radio"
+                                    id="forrent" name="fulfilled" type="radio"
                                     class="form-check-input" value="false" 
                                     checked 
                                 />
@@ -68,7 +71,7 @@
                             </div>
                             <div class="form-check">
                                 <input 
-                                    id="forsale" name="type" type="radio"
+                                    id="forsale" name="fulfilled" type="radio"
                                     class="form-check-input" value="true" 
                                 />
                                 <label class="form-check-label" for="forsale">
@@ -76,12 +79,41 @@
                                 </label>
                             </div>
                         </div>
+                        @else
+                        <div class="form-group">
+                            <label>
+                                Accept Contract:
+                            </label>
+                            <div class="form-check">
+                                <input 
+                                    id="forrent" name="accepted" type="radio"
+                                    class="form-check-input" value="false" 
+                                    checked 
+                                />
+                                <label class="form-check-label" for="forrent">
+                                    No
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input 
+                                    id="forsale" name="accepted" type="radio"
+                                    class="form-check-input" value="true" 
+                                />
+                                <label class="form-check-label" for="forsale">
+                                    Yes
+                                </label>
+                            </div>
+                        </div>
+                        @endif
                         <div class="accordion" id="accordionExample">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
                         <button class="btn btn-link" type="button" 
                         data-toggle="collapse" data-target="#collapseOne" 
                         aria-expanded="true" aria-controls="collapseOne">
                             <i class="fas fa-chevron-circle-down fa-fw"></i> 
-                            Click here to write a review
+                            Click to edit contract content
                         </button>
                         <div 
                             id="collapseOne" class="collapse" 
@@ -176,11 +208,8 @@
                             value="{{ $contract->item_id }}"
                             placeholder="Enter item ID."
                         />
-                    </div>
-                </div>
-                        <button type="submit" class="btn btn-primary">
-                            Edit Contract
-                        </button>
+                        </div>
+                        </div>
                     </form>
                     <hr />
                 </div>

@@ -206,17 +206,17 @@ class ContractController extends Controller
 		// $contract->type = $request->type;
 		$contract->description = $request->description;
 		$contract->price = $request->price;
+		$contract->accepted = $request->accepted == 'true' ? true : false;
+		$contract->fulfilled = $request->fulfilled == 'true' ? true : false;
 
 		if (Auth::user()->id == $contract->merchant_id)
 		{
-			$contract->merchant_accepted = true;
-			$contract->customer_accepted = false;
+			if ($contract->accepted) $contract->merchant_accepted = true;
 
 		}
 		else if (Auth::user()->id == $contract->customer_id)
 		{
-			$contract->customer_accepted = true;
-			$contract->merchant_accepted = false;
+			if ($contract->accepted) $contract->customer_accepted = true;
 		}
 
 		$contract->paid_fully = $request->paid_fully;

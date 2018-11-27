@@ -44,23 +44,6 @@
                                 />
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="total_price">
-                                Total Price:
-                            </label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
-                                    <span class="input-group-text">RM</span>
-                                </div>
-                                <input 
-                                    id="total_price" name="total_price" type="number" 
-                                    class="form-control" 
-                                    placeholder="Enter total price value."
-                                    step="0.01" min="0" required
-                                />
-                            </div>
-                        </div>
                         <input type="hidden" name="contract_id[]" id="contract_id"
                         class="form-control" value="{{ $contract->_id }}" required />
                         <button type="submit" class="btn btn-primary">

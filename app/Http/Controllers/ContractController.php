@@ -10,6 +10,7 @@ use App\Receipt;
 use App\Invoice;
 use App\Property;
 use App\Business;
+use APp\User;
 
 class ContractController extends Controller
 {
@@ -154,6 +155,13 @@ class ContractController extends Controller
 		$contract->customer_id = $request->customer_id;
 		$contract->merchant_id = $request->merchant_id;
 
+
+		$merchant_name = User::find($request->merchant_id)->name;
+		$customer_name = User::find($request->customer_id)->name;
+
+		$contract->customer_name = $customer_name;
+		$contract->merchant_name = $merchant_name;
+
 		$contract->item_id = $request->item_id;
 		$contract->invoice_id = null;
 
@@ -219,26 +227,37 @@ class ContractController extends Controller
 		return redirect()->route('contract.index');
 	}
 
-	public function acceptContract($id)
+	public static function acceptContract($id)
 	{
 		$contract = Contract::findOrFail($id);
 		if (Auth::user()->id == $contract->merchant_id)
 		{
 			$contract->merchant_accepted = true;
+			$contract->save(); 
 		}
 		else if (Auth::user()->id == $contract->customer_id)
 		{
 			$contract->customer_accepted = true;
-		}	
+			$contract->save(); 
+		}
+
+		if (($contract->customer_accepted = true) && ($contract->merchant_accepted = true))
+		{
+			
+		}
 	}
 
-	public function fulfillContract($id)
+	public static function fulfillContract($id)
 	{
 		$contract = Contract::findOrFail($id);
-		$contract->fulfilled = true;
+		if (Auth::user()->id == $contract->customer_id)
+		{
+			$contract->fulfilled = true;
+			$contract->save(); 
+		}
 	}
 
-	public function findInvoice($id)
+	public static function findInvoice($id)
 	{
 		$invoice = Invoice::where('contract_id','=', $id)->get();
 		return $invoice;

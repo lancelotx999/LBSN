@@ -1,3 +1,4 @@
+<?php use \App\Http\Controllers\ContractController; ?>
 @extends('layouts.app')
 
 @section('content')
@@ -70,70 +71,13 @@
                     @foreach ($sent_contracts as $contract)
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4>{{ $contract->name }}</h4>
-                            <p>{{ $contract->description }}</p>
+                            <h4>Name : {{ $contract->name }}</h4>
+                            <h4>Sent to : {{ $contract->merchant_name }}</h4>
+                            <p>Description : {{ $contract->description }}</p>
                             <hr />
                             <ul class="list-unstyled">
                                 <li>
-                                    <strong>Fulfilled:</strong> 
-                                    @if ($contract->fulfilled)
-                                        <span class="text-success">
-                                            <i class="fas fa-check-circle fa-fw"></i>
-                                        </span> Yes
-                                    @else
-                                        <span class="text-danger">
-                                            <i class="fas fa-times-circle fa-fw"></i>
-                                        </span> No
-                                    @endif
-                                </li>
-                                <li>
-                                    <strong>Price:</strong> 
-                                    RM {{ $contract->price }}
-                                </li>
-                            </ul>
-                            <a href="{{ route('contract.show', $contract->_id) }}">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-list fa-fw"></i> View
-                                </button>
-                            </a>
-                            @if ($contract->customer_id == Auth::id())
-                            @if ($contract->fulfilled)
-                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
-                                    <i class="fas fa-edit fa-fw"></i> Edit
-                                </button>
-                            @else
-                            <a href="{{ route('contract.edit', $contract->_id) }}">
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-edit fa-fw"></i> Edit
-                                </button>
-                            </a>
-                            @endif
-                            <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
-                            data-target="#deleteModal{{ $contract->_id }}">
-                            <i class="fas fa-times fa-fw"></i> Delete
-                            </button>
-                            @endif
-                        </div>
-                    </div>
-                    <hr />
-                    @endforeach
-                    </div>
-                    <div class="tab-pane fade" id="received" 
-                    role="tabpanel" aria-labelledby="profile-tab"><br />
-                    @if ($received_contracts->isEmpty())
-                        <h3 class="display-4">Empty!</h3>
-                        <p class="lead">No contracts have been received yet.</p>
-                        <hr />
-                    @endif
-                    @foreach ($received_contracts as $contract)
-                        <div class="row">
-                        <div class="col-sm-12">
-                            <h4>{{ $contract->name }}</h4>
-                            <p>{{ $contract->description }}</p>
-                            <hr />
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong>Customer Accepted:</strong> 
+                                    <strong>You Accepted:</strong> 
                                     @if ($contract->customer_accepted)
                                         <span class="text-success">
                                             <i class="fas fa-check-circle fa-fw"></i>
@@ -157,6 +101,126 @@
                                     @endif
                                 </li>
                                 <li>
+                                    <strong>Fulfilled:</strong> 
+                                    @if ($contract->fulfilled)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
+                                    <strong>Paid in full:</strong> 
+                                    @if ($contract->paid_fully)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
+                                    <strong>Price:</strong> 
+                                    RM {{ $contract->price }}
+                                </li>
+                            </ul>
+                            <a href="{{ route('contract.show', $contract->_id) }}">
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fas fa-list fa-fw"></i> View
+                                </button>
+                            </a>
+                            @if ($contract->customer_id == Auth::id())
+                            @if ($contract->fulfilled)
+                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
+                                    <i class="fas fa-edit fa-fw"></i> Negotiate
+                                </button>
+                            @else
+                            <a href="{{ route('contract.edit', $contract->_id) }}">
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fas fa-edit fa-fw"></i> Negotiate
+                                </button>
+                            </a>
+                            @endif
+
+                            @if ($contract->customer_accepted)
+                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
+                                    <i class="fas fa-edit fa-fw"></i> Accept
+                                </button>
+                            @else
+                            <a href="{{ ContractController::acceptContract($contract->id) }}">
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fas fa-edit fa-fw"></i> Accept
+                                </button>
+                            </a>
+                            @endif
+
+                            <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
+                            data-target="#deleteModal{{ $contract->_id }}">
+                            <i class="fas fa-times fa-fw"></i> Delete
+                            </button>
+                            @endif
+                        </div>
+                    </div>
+                    <hr />
+                    @endforeach
+                    </div>
+                    <div class="tab-pane fade" id="received" 
+                    role="tabpanel" aria-labelledby="profile-tab"><br />
+                    @if ($received_contracts->isEmpty())
+                        <h3 class="display-4">Empty!</h3>
+                        <p class="lead">No contracts have been received yet.</p>
+                        <hr />
+                    @endif
+                    @foreach ($received_contracts as $contract)
+                        <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Name : {{ $contract->name }}</h4>
+                            <h4>Sent to : {{ $contract->customer_name }}</h4>
+                            <p>Description : {{ $contract->description }}</p>
+                            <hr />
+                            <ul class="list-unstyled">
+                                <li>
+                                    <strong>You Accepted:</strong> 
+                                    @if ($contract->merchant_accepted)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
+                                    <strong>Customer Accepted:</strong> 
+                                    @if ($contract->customer_accepted)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
+                                    <strong>Fulfilled:</strong> 
+                                    @if ($contract->fulfilled)
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle fa-fw"></i>
+                                        </span> Yes
+                                    @else
+                                        <span class="text-danger">
+                                            <i class="fas fa-times-circle fa-fw"></i>
+                                        </span> No
+                                    @endif
+                                </li>
+                                <li>
                                     <strong>Price:</strong> 
                                     RM {{ $contract->price }}
                                 </li>
@@ -169,15 +233,27 @@
                             @if ($contract->merchant_id == Auth::id())
                             @if ($contract->accepted)
                                 <button class="btn btn-sm btn-success disabled" tabindex="-1">
-                                    <i class="fas fa-edit fa-fw"></i> Edit
+                                    <i class="fas fa-edit fa-fw"></i> Negotiate
                                 </button>
                             @else
                             <a href="{{ route('contract.edit', $contract->_id) }}">
                                 <button class="btn btn-sm btn-success">
-                                    <i class="fas fa-edit fa-fw"></i> Edit
+                                    <i class="fas fa-edit fa-fw"></i> Negotiate
                                 </button>
                             </a>
                             @endif
+                            @if ($contract->merchant_accepted)
+                                <button class="btn btn-sm btn-success disabled" tabindex="-1">
+                                    <i class="fas fa-edit fa-fw"></i> Accept
+                                </button>
+                            @else
+                             <a href="{{ ContractController::acceptContract($contract->id) }}">
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fas fa-edit fa-fw"></i> Accept
+                                </button>
+                            </a>
+                            @endif
+
                             <button type="button" class="btn btn-sm btn-light" data-toggle="modal" 
                             data-target="#deleteModal{{ $contract->_id }}">
                             <i class="fas fa-times fa-fw"></i> Delete

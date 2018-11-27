@@ -10,7 +10,7 @@ class Contract extends Moloquent
 
     protected $guarded = 
     [
-        'name', 'merchant_id', 'customer_id', 'item_id', 'invoice_id' , 'type', 'description', 'price', 'merchant_accepted', 'customer_accepted' , 'paid_fully', 'fulfilled' ,
+        'name', 'merchant_id', 'customer_id', 'merchant_name' ,'customer_name', 'item_id', 'invoice_id' , 'type', 'description', 'price', 'merchant_accepted', 'customer_accepted' , 'paid_fully', 'fulfilled' ,
     ];
 
     public function setPriceAttribute($value)

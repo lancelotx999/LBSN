@@ -65,6 +65,7 @@
                             RM {{ $contract->price }}
                         </li>
                     </ul>
+                    <br />
                     <a class="nounderline" 
                     href="{{ url()->previous() }}">
                         <button class="btn btn-outline-secondary" type="button">

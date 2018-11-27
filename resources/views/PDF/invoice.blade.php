@@ -153,7 +153,7 @@
             <div id='logo'>
                 <img src='logo.png'>
             </div>
-            <h1>INVOICE</h1>
+            <h1>RECEIPT</h1>
             <div class='company' >
                 <div>LSBN</div>
                 <div>420 Smoky Heights,<br /> CAL 85004, US</div>
@@ -162,9 +162,9 @@
             </div>
             <div id='project'>
                 <div><span>PROJECT</span> Website development</div>
-                <div><span>CLIENT</span> {{ $data->receiver->name }}</div>
+                <div><span>CLIENT</span> {{ $data->merchant->name }}</div>
                 <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
-                <div><span>EMAIL</span> <a href='mailto:{{ $data->receiver->email }}'>{{ $data->receiver->email }}</a></div>
+                <div><span>EMAIL</span> <a href='mailto:{{ $data->merchant->email }}'>{{ $data->merchant->email }}</a></div>
             </div>
         </header>
         <main>
@@ -190,10 +190,6 @@
                     <tr>
                         <td colspan='3'>SUBTOTAL</td>
                         <td class='total'>RM{{ $data->total_price }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan='3'>TAX 25%</td>
-                        <td id='total' class='total'>RM{{ $data->tax }}</td>
                     </tr>
                     <tr>
                         <td colspan='3' class='grand total'>GRAND TOTAL</td>

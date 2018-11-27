@@ -70,13 +70,13 @@ class TransactionController extends Controller
         $invoice->merchant = $merchant;
 
         $contracts = array();
-		foreach ($invoice->contract_id as $id)
-		{
+        foreach ($invoice->contract_id as $id)
+        {
 			// $contract = Contract::where('_id','=',$id)->get()->first();
             $contract = Contract::findOrFail($id);
 			// dd($contract);
             array_push($contracts,$contract);
-		}
+        }
 
         $invoice->contracts = $contracts;
 
@@ -104,6 +104,7 @@ class TransactionController extends Controller
 
                 'amount_paid' => 'required',
                 'payment_method' => 'required',
+
             ]);
 
         $invoice = Invoice::findOrFail($request->invoice_id);
@@ -116,45 +117,6 @@ class TransactionController extends Controller
             return redirect()->back();
         }
 
-        $customer = User::findOrFail($request->customer_id);
-        $merchant = User::findOrFail($request->merchant_id);
-
-        if (((Hash::check($request->merchant_acknowledgement, $merchant->password))&&(Hash::check($request->customer_acknowledgement, $customer->password))) == true) {
-            $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
-            $transaction->acknowledged = true;
-        }
-        elseif ($request->acknowledged == true) {
-            $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
-            $transaction->acknowledged = true;
-        }
-
-        // $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
-
-        if (($invoice->outstanding_payment == 0) && ($transaction->acknowledged == true)) {
-
-            // dd("Success: Outstanding Payment Clear!");
-            $transaction->customer_id = $request->customer_id;
-            $transaction->merchant_id = $request->merchant_id;
-            $transaction->invoice_id = $request->invoice_id;
-
-            $transaction->payment_method = $request->payment_method;
-            $transaction->amount_paid = $request->amount_paid;
-
-            $transaction->customer_acknowledgement = $request->customer_acknowledgement;
-            $transaction->merchant_acknowledgement = $request->merchant_acknowledgement;
-
-            $invoice->paid = true;
-
-            // dd($invoice);
-
-            $invoice->save();
-            $transaction->save();
-
-            //direct to receipt generation
-            return redirect()->route('transaction.index');
-        }
-
-
         $transaction->customer_id = $request->customer_id;
         $transaction->merchant_id = $request->merchant_id;
         $transaction->invoice_id = $request->invoice_id;
@@ -162,13 +124,7 @@ class TransactionController extends Controller
         $transaction->payment_method = $request->payment_method;
         $transaction->amount_paid = $request->amount_paid;
 
-        $transaction->customer_acknowledgement = $request->customer_acknowledgement;
-        $transaction->merchant_acknowledgement = $request->merchant_acknowledgement;
-
-
-        // dd($invoice);
-        // dd($transaction);
-        // dd($request);
+        $transaction->merchant_acknowledgement = false;
 
         $invoice->save();
         $transaction->save();
@@ -229,68 +185,29 @@ class TransactionController extends Controller
 
         $invoice = Invoice::findOrFail($transaction->invoice_id);
 
-        if ($request->amount_paid > $invoice->outstanding_payment) {
+        if ($transaction->amount_paid > $invoice->outstanding_payment) {
 
             dd("Error: Too Much Paid!");
             //too much paid. return to enter valid amount
             return redirect()->route('transaction.index');
         }
 
-        $customer = User::findOrFail($transaction->customer_id);
-        $merchant = User::findOrFail($transaction->merchant_id);
+        $transaction->merchant_acknowledgement = $request->merchant_acknowledgement == 'true' ? true : false;
 
-        if (((Hash::check($request->merchant_acknowledgement, $merchant->password))&&(Hash::check($request->customer_acknowledgement, $customer->password))) == true) {
+        if ($transaction->merchant_acknowledgement)
+        {
             $invoice->outstanding_payment = $invoice->outstanding_payment - $transaction->amount_paid;
-            $transaction->acknowledged = true;
+
+            if ($invoice->outstanding_payment == 0 )
+            {
+                $invoice->paid == true;
+            }
         }
-        elseif ($request->acknowledged == true) {
-            $invoice->outstanding_payment = $invoice->outstanding_payment - $transaction->amount_paid;
-            $transaction->acknowledged = true;
-        }
-
-        // $invoice->outstanding_payment = $invoice->outstanding_payment - $request->amount_paid;
-
-        if (($invoice->outstanding_payment == 0) && ($transaction->acknowledged == true)) {
-
-            // dd("Success: Outstanding Payment Clear!");
-
-            $transaction->customer_acknowledgement = $request->customer_acknowledgement;
-            $transaction->merchant_acknowledgement = $request->merchant_acknowledgement;
-
-            $invoice->paid = true;
-
-            // dd($invoice);
-
-            $invoice->save();
-            $transaction->save();
-
-            //direct to receipt generation
-            return redirect()->route('transaction.index');
-        }
-
-
-        $transaction->merchant_acknowledgement = $request->merchant_acknowledgement;
-        $transaction->customer_acknowledgement = $request->customer_acknowledgement;
-
-        // dd($invoice);
-        // dd($transaction);
-        // dd($request);
 
         $invoice->save();
         $transaction->save();
 
-        // $transaction = Transaction::findOrFail($id);
-        //
-        // $transaction->invoice_id = $request->invoice_id;
-        // $transaction->payment_method = $request->payment_method;
-        //
-        // dd($transaction);
-        // $transaction->save();
-        //
-        //
-        //
-        //
-        // return redirect()->route('transactions.edit', ['transaction' => $transaction ]);
+        return redirect()->route('transaction.index');
     }
 
     /**

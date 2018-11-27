@@ -93,7 +93,7 @@
                             </label>
                             <div class="form-check">
                                 <input 
-                                    id="forrent" name="acknowledged" type="radio"
+                                    id="forrent" name="merchant_acknowledgement" type="radio"
                                     class="form-check-input" value="false" 
                                     checked 
                                 />
@@ -103,7 +103,7 @@
                             </div>
                             <div class="form-check">
                                 <input 
-                                    id="forsale" name="acknowledged" type="radio"
+                                    id="forsale" name="merchant_acknowledgement" type="radio"
                                     class="form-check-input" value="true" 
                                 />
                                 <label class="form-check-label" for="forsale">

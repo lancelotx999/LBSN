@@ -16,12 +16,12 @@ class PDF_GeneratorController extends Controller
 		$contract = Contract::findOrFail($contract_id)->getAttributes();
 	}
 
-    public function generateReceipt($provider_id , $receiver_id , $price , $service)
+    public function generateReceipt($customer , $merchant_id , $price , $service)
     {
 
     }
 
-    public function generateHTML($provider_id , $receiver_id , $price , $service)
+    public function generateHTML($customer , $merchant_id , $price , $service)
     {
         $html =
         '
@@ -31,12 +31,12 @@ class PDF_GeneratorController extends Controller
         return $html;
     }
 
-	public function invoiceGenerator(){
-		$data = Invoice::findOrFail('5be449c2339b5708955603b3');
+	public function invoiceGenerator($id) {
+		$data = Invoice::findOrFail($id);
 
-		$data->provider = User::findOrFail($data->provider_id);
-		$data->receiver = User::findOrFail($data->receiver_id);
-		$data->contracts = Contract::where('receiver_id','=', $data->receiver_id)->where('provider_id','=', $data->provider_id)->get();
+		$data->provider = User::findOrFail($data->customer_id);
+		$data->merchant = User::findOrFail($data->merchant_id);
+		$data->contracts = Contract::where('merchant_id','=', $data->merchant_id)->where('customer','=', $data->customer)->get();
 
 		// dd($data);
 		$pdf = PDF::loadView('PDF.invoice',  compact('data'));
@@ -48,10 +48,10 @@ class PDF_GeneratorController extends Controller
 	public function receiptGenerator(){
 		$data = Receipt::findOrFail('5be44aa1339b5708955603b4');
 
-		$data->provider = User::findOrFail($data->provider_id);
-		$data->receiver = User::findOrFail($data->receiver_id);
+		$data->provider = User::findOrFail($data->customer);
+		$data->merchant = User::findOrFail($data->merchant_id);
 		$data->invoice = Invoice::findOrFail($data->invoice_id);
-		$data->contracts = Contract::where('receiver_id','=', $data->receiver_id)->where('provider_id','=', $data->provider_id)->get();
+		$data->contracts = Contract::where('merchant_id','=', $data->merchant_id)->where('customer','=', $data->customer)->get();
 
 		// dd($data);
 		$pdf = PDF::loadView('PDF.receipt',  compact('data'));

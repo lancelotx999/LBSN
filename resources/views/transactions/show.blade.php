@@ -86,6 +86,13 @@
                             Previous page
                         </button>
                     </a>
+                    <a class="nounderline" 
+                    href="/transaction/receipt/{{ $transaction->invoice->_id }}">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-print fa-fw"></i>
+                            Print receipt
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

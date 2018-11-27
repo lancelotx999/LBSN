@@ -76,7 +76,7 @@
                             </h4>
                             <p>
                                 <strong>Status:</strong>
-                                @if ($transaction->acknowledged)
+                                @if ($transaction->merchant_acknowledgement)
                                     Verified
                                 @else
                                     Unverified
@@ -130,7 +130,7 @@
                             </h4>
                             <p>
                                 <strong>Status:</strong>
-                                @if ($transaction->acknowledged)
+                                @if ($transaction->merchant_acknowledgement)
                                     Verified
                                 @else
                                     Unverified

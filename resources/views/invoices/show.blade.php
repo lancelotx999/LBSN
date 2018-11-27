@@ -59,10 +59,6 @@
                             RM {{ $invoice->total_price }}
                         </li>
                         <li class="list-group-item">
-                            <strong>Tax Price:</strong><br />
-                            RM {{ $invoice->tax }}
-                        </li>
-                        <li class="list-group-item">
                             <strong>Grand Total:</strong><br />
                             RM {{ $invoice->grand_total }}
                         </li>

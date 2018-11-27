@@ -44,6 +44,8 @@ Route::get('/contract/create/{id}',
         'uses' => 'ContractController@create'
     ]);
 
+Route::get('/transaction/receipt/{id}', 'PDF_GeneratorController@invoiceGenerator');
+
 // Search Routes
 Route::post('/property/search', 'SearchController@searchProperties')->name('property.search');
 Route::post('/business/search', 'SearchController@searchBusinesses')->name('business.search');

@@ -162,6 +162,74 @@ class SearchController extends Controller
 		return view('properties.index', compact('properties'));
 	}
 
+	public function searchContracts(Request $request)
+	{
+		$filters = array();
+
+		$name = $request->name;
+		$invoice = $request->invoice;
+		$price_min = floatval($request->price_min);
+		$price_max = floatval($request->price_max);
+		
+		$filters['type'] = $request->type;
+		$filters['merchant_accepted'] = $request->merchant_accepted;
+		$filters['customer_accepted'] = $request->customer_accepted;
+		$filters['paid_fully'] = $request->paid_fully;
+		$filters['fulfilled'] = $request->fulfilled;
+
+		$query = Contract::query();
+
+		if (isset($name))
+		{
+			$query->where('name', 'like', '%'.$name.'%');
+		}
+
+		if (isset($invoice))
+		{
+			if ($invoice == false)
+			{
+				$query->whereNull('invoice_id');
+			}			
+		}
+
+		if (	(isset($price_min))		&&		(isset($price_max))		)
+		{
+
+			$swag = $query->whereBetween('price', [$price_min, $price_max]);
+		}
+		else if (isset($price_min))
+		{
+
+			$query->where('price', '>=', $price_min);
+		}
+		else if (isset($price_max))
+		{
+
+			$query->where('price', '<=', $price_max);
+		}
+
+
+		foreach ($filters as $filter => $value)
+		{
+			if (isset($value) && (empty($value) == FALSE))
+			{   
+				if (is_array($value))
+				{
+					$query->whereIn($filter, $value);
+				}
+				else
+				{
+					$query->where($filter,$value);
+
+				}
+			}           
+		}
+
+		$contracts = $query->get();
+
+		return view('contracts.index', compact('contracts'));
+	}
+
 
 	public function test()
 	{

@@ -10,6 +10,7 @@ use App\Receipt;
 use App\Invoice;
 use App\Property;
 use App\Business;
+use APp\User;
 
 class ContractController extends Controller
 {
@@ -154,6 +155,13 @@ class ContractController extends Controller
 		$contract->customer_id = $request->customer_id;
 		$contract->merchant_id = $request->merchant_id;
 
+
+		$merchant_name = User::find($request->merchant_id)->name;
+		$customer_name = User::find($request->customer_id)->name;
+
+		$contract->customer_name = $customer_name;
+		$contract->merchant_name = $merchant_name;
+
 		$contract->item_id = $request->item_id;
 		$contract->invoice_id = null;
 
@@ -189,36 +197,70 @@ class ContractController extends Controller
 		$contract = Contract::findOrFail($id);
 
 		$contract->name = $request->name;
-		$contract->customer_id = $request->customer_id;
-		$contract->merchant_id = $request->merchant_id;
+		// $contract->customer_id = $request->customer_id;
+		// $contract->merchant_id = $request->merchant_id;
 
-		$contract->item_id = $request->item_id;
+		// $contract->item_id = $request->item_id;
 		$contract->invoice_id = $request->invoice_id;
 
-		$contract->type = $request->type;
+		// $contract->type = $request->type;
 		$contract->description = $request->description;
 		$contract->price = $request->price;
 
-		$contract->merchant_accepted = $request->merchant_accepted;
-		$contract->customer_accepted = $request->customer_accepted;
+		if (Auth::user()->id == $contract->merchant_id)
+		{
+			$contract->merchant_accepted = true;
+			$contract->customer_accepted = false;
+
+		}
+		else if (Auth::user()->id == $contract->customer_id)
+		{
+			$contract->customer_accepted = true;
+			$contract->merchant_accepted = false;
+		}
+
 		$contract->paid_fully = $request->paid_fully;
-		$contract->fulfilled = $request->fulfilled;
+		// $contract->fulfilled = $request->fulfilled;
 
 		$contract->save();  
 
 		return redirect()->route('contract.index');
 	}
 
-	public function acceptContract($id)
+	public static function acceptContract($id)
 	{
 		$contract = Contract::findOrFail($id);
-		$contract->accepted = true;
+		if (Auth::user()->id == $contract->merchant_id)
+		{
+			$contract->merchant_accepted = true;
+			$contract->save(); 
+		}
+		else if (Auth::user()->id == $contract->customer_id)
+		{
+			$contract->customer_accepted = true;
+			$contract->save(); 
+		}
+
+		if (($contract->customer_accepted = true) && ($contract->merchant_accepted = true))
+		{
+			
+		}
 	}
 
-	public function fulfilledContract($id)
+	public static function fulfillContract($id)
 	{
 		$contract = Contract::findOrFail($id);
-		$contract->fulfilled = true;
+		if (Auth::user()->id == $contract->customer_id)
+		{
+			$contract->fulfilled = true;
+			$contract->save(); 
+		}
+	}
+
+	public static function findInvoice($id)
+	{
+		$invoice = Invoice::where('contract_id','=', $id)->get();
+		return $invoice;
 	}
 
 	public function destroy($id)
@@ -230,72 +272,6 @@ class ContractController extends Controller
 
 	public function test()
 	{
-		$filters = array();
-		// $name = "mop";
-		// $invoice = true;
-		$price_min = "1";
-		$price_max = "100";
-		
-		// $filters['type'] = $request->type;
-		
-		// $filters['merchant_accepted'] = $request->merchant_accepted;
-		// $filters['customer_accepted'] = $request->customer_accepted;
-		// $filters['paid_fully'] = $request->paid_fully;
-		// $filters['fulfilled'] = $request->fulfilled;
 
-		$query = Contract::query();
-
-		if (isset($name))
-		{
-			$query->where('name', 'like', '%'.$name.'%');
-		}
-
-		if (isset($invoice))
-		{
-			if ($invoice == true)
-			{
-
-			}
-			else if ($invoice == false)
-			{
-				$query->whereNull('invoice_id');
-			}			
-		}
-
-		if (	(isset($price_min))		&&		(isset($price_max))		)
-		{
-			// dd(1);
-			$query->whereBetween('price', [$price_min, $price_max]);
-		}
-		else if (isset($price_min))
-		{
-			// dd(2);
-			$query->where('price', '>', $price_min);
-		}
-		else if (isset($price_max))
-		{
-			// dd(3);
-			$query->where('price', '<', $price_max);
-		}
-
-
-		foreach ($filters as $filter => $value)
-		{
-			if (isset($value) && (empty($value) == FALSE))
-			{   
-				if (is_array($value))
-				{
-					$query->whereIn($filter, $value);
-				}
-				else
-				{
-					$query->where($filter,$value);
-
-				}
-			}           
-		}
-
-		$contracts = $query->get();
-		dd($contracts);
 	}
 }

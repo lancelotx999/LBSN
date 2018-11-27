@@ -21,6 +21,7 @@ class CreateBusinessesTable extends Migration
             $table->string('description');
             $table->string('services');
             $table->string('contact_number');
+
             $table->string('images');
             $table->boolean('verified');
 

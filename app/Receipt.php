@@ -10,7 +10,7 @@ class Receipt extends Moloquent
 
     protected $guarded = 
     [
-       'provider_id','receiver_id','invoice_id', 'payment_method',
+       'merchant_id','customer_id','invoice_id', 'payment_method',
     ];
 
 }

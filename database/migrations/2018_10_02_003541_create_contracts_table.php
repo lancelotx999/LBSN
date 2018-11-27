@@ -19,6 +19,10 @@ class CreateContractsTable extends Migration
             $table->string('name');
             $table->string('merchant_id');
             $table->string('customer_id');
+
+            $table->string('merchant_name');
+            $table->string('customer_name');
+
             $table->string('item_id');
             $table->string('invoice_id');
 

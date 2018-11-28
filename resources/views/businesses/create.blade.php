@@ -53,12 +53,20 @@
                             </label>
                             <div class="input-group mb-3">
                                 <input
-                                    id="services" name="services[]" type="text"
+                                    id="services" name="menus[]" type="text"
                                     class="form-control"
                                     placeholder="Enter business service."
                                 />
+                                <div class="input-group-prepend">
+                                    &nbsp;<span class="input-group-text" id="basic-addon1">RM</span>
+                                </div>
+                                <input
+                                    id="services" name="prices[]" type="text"
+                                    class="form-control"
+                                    placeholder="Enter service price."
+                                />
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" id="addMore"><i class="fas fa-plus fa-fw"></i></button>
+                                    &nbsp;<button class="btn btn-outline-secondary" type="button" id="addMore"><i class="fas fa-plus fa-fw"></i></button>
                                 </div>
                             </div>
                             <span id="fieldList"></span>
@@ -122,7 +130,7 @@ $(function() {
     var maxField = 10; //Input fields increment limitation
     var addButton = $('#addMore'); //Add button selector
     var wrapper = $('#fieldList'); //Input field wrapper
-    var fieldHTML = '<div class="input-group mb-3"><input id="services" name="services[]" type="text" class="form-control" placeholder="Enter business service." /><div class="input-group-append"><button class="btn btn-outline-secondary remove_button" type="button"><i class="fas fa-times fa-fw"></i></button></div></div>'; // The new input
+    var fieldHTML = '<div class="input-group mb-3"><input id="services" name="menus[]" type="text" class="form-control" placeholder="Enter business service." /><div class="input-group-prepend">&nbsp;<span class="input-group-text" id="basic-addon1">RM</span></div><input id="services" name="prices[]" type="text" class="form-control" placeholder="Enter service price."/><div class="input-group-append">&nbsp;<button class="btn btn-outline-secondary remove_button" type="button"><i class="fas fa-times fa-fw"></i></button></div></div>'; // The new input
     var x = 1; //Initial field counter is 1
 
     //Once add button is clicked

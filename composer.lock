@@ -621,16 +621,16 @@
         },
         {
             "name": "jenssegers/mongodb",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/laravel-mongodb.git",
-                "reference": "bc78c7575b879351eedc4a57b5ac0410ee765b51"
+                "reference": "b69ef215a271bdf0c3cbbbdfbf3a940e50b7dc9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/laravel-mongodb/zipball/bc78c7575b879351eedc4a57b5ac0410ee765b51",
-                "reference": "bc78c7575b879351eedc4a57b5ac0410ee765b51",
+                "url": "https://api.github.com/repos/jenssegers/laravel-mongodb/zipball/b69ef215a271bdf0c3cbbbdfbf3a940e50b7dc9c",
+                "reference": "b69ef215a271bdf0c3cbbbdfbf3a940e50b7dc9c",
                 "shasum": ""
             },
             "require": {
@@ -686,7 +686,7 @@
                 "mongo",
                 "mongodb"
             ],
-            "time": "2018-08-16T10:58:55+00:00"
+            "time": "2018-11-27T08:00:21+00:00"
         },
         {
             "name": "laravel/framework",

@@ -16,15 +16,15 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('owner_id'); // ID of Owner
-            $table->string('name');    // Name of Property
-            $table->string('address'); // Address of Property
-            $table->string('description'); // Description of Property
-            $table->string('status'); // eg : Rent or Sale
-            $table->string('tags'); // eg : Condo , single-storey
+            $table->string('owner_id'); 
+            $table->string('name');   
+            $table->string('address'); 
+            $table->string('description'); 
+            $table->string('menu'); 
+            $table->string('tags'); 
             $table->string('images');
-            $table->double('latitude'); // Location Data
-            $table->double('longitude'); // Location Data
+            $table->double('latitude'); 
+            $table->double('longitude'); 
 
             $table->boolean('verified');
 

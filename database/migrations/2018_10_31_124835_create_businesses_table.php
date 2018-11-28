@@ -19,7 +19,7 @@ class CreateBusinessesTable extends Migration
             $table->string('owner_id');
             $table->string('name');
             $table->string('description');
-            $table->string('services');
+            $table->string('menu');
             $table->string('contact_number');
 
             $table->string('images');
